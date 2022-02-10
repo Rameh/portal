@@ -1,0 +1,179 @@
+.chevron::before {
+  border-style: solid;
+  border-width: 0.15em 0.15em 0 0;
+  content: "";
+  display: inline-block;
+  height: 0.35em;
+  left: 0.15em;
+  position: relative;
+  top: 0.3em;
+  vertical-align: top;
+  width: 0.35em;
+}
+// .logo{
+//   top: 19px;
+// left: 99px;
+// width: 153px;
+// height: 36px;
+// background: transparent url('img/topproz-01.png');
+// opacity: 1;
+// }
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  height: 100vh;
+  transition: 0.3s;
+
+  width: 60px;
+  &.expanded {
+    //width: 150px;
+    top: 0px;
+    left: 0px;
+    width: 220px;
+    height: 2312px;
+    background: #303135;
+    border: 1px solid #E7E7E7;
+    opacity: 1;
+    .header {
+      h1 {
+        margin-left: 0px;
+      }
+      .chevron {
+        margin-left: 36px;
+        //background: url(../../../assets/images/baseline-arrow_downward-24px.svg) no-repeat;
+        &::before {
+          transform: rotate(-135deg);
+        }
+      }
+    }
+    .content {
+      .link {
+        .content {
+          .title {
+            max-width: 100px;
+          }
+          .icon {
+            margin-right: 3px;
+          }
+        }
+        .children {
+          .content {
+            padding-left: 30px;
+          }
+        }
+      }
+    }
+  }
+
+  background: #1d1e2c;
+  color: #6d6e7e;
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+
+    background: #0f1017;
+
+    h1 {
+      font-size: 20px;
+      color: #6d6e7e;
+      margin: 0;
+      flex: 1;
+      transition: 0.3s;
+
+      margin-left: -100px;
+    }
+    .blue-color {
+      color: white;
+      margin-left: 40px;
+      margin-right: -18px;
+      background-color: white;
+      border-radius: 14px;
+      padding: 4px;
+  }
+    .chevron {
+      color: #fe6000;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-left: -25px;
+
+      padding: 4px;
+      min-width: 20px;
+      height: 20px;
+      display: block;
+      text-align: center;
+
+      &::before {
+        transition: 0.3s;
+        transform: rotate(45deg);
+      }
+
+      &:hover {
+        color: white;
+      }
+    }
+  }
+
+  .content {
+    .link {
+      .children {
+        .content {
+          background: #27283a;
+          // padding-left: 30px;
+          padding-left: 10px;
+
+          &.active {
+            background: #191a27;
+          }
+        }
+      }
+      .content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+
+        cursor: pointer;
+
+        transition: 0.3s;
+
+        &:hover {
+          background: #0f1017;
+          .title {
+            color: #fe6000;
+          }
+          svg {
+            fill: #fe6000;
+          }
+        }
+
+        &.active {
+          background: #0f1017;
+          .title {
+            color: #fe6000;
+          }
+        }
+
+        .icon {
+          flex: 0 0 30px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-right: 0px;
+        }
+        .title {
+          flex: 1;
+          // display: none;
+          color: #6d6e7e;
+          transition: 0.3s;
+          max-width: 0px;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,244 @@
+<!-- 
+<nav class="sidebar">
+    <header class="main-header" style="height: 65px;">
+        <a [routerLink]='["/home"]' class="logo">
+          <span class="logo-mini">
+          <a [routerLink]='["/admin/home"]'>
+          </a>
+          </span>
+          <span class="logo-lg" >
+            <img src="assets/tp-new-logofull.png" alt="logo" style="height: 60px;"/>
+          </span>
+        </a>
+        <nav class="navbar navbar-static-top">
+          <div class="col-md-1">
+              <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                <span class="sr-only">Toggle navigation</span>
+              </a>
+            </div>
+              <div class="col-md-11">
+          <div class="navbar-custom-menu">
+          </div>
+          </div>
+        </nav>
+      </header>
+    <ul class="sidebar-menu" >
+      <li class="treeview" >
+        <a class="menu-dropdown">
+            <img src='../../../assets/images/accountIcon.svg'>
+            <a [routerLink]='["/customer/customer-profile"]'>
+            <span class="menu-text">Account</span>
+            </a>
+            <i class="menu-expand"></i>
+        </a>
+        </li>
+        <li class="treeview" >
+        <a class="menu-dropdown">
+            <img src='../../../assets/images/proIcon.svg'>
+            <a [routerLink]='["/customer/my-pros"]'>
+            <span class="menu-text">My Pros</span>
+            <i class="menu-expand"></i>
+          </a>
+        </a>
+        </li>
+        <li class="treeview" >
+        <a class="menu-dropdown">
+            <img src='../../../assets/images/project1Icon.svg'>
+            <a [routerLink]='["/customer/lead-list"]'>
+            <span class="menu-text">Project</span>
+            </a>
+            <i class="menu-expand"></i>
+        </a>
+          <ng-template >
+              <a>
+                  <i class="fa fa-fw "></i>
+                  <span> zxcvx</span>
+              </a>
+              <ul class="treeview-menu">
+                  <li  >
+                      <a >
+                          <i class="fa fa-fw"></i>
+                          <span> zfsdf </span>
+                      </a>
+                  </li>
+              </ul>         
+          </ng-template>
+          </li>
+          <li class="treeview" >
+            <a class="menu-dropdown">
+                <img src='../../../assets/images/notificationIcon.svg'>
+                <span class="menu-text">Notifications</span>
+                <i class="menu-expand"></i>
+            </a>
+            </li>
+            <li class="treeview" >
+                <a class="menu-dropdown">
+                  <img src='../../../assets/images/logoutIcon.svg'>
+                    <span class="menu-text">Logout</span>
+                    <i class="menu-expand"></i>
+                </a>
+                </li>
+  </ul>  
+  </nav> -->
+
+<div class="sidebar" [ngClass]="{ 'expanded': isExpanded }">
+  <div class="header">
+    <span class="logo-lg logo">
+      <img src="assets/tp-new-logofull.png" alt="logo" style="width: 153px;
+      height: 40px;" />
+    </span>
+    <div class="toggle" (click)="handleSidebarToggle()">
+      <!-- <span class="chevron"></span> -->
+      <span class="blue-color">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13.591" height="13.591" viewBox="0 0 13.591 13.591">
+        <g id="baseline-arrow_downward-24px" transform="translate(13.591) rotate(90)">
+          <path id="Path_11408" data-name="Path 11408" d="M0,0H13.591V13.591H0Z" fill="none"/>
+          <path id="Path_11409" data-name="Path 11409" d="M13.061,8.53l-.8-.8L9.1,10.892V4H7.964v6.892L4.8,7.726l-.8.8,4.53,4.53Z" transform="translate(-1.735 -1.735)" fill="#ff6700"/>
+        </g>
+      </svg>
+    </span>
+    <!-- <span class="blue-color" *ngIf="rightArrow">
+      <svg xmlns="http://www.w3.org/2000/svg" width="13.591" height="13.591" viewBox="0 0 13.591 13.591">
+        <g id="baseline-arrow_downward-24px" transform="translate(13.591) rotate(90)">
+          <path id="Path_11408" data-name="Path 11408" d="M0,0H13.591V13.591H0Z" fill="none"/>
+          <path id="Path_11409" data-name="Path 11409" d="M13.061,8.53l-.8-.8L9.1,10.892V4H7.964v6.892L4.8,7.726l-.8.8,4.53,4.53Z" transform="translate(-1.735 -1.735)" fill="#ff6700"/>
+        </g>
+      </svg>
+  </span> -->
+      <!-- <span class="bi bi-arrow-left-circle-fill blue-color"></span> -->
+    </div>
+  </div>
+  <br /><br />
+  <div class="content">
+    <!-- <div class="link">
+      <div class="content" [routerLink]="['/customer/customer-profile']" [routerLinkActive]="'active'">
+        <div class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="28.655"
+            height="33.001" viewBox="0 0 28.655 33.001">
+            <defs>
+              <filter id="Path_9345" x="4.366" y="0" width="19.919" height="19.919" filterUnits="userSpaceOnUse">
+                <feOffset dy="3" input="SourceAlpha" />
+                <feGaussianBlur stdDeviation="1.5" result="blur" />
+                <feFlood flood-opacity="0.161" />
+                <feComposite operator="in" in2="blur" />
+                <feComposite in="SourceGraphic" />
+              </filter>
+              <filter id="Path_9346" x="0" y="10.854" width="28.655" height="22.147" filterUnits="userSpaceOnUse">
+                <feOffset dy="3" input="SourceAlpha" />
+                <feGaussianBlur stdDeviation="1.5" result="blur-2" />
+                <feFlood flood-opacity="0.161" />
+                <feComposite operator="in" in2="blur-2" />
+                <feComposite in="SourceGraphic" />
+              </filter>
+            </defs>
+            <g id="Group_11796" data-name="Group 11796" transform="translate(-701.5 -707.499)">
+              <g id="Group_10738" data-name="Group 10738" transform="translate(148.828 1)">
+                <g id="noun_profile_4184368" transform="translate(557.172 707.999)">
+                  <g transform="matrix(1, 0, 0, 1, -4.5, -1.5)" filter="url(#Path_9345)">
+                    <path id="Path_9345-2" data-name="Path 9345"
+                      d="M56.983,26.547a5.459,5.459,0,1,0-1.833-4.08,5.459,5.459,0,0,0,1.833,4.08Z"
+                      transform="translate(-46.28 -15.51)" fill="#afacac" />
+                  </g>
+                  <g transform="matrix(1, 0, 0, 1, -4.5, -1.5)" filter="url(#Path_9346)">
+                    <path id="Path_9346-2" data-name="Path 9346"
+                      d="M43.7,80.308a6.825,6.825,0,0,1-8.384,0A9.812,9.812,0,0,0,29.68,89.2v4.255H49.335V89.2A9.833,9.833,0,0,0,43.7,80.308Z"
+                      transform="translate(-25.18 -67.95)" fill="#afacac" />
+                  </g>
+                </g>
+              </g>
+              <rect id="Rectangle_17780" data-name="Rectangle 17780" width="24" height="24"
+                transform="translate(704 709)" fill="none" />
+            </g>
+          </svg>
+        </div>
+        &nbsp;&nbsp;
+        <div class="title">Account</div>
+      </div>
+    </div> -->
+    <div class="link">
+      <div class="content" [routerLink]="['/customer/my-pros']" [routerLinkActive]="'active'">
+        <div class="icon">
+          <img src='../../../assets/images/proIcon.svg' style="width: 24px;
+          height: 24px;">
+        </div>
+        &nbsp;&nbsp;
+        <div class="title">My Pros</div>
+      </div>
+    </div>
+    <div class="link with-children">
+      <div class="content active" [routerLink]="['/customer/lead-list',loginId]" [routerLinkActive]="'active'">
+        <div class="icon">
+          <img src='../../../assets/images/project1Icon.svg' style="width: 24px;
+          height: 24px;">
+        </div>
+        &nbsp;&nbsp;
+        <div class="title">Projects</div>
+      </div>
+      <!-- <div class="children">
+        <div class="link">
+          <div class="content" [routerLink]="['/configuration']" [queryParams]="{ 'child': '1' }"
+            [routerLinkActive]="'active'">
+            <div class="icon">
+              <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>Stockholm-icons / Home / Flower2</title>
+                <desc>Created with Sketch.</desc>
+                <defs></defs>
+                <g id="Stockholm-icons-/-Home-/-Flower2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <polygon id="bound" points="0 0 24 0 24 24 0 24"></polygon>
+                  <circle id="Oval-32" fill="#000000" opacity="0.3" cx="15" cy="17" r="5"></circle>
+                  <circle id="Oval-32-Copy" fill="#000000" opacity="0.3" cx="9" cy="17" r="5"></circle>
+                  <circle id="Oval-32-Copy-2" fill="#000000" opacity="0.3" cx="7" cy="11" r="5"></circle>
+                  <circle id="Oval-32-Copy-3" fill="#000000" opacity="0.3" cx="17" cy="11" r="5"></circle>
+                  <circle id="Oval-32-Copy-4" fill="#000000" opacity="0.3" cx="12" cy="7" r="5"></circle>
+                </g>
+              </svg>
+            </div>
+            <div class="title">Project 1</div>
+          </div>
+        </div>
+        <div class="link">
+          <div class="content" [routerLink]="['/configuration']" [queryParams]="{ 'child': '2' }"
+            [routerLinkActive]="'active'">
+            <div class="icon">
+              <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>Stockholm-icons / Home / Flower2</title>
+                <desc>Created with Sketch.</desc>
+                <defs></defs>
+                <g id="Stockholm-icons-/-Home-/-Flower2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <polygon id="bound" points="0 0 24 0 24 24 0 24"></polygon>
+                  <circle id="Oval-32" fill="#000000" opacity="0.3" cx="15" cy="17" r="5"></circle>
+                  <circle id="Oval-32-Copy" fill="#000000" opacity="0.3" cx="9" cy="17" r="5"></circle>
+                  <circle id="Oval-32-Copy-2" fill="#000000" opacity="0.3" cx="7" cy="11" r="5"></circle>
+                  <circle id="Oval-32-Copy-3" fill="#000000" opacity="0.3" cx="17" cy="11" r="5"></circle>
+                  <circle id="Oval-32-Copy-4" fill="#000000" opacity="0.3" cx="12" cy="7" r="5"></circle>
+                </g>
+              </svg>
+            </div>
+            <div class="title">Project 2</div>
+          </div>
+        </div>
+      </div> -->
+    </div>
+    <div class="link">
+      <div class="content" [routerLink]="['/customer/notifications']" [routerLinkActive]="'active'">
+        <div class="icon">
+          <img src='../../../assets/images/notificationIcon.svg' style="width:24px;height:24px">
+        </div>
+        &nbsp;&nbsp;
+        <div class="title">Notifications</div>
+      </div>
+    </div>
+    <div class="link">
+      <div class="content" (click)="Logout()"  [routerLinkActive]="'active'">
+        <div class="icon">
+          <img src='../../../assets/images/logoutIcon.svg' style="width:24px;height:24px">
+        </div>
+        &nbsp;&nbsp;
+        <div class="title">Log out</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"></div>
+</div>

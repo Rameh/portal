@@ -1,0 +1,385 @@
+<div class="container">
+    <form [formGroup]="customerProfileform">
+        <section class="projects_list personal_info pt-60 pb-30">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-12">
+                        <div class="card pinfo_box shadow">
+                            <div class="row card-header m-0 justify-content-center">
+                                <div class="col-lg-2 col-2">
+                                    <span class="d-block text-center"><i class="fa fa-angle-left"></i></span>
+                                </div>
+                                <div class="col-lg-8 col-5">
+                                    <h3>My Profile</h3>
+                                </div>
+                                <div class="col-lg-2 col-2">
+                                    <span class="d-block text-center"><i class="fa fa-ellipsis-v"
+                                            (click)="openMenu()"></i></span>
+                                </div>
+                            </div>
+                            <div *ngIf="profileMenu">
+                                <div style="padding-left: 800px;">
+                                    <div class="menu">
+                                        <ul class="menu-list">
+                                            <li class="menu-item"><button class="menu-button">
+                                                    <i class="fa fa-pencil" aria-hidden="true" style="width: 60px;"></i>
+                                                    <span (click)="updateProfile()">
+                                                        Edit Profle</span>
+                                                </button></li>
+                                        </ul>
+                                        <ul class="menu-list">
+                                            <li class="menu-item"><button class="menu-button">
+                                                    &nbsp; &nbsp; &nbsp; &nbsp;
+                                                    &nbsp; &nbsp; &nbsp; &nbsp;
+                                                    &nbsp; &nbsp;
+                                                    <span (click)="editProfileMenuCancel()">Cancel</span>
+                                                </button></li>
+
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body pt-5">
+                                <div class="row">
+                                    <div class="col-lg-8 offset-lg-2">
+                                        <div class="pinfo_tabs">
+                                            <!-- <div class="profileImg"></div> -->
+                                            <div class="container">
+                                                <div class="row custom-wrapper">
+                                                    <div class="col-md-12">
+                                                        <div class="group-gap">
+                                                            <div class="avatar-upload">
+                                                                <div class="avatar-edit">
+                                                                    <input type='file' id="imageUpload"
+                                                                        accept=".png, .jpg, .jpeg" #fileInput
+                                                                        (change)="uploadFile($event)" />
+                                                                </div>
+                                                                <div class="avatar-preview">
+                                                                    <div id="imagePreview" (click)="fileInput.click()"
+                                                                        [style.backgroundImage]="'url('+ imageUrl +')'">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                        </div>
+                                                        <!-- <button type="submit" class="btn btn-danger btn-lg btn-block"
+                                                            (click)="fileInput.click()">Upload Image</button> -->
+                                                    </div>
+                                                </div>
+                                                <div style="padding-left: 100px;" *ngIf="uploadMenu">
+                                                    <div class="menu1">
+                                                        <ul class="menu-list">
+                                                            <li class="menu-item"><button class="menu-button">
+                                                                    <i class="fa fa-trash" aria-hidden="true"
+                                                                        style="width: 60px;"></i>
+                                                                    <span (click)="deleteButton()">
+                                                                        Delete</span>
+                                                                </button></li>
+                                                        </ul>
+                                                        <!-- <ul class="menu-list">
+                                                            <li class="menu-item"><button class="menu-button">
+                                                                    <i class="fa fa-upload" aria-hidden="true"
+                                                                        style="width: 60px;"></i>
+                                                                    <span>
+                                                                        Upload</span>
+                                                                </button></li>
+                                                        </ul> -->
+                                                        <ul class="menu-list">
+                                                            <li class="menu-item"><button class="menu-button">
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp;
+                                                                    &nbsp; &nbsp; &nbsp; &nbsp;
+                                                                    &nbsp; &nbsp;
+                                                                    <span (click)="uploadMenuCancel()">Cancel</span>
+                                                                </button></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="tab-content pinfo_tabs_cont" id="pills-tabContent">
+                                                <div class="tab-pane fade show active" id="pills-personal"
+                                                    role="tabpanel" aria-labelledby="pills-personal-tab">
+                                                    <div class="pinfo_contact_form">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="firstName" class="form-label">
+                                                                        FIRST NAME
+                                                                    </label>
+                                                                    <div class="input-icons">
+                                                                        <i class="fa fa-pencil icon"
+                                                                            *ngIf="showEditIcon">
+                                                                        </i>
+                                                                        <input type="text" name="name" id="firstName"
+                                                                            class="form-control"
+                                                                            formControlName="firstName">
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="lastName" class="form-label">
+                                                                        LAST NAME
+                                                                    </label>
+                                                                    <div class="input-icons">
+                                                                        <i class="fa fa-pencil icon"
+                                                                            *ngIf="showEditIcon">
+                                                                        </i>
+                                                                        <input type="text" name="name" id="lastName"
+                                                                            class="form-control"
+                                                                            placeholder="Enter last name"
+                                                                            formControlName="lastName">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="mobileNumber" class="form-label">
+                                                                        MOBILE NUMBER
+                                                                    </label>
+                                                                    <div class="input-icons">
+                                                                        <i class="fa fa-pencil icon"
+                                                                            *ngIf="showEditIcon">
+                                                                        </i>
+                                                                        <input type="text" name="name" id="mobileNumber"
+                                                                            class="form-control"
+                                                                            placeholder="(xxx)-xxx-xxxx" #myselects
+                                                                            (ngModelChange)="getUSPhoneNumberValidation1(myselects.value)"
+                                                                            formControlName="phoneNumber">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="emailId" class="form-label">
+                                                                        EMAIL
+                                                                    </label>
+                                                                    <input type="text" name="name" id="emailId"
+                                                                        class="form-control"
+                                                                        placeholder="Enter Email ID"
+                                                                        formControlName="emailId" readonly
+                                                                        style="background-color:#f0f0f0;">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="firstName" class="form-label">
+                                                                        STREET ADDRESS
+                                                                    </label>
+                                                                    <div class="input-icons">
+                                                                        <i class="fa fa-pencil icon"
+                                                                            *ngIf="showEditIcon">
+                                                                        </i>
+                                                                        <input type="text" name="name" id="firstName"
+                                                                            class="form-control"
+                                                                            placeholder="Enter street address"
+                                                                            formControlName="address">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="firstName" class="form-label">
+                                                                        ZIP CODE
+                                                                    </label>
+                                                                    <div class="input-icons">
+                                                                        <i class="fa fa-pencil icon"
+                                                                            *ngIf="showEditIcon">
+                                                                        </i>
+                                                                        <input type="text" id="zipCode" mask="99999"
+                                                                            separatorLimit="99999"
+                                                                            placeholder="Enter your zip code"
+                                                                            [(ngModel)]="zipcode"
+                                                                            formControlName="zipCode"
+                                                                            (ngModelChange)="getZipcodeData(zipcode)">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="firstName" class="form-label">
+                                                                        CITY
+                                                                    </label>
+                                                                    <div class="input-icons">
+                                                                        <input type="text" class="form-control"
+                                                                            id="city" readonly value="{{city}}"
+                                                                            formControlName="city"
+                                                                            style="background-color:#f0f0f0;">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="firstName" class="form-label">
+                                                                        STATE
+                                                                    </label>
+                                                                    <div class="input-icons">
+                                                                        <input type="text" class="form-control"
+                                                                            id="city" readonly value="{{stateName}}"
+                                                                            formControlName="state"
+                                                                            style="background-color:#f0f0f0; ">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <button class="btn btn-primary btn2"
+                                                                    (click)="newPassword1()">Change Password</button>
+                                                            </div>
+                                                            <div class="col-md-12 pinfo_btns">
+                                                                <button class="btn btn-link btn1">Cancel</button>
+                                                                <button type="submit" class="btn btn-primary btn2"
+                                                                    (click)="onSubmit()">Save</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </form>
+
+    <!--Personal Information End-->
+</div>
+
+
+<div class="modal fade" id="forgotPassword3" role="dialog">
+    <div class="modal-dialog model-sm ">
+        <div class="modal-content ">
+            <div class="modal-header modal-header1">
+                <h3>Chage Password</h3>
+            </div>
+            <div>
+                <form [formGroup]="changePasswordForm">
+                    <div>
+                        <br>
+                        <div class="form-group col-md-12">
+                            <label for="password">Enter Old Password</label>
+                            <input type="text" class="form-control" placeholder="Enter Old Password"
+                                formControlName="oldPassword" />
+                            <!-- <div *ngIf="submittedForPassword1 && k.password.errors">
+                            <div *ngIf="k.password.errors.required">
+                                <p class="inputFieldValidator">Enter New Password</p>
+                            </div>
+                            <div *ngIf="k.password.errors.minlength">
+                                <p class="inputFieldValidator">Password
+                                    must be at least 6 characters</p>
+                            </div>
+                        </div> -->
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="password">Enter New Password</label>
+                            <input type="text" class="form-control" placeholder="Enter New Password"
+                                formControlName="password" />
+                            <!-- <div *ngIf="submittedForPassword1 && k.password.errors">
+                              <div *ngIf="k.password.errors.required">
+                                  <p class="inputFieldValidator">Enter New Password</p>
+                              </div>
+                              <div *ngIf="k.password.errors.minlength">
+                                  <p class="inputFieldValidator">Password
+                                      must be at least 6 characters</p>
+                              </div>
+                          </div> -->
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="confirmPassword">Confirm New Password</label>
+                            <input type="text" class="form-control" placeholder="Confirm New Password"
+                                formControlName="confirmPassword" />
+                            <!-- <div *ngIf="submittedForPassword1 && k.confirmPassword.errors">
+                              <div *ngIf="k.confirmPassword.errors.required">
+                                  <p class="inputFieldValidator">Re Enter New Password</p>
+                              </div>
+                              <div *ngIf="k.confirmPassword.errors.mustMatch">
+                                  <p class="inputFieldValidator">Password Doesn't Match</p>
+                              </div>
+                          </div> -->
+                        </div>
+                    </div>
+                </form>
+                <div class="form-row" style="float: right;padding-bottom: 20px">
+                    <div class=" col-md-03 text-right  pinfo_btns">
+                        <button class="btn btn-primary btn2" (click)="confirmPassword1()">Confirm</button>
+                        <button class="btn btn-link btn1" (click)="Cancel()">Cancel</button>
+                        <!-- <button class="btn btn-success btn-icon-split btn-align" (click)="confirmPassword1()">
+                          <span class="text">Confirm</span></button>&nbsp; -->
+                        <!-- <button class="btn btn-danger btn-icon-split btn-align" data-dismiss="modal">
+                          <span class="text">Cancel</span></button>&nbsp; -->
+                    </div>
+                </div>
+                <br />
+                <br />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="VerifyNumber" class="modal fade" style="display: none;" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header1">
+                <!-- <div class="modal-header modal-header1">
+                    <h3>Email Verification Code</h3>
+                </div> -->
+                <!-- <div class="widget-header blue">
+            <span class="widget-caption"><b>Mobile Number Verification Code</b></span>
+          </div> -->
+                <div class="modal-body">
+                    <form [formGroup]="VerificationForm"><br />
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label class="text-center"><b>Your verification code is sent to your email,
+                                            please enter it
+                                            here ({{mobileVerificationCode}})</b>
+                                    </label>
+                                    <input type="text" class="form-control" id="companyName" placeholder=""
+                                        formControlName="VerficationCode" (keyup)="keyPress4($event)">
+                                    <!-- <div *ngIf="submittedForMobileCode && g.VerficationCode.errors">
+                      <div *ngIf="g.VerficationCode.errors.required">
+                        <p class="inputFieldValidator">Enter Mobile VerificationCode</p>
+                      </div>
+                    </div> -->
+                                    <div *ngIf="invalidMobileLead1">
+                                        <p class="inputFieldValidator">Verification code does not match. Please re-enter
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="form-row"
+                                    style="float: right;padding-bottom: 20px;margin-left: 240px !important;">
+                                    <div class=" col-md-03 text-right  pinfo_btns">
+                                        <button class="btn btn-primary btn2" (click)="codeSubmit()">
+                                            <i class="fa fa-check"></i>
+                                            Verify</button>
+                                        <button class="btn btn-link btn1" (click)="onCancel()"><i
+                                                class="fa fa-times"></i>Cancel</button>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                </div>
+                                <div class="col-lg-2">
+                                </div>
+                                <div class="col-lg-2">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>

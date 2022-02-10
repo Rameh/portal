@@ -1,0 +1,101 @@
+<div class="container">
+    <section class="projects_list pt-60 pb-30">
+        <div class="container">
+            <h3>Customer Support Request list</h3>
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="pro_box shadow">
+                        <div class="row m-0">
+                            <div class="col-lg-12">
+                                <div class="row proj_top">
+                                    <div class="col-lg-4">
+                                    </div>
+                                    <div class="col-lg-2">
+                                    </div>
+                                    <div class="col-lg-2">
+                                    </div>
+                                    <div class="col-lg-4" style="float: right;">
+                                        <div class="input-group">
+                                            <div class="pinfo_contact_form3">
+                                                <div class="pinfo_btns">
+                                                    <button class="btn btn-primary btn2"
+                                                        [routerLink]='["/customer/customer-support"]'>Create Support
+                                                        Request</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container-fluid p-0 m-0">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered text-center">
+                                            <thead class="thead-bg-light">
+                                                <tr>
+                                                    <th scope="col">Ticket Number</th>
+                                                    <th scope="col">Project#</th>
+                                                    <th scope="col">Project Name</th>
+                                                    <th scope="col">Created On</th>
+                                                    <th scope="col">Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let data of leadsList">
+                                                    <td>
+                                                        <a
+                                                            [routerLink]='["/customer/support-request-view",data.ticketNumber]'>{{data.ticketNumber}}</a>
+                                                    </td>
+                                                    <td>{{data.workOrderNumber}}</td>
+                                                    <td> {{data.projectName}}</td>
+                                                    <td>{{data.createdAt | date}}</td>
+                                                    <td>
+                                                        <span class="badge badge-pill badge-primary cu_badge2"
+                                                            *ngIf="data.status === 'Closed'">{{data.status}}</span>
+                                                        <span class="badge badge-pill badge-primary cu_badge1"
+                                                            *ngIf="data.status === 'Open'">{{data.status}}</span>
+                                                    </td>
+                                                    <!-- <td><a href="" class="btn cubtn"
+                                                        [routerLink]='["/customer/project-view",data.customerId]'>VIEW</a></td> -->
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="cus_pagination pb-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="pro_pagination">
+                        <nav aria-label="Demo of active current page number">
+                            <ul class="pagination">
+                                <li class="page-item"><a class="page-link" href="#">
+                                        <i class="fa fa-arrow-left"></i>
+                                    </a></li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                <li class="page-item"><a class="page-link" href="#">6</a></li>
+                                <li class="page-item"><a class="page-link" href="#">7</a></li>
+                                <li class="page-item"><a class="page-link" href="#">
+                                        <i class="fa fa-arrow-right"></i>
+                                    </a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

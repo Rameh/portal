@@ -1,0 +1,294 @@
+<div class="container">
+  <form [formGroup]="projectForm">
+    <section class="projects_list personal_info pt-60 pb-30">
+        <div class="container" >
+             <div class="row">
+                <div class="col-lg-12 col-12">
+                    <div class="card pinfo_box shadow">
+                       <div class="row card-header m-0 justify-content-center">
+                           <div class="col-lg-2 col-2">
+                                <span class="d-block text-center"><i class="fa fa-angle-left"></i></span>
+                            </div>
+                            <div class="col-lg-8 col-5">
+                            </div>
+                            <div class="col-lg-2 col-2">
+                                <span class="d-block text-center"><i class="fa fa-ellipsis-v"></i></span>
+                            </div>
+                        </div>
+                        <div class="card-body pt-5">
+                            <div class="row">
+                                <div class="col-lg-8 offset-lg-2">
+                                    <div class="pinfo_tabs">
+                                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                          <li class="nav-item" role="presentation">
+                                            <a class="nav-link active" id="pills-personal-tab" data-toggle="pill" href="#pills-personal" role="tab" aria-controls="pills-personal" aria-selected="true">PROJECT DETAILS</a>
+                                          </li>
+                                          <li class="nav-item" role="presentation">
+                                            <a class="nav-link" id="pills-contact-info-tab" data-toggle="pill" href="#pills-contact-info" role="tab" aria-controls="pills-contact-info" aria-selected="true">CONTACT INFO</a>
+                                          </li>
+                                          <li class="nav-item" role="presentation">
+                                            <a class="nav-link" id="pills-pro-details-tab" data-toggle="pill" href="#pills-pro-details" role="tab" aria-controls="pills-pro-details" aria-selected="false">PRO DETAILS</a>
+                                          </li>
+                                          <li class="nav-item" role="presentation">
+                                            <a class="nav-link" id="pills-project-history-tab" data-toggle="pill" href="#pills-project-history" role="tab" aria-controls="pills-project-history" aria-selected="false">PROJECT HISTORY</a>
+                                          </li>
+                                        </ul>
+                                        <div class="tab-content pinfo_tabs_cont" id="pills-tabContent">
+                                          <div class="tab-pane fade show active" id="pills-personal" role="tabpanel" aria-labelledby="pills-personal-tab">
+                                            <div class="pinfo_contact_form">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                            <label for="projectId" class="form-label">
+                                                              Project#
+                                                            </label>
+                                                            <input type="text" name="name" id="projectId"
+                                                            class="form-control" formControlName="projectId">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                            <label for="firstName" class="form-label">
+                                                            Created on
+                                                            </label>
+                                                            <input type="text" name="name" id="lastName"
+                                                            class="form-control" placeholder="27/12/2021">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                          <div class="form-group">
+                                                            <label for="emailAddress" class="form-label">
+                                                            Project Name</label>
+                                                            <input type="text" name="name" id="mobileNumber"  formControlName="projectName" class="form-control" placeholder="Lorem Ipsum" tabindex="2">
+                                                          </div>
+                                                        </div>
+                                                          <div class="col-md-12">
+                                                            <div class="form-group">
+                                                              <label for="emailAddress" class="form-label">
+                                                               Project Description</label>
+                                                               <textarea id="w3review" name="w3review" rows="4" cols="50" placeholder="Enter Service Location" formControlName="projectDescrption">
+                                                                </textarea>
+                                                            </div>
+                                                          </div>
+                                                          <div class="col-md-12">
+                                                            <div class="form-group">
+                                                              <label for="emailAddress" class="form-label">
+                                                               Project related images</label>
+                                                            </div>
+                                                            <img src="https://topproz2.s3.amazonaws.com/uploads/1640758526320.image_picker_49B614F2-275C-4414-A6CC-5049F5C908F7-15547-00000C109927D728.jpg" style="width: 15%;height:70%">
+                                                          </div>
+                                                         <div class="col-md-12 pinfo_btns">
+                                                            <button class="btn btn-link btn1">Cancel</button>
+                                                            <button class="btn btn-primary btn2" >Next</button>
+                                                        </div>
+                                                    </div> 
+                                            </div>
+                                          </div>
+                                          <div class="tab-pane fade" id="pills-contact-info" role="tabpanel" aria-labelledby="pills-contact-info-tab">
+                                           <div class="pinfo_contact_form">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                            <label for="firstName" class="form-label">
+                                                              First Name*
+                                                            </label>
+                                                            <input type="text" name="name" id="firstName"
+                                                            class="form-control" placeholder="First Name" formControlName="firstName">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                            <label for="firstName" class="form-label">
+                                                              Last Name*
+                                                            </label>
+                                                            <input type="text" name="name" id="lastName"
+                                                            class="form-control" placeholder="Last Name" formControlName="lastName">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                          <div class="form-group">
+                                                            <label for="emailAddress" class="form-label">
+                                                            Mobile Number</label>
+                                                            <input type="text" name="name" id="mobileNumber" class="form-control" placeholder="888-888-888" tabindex="2"formControlName="mobileNumber">
+                                                          </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                          <div class="form-group">
+                                                            <label for="emailAddress" class="form-label">Your Email Adress</label>
+                                                              <input type="text" name="Email" id="emailAddress" class="form-control" placeholder="info@topproz.com" formControlName="emailId">
+                                                          </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                          <div class="form-group">
+                                                            <label for="emailAddress" class="form-label">
+                                                              Street Address</label>
+                                                            <input type="text" name="name" id="mobileNumber" class="form-control" placeholder="Enter Street Address" tabindex="2" formControlName="streetAddress">
+                                                          </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                          <div class="form-group">
+                                                            <label for="emailAddress" class="form-label">
+                                                              City</label>
+                                                            <input type="text" name="name" id="mobileNumber" class="form-control" placeholder="Select City" tabindex="2" formControlName="city">
+                                                          </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                          <div class="form-group">
+                                                            <label for="emailAddress" class="form-label">
+                                                              State</label>
+                                                            <input type="text" name="name" id="mobileNumber" class="form-control" placeholder="Select State" tabindex="2" formControlName="state">
+                                                          </div>
+                                                        </div>
+                                                      <div class="col-md-12">
+                                                        <div class="form-group">
+                                                          <label for="emailAddress" class="form-label">Zip Code</label>
+                                                            <input type="text" name="Email" id="emailAddress" class="form-control" placeholder="Enter Zip Code" formControlName="zipcode">
+                                                        </div>
+                                                      </div>
+                                                        <div class="col-md-12 pinfo_btns">
+                                                            <button class="btn btn-link btn1">Cancel</button>
+                                                            <button class="btn btn-primary btn2">Next</button>
+                                                        </div>
+                                                    </div> 
+                                            </div>
+                                          </div>
+                                          <div class="tab-pane fade" id="pills-pro-details" role="tabpanel" aria-labelledby="pills-pro-details-tab" >
+                                            <div class="pinfo_contact_form" *ngIf="!projectHistory.length">
+                                                 <form>
+                                                     <div class="row">
+                                                         <div class="col-md-12">
+                                                           <div class="form-group">
+                                                             <label for="emailAddress" class="form-label">
+                                                             Pro Name</label>
+                                                             <input type="number" name="name" id="mobileNumber" class="form-control" placeholder="John Cena" tabindex="2">
+                                                           </div>
+                                                         </div>
+                                                         <div class="col-md-12">
+                                                           <div class="form-group">
+                                                             <label for="emailAddress" class="form-label">Phone Number</label>
+                                                               <input type="text" name="Email" id="emailAddress" class="form-control" placeholder="512-2222-2222" >
+                                                           </div>
+                                                         </div>
+                                                         <div class="col-md-12 pinfo_btns">
+                                                             <button class="btn btn-link btn1">Cancel</button>
+                                                             <button class="btn btn-primary btn2">Next</button>
+                                                         </div>
+                                                     </div> 
+                                                 </form>
+                                             </div>
+                                             <div else>
+                                              <p>Project details submitted. Local proz will reach out to you soon.</p>
+                                            </div>
+                                           </div>
+                                          
+                                           <div class="tab-pane fade" id="pills-project-history" role="tabpanel" aria-labelledby="pills-project-history-tab">
+                                            <div class="pinfo_contact_form">
+                                                 <form>
+                                                        <div class="container-fluid">
+                                                            <div class="col-lg-12">
+                                                                <div class="table-responsive">
+                                                                    <table class="table table-bordered text-center">
+                                                                      <thead class="thead-bg-light">
+                                                                        <tr>
+                                                                          <th scope="col">STATUS</th>
+                                                                          <th scope="col">DATE</th>
+                                                                          <th scope="col">START TIME</th>
+                                                                          <th scope="col">STAFF NAME</th>
+                                                                          <th scope="col">TITLE</th>
+                                                                          <th scope="col">NOTES</th>
+                                                                        </tr>
+                                                                      </thead>
+                                                                      <tbody>
+                                                                        <tr *ngFor="let data of projectHistory">
+                                                                          <td>{{data.status}}</td>
+                                                                          <td>{{data.date}}</td>
+                                                                          <td>{{data.startTime}}</td>
+                                                                          <td>{{data.staffName}}</td>
+                                                                          <td>{{data.title}}</td>
+                                                                          <td>{{data.notes}}</td>
+                                                                          </tr>
+                                                                        <!-- <tr>
+                                                                          <td>Call</td>
+                                                                          <td>17-11-2021</td>
+                                                                          <td>9:00AM</td>
+                                                                          <td>Michele</td>
+                                                                          <td>Dispatcher</td>
+                                                                          <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                          <td>Scheduled</td>
+                                                                          <td>17-11-2021</td>
+                                                                          <td>9:00AM</td>
+                                                                          <td>Michele</td>
+                                                                          <td>Dispatcher</td>
+                                                                          <td></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                          <td>Dispatched</td>
+                                                                          <td>17-11-2021</td>
+                                                                          <td>9:00AM</td>
+                                                                          <td>Otis Johns</td>                                                                         
+                                                                          <td>Service tech</td>
+                                                                          <td></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                          <td>Arrived</td>
+                                                                          <td>17-11-2021</td>
+                                                                          <td>9:00AM</td>
+                                                                          <td>Otis Johns</td>
+                                                                          <td>Service tech</td>
+                                                                          <td></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                          <td>Estimate</td>
+                                                                          <td>17-11-2021</td>
+                                                                          <td>9:00AM</td>
+                                                                          <td>Otis Johns</td>
+                                                                           <td>Service tech</td>
+                                                                          <td></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                          <td>Pending</td>
+                                                                          <td>17-11-2021</td>
+                                                                          <td>9:00AM</td>
+                                                                          <td>Otis Johns</td>
+                                                                          <td>Service tech</td>
+                                                                          <td></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                          <td>Ongoing</td>
+                                                                          <td>17-11-2021</td>
+                                                                          <td>9:00AM</td>
+                                                                          <td>Charles Davis</td>
+                                                                          <td>Service tech</td>
+                                                                          <td></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                          <td>Involve</td>
+                                                                          <td>17-11-2021</td>
+                                                                          <td>9:00AM</td>
+                                                                          <td>Charles Davis</td>
+                                                                          <td>Service tech</td>
+                                                                          <td></td>
+                                                                        </tr> -->
+                                                                      </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                 </form>
+                                             </div>
+                                           </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+        </div>
+    </section>
+    </form>
+</div>

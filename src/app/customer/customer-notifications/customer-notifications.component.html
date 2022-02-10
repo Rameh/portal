@@ -1,0 +1,83 @@
+<div class="container">
+  <section class="projects_list personal_info pt-60 pb-30">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-12">
+          <div class="card pinfo_box shadow">
+            <div class="row card-header m-0 justify-content-center">
+              <div class="col-lg-2 col-2">
+                <span class="d-block text-center"><i class="fa fa-angle-left"></i></span>
+              </div>
+              <div class="col-lg-8 col-5">
+                <h3>Notifications</h3>
+              </div>
+              <div class="col-lg-2 col-2">
+                <span class="d-block text-center"><i class="fa fa-ellipsis-v"></i></span>
+              </div>
+            </div>
+            <section class="main-content">
+              <div class="container">
+                <br>
+                <br>
+                <table class="table">
+                  <tbody>
+                    <tr *ngFor="let data of notificationList">
+                      <td>
+                        <div class="user-info">
+                          <div class="user-info__img">
+                            <img src="../../../assets/images/user1.jpg" alt="User Img">
+                          </div>
+                          <div class="user-info__basic">
+                            <h9 class="mb-0"><b>{{data.name}}</b></h9>
+                            <br />
+                            <small class="text-muted mb-0">Wants to be friends</small>
+                          </div>
+                        </div>
+                        <br />
+                        <div class="widget-content">
+                          <div class="widget-content-outer">
+                            <div class="widget-content-wrapper">
+                              <div class="widget-content-left">
+                                <div class="widget-subheading">{{data.body}}</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                      </td>
+                      <td>
+                      </td>
+                      <td>
+                      </td>
+                      <td></td>
+                      <td>
+                        <div style="width:200px">
+                          <small>wed,Feb 05, 8:07 AM (2 Days ago)
+                          </small>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="dropdown open">
+                          <a href="#!" class="px-2" id="triggerId1" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <i class="fa fa-ellipsis-v"></i>
+                          </a>
+                          <div class="dropdown-menu" aria-labelledby="triggerId1">
+                            <a class="dropdown-item" (click)="onDelete(data._id)">
+                              <i class="fa fa-trash mr-1"></i>
+                              Delete</a>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

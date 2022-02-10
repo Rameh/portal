@@ -1,0 +1,21 @@
+.cu_badgeratingCount {
+    color: #ff9800;
+    margin: 0;
+    padding: 10px 45px;
+    background-color: #ffeed6;
+}
+
+
+.cubtn {
+    color: #fff;
+    border: 0;
+    padding: 8px 20px;
+    border-radius: 7px;
+    background-color: #ff6700;
+    box-shadow: rgb(0 0 0 / 10%) 0px 4px 12px;
+}
+
+.main input:checked ~ .geekmark {
+    background-color: green;
+}
+ 
