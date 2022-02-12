@@ -62,6 +62,7 @@ export class LeadService {
     }
 
     getCustomerSupportList(customerId: any): Observable<any> {
+        console.log("🚀 ~ file: lead.service.ts ~ line 65 ~ LeadService ~ customerId", customerId)
         return this.http.get(`${environment.API_URL}/csr/get-csr-list/${customerId}`).pipe(
             catchError(this.handleError)
         )

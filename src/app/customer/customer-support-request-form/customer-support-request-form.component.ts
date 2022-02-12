@@ -25,6 +25,8 @@ export class CustomerSupportRequestFormComponent implements OnInit {
   customerSupportRequestform: FormGroup;
   workOrdeList: any;
   projectName
+  emailId:any;
+  customerId: any;
   constructor(
     private fb: FormBuilder,
     public leadService: LeadService,
@@ -37,12 +39,22 @@ export class CustomerSupportRequestFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentDate = moment(new Date()).format("YYYY-MM-DD");
-    this.getWorkOrderListBasedOnCustomer()
+    this.emailId=localStorage.getItem('emailId')
+    this.leadService.getUserProfile(this.emailId)
+    .subscribe((data) => {
+      if (data.status == 200) {
+        let userProfileData = { ...data['data'][0] }
+        this.customerId=userProfileData.customerId
+        this.getWorkOrderListBasedOnCustomer(this.customerId)
+        console.log("🚀 ~ file: customer-support-request-list.component.ts ~ line 41 ~ CustomerSupportRequestListComponent ~ userProfileData", userProfileData)
+        //this.customerName=userProfileData.CustomerBillingAddress.firstName+' '+userProfileData.CustomerBillingAddress.lastName
+      }
+    })
   }
 
   private buildFormGroup(formData): any {
     const customerSupportRequestform = {
-      customerId: ['CU20221266466'],
+      customerId: [this.customerId],
       workOrderNumber: [''],
       emailId: ['h1@sunkpo.com'],
       date: [moment().format('DD-MM-YYYY')],
@@ -61,6 +73,9 @@ export class CustomerSupportRequestFormComponent implements OnInit {
       alert('Please fill all the required fields to create a super hero!')
     } else {
       console.log(this.customerSupportRequestform.value)
+      this.customerSupportRequestform.patchValue({
+        customerId: this.customerId
+      })
       this.leadService.createCustomerSupportRequest(this.customerSupportRequestform.value)
         .pipe(first())
         .subscribe(
@@ -75,8 +90,8 @@ export class CustomerSupportRequestFormComponent implements OnInit {
     }
   }
 
-  getWorkOrderListBasedOnCustomer(){
-    this.leadService.getWorkOrderListByCustomer('CU2022246763')
+  getWorkOrderListBasedOnCustomer(customerId){
+    this.leadService.getWorkOrderListByCustomer(customerId)
     .subscribe((data) => {
       if (data.status == SUCCESS_CODE) {
         this.workOrdeList = data.data

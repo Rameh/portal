@@ -39,5 +39,9 @@ export class CommonHeaderComponent implements OnInit {
     console.log("🚀 ~ file: common-header.component.ts ~ line 26 ~ CommonHeaderComponent ~  this.imageUrl",  this.imageUrl)
   }
 
+  Logout(){
+    localStorage.removeItem('emailId')
+    window.location.href=`http://topproz2.s3-website-us-east-1.amazonaws.com/auth/signin`
+  }
 
 }

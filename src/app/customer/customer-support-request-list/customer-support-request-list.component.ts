@@ -20,6 +20,8 @@ export class CustomerSupportRequestListComponent implements OnInit {
 
     public leadsList:any;
     public loginId:any;
+  emailId:any;
+  customerId: any;
     constructor(
       public leadService: LeadService, 
       public route: ActivatedRoute,  
@@ -32,7 +34,18 @@ export class CustomerSupportRequestListComponent implements OnInit {
       //localStorage.setItem()
       //localStorage.setItem("proId", JSON.stringify(this.proId));
       localStorage.setItem("loginId",this.loginId);
-      this.getLeadListPro()
+      this.emailId=localStorage.getItem('emailId')
+      this.leadService.getUserProfile(this.emailId)
+      .subscribe((data) => {
+        if (data.status == 200) {
+          let userProfileData = { ...data['data'][0] }
+          this.customerId=userProfileData.customerId
+          console.log("CustomerSupportRequestListComponent ~ userProfileData", this.customerId)
+          this.getLeadListPro(this.customerId)
+          //this.customerName=userProfileData.CustomerBillingAddress.firstName+' '+userProfileData.CustomerBillingAddress.lastName
+        }
+      })
+      
     }
   
   
@@ -56,8 +69,8 @@ export class CustomerSupportRequestListComponent implements OnInit {
   
   
   
-    getLeadListPro() {
-      this.leadService.getCustomerSupportList('CU20221266466')
+    getLeadListPro(customerId) {
+      this.leadService.getCustomerSupportList(customerId)
         .subscribe((data) => {
           if (data.status == SUCCESS_CODE) {
             this.leadsList = data.data

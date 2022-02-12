@@ -29,12 +29,12 @@ export class CommonSideMenuComponent{
     ) { }
   ngOnInit(): void {
     this.loginId=this.route.snapshot.params.id
-    console.log("🚀 ~ file: common-side-menu.component.ts ~ line 31 ~ CommonSideMenuComponent ~ this.loginId", this.loginId)
     this.loginId=localStorage.getItem('loginId')
     this.emailId=localStorage.getItem('emailId')
     //console.log("🚀 ~ file: common-side-menu.component.ts ~ line 27 ~ CommonSideMenuComponent ~  this.loginId",  this.loginId)
   }
   Logout(){
+    localStorage.removeItem('emailId')
     window.location.href=`http://topproz2.s3-website-us-east-1.amazonaws.com/auth/signin`
   }
 }
