@@ -15,6 +15,7 @@ export class CommonHeaderComponent implements OnInit {
   imageUrl: string | null | undefined;
   emailId: any;
   customerName: any;
+  customerId: any;
   constructor(public authService: AuthService,public cookieService: CookieService, 
     public leadService: LeadService
     ) { 
@@ -28,11 +29,15 @@ export class CommonHeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.emailId=localStorage.getItem('emailId')
+    if(!this.emailId){
+      window.location.reload()
+    }
     this.leadService.getUserProfile(this.emailId)
     .subscribe((data) => {
       if (data.status == 200) {
         let userProfileData = { ...data['data'][0] }
         this.customerName=userProfileData.CustomerBillingAddress.firstName+' '+userProfileData.CustomerBillingAddress.lastName
+        this.customerId=userProfileData.customerId
       }
     })
     this.imageUrl="../../../assets/images/account.png"

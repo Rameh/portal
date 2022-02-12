@@ -52,7 +52,7 @@
                                                             Created on
                                                             </label>
                                                             <input type="text" name="name" id="lastName"
-                                                            class="form-control" placeholder="27/12/2021">
+                                                            class="form-control" placeholder="27/12/2021" formControlName="createdOn">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-12">
@@ -153,20 +153,19 @@
                                             </div>
                                           </div>
                                           <div class="tab-pane fade" id="pills-pro-details" role="tabpanel" aria-labelledby="pills-pro-details-tab" >
-                                            <div class="pinfo_contact_form" *ngIf="!projectHistory.length">
-                                                 <form>
+                                            <div class="pinfo_contact_form" *ngIf="proName">
                                                      <div class="row">
                                                          <div class="col-md-12">
                                                            <div class="form-group">
                                                              <label for="emailAddress" class="form-label">
                                                              Pro Name</label>
-                                                             <input type="number" name="name" id="mobileNumber" class="form-control" placeholder="John Cena" tabindex="2">
+                                                             <input type="text" name="name" id="mobileNumber" class="form-control" placeholder="John Cena" tabindex="2" formControlName="proName">
                                                            </div>
                                                          </div>
                                                          <div class="col-md-12">
                                                            <div class="form-group">
                                                              <label for="emailAddress" class="form-label">Phone Number</label>
-                                                               <input type="text" name="Email" id="emailAddress" class="form-control" placeholder="512-2222-2222" >
+                                                               <input type="text" name="Email" id="emailAddress" class="form-control"  placeholder="(___) ___-____" formControlName="proMobileNumber">
                                                            </div>
                                                          </div>
                                                          <div class="col-md-12 pinfo_btns">
@@ -174,7 +173,6 @@
                                                              <button class="btn btn-primary btn2">Next</button>
                                                          </div>
                                                      </div> 
-                                                 </form>
                                              </div>
                                              <div else>
                                               <p>Project details submitted. Local proz will reach out to you soon.</p>
@@ -192,20 +190,20 @@
                                                                         <tr>
                                                                           <th scope="col">STATUS</th>
                                                                           <th scope="col">DATE</th>
-                                                                          <th scope="col">START TIME</th>
+                                                                          <!-- <th scope="col">START TIME</th> -->
                                                                           <th scope="col">STAFF NAME</th>
                                                                           <th scope="col">TITLE</th>
-                                                                          <th scope="col">NOTES</th>
+                                                                          <!-- <th scope="col">NOTES</th> -->
                                                                         </tr>
                                                                       </thead>
                                                                       <tbody>
                                                                         <tr *ngFor="let data of projectHistory | paginate: { itemsPerPage: 5, currentPage:pagination }">
                                                                           <td>{{data.status}}</td>
                                                                           <td>{{data.date}}</td>
-                                                                          <td>{{data.startTime}}</td>
+                                                                          <!-- <td>{{data.startTime}}</td> -->
                                                                           <td>{{data.staffName}}</td>
                                                                           <td>{{data.title}}</td>
-                                                                          <td>{{data.notes}}</td>
+                                                                          <!-- <td>{{data.notes}}</td> -->
                                                                           </tr>
                                                                       </tbody>
                                                                     </table>

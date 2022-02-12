@@ -51,6 +51,7 @@ export class CustomerLeadListComponent implements OnInit {
         this.customerId=userProfileData.customerId
         console.log("CustomerSupportRequestListComponent ~ userProfileData", this.customerId)
         this.getLeadListPro(this.customerId)
+      
         //this.customerName=userProfileData.CustomerBillingAddress.firstName+' '+userProfileData.CustomerBillingAddress.lastName
       }
     })
@@ -75,6 +76,8 @@ export class CustomerLeadListComponent implements OnInit {
         if (data.status == SUCCESS_CODE) {
           this.leadsList = data.data
           console.log("this.leadsList", this.leadsList)
+          //window.location.reload()
+          //this.ngOnInit()
         } else if (data.status == UNAUTHORIZED_CODE) {
         }
       }, (error) => {

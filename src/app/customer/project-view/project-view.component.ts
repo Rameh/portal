@@ -27,6 +27,8 @@ export class ProjectViewComponent implements OnInit {
   CategoriesData: any;
   projectForm: FormGroup;
   pagination: number = 1;
+  proDetails: any;
+  proName: any;
   constructor(private route: ActivatedRoute,
     public leadService: LeadService,
     private toastr: ToastrManager,
@@ -48,6 +50,7 @@ export class ProjectViewComponent implements OnInit {
   private buildFormGroup(formData): any {
     const projectform = {
       projectId: [formData.workOrderNumber, Validators.required],
+      createdOn:[formData.createdOn],
       projectName: [formData.WorkDescription?.jobTitle],
       projectDescrption: [formData.WorkDescription?.workDescription],
       firstName: [formData.ServiceAddress?.firstName],
@@ -57,7 +60,9 @@ export class ProjectViewComponent implements OnInit {
       streetAddress: [formData.ServiceAddress?.streetAddress],
       city: [formData.ServiceAddress?.city],
       state: [formData.ServiceAddress?.state],
-      zipcode: [formData.ServiceAddress?.zipcode]
+      zipcode: [formData.ServiceAddress?.zipcode],
+      proName:[],
+      proMobileNumber:[]
     };
     return this.fb.group(projectform)
   }
@@ -84,6 +89,7 @@ export class ProjectViewComponent implements OnInit {
         const formData = this.buildForm<Project>(res.data);
         this.projectForm = this.buildFormGroup(formData);
         this.getProjectHistory(this.leadDetails.workOrderNumber)
+        this.getProDetails(this.leadDetails.proId)
         this.submitBuildForm(formData)
       }
       else if (res.status == UNAUTHORIZED_CODE) {
@@ -108,7 +114,25 @@ export class ProjectViewComponent implements OnInit {
         this.toastr.errorToastr(error, INTERNAL_SERVER_ERROR_MSG)
       })
   }
-
+  getProDetails(proId) {
+    //console.log('>>>',this.leadDetails.workOrderNumber)
+    this.leadService.getProProfile(proId)
+      .subscribe((data) => {
+        if (data.status == SUCCESS_CODE) {
+          this.proDetails = data.data
+          this.proName=this.proDetails.businessName
+          this.projectForm.patchValue({
+            proName: this.proName,
+            proMobileNumber:this.proDetails.mobileNumber
+          });
+          console.log("proName>>>>>", this.proName)
+        } else if (data.status == UNAUTHORIZED_CODE) {
+        }
+      }, (error) => {
+        this.toastr.errorToastr(error, INTERNAL_SERVER_ERROR_MSG)
+      })
+  }
+  //http://54.82.168.211:8000/pro/getproprofile/618ae544538367663cc10fcc
   onSubmit(): void {
     const request = this.formGroupToForm<Project>(this.projectForm)
     console.log("this form", request)

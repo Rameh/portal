@@ -31,6 +31,7 @@ export class CommonSideMenuComponent{
     this.loginId=this.route.snapshot.params.id
     this.loginId=localStorage.getItem('loginId')
     this.emailId=localStorage.getItem('emailId')
+    
     //console.log("🚀 ~ file: common-side-menu.component.ts ~ line 27 ~ CommonSideMenuComponent ~  this.loginId",  this.loginId)
   }
   Logout(){
