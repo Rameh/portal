@@ -40,8 +40,8 @@ export class LeadService {
             catchError(this.handleError)
         )
     }
-    getNotification(): Observable<any> {
-        return this.http.get<any>(`${environment.API_URL}/notification/getNotificationsByEmailId/firebase@sunkpo.com`);
+    getNotification(customerEmailId): Observable<any> {
+        return this.http.get<any>(`${environment.API_URL}/notification/getNotificationsByEmailId/${customerEmailId}`);
     }
 
     getZipcodeData(zipcode: string): Observable<any> {
@@ -62,7 +62,6 @@ export class LeadService {
     }
 
     getCustomerSupportList(customerId: any): Observable<any> {
-        console.log("🚀 ~ file: lead.service.ts ~ line 65 ~ LeadService ~ customerId", customerId)
         return this.http.get(`${environment.API_URL}/csr/get-csr-list/${customerId}`).pipe(
             catchError(this.handleError)
         )

@@ -10,6 +10,7 @@ import { LeadService } from 'src/app/services/lead.service';
 })
 export class CustomerNotificationsComponent implements OnInit {
   notificationList: any;
+  emailId:any;
   constructor( 
     public leadService: LeadService,    
     private toastr: ToastrManager
@@ -22,7 +23,8 @@ export class CustomerNotificationsComponent implements OnInit {
 
   getCustomerNotifications() {
     const loginId = localStorage.getItem('loginId')
-    this.leadService.getNotification()
+    this.emailId=localStorage.getItem('emailId')
+    this.leadService.getNotification(this.emailId)
       .subscribe((data) => {
         if (data.status == 200) {
           this.notificationList = data.data
