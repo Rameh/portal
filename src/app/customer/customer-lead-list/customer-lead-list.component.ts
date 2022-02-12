@@ -23,6 +23,7 @@ export class CustomerLeadListComponent implements OnInit {
   proProfile: any;
   emailId: any;
   pagination: number = 1;
+  customerId: any;
   constructor(
     public leadService: LeadService, 
     public route: ActivatedRoute,  
@@ -38,7 +39,18 @@ export class CustomerLeadListComponent implements OnInit {
     //localStorage.setItem("proId", JSON.stringify(this.proId));
     localStorage.setItem("loginId",this.loginId);
     localStorage.setItem("emailId",this.emailId)
-    this.getLeadListPro()
+    this.emailId=localStorage.getItem('emailId')
+    this.leadService.getUserProfile(this.emailId)
+    .subscribe((data) => {
+      if (data.status == 200) {
+        let userProfileData = { ...data['data'][0] }
+        this.customerId=userProfileData.customerId
+        console.log("CustomerSupportRequestListComponent ~ userProfileData", this.customerId)
+        this.getLeadListPro(this.customerId)
+        //this.customerName=userProfileData.CustomerBillingAddress.firstName+' '+userProfileData.CustomerBillingAddress.lastName
+      }
+    })
+    //this.getLeadListPro()
   }
 
   // getProDetails() {
@@ -53,8 +65,8 @@ export class CustomerLeadListComponent implements OnInit {
   //   })
   // }
 
-  getLeadListPro() {
-    this.leadService.getProjectList('CU202112306028')
+  getLeadListPro(customerId) {
+    this.leadService.getProjectList(customerId)
       .subscribe((data) => {
         if (data.status == SUCCESS_CODE) {
           this.leadsList = data.data
