@@ -20,6 +20,8 @@ export class CustomerLeadListComponent implements OnInit {
 
   public leadsList:any;
   public loginId:any;
+  proProfile: any;
+  emailId: any;
   constructor(
     public leadService: LeadService, 
     public route: ActivatedRoute,  
@@ -28,20 +30,23 @@ export class CustomerLeadListComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.loginId=this.route.snapshot.params.loginId
+    this.loginId=this.route.snapshot.params.id
+    this.emailId=this.route.snapshot.params.emailId
+    //console.log('lohiiiiii>>>>>>>>>',this.route.snapshot.params.id)
     //localStorage.setItem()
     //localStorage.setItem("proId", JSON.stringify(this.proId));
     localStorage.setItem("loginId",this.loginId);
+    localStorage.setItem("emailId",this.emailId)
     this.getLeadListPro()
   }
 
   // getProDetails() {
   //   //console.log("prodetails")
   //   console.log('this.headerInformation.id',this.loginId.id)
-  //   this.leadService.getProProfile(this.headerInformation.id).subscribe((data) => {
+  //   this.leadService.getProProfile(this.loginId.id).subscribe((data) => {
   //     if (data.status == SUCCESS_CODE) {
   //       this.proProfile = { ...data['data'] }
-       
+  //      console.log('8888888888888',this.proProfile)
   //     }
   //   }, (error) => {
   //   })

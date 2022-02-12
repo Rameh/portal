@@ -23,7 +23,7 @@ const routes: Routes = [
   {
     path: '', component: CustomerLayoutComponent,
     children: [
-      { path: 'lead-list/:loginId', component: CustomerLeadListComponent },
+      { path: 'lead-list/:emailId/:id', component: CustomerLeadListComponent },
       { path: 'project-view/:id', component: ProjectViewComponent },
       { path: 'customer-profile', component: CustomerProfileComponent },
       { path: 'my-pros', component: MyProsComponent },

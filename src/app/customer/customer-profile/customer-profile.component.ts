@@ -45,6 +45,7 @@ export class CustomerProfileComponent implements OnInit {
   mobileVerificationCode: any;
   invalidMobileLead: boolean = false;
   invalidMobileLead1: boolean = false;
+  emailId: any;
   constructor(
     public leadService: LeadService,
     private fb: FormBuilder,
@@ -91,8 +92,8 @@ export class CustomerProfileComponent implements OnInit {
   }
 
   getCustomerProfile() {
-    const loginId = localStorage.getItem('loginId')
-    this.leadService.getUserProfile('firebase@sunkpo.com')
+    this.emailId = localStorage.getItem('emailId')
+    this.leadService.getUserProfile(this.emailId)
       .subscribe((data) => {
         if (data.status == 200) {
           let userProfileData = { ...data['data'][0] }

@@ -1,146 +1,60 @@
-<!-- <div class="col-lg-6" style="float: right;top:10px">
-    <div class="input-group search_box">
-      <input type="text" class="form-control" placeholder="What type of project you need help with?" 
-      aria-label="Search" aria-describedby="basic-addon2">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary border-left-color border" type="button">
-            <i class="fa fa-search"></i>
-        </button>
-      </div> -->
-      <!-- <img class="circular--square"  src="../../../assets/images/download.png" alt='imag'> -->
-      <!-- <div class="input-group search_box">
-            <input type="text" class="form-control" placeholder="What type of project you need help with?" 
-            aria-label="Search" aria-describedby="basic-addon2">
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary border-left-color border" type="button">
-                  <i class="fa fa-search"></i>
-              </button>
-            </div>
-            </div> -->
- 
-      <div class="navbar-header pull-right">
-        <div class="row" style="margin-top: 10px;margin-right: 50px;">
-        <div class="form-group has-search" style="width: 500px;margin-right: 350px;">
-          <span class="fa fa-search form-control-feedback"></span>
-          <input type="text" class="form-control" placeholder="What type of project you need help with?">
-        </div>
-        <!-- <div class="navbar-account">
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                aria-expanded="false">
-                <div class="avatar" title="View your public profile" style="
-                        margin-top: -1x; margin-right:40px;"  [routerLink]="['/customer/customer-profile']">
-                  <img  src="{{imageUrl}}">
-                </div>
-                <div class="avatar">
-                  <div id="imagePreview"
-                      [style.backgroundImage]="'url('+ imageUrl +')'">
+<div class="navbar-header pull-right">
+  <div class="row" style="margin-top: 10px;margin-right: 50px;">
+    <div class="form-group has-search" style="width: 500px;margin-right: 350px;">
+      <span class="fa fa-search form-control-feedback"></span>
+      <input type="text" class="form-control" placeholder="What type of project you need help with?">
+    </div>
+    <div class="app-header-right">
+      <div class="header-btn-lg pr-0">
+        <div class="widget-content p-0">
+          <div class="widget-content-wrapper">
+            <div class="widget-content-left">
+              <div class="btn-group">
+                <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
+                  <img width="42" class="rounded-circle" src="{{imageUrl}}" alt="">
+                  <i class="fa fa-angle-down ml-2 opacity-8"></i>
+                </a>
+                <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
+                  <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
+                    <img width="42" class="rounded-circle" src="{{imageUrl}}" alt="" style="margin-left: 75px;">
+                  </a>
+                  <br />
+                  <div style="margin-left: 25px;">
+                    <span style="margin-left: 35px;">{{customerName}}</span><br />
+                    <span>{{emailId}}</span>
                   </div>
-              </div>
-              </a>
-            </li>
-          </ul>
-        </div> -->
-        
-        <div class="app-header-right">
-          <div class="header-btn-lg pr-0">
-              <div class="widget-content p-0">
-                  <div class="widget-content-wrapper">
-                      <div class="widget-content-left">
-                          <div class="btn-group">
-                              <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
-                                  <img width="42" class="rounded-circle" src="{{imageUrl}}" alt="">
-                                  <i class="fa fa-angle-down ml-2 opacity-8"></i>
-                              </a>
-                              <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                                <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
-                                  <img width="42" class="rounded-circle" src="{{imageUrl}}" alt="" style="margin-left: 75px;">
-                              </a>
-                              <br/>
-                              <div style="margin-left: 25px;">
-                                <span  style="margin-left: 35px;">Hatim naim</span><br/>
-                                <span>firebase@sunkpo.com</span>
-                              </div>
-                               
-                                <div tabindex="-1" class="dropdown-divider"></div>
-                               
-                                  <button type="button" tabindex="0" class="dropdown-item" [routerLink]="['/customer/customer-profile']">
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                    &nbsp; &nbsp;MY PROFILE</button>
-                                  <button type="button" tabindex="0" class="dropdown-item" [routerLink]="['/customer/support-list']">
-                                    <i class="fa fa-user-md" aria-hidden="true"></i>
-                                    &nbsp; &nbsp;
-                                    CUSTOMER SUPPORT</button>
-                                    <button type="button" tabindex="0" class="dropdown-item" [routerLink]="['/customer/terms-and-conditions-page']" >
-                                      <i class="fa fa-file-text" aria-hidden="true"></i>
-                                      &nbsp; &nbsp;TERMS AND CONDITIONs</button>
-                                  <!-- <h6 tabindex="-1" class="dropdown-header" [routerLink]="['/customer/help-and-faqs-page']" >
+
+                  <div tabindex="-1" class="dropdown-divider"></div>
+
+                  <button type="button" tabindex="0" class="dropdown-item"
+                    [routerLink]="['/customer/customer-profile']">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    &nbsp; &nbsp;MY PROFILE</button>
+                  <button type="button" tabindex="0" class="dropdown-item" [routerLink]="['/customer/support-list']">
+                    <i class="fa fa-user-md" aria-hidden="true"></i>
+                    &nbsp; &nbsp;
+                    CUSTOMER SUPPORT</button>
+                  <button type="button" tabindex="0" class="dropdown-item"
+                    [routerLink]="['/customer/terms-and-conditions-page']">
+                    <i class="fa fa-file-text" aria-hidden="true"></i>
+                    &nbsp; &nbsp;TERMS AND CONDITIONs</button>
+                  <!-- <h6 tabindex="-1" class="dropdown-header" [routerLink]="['/customer/help-and-faqs-page']" >
                                     <i class="fa fa-question-circle" aria-hidden="true"></i>
                                     &nbsp; &nbsp;
                                     HELP AND FAQS</h6> -->
-                                    <button type="button" tabindex="0" class="dropdown-item" [routerLink]="['/customer/help-and-faqs-page']" >
-                                      <i class="fa fa-file-text" aria-hidden="true"></i>
-                                      &nbsp; &nbsp;HELP AND FAQS</button>
-                                  <button type="button" tabindex="0" class="dropdown-item" [routerLink]="['/customer/privacy-page']"  >
-                                    <i class="fa fa-envelope-square" aria-hidden="true"></i>
-                                    &nbsp; &nbsp;PRIVACY</button>
-                                  <div tabindex="-1" class="dropdown-divider"></div>
-                                  <button type="button" tabindex="0" class="dropdown-item">LOGOUT</button>
-                              </div>
-                          </div>
-                      </div>
-                      <!-- <div class="widget-content-left  ml-3 header-user-info">
-                          <div class="widget-heading">
-                              Alina Mclourd
-                          </div>
-                          <div class="widget-subheading">
-                              VP People Manager
-                          </div>
-                      </div> -->
-                      <!-- <div class="widget-content-right header-user-info ml-3">
-                          <button type="button" class="btn-shadow p-1 btn btn-primary btn-sm show-toastr-example">
-                              <i class="fa text-white fa-calendar pr-1 pl-1"></i>
-                          </button>
-                      </div> -->
-                  </div>
-              </div>
-          </div>        </div>
-        <!-- <div style="padding-left: 100px;">
-          <div class="menu1">
-            <div class="avatar" title="View your public profile" style="
-                        margin-top: -1x; margin-left:80px;"  [routerLink]="['/customer/customer-profile']">
-                  <img  src="{{imageUrl}}">
-                  <br/>
-                  <span>Hatim Naim</span><br/>
-                  <span>Hatim Naim@gmail.com</span>
+                  <button type="button" tabindex="0" class="dropdown-item"
+                    [routerLink]="['/customer/help-and-faqs-page']">
+                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+                    &nbsp; &nbsp;HELP AND FAQS</button>
+                  <button type="button" tabindex="0" class="dropdown-item" [routerLink]="['/customer/privacy-page']">
+                    <i class="fa fa-envelope-square" aria-hidden="true"></i>
+                    &nbsp; &nbsp;PRIVACY</button>
+                  <div tabindex="-1" class="dropdown-divider"></div>
+                  <button type="button" tabindex="0" class="dropdown-item">LOGOUT</button>
                 </div>
-                
-              <ul class="menu-list">
-                  <li class="menu-item"><button class="menu-button">
-                      <i class="fa fa-trash" aria-hidden="true" style="width: 60px;"></i>
-                          <span > 
-                              Delete</span>
-                      </button></li>
-              </ul>
-              <ul class="menu-list">
-                  <li class="menu-item"><button class="menu-button">
-                      <i class="fa fa-upload" aria-hidden="true" style="width: 60px;"></i>
-                          <span>
-                              Upload</span>
-                      </button></li>
-              </ul>
-              <ul class="menu-list">
-                  <li class="menu-item"><button class="menu-button">
-                          &nbsp; &nbsp; &nbsp; &nbsp;
-                          &nbsp; &nbsp; &nbsp; &nbsp;
-                          &nbsp; &nbsp;
-                          <span>Cancel</span>
-                      </button></li>
-              </ul>
+              </div>
+            </div>
           </div>
-      </div> -->
+        </div>
       </div>
-      <!-- </div>
-    </div> -->
-    
+    </div>

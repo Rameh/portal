@@ -11,6 +11,12 @@ export class LeadService {
 
     constructor(private http: HttpClient) { }
 
+
+      // get pro profile
+  getProProfile(id): Observable<any> {
+    return this.http.get(`${environment.API_URL}/pro/getproprofile/${id}`);
+  }
+
     getProjectList(loginId: any): Observable<any> {
         return this.http.get(`${environment.API_URL}/mobile_workOrder/getStaffCustomerWorkOrderList/${loginId}`).pipe(
             catchError(this.handleError)

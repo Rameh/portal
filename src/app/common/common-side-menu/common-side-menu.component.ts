@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import {
   SUCCESS_CODE,
   UNAUTHORIZED_CODE,
@@ -22,9 +22,17 @@ export class CommonSideMenuComponent{
     this.toggleSidebar.emit(!this.isExpanded);
 
   }
+  emailId: any;
+  constructor(
+    public route: ActivatedRoute,  
+    public router: Router,
+    ) { }
   ngOnInit(): void {
+    this.loginId=this.route.snapshot.params.id
+    console.log("🚀 ~ file: common-side-menu.component.ts ~ line 31 ~ CommonSideMenuComponent ~ this.loginId", this.loginId)
     this.loginId=localStorage.getItem('loginId')
-    console.log("🚀 ~ file: common-side-menu.component.ts ~ line 27 ~ CommonSideMenuComponent ~  this.loginId",  this.loginId)
+    this.emailId=localStorage.getItem('emailId')
+    //console.log("🚀 ~ file: common-side-menu.component.ts ~ line 27 ~ CommonSideMenuComponent ~  this.loginId",  this.loginId)
   }
   Logout(){
     window.location.href=`http://topproz2.s3-website-us-east-1.amazonaws.com/auth/signin`
