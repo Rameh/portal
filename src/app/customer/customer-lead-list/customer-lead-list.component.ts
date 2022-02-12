@@ -22,6 +22,7 @@ export class CustomerLeadListComponent implements OnInit {
   public loginId:any;
   proProfile: any;
   emailId: any;
+  pagination: number = 1;
   constructor(
     public leadService: LeadService, 
     public route: ActivatedRoute,  

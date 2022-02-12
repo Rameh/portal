@@ -161,7 +161,12 @@
 //   .custom-control label {
 //     font-weight: 400;
 //   }
-
+.ngx-pagination .current {
+  padding: 0.1875rem 0.625rem;
+  background: #ff5700 !important;
+  color: #fefefe;
+  cursor: default;
+}
 
 .user-info {
 	display: flex;

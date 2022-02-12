@@ -22,6 +22,7 @@ export class CustomerSupportRequestListComponent implements OnInit {
     public loginId:any;
   emailId:any;
   customerId: any;
+  pagination: number = 1;
     constructor(
       public leadService: LeadService, 
       public route: ActivatedRoute,  

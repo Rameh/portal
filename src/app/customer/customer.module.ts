@@ -15,7 +15,7 @@ import { CustomerSupportRequestViewComponent } from './customer-support-request-
 import { PrivacyPageComponent } from './privacy-page/privacy-page.component';
 import { TermsAndConditionsPageComponent } from './terms-and-conditions-page/terms-and-conditions-page.component';
 import { HelpAndFaqsPageComponent } from './help-and-faqs-page/help-and-faqs-page.component';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -26,6 +26,7 @@ import { HelpAndFaqsPageComponent } from './help-and-faqs-page/help-and-faqs-pag
     RatingModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
   ]
 })
 export class CustomerModule { }
