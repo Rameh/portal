@@ -199,7 +199,7 @@
                                                                         </tr>
                                                                       </thead>
                                                                       <tbody>
-                                                                        <tr *ngFor="let data of projectHistory">
+                                                                        <tr *ngFor="let data of projectHistory | paginate: { itemsPerPage: 5, currentPage:pagination }">
                                                                           <td>{{data.status}}</td>
                                                                           <td>{{data.date}}</td>
                                                                           <td>{{data.startTime}}</td>
@@ -207,72 +207,9 @@
                                                                           <td>{{data.title}}</td>
                                                                           <td>{{data.notes}}</td>
                                                                           </tr>
-                                                                        <!-- <tr>
-                                                                          <td>Call</td>
-                                                                          <td>17-11-2021</td>
-                                                                          <td>9:00AM</td>
-                                                                          <td>Michele</td>
-                                                                          <td>Dispatcher</td>
-                                                                          <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                          <td>Scheduled</td>
-                                                                          <td>17-11-2021</td>
-                                                                          <td>9:00AM</td>
-                                                                          <td>Michele</td>
-                                                                          <td>Dispatcher</td>
-                                                                          <td></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                          <td>Dispatched</td>
-                                                                          <td>17-11-2021</td>
-                                                                          <td>9:00AM</td>
-                                                                          <td>Otis Johns</td>                                                                         
-                                                                          <td>Service tech</td>
-                                                                          <td></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                          <td>Arrived</td>
-                                                                          <td>17-11-2021</td>
-                                                                          <td>9:00AM</td>
-                                                                          <td>Otis Johns</td>
-                                                                          <td>Service tech</td>
-                                                                          <td></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                          <td>Estimate</td>
-                                                                          <td>17-11-2021</td>
-                                                                          <td>9:00AM</td>
-                                                                          <td>Otis Johns</td>
-                                                                           <td>Service tech</td>
-                                                                          <td></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                          <td>Pending</td>
-                                                                          <td>17-11-2021</td>
-                                                                          <td>9:00AM</td>
-                                                                          <td>Otis Johns</td>
-                                                                          <td>Service tech</td>
-                                                                          <td></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                          <td>Ongoing</td>
-                                                                          <td>17-11-2021</td>
-                                                                          <td>9:00AM</td>
-                                                                          <td>Charles Davis</td>
-                                                                          <td>Service tech</td>
-                                                                          <td></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                          <td>Involve</td>
-                                                                          <td>17-11-2021</td>
-                                                                          <td>9:00AM</td>
-                                                                          <td>Charles Davis</td>
-                                                                          <td>Service tech</td>
-                                                                          <td></td>
-                                                                        </tr> -->
                                                                       </tbody>
                                                                     </table>
+                                                                    <pagination-controls (pageChange)="pagination = $event"></pagination-controls>
                                                                 </div>
                                                             </div>
                                                         </div>

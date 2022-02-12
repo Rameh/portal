@@ -26,6 +26,7 @@ export class ProjectViewComponent implements OnInit {
   totalCount: any;
   CategoriesData: any;
   projectForm: FormGroup;
+  pagination: number = 1;
   constructor(private route: ActivatedRoute,
     public leadService: LeadService,
     private toastr: ToastrManager,
