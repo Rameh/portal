@@ -38,7 +38,7 @@ export class CustomerLeadListComponent implements OnInit {
     //console.log('lohiiiiii>>>>>>>>>',this.route.snapshot.params.id)
     //localStorage.setItem()
     //localStorage.setItem("proId", JSON.stringify(this.proId));
-    // console.log('88888888888888888888888888888888888',this.customerEmailId)
+    console.log('88888888888888888888888888888888888',this.emailId)
     if(!this.emailId){
     localStorage.setItem("loginId",this.loginId);
     localStorage.setItem("emailId",this.customerEmailId)
