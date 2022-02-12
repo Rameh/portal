@@ -63,6 +63,9 @@
                                                     <span class="badge badge-pill badge-primary cu_badge2" *ngIf="data.status === 'CALL'">Call</span>
                                                     <span class="badge badge-pill badge-primary cu_badge1_dispatch" *ngIf="data.status === 'DISPATCHED'">{{data.status}}</span>
                                                     <span class="badge badge-pill badge-primary cu_badge1" *ngIf="data.status === 'ASSIGNED'">{{data.status}}</span>
+                                                    <span class="badge badge-pill badge-primary cu_badge1_cancelled" *ngIf="data.status === 'CANCELED'">{{data.status}}</span>
+                                                    <span class="badge badge-pill badge-primary cu_badge1_ongoing" *ngIf="data.status === 'ONGOING'">{{data.status}}</span>
+                                                    <span class="badge badge-pill badge-primary cu_badge1_scheduled" *ngIf="data.status === 'SCHEDULED'">{{data.status}}</span>
                                                     <span class="badge badge-pill badge-primary cu_badge1_completed" *ngIf="data.status === 'COMPLETED'">{{data.status}}</span>
                                                 </td>
                                                 <!-- <td><a href="" class="btn cubtn"

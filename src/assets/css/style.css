@@ -155,6 +155,26 @@ padding-left: 0;
     padding:10px 30px;
     background-color:#ffc000 ;
 }
+.cu_badge1_cancelled{
+    color: #ffeed6;
+    margin: 0;
+    padding:10px 30px;
+    background-color:#ff0000 ;
+}
+.cu_badge1_ongoing{
+    color: #ffeed6;
+    margin: 0;
+    padding:10px 30px;
+    background-color:#92d050;  
+}
+
+.cu_badge1_scheduled{
+    color: #ffeed6;
+    margin: 0;
+    padding:10px 30px;
+    background-color:#0066ff;  
+}
+
 
 .cu_badge1_completed{
     color: #ffeed6;
