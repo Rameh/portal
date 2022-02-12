@@ -34,7 +34,7 @@ export class CustomerSupportRequestListComponent implements OnInit {
       this.loginId=this.route.snapshot.params.loginId
       //localStorage.setItem()
       //localStorage.setItem("proId", JSON.stringify(this.proId));
-      localStorage.setItem("loginId",this.loginId);
+      //localStorage.setItem("loginId",this.loginId);
       this.emailId=localStorage.getItem('emailId')
       this.leadService.getUserProfile(this.emailId)
       .subscribe((data) => {

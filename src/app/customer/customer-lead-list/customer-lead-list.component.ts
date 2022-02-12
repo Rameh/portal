@@ -24,6 +24,7 @@ export class CustomerLeadListComponent implements OnInit {
   emailId: any;
   pagination: number = 1;
   customerId: any;
+  customerEmailId: any;
   constructor(
     public leadService: LeadService, 
     public route: ActivatedRoute,  
@@ -33,14 +34,17 @@ export class CustomerLeadListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginId=this.route.snapshot.params.id
-    this.emailId=this.route.snapshot.params.emailId
+    this.customerEmailId=this.route.snapshot.params.emailId
     //console.log('lohiiiiii>>>>>>>>>',this.route.snapshot.params.id)
     //localStorage.setItem()
     //localStorage.setItem("proId", JSON.stringify(this.proId));
+    // console.log('88888888888888888888888888888888888',this.customerEmailId)
+    if(!this.emailId){
     localStorage.setItem("loginId",this.loginId);
-    localStorage.setItem("emailId",this.emailId)
+    localStorage.setItem("emailId",this.customerEmailId)
+    }
     this.emailId=localStorage.getItem('emailId')
-    this.leadService.getUserProfile(this.emailId)
+    this.leadService.getUserProfile(this.customerEmailId)
     .subscribe((data) => {
       if (data.status == 200) {
         let userProfileData = { ...data['data'][0] }
