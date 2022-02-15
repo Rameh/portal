@@ -20,12 +20,12 @@
                 <div class="container card mb-3" style="max-width: 1200px; height:200px">
                   <div class="row g-0" style="padding-top: 38px; padding-left: 48px;">
                     <div class="col-md-2">
-                      <img src="../../../assets/images/redhotimage.JPG" class="img-fluid rounded-start" alt="..."
+                      <img [src]="proProfile.companyLogo" class="img-fluid rounded-start" alt="..."
                         style="width: 130px;height: 13d0px;">
                     </div>
                     <div class="col-md-8">
                       <div class="card-body container">
-                        <h5 class="card-title"><b>Red hot Plumbing</b></h5>
+                        <h5 class="card-title"><b>{{proProfile.businessName}}</b></h5>
                         <div>
                           <span class="card-text">HIRES ON TOPPROZ</span>
                         </div>
@@ -51,23 +51,23 @@
                           <tr>
                             <th>Google Rating:</th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <th>
-                              <star-rating [(value)]="googleRating" totalstars="5" checkedcolor="gold"
+                              <star-rating [(value)]="proProfile.socialMediaLinks.googleRating" totalstars="5" checkedcolor="gold"
                                 uncheckedcolor="grey" size="24px" readonly="false">
                               </star-rating>
                             </th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <th>
-                              <h5>(Not Available)</h5>
+                              <h5>({{proProfile.socialMediaLinks.googleRating}})</h5>
                             </th>
                           </tr>
                           <tr>
                             <th>Yelp Rating:</th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <th>
-                              <star-rating [(value)]="yelpRating" totalstars="5" checkedcolor="gold"
+                              <star-rating [(value)]="proProfile.socialMediaLinks.yelpRating" totalstars="5" checkedcolor="gold"
                                 uncheckedcolor="grey" size="24px" readonly="false">
                               </star-rating>
                             </th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <th>
-                              <h5>({{4.0}})</h5>
+                              <h5>({{proProfile.socialMediaLinks.yelpRating}})</h5>
                             </th>
                           </tr>
                           <tr>

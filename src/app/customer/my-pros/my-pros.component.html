@@ -1,7 +1,5 @@
 
 <div class="container">
-    <!--Personal Information Start-->
-
     <section class="projects_list personal_info pt-60 pb-30">
        <div class="container">
             <div class="row">
@@ -26,29 +24,32 @@
                                 <option>Plumbing</option>
                             </select>
                         </div>
+
+                        <div *ngFor="let data of customerProList">
                             <div class="container card mb-3" style="max-width: 1040px; height:200px">
                                 <div class="row g-0" style="padding-top: 38px; padding-left: 48px;">
                                   <div class="col-md-4">
-                                    <img src="https://picsum.photos/501/501" class="img-fluid rounded-start" alt="..." style="width: 100px;height: 100px;">
+                                    <img [src]="data.companyLogo" class="img-fluid rounded-start" alt="..." style="width: 100px;height: 100px;">
                                   </div>
                                   <div class="col-md-8">
                                     <div class="card-body">
-                                        <h5 class="card-title">Red hot Plumbing</h5>
+                                        <h5 class="card-title">{{data.businessName}}</h5>
                                         <img src="../../../assets/images/locationIcon.svg">
-                                      <span class="card-text">California</span>
-                                     <star-rating [(value)]="googleRating" totalstars="5" checkedcolor="gold"
+                                      <span class="card-text">{{data.google_Address.state}}</span>
+                                     <star-rating [(value)]="data.socialMediaLinks.googleRating" totalstars="5" checkedcolor="gold"
                                     uncheckedcolor="grey" size="24px" readonly="false">  </star-rating>
-                                    <p class="card-text"><small class="text-muted">4.0 out of 5</small></p>
+                                    <p class="card-text"><small class="text-muted">{{data.socialMediaLinks.googleRating}} out of 5</small></p>
                                     </div>
                                     <div class="col-md-12 pinfo_btns">
                                       <a href="" class="btn cubtn"
-                                                    [routerLink]='["/customer/my-pros-view"]'>VIEW</a>
+                                                    [routerLink]='["/customer/my-pros-view",data.loginId]'>VIEW</a>
                                       <!-- <button class="btn btn-primary btn2">View</button> -->
                                   </div>
                                   </div>
                                 </div>
                               </div>
-                              <div class="container card mb-3" style="max-width: 1040px; height:200px">
+                            </div>
+                              <!-- <div class="container card mb-3" style="max-width: 1040px; height:200px">
                                 <div class="row g-0" style="padding-top: 38px; padding-left: 48px;">
                                   <div class="col-md-4">
                                     <img src="https://picsum.photos/501/501" class="img-fluid rounded-start" alt="..." style="width: 100px;height: 100px;">
@@ -62,18 +63,15 @@
                                        uncheckedcolor="grey" size="24px" readonly="false">  </star-rating>
                                        <p class="card-text"><small class="text-muted">4.0 out of 5</small></p>
                                     </div>
-                                    <!-- <div class="col-md-12 pinfo_btns">
-                                        <button class="btn btn-primary btn2">View</button>
-                                    </div> -->
+                              
                                     <div class="col-md-12 pinfo_btns">
                                       <a href="" class="btn cubtn"
                                                     [routerLink]='["/customer/my-pros-view"]'>VIEW</a>
-                                      <!-- <button class="btn btn-primary btn2">View</button> -->
                                   </div>
                                   </div>
                                 </div>
-                              </div>
-                              <div class="container card mb-3" style="max-width: 1040px; height:200px">
+                              </div> -->
+                              <!-- <div class="container card mb-3" style="max-width: 1040px; height:200px">
                                 <div class="row g-0" style="padding-top: 23px; padding-left: 48px;">
                                   <div class="col-md-4">
                                     <img src="https://picsum.photos/501/501" class="img-fluid rounded-start" alt="..." style="width: 100px;height: 100px;">
@@ -86,19 +84,19 @@
                                       <star-rating [(value)]="googleRating" totalstars="5" checkedcolor="gold"
                                      uncheckedcolor="grey" size="24px" readonly="false">  </star-rating>
                                       <p class="card-text"><small class="text-muted">4.0 out of 5</small></p>
-                                      <!-- <div class="col-md-12 pinfo_btns">
+                                      <div class="col-md-12 pinfo_btns">
                                         <button class="btn btn-primary btn2">View</button>
-                                    </div> -->
+                                    </div>
                                     <div class="col-md-12 pinfo_btns">
                                       <a href="" class="btn cubtn"
                                                     [routerLink]='["/customer/my-pros-view"]'>VIEW</a>
-                                      <!-- <button class="btn btn-primary btn2">View</button> -->
+                                   
                                   </div>
                                     </div>
                                     
                                   </div>
                                 </div>
-                              </div>
+                              </div> -->
                                 <!-- <div class="container py-2">
                                     <article class="postcard light yellow">
                                         <a class="postcard__img_link" href="#">

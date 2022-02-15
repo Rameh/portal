@@ -83,6 +83,9 @@ export class LeadService {
         return this.http.get<any>(`${environment.API_URL}/csr/get-ticketNumber-csr-list/${ticketNumber}`);
     }
     
+    getCustomerPros(customerEmailId): Observable<any> {
+        return this.http.get<any>(`${environment.API_URL}/customer/get-customer-pros/${customerEmailId}`);
+    }
 
     handleError(error: HttpErrorResponse) {
         let msg = '';

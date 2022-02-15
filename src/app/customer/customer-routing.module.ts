@@ -27,7 +27,7 @@ const routes: Routes = [
       { path: 'project-view/:id', component: ProjectViewComponent },
       { path: 'customer-profile', component: CustomerProfileComponent },
       { path: 'my-pros', component: MyProsComponent },
-      { path: 'my-pros-view', component: MyproViewComponent },
+      { path: 'my-pros-view/:id', component: MyproViewComponent },
       { path: 'notifications', component: CustomerNotificationsComponent },
       {path:'customer-support',component:CustomerSupportRequestFormComponent},
       {path:'support-list',component:CustomerSupportRequestListComponent},
