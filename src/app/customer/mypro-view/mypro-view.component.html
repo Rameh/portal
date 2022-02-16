@@ -51,8 +51,8 @@
                           <tr>
                             <th>Google Rating:</th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <th>
-                              <star-rating [(value)]="proProfile.socialMediaLinks.googleRating" totalstars="5" checkedcolor="gold"
-                                uncheckedcolor="grey" size="24px" readonly="false">
+                              <star-rating [(value)]="proProfile.socialMediaLinks.googleRating" totalstars="5"
+                                checkedcolor="gold" uncheckedcolor="grey" size="24px" readonly="false">
                               </star-rating>
                             </th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <th>
@@ -62,8 +62,8 @@
                           <tr>
                             <th>Yelp Rating:</th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <th>
-                              <star-rating [(value)]="proProfile.socialMediaLinks.yelpRating" totalstars="5" checkedcolor="gold"
-                                uncheckedcolor="grey" size="24px" readonly="false">
+                              <star-rating [(value)]="proProfile.socialMediaLinks.yelpRating" totalstars="5"
+                                checkedcolor="gold" uncheckedcolor="grey" size="24px" readonly="false">
                               </star-rating>
                             </th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <th>
@@ -73,12 +73,12 @@
                           <tr>
                             <th>Aggregate Rating:</th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <th>
-                              <star-rating [(value)]="aggregateRating" totalstars="5" checkedcolor="red"
-                                uncheckedcolor="grey" size="24px" readonly="false">
+                              <star-rating [(value)]="proProfile.socialMediaLinks.aggregateRating" totalstars="5"
+                                checkedcolor="gold" uncheckedcolor="grey" size="24px" readonly="false">
                               </star-rating>
                             </th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <th>
-                              <h5>(Not Available)</h5>
+                              <h5>({{proProfile.socialMediaLinks.aggregateRating}})</h5>
                             </th>
                           </tr>
 
@@ -94,49 +94,49 @@
                         <button class="btn btn-primary btn2 cubtn" (click)="bookNow()">Get Quote</button>
                       </div>
                     </div>
-                   
+
                   </div>
                   <div class="row g-0" style="padding-top: 38px; padding-left: 48px;">
-                  <div>
-                    <label class="main">
-                      <input type="checkbox" class="input-assumpte" id="input-confidencial" />
-                      &nbsp;&nbsp;&nbsp;
-                     <b >INSURED</b>
-                    </label>
-                  </div>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <div>
-                    <label>
-                      <input type="checkbox"/>
-                      &nbsp;&nbsp;&nbsp;
-                     <b>BONDED</b>
-                    </label>
-                  </div>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <div>
-                    <label>
-                      <input type="checkbox"/>
-                      &nbsp;&nbsp;&nbsp;
-                    <b>WARRANTY OFFERED</b>
-                    </label>
-                  </div>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <div>
-                    <label>
-                      <input type="checkbox"/>
-                      &nbsp;&nbsp;&nbsp;
-                    <b>FREE ESTIMATES</b>
-                    </label>
-                  </div>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <div>
-                    <label>
-                      <input type="checkbox"/>
-                      &nbsp;&nbsp;&nbsp;
-                    <b>CREDIT CARD ACCEPTED</b>
-                    </label>
-                  </div>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <div>
+                      <label class="main">
+                        <input type="checkbox" class="input-assumpte" id="input-confidencial" />
+                        &nbsp;&nbsp;&nbsp;
+                        <b>INSURED</b>
+                      </label>
+                    </div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <div>
+                      <label>
+                        <input type="checkbox" />
+                        &nbsp;&nbsp;&nbsp;
+                        <b>BONDED</b>
+                      </label>
+                    </div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <div>
+                      <label>
+                        <input type="checkbox" />
+                        &nbsp;&nbsp;&nbsp;
+                        <b>WARRANTY OFFERED</b>
+                      </label>
+                    </div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <div>
+                      <label>
+                        <input type="checkbox" />
+                        &nbsp;&nbsp;&nbsp;
+                        <b>FREE ESTIMATES</b>
+                      </label>
+                    </div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <div>
+                      <label>
+                        <input type="checkbox" />
+                        &nbsp;&nbsp;&nbsp;
+                        <b>CREDIT CARD ACCEPTED</b>
+                      </label>
+                    </div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   </div>
                 </div>
               </div>
@@ -165,8 +165,27 @@
                       </div>
                     </div>
                   </div>
+
+                  <ul class="tree" *ngFor="let data of serviceArea;let i = index">
+                    <li>
+                      <input type="checkbox" checked="checked" id="ci" />
+                      <label class="tree_label" for="c1">{{data.county}}</label>
+                      <ul *ngFor="let data1 of data.category">
+                        <li>
+                          <input type="checkbox" checked="checked" id="c2" />
+                          <label for="c2" class="tree_label">{{data1.categoryName}}</label>
+                          <ul *ngFor="let data2 of data1.serviceCategories">
+                            <li><span class="tree_label"
+                                *ngIf="data2.flagStatus === true">{{data2.subcategoryName}}</span></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
                 </div>
               </div>
+
+
               <!-- <div class="container card mb-3" style="max-width: 1200px; height:200px">
                             <div style="padding-top: 38px; padding-left: 48px;">
                                 <div class="row">

@@ -13,6 +13,7 @@ export class MyproViewComponent implements OnInit {
   yelpRating:any=4
   aggregateRating:any=0
   proProfile: any;
+  serviceArea: any;
   constructor(private route: ActivatedRoute,public leadService: LeadService) { }
 
   ngOnInit(): void {
@@ -34,6 +35,8 @@ export class MyproViewComponent implements OnInit {
       if (data.status == 200) {
         this.proProfile = { ...data['data'] }
         console.log("proprofile",  this.proProfile)
+        this.serviceArea=this.proProfile.serviceArea
+        console.log("🚀 ~ file: mypro-view.component.ts ~ line 39 ~ MyproViewComponent ~ this.serviceArea", this.serviceArea)
       }
     })
   }
