@@ -194,21 +194,6 @@ li .dropdown-img{
   position: relative;
   background-color: var(--color-bg-secondary);
 }
-.menu-button:hover {
-  background-color: var(--color-bg-primary-offset);
-}
-.menu-button:hover + .menu-sub-list {
-  display: flex;
-}
-.menu-button:hover svg {
-  stroke: var(--color-text-primary);
-}
-.menu-button:hover svg.fa {
-    color:  var(--color-text-primary);
-  }
-.context-button:hover svg.fa {
-  color:  var(--color-text-primary);
-}
 
 
 .menu-button span:nth-of-type(2) {
@@ -423,105 +408,8 @@ li .dropdown-img{
 	padding: .4rem 1.5rem;
 	color: #212529;
 }
-.btn-group {
-	position: relative;
-	display: inline-flex;
-	vertical-align: middle;
-	>.btn {
-		position: relative;
-		flex: 1 1 auto;
-		&:hover {
-			z-index: 1;
-		}
-		&:focus {
-			z-index: 1;
-		}
-		&:active {
-			z-index: 1;
-		}
-		&:not(:first-child) {
-			margin-left: -1px;
-			border-top-left-radius: 0;
-			border-bottom-left-radius: 0;
-		}
-		&:not(:last-child) {
-			&:not(.dropdown-toggle) {
-				border-top-right-radius: 0;
-				border-bottom-right-radius: 0;
-			}
-		}
-	}
-	>.btn.active {
-		z-index: 1;
-	}
-	>.btn-group {
-		&:not(:first-child) {
-			margin-left: -1px;
-			>.btn {
-				border-top-left-radius: 0;
-				border-bottom-left-radius: 0;
-			}
-		}
-		&:not(:last-child) {
-			>.btn {
-				border-top-right-radius: 0;
-				border-bottom-right-radius: 0;
-			}
-		}
-	}
-}
-.btn-group-vertical {
-	position: relative;
-	display: inline-flex;
-	vertical-align: middle;
-	flex-direction: column;
-	align-items: flex-start;
-	justify-content: center;
-	>.btn {
-		position: relative;
-		flex: 1 1 auto;
-		width: 100%;
-		&:hover {
-			z-index: 1;
-		}
-		&:focus {
-			z-index: 1;
-		}
-		&:active {
-			z-index: 1;
-		}
-		&:not(:first-child) {
-			margin-top: -1px;
-			border-top-left-radius: 0;
-			border-top-right-radius: 0;
-		}
-		&:not(:last-child) {
-			&:not(.dropdown-toggle) {
-				border-bottom-right-radius: 0;
-				border-bottom-left-radius: 0;
-			}
-		}
-	}
-	>.btn.active {
-		z-index: 1;
-	}
-	>.btn-group {
-		width: 100%;
-		&:not(:first-child) {
-			margin-top: -1px;
-			>.btn {
-				border-top-left-radius: 0;
-				border-top-right-radius: 0;
-			}
-		}
-		&:not(:last-child) {
-			>.btn {
-				border-bottom-right-radius: 0;
-				border-bottom-left-radius: 0;
-			}
-		}
-	}
-}
+
+
 .btn-toolbar {
 	display: flex;
 	flex-wrap: wrap;
