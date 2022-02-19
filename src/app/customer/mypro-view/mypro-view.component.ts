@@ -14,6 +14,8 @@ export class MyproViewComponent implements OnInit {
   aggregateRating:any=0
   proProfile: any;
   serviceArea: any;
+  dateTimeData: any;
+  imgPath: any;
   constructor(private route: ActivatedRoute,public leadService: LeadService) { }
 
   ngOnInit(): void {
@@ -36,6 +38,8 @@ export class MyproViewComponent implements OnInit {
         this.proProfile = { ...data['data'] }
         console.log("proprofile",  this.proProfile)
         this.serviceArea=this.proProfile.serviceArea
+        this.dateTimeData=this.proProfile.businessHours
+        this.imgPath = this.proProfile.attachments
         console.log("🚀 ~ file: mypro-view.component.ts ~ line 39 ~ MyproViewComponent ~ this.serviceArea", this.serviceArea)
       }
     })
