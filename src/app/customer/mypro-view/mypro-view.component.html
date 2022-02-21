@@ -10,7 +10,7 @@
                   <span class="d-block text-center"><i class="fa fa-angle-left"></i></span>
                 </div>
                 <div class="col-lg-8 col-5">
-                  <h3>My Pros</h3>
+                  <h3>Pro Public Profile View</h3>
                 </div>
                 <div class="col-lg-2 col-2">
                   <span class="d-block text-center"><i class="fa fa-ellipsis-v"></i></span>
@@ -70,7 +70,7 @@
                               <h5>({{proProfile.socialMediaLinks.yelpRating}})</h5>
                             </th>
                           </tr>
-                          <tr>
+                          <!-- <tr>
                             <th>Aggregate Rating:</th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <th>
                               <star-rating [(value)]="proProfile.socialMediaLinks.aggregateRating" totalstars="5"
@@ -80,7 +80,7 @@
                             <th>
                               <h5>({{proProfile.socialMediaLinks.aggregateRating}})</h5>
                             </th>
-                          </tr>
+                          </tr> -->
 
                         </tbody>
                       </table>
@@ -154,15 +154,17 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-sm-1"></div>
+                    <div class="col-1"></div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp;
                     <div class="col-11">
                       <div class="form-group">
-                        &nbsp;&nbsp;&nbsp;
-                        <textarea type="text" [value]="proProfile.Summary[0]" style="width: 100%;height: 90px;" readonly> </textarea>
+                        <!-- &nbsp;&nbsp;&nbsp;
+                        <textarea type="text" [value]="proProfile.Summary[0]" style="width: 100%;height: 90px;" readonly> </textarea> -->
                         <!-- <textarea  placeholder="Enter Service Location"
                           formControlName="projectDescrption" readonly>
                         {{proProfile.Summary[0]}}
                           </textarea> -->
+                          <p>{{proProfile.Summary[0]}}</p>
                       </div>
                     </div>
                   </div>
