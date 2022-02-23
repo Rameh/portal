@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { StarRatingComponent } from 'ng-starrating';
 import { LeadService } from 'src/app/services/lead.service';
 
@@ -16,10 +16,12 @@ export class MyproViewComponent implements OnInit {
   serviceArea: any;
   dateTimeData: any;
   imgPath: any;
-  constructor(private route: ActivatedRoute,public leadService: LeadService) { }
+  proId: any;
+  constructor(private route: ActivatedRoute,public leadService: LeadService,    public router: Router,) { }
 
   ngOnInit(): void {
     //this.route.snapshot.params.id
+    this.proId=this.route.snapshot.params.id
     this.getProProfile(this.route.snapshot.params.id)
   }
   onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}) {
@@ -37,6 +39,7 @@ export class MyproViewComponent implements OnInit {
       if (data.status == 200) {
         this.proProfile = { ...data['data'] }
         console.log("proprofile",  this.proProfile)
+        this.leadService.proData=this.proProfile
         this.serviceArea=this.proProfile.serviceArea
         this.dateTimeData=this.proProfile.businessHours
         this.imgPath = this.proProfile.attachments
@@ -47,7 +50,11 @@ export class MyproViewComponent implements OnInit {
 
   bookNow() {
     // this.displayFileModal = 'block'
-    alert('This function redirect to website')
+    this.router.navigate(['customer/book-pro',this.proId])
+    //alert('This function redirect to website')
+  }
+  reportPro(){
+    this.router.navigate(['/customer/report-pro'])
   }
   getAQuote() {
     alert('This function redirect to website')

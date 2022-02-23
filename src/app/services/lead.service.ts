@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
     providedIn: 'root'
 })
 export class LeadService {
-
+    proData:any;
     constructor(private http: HttpClient) { }
 
 
@@ -86,6 +86,17 @@ export class LeadService {
     getCustomerPros(customerEmailId): Observable<any> {
         return this.http.get<any>(`${environment.API_URL}/customer/get-customer-pros/${customerEmailId}`);
     }
+
+          // get zipcodes with county
+          getUsPhoneValidation(mobileNumber): Observable<any> {
+            console.log(mobileNumber)
+         return this.http.get(`${environment.API_URL}/socialmedia/validateUsPhoneNumber/${mobileNumber}`);
+          }
+
+          workorderServiceAddressData(customerId): Observable<any> {
+            return this.http.get(`${environment.API_URL}/workorder/getwoserviceaddress/${customerId}`);
+        }
+    
 
     handleError(error: HttpErrorResponse) {
         let msg = '';

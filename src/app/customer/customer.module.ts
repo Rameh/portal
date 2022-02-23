@@ -16,15 +16,19 @@ import { PrivacyPageComponent } from './privacy-page/privacy-page.component';
 import { TermsAndConditionsPageComponent } from './terms-and-conditions-page/terms-and-conditions-page.component';
 import { HelpAndFaqsPageComponent } from './help-and-faqs-page/help-and-faqs-page.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ReportProComponent } from './report-pro/report-pro.component';
+import { BookProComponent } from './book-pro/book-pro.component';
+import { TextMaskModule } from 'angular2-text-mask';
 
 
 @NgModule({
-  declarations: [CustomerLeadListComponent, ProjectViewComponent, CustomerProfileComponent, MyProsComponent, MyproViewComponent, CustomerNotificationsComponent, CustomerSupportRequestFormComponent, CustomerSupportRequestListComponent, CustomerSupportRequestViewComponent, PrivacyPageComponent, TermsAndConditionsPageComponent, HelpAndFaqsPageComponent],
+  declarations: [CustomerLeadListComponent, ProjectViewComponent, CustomerProfileComponent, MyProsComponent, MyproViewComponent, CustomerNotificationsComponent, CustomerSupportRequestFormComponent, CustomerSupportRequestListComponent, CustomerSupportRequestViewComponent, PrivacyPageComponent, TermsAndConditionsPageComponent, HelpAndFaqsPageComponent, ReportProComponent, BookProComponent],
   imports: [
     CommonModule,
     CustomerRoutingModule,
     RatingModule,
     FormsModule,
+    TextMaskModule,
     ReactiveFormsModule,
     NgxPaginationModule,
   ]

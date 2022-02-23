@@ -144,10 +144,9 @@
                                                                         <i class="fa fa-pencil icon"
                                                                             *ngIf="showEditIcon">
                                                                         </i>
-                                                                        <input type="text" name="name" id="mobileNumber"
-                                                                            class="form-control"
-                                                                            placeholder="(xxx)-xxx-xxxx" #myselects
-                                                                            (ngModelChange)="getUSPhoneNumberValidation1(myselects.value)"
+                                                                        <input type="text" class="form-control form-control-user" placeholder="(xxx)-xxx-xxxx"
+                                                                        oncopy="return false" onpaste="return false" [textMask]="mask" #myselects
+                                                                        (ngModelChange)="getUSPhoneNumberValidation1(myselects.value)"
                                                                             formControlName="phoneNumber">
                                                                     </div>
                                                                 </div>

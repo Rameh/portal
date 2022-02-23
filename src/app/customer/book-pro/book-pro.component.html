@@ -1,0 +1,274 @@
+<div class="container">
+    <form [formGroup]="bookProform">
+        <section class="projects_list personal_info pt-60 pb-30">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-12">
+                        <div class="card pinfo_box shadow">
+                            <div class="row card-header m-0 justify-content-center">
+                                <div class="col-lg-2 col-2">
+                                    <span class="d-block text-center"><i class="fa fa-angle-left"></i></span>
+                                </div>
+                                <div class="col-lg-8 col-5">
+                                    <h3>Book "{{businessName}}"</h3>
+                                </div>
+                                <div class="col-lg-2 col-2">
+                                    <span class="d-block text-center"><i class="fa fa-ellipsis-v"></i></span>
+                                </div>
+                            </div>
+                            <div class="card-body pt-5">
+                                <div class="row">
+                                    <div class="col-lg-8 offset-lg-2">
+                                        <div class="pinfo_tabs">
+                                            <div class="tab-content pinfo_tabs_cont" id="pills-tabContent">
+                                                <div class="tab-pane fade show active" id="pills-personal"
+                                                    role="tabpanel" aria-labelledby="pills-personal-tab">
+                                                    <div class="pinfo_contact_form">
+                                                        <label for="firstName" class="form-label">
+                                                            Service Address
+                                                        </label>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <div class="radio" style="margin:10px;">
+                                                                        <label>
+                                                                            <input type="radio" [(ngModel)]="flagStatus"
+                                                                                name="serviceAddress" value="NO"
+                                                                                (change)="getServiceCheck1(flagStatus)"
+                                                                                class="colored-success"
+                                                                                [ngModelOptions]="{standalone: true}" />
+                                                                                &nbsp;&nbsp;
+                                                                            <span class="text">Use Existing
+                                                                                (Select one
+                                                                                address from
+                                                                                list)
+                                                                            </span> &nbsp;
+                                                                            &nbsp;&nbsp;
+                                                                            <button type="button"
+                                                                                [disabled]="flagStatus=='Yes' || flagStatus=='all'"
+                                                                                class="btn cubtn" data-toggle="modal"
+                                                                                data-target=".bs-example1">
+                                                                                Select
+                                                                            </button>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <div class="radio" style="margin:10px;">
+                                                                        <label>
+                                                                            <input type="radio" name="serviceAddress"
+                                                                                value="all" class="colored-success" />
+                                                                                &nbsp;&nbsp;
+                                                                            <span class="text">Enter
+                                                                                New Service
+                                                                                Address
+
+                                                                            </span>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="emailAddress" class="form-label">
+                                                                        Street Address</label>
+                                                                    <input type="text" name="name" id="mobileNumber"
+                                                                        class="form-control"
+                                                                        placeholder="Enter Street Address" tabindex="2"
+                                                                        formControlName="streetAddress">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="firstName" class="form-label">
+                                                                        ZIP CODE
+                                                                    </label>
+                                                                    <div class="input-icons">
+                                                                        <input type="text" id="zipCode" mask="99999"
+                                                                            separatorLimit="99999"
+                                                                            placeholder="Enter your zip code"
+                                                                            [(ngModel)]="zipcode"
+                                                                            formControlName="zipCode"
+                                                                            (ngModelChange)="getZipcodeData(zipcode)">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="firstName" class="form-label">
+                                                                        CITY
+                                                                    </label>
+                                                                    <div class="input-icons">
+                                                                        <input type="text" class="form-control"
+                                                                            id="city" readonly value="{{city}}"
+                                                                            formControlName="city"
+                                                                            style="background-color:#f0f0f0;">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="firstName" class="form-label">
+                                                                        STATE
+                                                                    </label>
+                                                                    <div class="input-icons">
+                                                                        <input type="text" class="form-control"
+                                                                            id="city" readonly value="{{stateName}}"
+                                                                            formControlName="state"
+                                                                            style="background-color:#f0f0f0; ">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <div class="form-group">
+                                                                    <label for="emailAddress" class="form-label">
+                                                                        Project Name</label>
+                                                                    <input type="text" name="name" id="mobileNumber"
+                                                                        formControlName="projectName"
+                                                                        class="form-control" placeholder="Lorem Ipsum"
+                                                                        tabindex="2">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <div class="form-group">
+                                                                    <label for="emailAddress" class="form-label">
+                                                                        Project Description</label>
+                                                                    <textarea id="w3review" name="w3review" rows="4"
+                                                                        cols="50" placeholder="Enter Service Location"
+                                                                        formControlName="projectDescription">
+                                          </textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <div class="form-group">
+                                                                    <label for="emailAddress" class="form-label">
+                                                                        Attach any images/videos about the
+                                                                        problem</label>
+                                                                </div>
+                                                                <img src="https://topproz2.s3.amazonaws.com/uploads/1640758526320.image_picker_49B614F2-275C-4414-A6CC-5049F5C908F7-15547-00000C109927D728.jpg"
+                                                                    style="width: 15%;height:70%">
+                                                                <br />
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <br /> <br />
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <br /> <br />
+                                                            </div>
+                                                            <div class="col-md-12 pinfo_btns">
+                                                                <button class="btn btn-link btn1"
+                                                                    [routerLink]="['/customer/support-list']">Cancel</button>
+                                                                <button class="btn btn-primary btn2"
+                                                                    (click)="onSubmit()">Submit</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </form>
+</div>
+
+<div style="width:100%" class="modal fade bs-example1" tabindex="-1" role="dialog" id="assignModel"
+    aria-labelledby="myLargeModalLabelTrade" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Select Service Address ( From Previous Work Orders )</h4>
+            </div>
+            <div class="modal-body">
+                <div style="width:100%;height:auto;">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-bordered table-striped table-condensed flip-content">
+                                <thead class="flip-content bordered-palegreen">
+                                    <tr>
+                                        <th>
+                                            Select
+                                        </th>
+                                        <th>First Name
+                                        </th>
+                                        <th>
+                                            Last Name
+                                        </th>
+                                        <th>
+                                            EmailId
+                                        </th>
+                                        <th>
+                                            Street Address
+                                        </th>
+                                        <th>
+                                            County
+                                        </th>
+                                        <th>
+                                            City
+                                        </th>
+                                        <th>
+                                            State
+                                        </th>
+                                        <th>
+                                            ZipCode
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let data of woServiceAddress; let idx = index">
+                                        <td>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" value="{{idx}}" class="colored-success"
+                                                        name="card" [(ngModel)]="radioSelected"
+                                                        (change)="selectServiceAddress(data)"
+                                                        [ngModelOptions]="{standalone: true}" />
+                                                    <span class="text"></span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td>{{data._id.firstName}}</td>
+                                        <td>{{data._id.lastName}}</td>
+                                        <td>{{data._id.emailId}}</td>
+                                        <td>{{data._id.streetAddress}}</td>
+                                        <td>{{data._id.county}}</td>
+                                        <td>{{data._id.city}}</td>
+                                        <td>{{data._id.state}}</td>
+                                        <td>{{data._id.zipcode}}</td>
+
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                            <div class="assignModel" *ngIf="woServiceAddress?.length == 0">
+                                <div class="noRecord">No Previous Service Address Found</div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <input type="button" class="btn btn-azure shiny btn-block" value="Select Address"
+                                id="add-more" data-dismiss="modal">
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="button" class="btn btn-azure shiny btn-block" value="Close" id="add-more"
+                                data-dismiss="modal">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

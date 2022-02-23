@@ -1,0 +1,143 @@
+<div class="container">
+    <form [formGroup]="customerSupportRequestform">
+      <section class="projects_list personal_info pt-60 pb-30">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 col-12">
+              <div class="card pinfo_box shadow">
+                <div class="row card-header m-0 justify-content-center">
+                  <div class="col-lg-2 col-2">
+                    <span class="d-block text-center"><i class="fa fa-angle-left"></i></span>
+                  </div>
+                  <div class="col-lg-8 col-5">
+                    <h3>Report Pro</h3>
+                  </div>
+                  <div class="col-lg-2 col-2">
+                    <span class="d-block text-center"><i class="fa fa-ellipsis-v"></i></span>
+                  </div>
+                </div>
+                <div class="card-body pt-5">
+                  <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                      <div class="pinfo_tabs">
+                        <div class="tab-content pinfo_tabs_cont" id="pills-tabContent">
+                          <div class="tab-pane fade show active" id="pills-personal" role="tabpanel"
+                            aria-labelledby="pills-personal-tab">
+                            <div class="pinfo_contact_form">
+                              <div class="row">
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <label for="projectId" class="form-label">
+                                      <b>Project</b>
+                                    </label>
+                                    <select class="form-control" formControlName="workOrderNumber" #mySelect
+                                      (change)="getWorkOrderData(mySelect.value)" data-bv-field="row-title">
+                                      <option value="">Select</option>
+                                      <option *ngFor="let data of workOrdeList" value={{data.workOrderNumber}}>
+                                        {{data.workOrderNumber}}
+                                      </option>
+                                    </select>
+                                  </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                      <label for="emailAddress" class="form-label">
+                                        <b>Project Name</b></label>
+                                      <div class="input-icons">
+                                        <input type="text" class="form-control" id="projectName" readonly
+                                          value="{{projectName}}" formControlName="projectName"
+                                          style="background-color:#f0f0f0;">
+                                      </div>
+                                    </div>
+                                  </div>
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <label for="firstName" class="form-label">
+                                      <b>Created On</b>
+                                    </label>
+                                    <input name="name" id="lastName" class="form-control" type="text"
+                                      formControlName="createdOn" [min]="currentDate" readonly
+                                      style="background-color:#f0f0f0;">
+                                  </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                      <label for="emailAddress" class="form-label">
+                                        Attach any images/videos about the problem</label>
+                                    </div>
+                                    <img src="https://topproz2.s3.amazonaws.com/uploads/1640758526320.image_picker_49B614F2-275C-4414-A6CC-5049F5C908F7-15547-00000C109927D728.jpg" style="width: 15%;height:70%">
+                                    <br/>
+                                  </div>
+                                  <div class="col-md-12">
+                                  <br/> <br/>
+                                </div>
+                                  <div class="col-md-12">
+                                    <label>
+                                      <input type="checkbox">
+                                      &nbsp;&nbsp;&nbsp;
+                                      <b>Never Showed up</b>
+                                    </label>
+                                  </div>
+                                  <div class="col-md-12">
+                                    <label>
+                                      <input type="checkbox">
+                                      &nbsp;&nbsp;&nbsp;
+                                      <b>Showed up too late</b>
+                                    </label>
+                                  </div>
+                                  <div class="col-md-12">
+                                    <label>
+                                      <input type="checkbox">
+                                      &nbsp;&nbsp;&nbsp;
+                                      <b>Abusive Behavior</b>
+                                    </label>
+                                  </div>
+                                  <div class="col-md-12">
+                                    <label>
+                                      <input type="checkbox">
+                                      &nbsp;&nbsp;&nbsp;
+                                      <b>Do not look professional</b>
+                                    </label>
+                                  </div>
+                                  <div class="col-md-12">
+                                    <label>
+                                      <input type="checkbox">
+                                      &nbsp;&nbsp;&nbsp;
+                                      <b>Other reason</b>
+                                    </label>
+                                  </div>
+                                  <div class="col-md-12">
+                                    <br/> <br/>
+                                  </div>
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <label for="emailAddress" class="form-label">
+                                      <b>
+                                        Add a written review
+                                      </b></label>
+                                    <textarea id="w3review" name="w3review" rows="4" cols="50"
+                                      placeholder="Add a written review" formControlName="projectDescription">
+                                    </textarea>
+                                  </div>
+                                </div>
+                               
+                                <div class="col-md-12 pinfo_btns">
+                                  <button class="btn btn-link btn1"
+                                    [routerLink]="['/customer/support-list']">Cancel</button>
+                                  <button class="btn btn-primary btn2" (click)="onSubmit()">Submit</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </form>
+  </div>

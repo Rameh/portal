@@ -6,6 +6,16 @@ import { LeadService } from 'src/app/services/lead.service';
 import { numVerifyRequestService } from 'src/app/services/numVerifyRequest.service';
 import { VerificationCodeService } from 'src/app/services/verification.code.service';
 import { MustMatch } from 'src/app/shared';
+import {
+  COMPANY_LOGO,
+  DEFAULT_PERSON_IMAGE,
+  COMPONENT_PAGE_MODE_EDIT,
+  COMPONENT_PAGE_MODE_VIEW,
+  SUCCESS_CODE,
+  UNAUTHORIZED_CODE,
+  INTERNAL_SERVER_ERROR_MSG,
+  NOT_FOUND_CODE
+} from '../../helpers/constants'
 declare var $: any;
 @Component({
   selector: 'app-customer-profile',
@@ -46,6 +56,8 @@ export class CustomerProfileComponent implements OnInit {
   invalidMobileLead: boolean = false;
   invalidMobileLead1: boolean = false;
   emailId: any;
+  resObj: any;
+  phoneNumber1: any;
   constructor(
     public leadService: LeadService,
     private fb: FormBuilder,
@@ -61,7 +73,11 @@ export class CustomerProfileComponent implements OnInit {
   }
   hide: boolean = true;
   eyeSlash = false
-
+  public mask = {
+    guide: true,
+    showMask: true,
+    mask:['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/,/\d/]
+  };
   myFunction() {
     if (this.eyeSlash === true) {
       this.eyeSlash = false
@@ -300,11 +316,18 @@ export class CustomerProfileComponent implements OnInit {
 
 
   /*US Phone Number Validation */
-
   numberValidation() {
-    throw new Error('Method not implemented.');
+    return new Promise((resolve, reject) => {
+      this.leadService.getUsPhoneValidation('+1'+''+this.phoneNumber)
+        .pipe(first())
+        .subscribe(res => {
+          resolve(res)
+        }, (error) => {
+          reject(error)
+          this.toastr.errorToastr(error, INTERNAL_SERVER_ERROR_MSG)
+        })
+    })
   }
-
 
   onSubmit() {
     if (!this.customerProfileform.valid) {
@@ -345,57 +368,69 @@ export class CustomerProfileComponent implements OnInit {
       })
   }
 
+    onCancel() {
+    $("#VerifyNumber").modal("hide");
+    this.customerProfileform.patchValue({
+      phoneNumber: this.oldPhoneNumber
+    })
+  }
+
   /*US Phone Number Validation */
   async getUSPhoneNumberValidation1(value) {
+    console.log('llll',value.length)
     if (value == "" || value?.length == 0) {
       this.mobileNumberValidation1 = false
       this.invalidMobileNumber = false
       return
     }
-    // if (value?.length < 12 && value?.length != 0) {
-    //   this.invalidMobileNumber = true;
-    //   this.mobileNumberValidation1 = false;
-    //   return
-    // }
-    // else if (value?.length == 12 && value != "" && value?.length != 0 && value?.length != undefined) {
-    //   this.phoneNumber = value.split('-')[0] + value.split('-')[1] + value.split('-')[2]
-    //   this.NewphoneNumber = value
-    //   this.mobileNumber = '+1' + '' + this.phoneNumber
-    //   var resObj = await this.numberValidation()
-    //   if (resObj['status'] == 200) {
+    if (value?.length < 14 && value?.length != 0) {
+      this.invalidMobileNumber = true;
+      this.mobileNumberValidation1 = false;
+      return
+    }
+    else if (value?.length == 14 && value != "" && value?.length != 0 && value?.length != undefined) {
+      console.log('llll',value.split(' '))
+      this.phoneNumber = value.split('-')[0]+value.split('-')[1]
+      console.log("🚀 ~ file: customer-profile.component.ts ~ line 386 ~ CustomerProfileComponent ~  this.phoneNumber",  this.phoneNumber)
+      this.NewphoneNumber = value
+      this.phoneNumber = this.phoneNumber
+     this.resObj = await this.numberValidation()
+      if (this.resObj['status'] == SUCCESS_CODE) {
 
-    //     var numberVerifyObj = {
-    //       usnumber: this.phoneNumber,
-    //       description: 'Pro My Profile: Business Phone number',
-    //       userId: this.customerProfileform.value.emailId,
-    //     }
-    //     this.numVerifyRequest(numberVerifyObj)
+        var numberVerifyObj = {
+          usnumber: this.phoneNumber,
+          description: 'Pro My Profile: Business Phone number',
+          userId: this.customerProfileform.value.emailId,
+          // token: data.data.token
+        }
+        this.numVerifyRequest(numberVerifyObj)
 
-    //     this.mobileNumberValidation1 = false;
-    //     this.invalidMobileNumber = false
-    //     // return false;
-    //   }
-    // else if (resObj['status'] == 'NOT_FOUND_CODE') {
-    //   var numberVerifyObj1 = {
-    //     usnumber: this.phoneNumber,
-    //     description: 'Pro My Profile: Business Phone number',
-    //     userId: this.customerProfileform.value.emailId,
-    //     // token: data.data.token
-    //   }
-    //   this.numVerifyRequest(numberVerifyObj1)
+        this.mobileNumberValidation1 = false;
+        this.invalidMobileNumber = false
+        // return false;
+      }
+      else if (this.resObj['status'] == NOT_FOUND_CODE) {
+        var numberVerifyObj1 = {
+          usnumber: this.phoneNumber,
+          description: 'Pro My Profile: Business Phone number',
+          userId: this.customerProfileform.value.emailId,
+          // token: data.data.token
+        }
+        this.numVerifyRequest(numberVerifyObj1)
 
-    //   this.mobileNumberValidation1 = true;
-    //   this.invalidMobileNumber = false;
-    //   // return true;
-    // }
-    //this.condition1(value)
-    if (this.oldPhoneNumber == this.phoneNumber && value != "") {
-      this.toastr.warningToastr('New Business phone number is same as old')
+        this.mobileNumberValidation1 = true;
+        this.invalidMobileNumber = false;
+        // return true;
+      }
+      //this.condition1(value)
+      console.log('this.oldPhoneNumber',this.oldPhoneNumber,this.phoneNumber,this.oldPhoneNumber == this.phoneNumber)
+      if (this.oldPhoneNumber == this.phoneNumber && value != "") {
+        this.toastr.warningToastr('New Business phone number is same as old')
 
-      //return 
-    } else if (this.oldPhoneNumber != this.phoneNumber && value != "" && this.mobileNumberValidation1 == false) {
-      this.numberVerify();
-      //}
+        //return 
+      } else if (this.oldPhoneNumber != this.phoneNumber && value != "" && this.mobileNumberValidation1 == false) {
+        this.numberVerify();
+      }
     }
   }
   numberVerify() {
@@ -447,12 +482,7 @@ export class CustomerProfileComponent implements OnInit {
 
   }
 
-  onCancel() {
-    $("#VerifyNumber").modal("hide");
-    this.customerProfileform.patchValue({
-      mobileNumber: this.mobileNumber
-    })
-  }
+
 
   keyPress4(event: any) {
     if (this.VerificationForm.value.VerficationCode == '') {

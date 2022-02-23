@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BookProComponent } from './book-pro/book-pro.component';
 import { CustomerLayoutComponent } from './customer-layout/customer-layout.component';
 import { CustomerLeadListComponent } from './customer-lead-list/customer-lead-list.component';
 import { CustomerNotificationsComponent } from './customer-notifications/customer-notifications.component';
@@ -12,6 +13,7 @@ import { MyProsComponent } from './my-pros/my-pros.component';
 import { MyproViewComponent } from './mypro-view/mypro-view.component';
 import { PrivacyPageComponent } from './privacy-page/privacy-page.component';
 import {ProjectViewComponent} from './project-view/project-view.component';
+import { ReportProComponent } from './report-pro/report-pro.component';
 import {TermsAndConditionsPageComponent} from './terms-and-conditions-page/terms-and-conditions-page.component'
 
 const routes: Routes = [
@@ -34,7 +36,10 @@ const routes: Routes = [
       {path:'support-request-view/:id',component:CustomerSupportRequestViewComponent},
       {path:'privacy-page',component:PrivacyPageComponent},
       {path:'terms-and-conditions-page',component:TermsAndConditionsPageComponent},
-      {path:'help-and-faqs-page',component:HelpAndFaqsPageComponent}
+      {path:'help-and-faqs-page',component:HelpAndFaqsPageComponent},
+      {path:'report-pro',component:ReportProComponent},
+      {path:'book-pro/:id',component:BookProComponent}
+      
     ]
   }
 ];

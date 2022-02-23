@@ -52,7 +52,7 @@ export class ProjectViewComponent implements OnInit {
       projectId: [formData.workOrderNumber, Validators.required],
       createdOn:[formData.createdOn],
       projectName: [formData.WorkDescription?.jobTitle],
-      projectDescrption: [formData.WorkDescription?.workDescription],
+      projectDescription: [formData.WorkDescription?.workDescription],
       firstName: [formData.ServiceAddress?.firstName],
       lastName: [formData.ServiceAddress?.lastName],
       mobileNumber: [formData.ServiceAddress?.phoneNumber],
