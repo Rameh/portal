@@ -99,7 +99,7 @@ export class LeadService {
     
         createReportPro(reportProData): Observable<any> {
             console.log("🚀 ~ file: lead.service.ts ~ line 101 ~ LeadService ~ reportProData", reportProData)
-            return this.http.post(`http://localhost:8000/report-pro/create-report-pro`, reportProData).pipe(
+            return this.http.post(`${environment.API_URL}/report-pro/create-report-pro`, reportProData).pipe(
                 catchError(this.handleError)
             )
         }
