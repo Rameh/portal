@@ -54,7 +54,7 @@ export class MyproViewComponent implements OnInit {
     //alert('This function redirect to website')
   }
   reportPro(){
-    this.router.navigate(['/customer/report-pro'])
+    this.router.navigate(['/customer/report-pro',this.proId])
   }
   getAQuote() {
     alert('This function redirect to website')

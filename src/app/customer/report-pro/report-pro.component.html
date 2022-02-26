@@ -1,5 +1,5 @@
 <div class="container">
-    <form [formGroup]="customerSupportRequestform">
+    <form [formGroup]="reportProform">
       <section class="projects_list personal_info pt-60 pb-30">
         <div class="container">
           <div class="row">
@@ -10,7 +10,7 @@
                     <span class="d-block text-center"><i class="fa fa-angle-left"></i></span>
                   </div>
                   <div class="col-lg-8 col-5">
-                    <h3>Report Pro</h3>
+                    <h3>Report Pro "{{businessName}}"</h3>
                   </div>
                   <div class="col-lg-2 col-2">
                     <span class="d-block text-center"><i class="fa fa-ellipsis-v"></i></span>
@@ -73,35 +73,35 @@
                                 </div>
                                   <div class="col-md-12">
                                     <label>
-                                      <input type="checkbox">
+                                      <input type="checkbox" value="Yes" formControlName="isNeverShowedUp">
                                       &nbsp;&nbsp;&nbsp;
                                       <b>Never Showed up</b>
                                     </label>
                                   </div>
                                   <div class="col-md-12">
                                     <label>
-                                      <input type="checkbox">
+                                      <input type="checkbox" value="Yes" formControlName="isShowedUpTooLate">
                                       &nbsp;&nbsp;&nbsp;
                                       <b>Showed up too late</b>
                                     </label>
                                   </div>
                                   <div class="col-md-12">
                                     <label>
-                                      <input type="checkbox">
+                                      <input type="checkbox" value="Yes" formControlName="isAbusiveBehavior">
                                       &nbsp;&nbsp;&nbsp;
                                       <b>Abusive Behavior</b>
                                     </label>
                                   </div>
                                   <div class="col-md-12">
                                     <label>
-                                      <input type="checkbox">
+                                      <input type="checkbox" value="Yes" formControlName="isDoNotLookProfessional">
                                       &nbsp;&nbsp;&nbsp;
                                       <b>Do not look professional</b>
                                     </label>
                                   </div>
                                   <div class="col-md-12">
                                     <label>
-                                      <input type="checkbox">
+                                      <input type="checkbox" value="Yes" formControlName="isOtherReason">
                                       &nbsp;&nbsp;&nbsp;
                                       <b>Other reason</b>
                                     </label>
@@ -116,7 +116,7 @@
                                         Add a written review
                                       </b></label>
                                     <textarea id="w3review" name="w3review" rows="4" cols="50"
-                                      placeholder="Add a written review" formControlName="projectDescription">
+                                      placeholder="Add a written review" formControlName="reviewComments">
                                     </textarea>
                                   </div>
                                 </div>

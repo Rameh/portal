@@ -97,7 +97,12 @@ export class LeadService {
             return this.http.get(`${environment.API_URL}/workorder/getwoserviceaddress/${customerId}`);
         }
     
-
+        createReportPro(reportProData): Observable<any> {
+            console.log("🚀 ~ file: lead.service.ts ~ line 101 ~ LeadService ~ reportProData", reportProData)
+            return this.http.post(`http://localhost:8000/report-pro/create-report-pro`, reportProData).pipe(
+                catchError(this.handleError)
+            )
+        }
     handleError(error: HttpErrorResponse) {
         let msg = '';
         if (error.error instanceof ErrorEvent) {

@@ -37,7 +37,7 @@ const routes: Routes = [
       {path:'privacy-page',component:PrivacyPageComponent},
       {path:'terms-and-conditions-page',component:TermsAndConditionsPageComponent},
       {path:'help-and-faqs-page',component:HelpAndFaqsPageComponent},
-      {path:'report-pro',component:ReportProComponent},
+      {path:'report-pro/:id',component:ReportProComponent},
       {path:'book-pro/:id',component:BookProComponent}
       
     ]

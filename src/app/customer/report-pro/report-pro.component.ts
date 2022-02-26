@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { ToastrManager } from 'ng6-toastr-notifications';
 import { first } from 'rxjs/operators';
@@ -22,22 +22,26 @@ import {
 export class ReportProComponent implements OnInit {
 
   public currentDate: any;
-  customerSupportRequestform: FormGroup;
+  reportProform: FormGroup;
   workOrdeList: any;
   projectName
   emailId:any;
   customerId: any;
+  proProfile: any;
+  businessName: any;
   constructor(
     private fb: FormBuilder,
     public leadService: LeadService,
     private toastr: ToastrManager,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute,
 
   ) {
-    this.customerSupportRequestform = this.buildFormGroup({})
+    this.reportProform = this.buildFormGroup({})
   }
 
   ngOnInit(): void {
+    this.getProProfile(this.route.snapshot.params.id)
     this.currentDate = moment(new Date()).format("YYYY-MM-DD");
     this.emailId=localStorage.getItem('emailId')
     this.leadService.getUserProfile(this.emailId)
@@ -52,6 +56,20 @@ export class ReportProComponent implements OnInit {
     })
   }
 
+  getProProfile(proId){
+    //this.customerEmailId=localStorage.getItem('emailId')
+    this.leadService.getProProfile(proId)
+    .subscribe((data) => {
+      if (data.status == 200) {
+        this.proProfile = { ...data['data'] }
+        console.log("proprofile",  this.proProfile)
+        this.leadService.proData=this.proProfile
+        this.businessName=this.proProfile.businessName
+        //this.imgPath = this.proProfile.attachments
+      }
+    })
+  }
+
   private buildFormGroup(formData): any {
     const customerSupportRequestform = {
       customerId: [this.customerId],
@@ -60,29 +78,39 @@ export class ReportProComponent implements OnInit {
       createdOn: [''],
       projectName: [''],
       projectDescription: [''],
+      reviewComments:[''],
       resolution: [''],
       resolutiondate: [''],
       resolutionby: [''],
-      status: ["Open"]
+      isNeverShowedUp:[false],
+      isShowedUpTooLate:[false],
+      isAbusiveBehavior:[false],
+      isDoNotLookProfessional:[false],
+      isOtherReason:[false],
+      proName:[''],
+      proEmailId:[''],
+      status:['Open']
     };
     return this.fb.group(customerSupportRequestform)
   }
 
   onSubmit() {
-    if (!this.customerSupportRequestform.valid) {
+    if (!this.reportProform.valid) {
       alert('Please fill all the required fields to create a super hero!')
     } else {
-      console.log(this.customerSupportRequestform.value)
-      this.customerSupportRequestform.patchValue({
-        customerId: this.customerId
+      console.log(this.reportProform.value)
+      this.reportProform.patchValue({
+        customerId: this.customerId,
+        proName:this.businessName,
+        proEmailId:this.proProfile.emailId
       })
-      this.leadService.createCustomerSupportRequest(this.customerSupportRequestform.value)
+      this.leadService.createReportPro(this.reportProform.value)
         .pipe(first())
         .subscribe(
           data => {
             if (data.status == 200) {
               this.toastr.successToastr(data.response, 'Customer Support Request')
-              this.router.navigateByUrl('/customer/support-list')
+              this.router.navigateByUrl('/my-pros-view/618ae544538367663cc10fcc')
             }
           }, error => {
             this.toastr.errorToastr(error, INTERNAL_SERVER_ERROR_MSG)
@@ -106,7 +134,7 @@ export class ReportProComponent implements OnInit {
   getWorkOrderData(value) {    
    const gg= this.workOrdeList.filter(o=>o.workOrderNumber === value)
    console.log('fff',gg[0].WorkDescription.jobTitle)
-   this.customerSupportRequestform.patchValue({
+   this.reportProform.patchValue({
     projectName: gg[0].WorkDescription.jobTitle,
     createdOn:gg[0].WorkDescription.createdOn
     
