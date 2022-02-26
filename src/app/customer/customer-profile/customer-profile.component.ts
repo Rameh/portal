@@ -334,7 +334,8 @@ export class CustomerProfileComponent implements OnInit {
       alert('Please fill all the required fields to create a super hero!')
     } else {
       console.log(this.customerProfileform.value)
-      this.leadService.updateCustomerProfile('firebase@sunkpo.com', this.customerProfileform.value)
+      //'firebase@sunkpo.com'
+      this.leadService.updateCustomerProfile( this.emailId, this.customerProfileform.value)
         .pipe(first())
         .subscribe(
           data => {

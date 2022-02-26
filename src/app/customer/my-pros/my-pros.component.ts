@@ -24,7 +24,8 @@ export class MyProsComponent implements OnInit {
   }
   getCustomerPros(){
     this.customerEmailId=localStorage.getItem('emailId')
-    this.leadService.getCustomerPros('hatim.naim@gmail.com')
+    //'hatim.naim@gmail.com'
+    this.leadService.getCustomerPros(this.customerEmailId)
     .subscribe((data) => {
       if (data.status == 200) {
         this.customerProList = data.data
