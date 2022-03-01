@@ -13,7 +13,7 @@ import {
   INTERNAL_SERVER_ERROR_MSG,
   ALREADY_EXIST_CODE
 } from '../../helpers/constants';
-
+declare var $: any;
 @Component({
   selector: 'app-report-pro',
   templateUrl: './report-pro.component.html',
@@ -109,7 +109,8 @@ export class ReportProComponent implements OnInit {
         .subscribe(
           data => {
             if (data.status == 200) {
-              this.toastr.successToastr(data.response, 'Customer Support Request')
+              this.toastr.successToastr(data.response, 'Report Pro')
+              $("#forgotPassword3").modal("show");
               this.router.navigateByUrl('/my-pros-view/618ae544538367663cc10fcc')
             }
           }, error => {
@@ -141,6 +142,11 @@ export class ReportProComponent implements OnInit {
   })
    //this.customerSupportRequestform.customerSupportRequestform=
    console.log("🚀 ~ file: customer-support-request-form.component.ts ~ line 92 ~ CustomerSupportRequestFormComponent ~ gg", gg)
+  }
+
+
+  async newPassword1() {
+   
   }
 }
 
