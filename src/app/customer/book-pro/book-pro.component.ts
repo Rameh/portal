@@ -23,6 +23,7 @@ export class BookProComponent implements OnInit {
 
   public currentDate: any;
   bookProform: FormGroup;
+  serviceAddressForm: FormGroup;
   workOrdeList: any;
   projectName
   emailId:any;
@@ -42,6 +43,8 @@ export class BookProComponent implements OnInit {
   state: any;
   flagStatus: any = 'all';
   woServiceAddress: any;
+  radioSelected: any;
+  radioSel: any = [];
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -51,6 +54,7 @@ export class BookProComponent implements OnInit {
 
   ) {
     this.bookProform = this.buildFormGroup({})
+    this.serviceAddressForm=this.buildFormGroup1({})
   }
 
   ngOnInit(): void {
@@ -58,7 +62,7 @@ export class BookProComponent implements OnInit {
     this.currentDate = moment(new Date()).format("YYYY-MM-DD");
     this.emailId=localStorage.getItem('emailId')
 
-    this.leadService.getUserProfile(this.emailId).subscribe((data) => {
+    this.leadService.getUserProfile('hatim.naim@gmail.com').subscribe((data) => {
       if (data.status == 200) {
         let userProfileData = { ...data['data'][0] }
         this.customerId=userProfileData.customerId
@@ -107,6 +111,26 @@ export class BookProComponent implements OnInit {
   }
 
   private buildFormGroup(formData): any {
+    const bookProform = {
+      customerId: [this.customerId],
+      workOrderNumber: [''],
+      emailId: ['h1@sunkpo.com'],
+      createdOn: [''],
+      projectName: [''],
+      projectDescription: [''],
+      resolution: [''],
+      resolutiondate: [''],
+      resolutionby: [''],
+      status: ["Open"],
+      streetAddress: [formData.ServiceAddress?.streetAddress],
+      city: [formData.ServiceAddress?.city],
+      state: [formData.ServiceAddress?.state],
+      zipCode: [formData.ServiceAddress?.zipcode],
+    };
+    return this.fb.group(bookProform)
+  }
+
+  private buildFormGroup1(formData): any {
     const bookProform = {
       customerId: [this.customerId],
       workOrderNumber: [''],
@@ -189,6 +213,43 @@ export class BookProComponent implements OnInit {
       this.bookProform.disable()
     }
   }
+
+  getSelecteditem() {
+    // this.radioSel = this.woServiceAddress.find(data => data._id.phoneNumber === this.radioSelected);
+    this.radioSel = this.woServiceAddress[this.radioSelected]
+    console.log("🚀 ~ file: book-pro.component.ts ~ line 220 ~ BookProComponent ~ this.radioSel", this.radioSel)
+    console.log(this.radioSel)
+    if (this.radioSel) {
+      this.bookProform.patchValue(
+        {
+          serviceadminNotes: this.bookProform.value.adminNotes,
+          flagStatus: "NO",
+          serviceemailId: this.radioSel._id.emailId,
+          servicecustomerName: this.radioSel._id.customerName,
+          servicefirstName: this.radioSel._id.firstName,
+          servicelastName: this.radioSel._id.lastName,
+          servicephoneNumber: this.radioSel._id.phoneNumber,
+          servicephoneType: this.bookProform.value.phoneType,
+          streetAddress: "Ramesh",
+          servicestate: this.radioSel._id.state,
+          servicecity: this.radioSel._id.city,
+          servicezipcode: this.radioSel._id.zipcode,
+          servicecounty: this.radioSel._id.county,
+        }
+      );
+      console.log("adresss=====>",this.serviceAddressForm.value)
+      //this.createlatlong();
+      console.log("adresss=====>",this.serviceAddressForm.value)
+    }
+    else {
+      this.serviceAddressForm.reset()
+    }
+  }
+
+
+
+
+
 
 
   getZipcodeData(zipcode) {

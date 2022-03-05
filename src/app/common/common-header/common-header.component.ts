@@ -46,6 +46,7 @@ export class CommonHeaderComponent implements OnInit {
 
   Logout(){
     localStorage.removeItem('emailId')
+    window.location.replace('http://topproz2.s3-website-us-east-1.amazonaws.com');
     window.location.href=`http://topproz2.s3-website-us-east-1.amazonaws.com/auth/signin`
   }
 
