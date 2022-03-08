@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { ToastrManager } from 'ng6-toastr-notifications';
@@ -45,6 +45,8 @@ export class BookProComponent implements OnInit {
   woServiceAddress: any;
   radioSelected: any;
   radioSel: any = [];
+  zipCode: any;
+  county: any;
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -58,6 +60,7 @@ export class BookProComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.createWorkOrderForm();
     this.getProProfile(this.route.snapshot.params.id)
     this.currentDate = moment(new Date()).format("YYYY-MM-DD");
     this.emailId=localStorage.getItem('emailId')
@@ -73,6 +76,29 @@ export class BookProComponent implements OnInit {
       }
     })
   }
+
+  createWorkOrderForm() {
+   
+    this.serviceAddressForm = this.fb.group({
+      servicecustomerName: ['', Validators.required],
+      serviceemailId: ['', Validators.required],
+      servicefirstName: ['', Validators.required],
+      servicelastName: ['', Validators.required],
+      servicephoneNumber: ['', Validators.required],
+      servicephoneType: ['' , Validators.required],
+      servicestreetAddress: ['' , Validators.required],
+      servicezipcode: ['', Validators.required],
+      serviceunit: [''],
+      servicecity: ['',Validators.required],
+      servicestate: ['',Validators.required],
+      servicecounty: ['',Validators.required],
+      projectName:[''],
+      projectDescription: ['']
+    })
+    //this.makeRecuring()
+
+  }
+  get s() { return this.serviceAddressForm.controls; }
 
   getProProfile(proId){
     //this.customerEmailId=localStorage.getItem('emailId')
@@ -142,7 +168,7 @@ export class BookProComponent implements OnInit {
       resolutiondate: [''],
       resolutionby: [''],
       status: ["Open"],
-      streetAddress: [formData.ServiceAddress?.streetAddress],
+      streetAddress: [''],
       city: [formData.ServiceAddress?.city],
       state: [formData.ServiceAddress?.state],
       zipCode: [formData.ServiceAddress?.zipcode],
@@ -197,40 +223,99 @@ export class BookProComponent implements OnInit {
    console.log("🚀 ~ file: customer-support-request-form.component.ts ~ line 92 ~ CustomerSupportRequestFormComponent ~ gg", gg)
   }
 
+  getatlservice(flagStatus) {
+    if (flagStatus == 'all') {
+      this.serviceAddressForm.reset();
+      this.serviceAddressForm.enable();
+    }
+  }
 
+
+  createlatlong() {
+    console.log("service addresss=====>",this.serviceAddressForm.value)
+    //in create lat long addition service
+    if (this.serviceAddressForm.value.servicezipcode.length === 5 && this.serviceAddressForm.value.servicestreetAddress !== "") {
+      var address = this.serviceAddressForm.value.servicestreetAddress + "," + this.serviceAddressForm.value.servicecounty + "," + this.serviceAddressForm.value.servicecity + "," + this.serviceAddressForm.value.servicezipcode + "," + this.serviceAddressForm.value.servicestate
+      var add = { address: address }
+      // this.socialMediaService.getGoogleLatLongFromAddress(add)
+      //   .subscribe((data) => {
+      //     if (data.status == SUCCESS_CODE) {
+      //       this.latitude = data.data.lat;
+      //       this.longitude = data.data.lng;
+      //     }
+      //     else {
+      //       this.spinner.hide()
+      //     }
+      //   })
+    }
+  }
   getServiceCheck1(flagStatus) {
     if (flagStatus == 'NO') {
       // this.serviceAddressForm.reset()
-      this.bookProform.enable();
-      this.bookProform.controls['servicezipcode'].disable();
-      this.bookProform.controls['servicestreetAddress'].disable();
-      this.bookProform.controls['serviceadminNotes'].disable();
-      this.bookProform.controls['servicezipcode'].disable();
-      this.bookProform.controls['servicestreetAddress'].disable();
+      this.serviceAddressForm.enable();
+     //this.serviceAddressForm.controls['servicezipcode'].disable();
+      //this.serviceAddressForm.controls['servicestreetAddress'].disable();
+     // this.serviceAddressForm.controls['serviceadminNotes'].disable();
+      //this.serviceAddressForm.controls['servicezipcode'].disable();
+      //this.serviceAddressForm.controls['servicestreetAddress'].disable();
     }
     else {
-      this.bookProform.reset()
-      this.bookProform.disable()
+      this.serviceAddressForm.reset()
+      this.serviceAddressForm.disable()
     }
   }
+
+  selectServiceAddress(radioSelected) {
+    this.getSelecteditem()
+  }
+
+  // getSelecteditem() {
+  //   // this.radioSel = this.woServiceAddress.find(data => data._id.phoneNumber === this.radioSelected);
+  //   this.radioSel = this.woServiceAddress[this.radioSelected]
+  //   console.log("🚀 ~ file: book-pro.component.ts ~ line 220 ~ BookProComponent ~ this.radioSel", this.radioSel)
+  //   console.log(this.radioSel)
+  //   if (this.radioSel) {
+  //     this.bookProform.patchValue(
+  //       {
+  //         serviceadminNotes: this.bookProform.value.adminNotes,
+  //         flagStatus: "NO",
+  //         serviceemailId: this.radioSel._id.emailId,
+  //         servicecustomerName: this.radioSel._id.customerName,
+  //         servicefirstName: this.radioSel._id.firstName,
+  //         servicelastName: this.radioSel._id.lastName,
+  //         servicephoneNumber: this.radioSel._id.phoneNumber,
+  //         servicephoneType: this.bookProform.value.phoneType,
+  //         streetAddress: "Ramesh",
+  //         servicestate: this.radioSel._id.state,
+  //         servicecity: this.radioSel._id.city,
+  //         servicezipcode: this.radioSel._id.zipcode,
+  //         servicecounty: this.radioSel._id.county,
+  //       }
+  //     );
+  //     console.log("adresss=====>",this.serviceAddressForm.value)
+  //     //this.createlatlong();
+  //     console.log("adresss=====>",this.serviceAddressForm.value)
+  //   }
+  //   else {
+  //     this.serviceAddressForm.reset()
+  //   }
+  // }
+
 
   getSelecteditem() {
     // this.radioSel = this.woServiceAddress.find(data => data._id.phoneNumber === this.radioSelected);
     this.radioSel = this.woServiceAddress[this.radioSelected]
-    console.log("🚀 ~ file: book-pro.component.ts ~ line 220 ~ BookProComponent ~ this.radioSel", this.radioSel)
     console.log(this.radioSel)
     if (this.radioSel) {
-      this.bookProform.patchValue(
+      this.serviceAddressForm.patchValue(
         {
-          serviceadminNotes: this.bookProform.value.adminNotes,
           flagStatus: "NO",
           serviceemailId: this.radioSel._id.emailId,
           servicecustomerName: this.radioSel._id.customerName,
           servicefirstName: this.radioSel._id.firstName,
           servicelastName: this.radioSel._id.lastName,
           servicephoneNumber: this.radioSel._id.phoneNumber,
-          servicephoneType: this.bookProform.value.phoneType,
-          streetAddress: "Ramesh",
+          servicestreetAddress: this.radioSel._id.streetAddress,
           servicestate: this.radioSel._id.state,
           servicecity: this.radioSel._id.city,
           servicezipcode: this.radioSel._id.zipcode,
@@ -245,8 +330,6 @@ export class BookProComponent implements OnInit {
       this.serviceAddressForm.reset()
     }
   }
-
-
 
 
 

@@ -1,125 +1,158 @@
 <div class="container">
-    <form [formGroup]="bookProform">
-        <section class="projects_list personal_info pt-60 pb-30">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-12">
-                        <div class="card pinfo_box shadow">
-                            <div class="row card-header m-0 justify-content-center">
-                                <div class="col-lg-2 col-2">
-                                    <span class="d-block text-center"><i class="fa fa-angle-left"></i></span>
-                                </div>
-                                <div class="col-lg-8 col-5">
-                                    <h3>Book "{{businessName}}"</h3>
-                                </div>
-                                <div class="col-lg-2 col-2">
-                                    <span class="d-block text-center"><i class="fa fa-ellipsis-v"></i></span>
-                                </div>
+    <section class="projects_list personal_info pt-60 pb-30">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-12">
+                    <div class="card pinfo_box shadow">
+                        <div class="row card-header m-0 justify-content-center">
+                            <div class="col-lg-2 col-2">
+                                <span class="d-block text-center"><i class="fa fa-angle-left"></i></span>
                             </div>
-                            <div class="card-body pt-5">
-                                <div class="row">
-                                    <div class="col-lg-8 offset-lg-2">
-                                        <div class="pinfo_tabs">
-                                            <div class="tab-content pinfo_tabs_cont" id="pills-tabContent">
-                                                <div class="tab-pane fade show active" id="pills-personal"
-                                                    role="tabpanel" aria-labelledby="pills-personal-tab">
-                                                    <div class="pinfo_contact_form">
-                                                        <label for="firstName" class="form-label">
-                                                            Service Address
-                                                        </label>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <div class="radio" style="margin:10px;">
-                                                                        <label>
-                                                                            <input type="radio" [(ngModel)]="flagStatus"
-                                                                                name="serviceAddress" value="NO"
-                                                                                (change)="getServiceCheck1(flagStatus)"
-                                                                                class="colored-success"
-                                                                                [ngModelOptions]="{standalone: true}" />
-                                                                                &nbsp;&nbsp;
-                                                                            <span class="text">Use Existing
-                                                                                (Select one
-                                                                                address from
-                                                                                list)
-                                                                            </span> &nbsp;
-                                                                            &nbsp;&nbsp;
-                                                                            <button type="button"
-                                                                                [disabled]="flagStatus=='Yes' || flagStatus=='all'"
-                                                                                class="btn cubtn" data-toggle="modal"
-                                                                                data-target=".bs-example1">
-                                                                                Select
-                                                                            </button>
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <div class="radio" style="margin:10px;">
-                                                                        <label>
-                                                                            <input type="radio" name="serviceAddress"
-                                                                                value="all" class="colored-success" />
-                                                                                &nbsp;&nbsp;
-                                                                            <span class="text">Enter
-                                                                                New Service
-                                                                                Address
-
-                                                                            </span>
-                                                                        </label>
-                                                                    </div>
+                            <div class="col-lg-8 col-5">
+                                <h3>Book "{{businessName}}"</h3>
+                            </div>
+                            <div class="col-lg-2 col-2">
+                                <span class="d-block text-center"><i class="fa fa-ellipsis-v"></i></span>
+                            </div>
+                        </div>
+                        <div class="card-body pt-5">
+                            <div class="row">
+                                <div class="col-lg-8 offset-lg-2">
+                                    <div class="pinfo_tabs">
+                                        <div class="tab-content pinfo_tabs_cont" id="pills-tabContent">
+                                            <div class="tab-pane fade show active" id="pills-personal" role="tabpanel"
+                                                aria-labelledby="pills-personal-tab">
+                                                <div class="pinfo_contact_form">
+                                                    <label for="firstName" class="form-label">
+                                                        Service Address
+                                                    </label>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <div class="radio" style="margin:10px;">
+                                                                    <label>
+                                                                        <input type="radio" [(ngModel)]="flagStatus"
+                                                                            name="serviceAddress" value="NO"
+                                                                            (change)="getServiceCheck1(flagStatus)"
+                                                                            class="colored-success"
+                                                                            [ngModelOptions]="{standalone: true}" />
+                                                                        &nbsp;&nbsp;
+                                                                        <span class="text">Use Existing
+                                                                            (Select one
+                                                                            address from
+                                                                            list)
+                                                                        </span> &nbsp;
+                                                                        &nbsp;&nbsp;
+                                                                        <button type="button"
+                                                                            [disabled]="flagStatus=='Yes' || flagStatus=='all'"
+                                                                            class="btn cubtn" data-toggle="modal"
+                                                                            data-target=".bs-example1">
+                                                                            Select
+                                                                        </button>
+                                                                    </label>
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <div class="radio" style="margin:10px;">
+                                                                    <label>
+                                                                        <input type="radio" [(ngModel)]="flagStatus"
+                                                                            name="serviceAddress" value="all"
+                                                                            (change)="getatlservice(flagStatus)"
+                                                                            [ngModelOptions]="{standalone: true}"
+                                                                            class="colored-success" />
+                                                                        &nbsp;&nbsp;
+                                                                        <span class="text">Enter
+                                                                            New Service
+                                                                            Address
+
+                                                                        </span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <form [formGroup]="serviceAddressForm">
                                                         <div class="row">
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
                                                                     <label for="emailAddress" class="form-label">
                                                                         Street Address</label>
+                                                                        <span class="mandatory">*</span>
                                                                     <input type="text" name="name" id="mobileNumber"
                                                                         class="form-control"
                                                                         placeholder="Enter Street Address" tabindex="2"
-                                                                        formControlName="streetAddress">
+                                                                        formControlName="servicestreetAddress"
+                                                                        (keyup)="createlatlong()">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
                                                                     <label for="firstName" class="form-label">
-                                                                        ZIP CODE
+                                                                        Zip Code
                                                                     </label>
+                                                                    <span class="mandatory">*</span>
                                                                     <div class="input-icons">
-                                                                        <input type="text" id="zipCode" mask="99999"
-                                                                            separatorLimit="99999"
-                                                                            placeholder="Enter your zip code"
-                                                                            [(ngModel)]="zipcode"
-                                                                            formControlName="zipCode"
-                                                                            (ngModelChange)="getZipcodeData(zipcode)">
+                                                                        <input type="text" class="form-control"
+                                                                            placeholder="Enter Zip Code"
+                                                                            formControlName="servicezipcode"
+                                                                            mask="separator.8" mask="99999"
+                                                                            thousandSeparator="" separatorLimit="99999"
+                                                                            #myselectzipcode
+                                                                            (keyup)="getZipcodeData(myselectzipcode.value)">
+                                                                    </div>
+                                                                    <div *ngIf="zipcodelength"
+                                                                        style="color:red;font-size: 11px">
+                                                                        Invalid Zip Code (5 digits)
+                                                                    </div>
+                                                                    <div *ngIf="zipcodeExists">
+                                                                        <p class="inputFieldValidator">
+                                                                            Zip Code Not Found
+                                                                        </p>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
                                                                     <label for="firstName" class="form-label">
-                                                                        CITY
+                                                                        City
                                                                     </label>
+                                                                    <span class="mandatory">*</span>
                                                                     <div class="input-icons">
                                                                         <input type="text" class="form-control"
                                                                             id="city" readonly value="{{city}}"
-                                                                            formControlName="city"
-                                                                            style="background-color:#f0f0f0;">
+                                                                            formControlName="servicecity"
+                                                                            style="background-color:white; ">
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
                                                                     <label for="firstName" class="form-label">
-                                                                        STATE
+                                                                        State
                                                                     </label>
+                                                                    <span class="mandatory">*</span>
                                                                     <div class="input-icons">
                                                                         <input type="text" class="form-control"
                                                                             id="city" readonly value="{{stateName}}"
-                                                                            formControlName="state"
-                                                                            style="background-color:#f0f0f0; ">
+                                                                            formControlName="servicestate"
+                                                                            style="background-color:white; ">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="firstName" class="form-label">
+                                                                        County
+                                                                    </label>
+                                                                    <span class="mandatory">*</span>
+                                                                    <div class="input-icons">
+                                                                        <input type="text" class="form-control"
+                                                                            id="servicecounty" readonly
+                                                                            value="{{county}}"
+                                                                            formControlName="servicecounty"
+                                                                            style="background-color:white; ">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -129,7 +162,7 @@
                                                                         Project Name</label>
                                                                     <input type="text" name="name" id="mobileNumber"
                                                                         formControlName="projectName"
-                                                                        class="form-control" placeholder="Lorem Ipsum"
+                                                                        class="form-control" placeholder="Enter Project Name"
                                                                         tabindex="2">
                                                                 </div>
                                                             </div>
@@ -138,9 +171,9 @@
                                                                     <label for="emailAddress" class="form-label">
                                                                         Project Description</label>
                                                                     <textarea id="w3review" name="w3review" rows="4"
-                                                                        cols="50" placeholder="Enter Service Location"
+                                                                        cols="50" placeholder="Enter Project Description"
                                                                         formControlName="projectDescription">
-                                          </textarea>
+                                                                    </textarea>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12">
@@ -166,7 +199,7 @@
                                                                     (click)="onSubmit()">Submit</button>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -177,17 +210,17 @@
                     </div>
                 </div>
             </div>
-        </section>
-    </form>
+        </div>
+    </section>
 </div>
 
 <div style="width:100%" class="modal fade bs-example1" tabindex="-1" role="dialog" id="assignModel"
     aria-labelledby="myLargeModalLabelTrade" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog modal-lg" >
+    <div class="modal-dialog modal-lg">
         <div class="modal-content" style="width: 140%;">
-            <br/> <br/>
+            <br /> <br />
             <div class="modal-header">
-               
+
                 <div class="col-lg-8 col-5">
                     <h4>Select Service Address ( From Previous Work Orders )</h4>
                 </div>
@@ -262,8 +295,8 @@
                     <br />
                     <div class="row">
                         <div class="col-sm-6">
-                            <input type="button"   class="btn cubtn" value="Select Address"
-                                id="add-more" data-dismiss="modal">
+                            <input type="button" class="btn cubtn" value="Select Address" id="add-more"
+                                data-dismiss="modal">
                         </div>
                         <div class="col-sm-6">
                             <input type="button" class="btn btn-link btn1" value="Close" id="add-more"
