@@ -103,6 +103,9 @@ export class LeadService {
                 catchError(this.handleError)
             )
         }
+        getSubCategoriesData(cat_code: string): Observable<any> {
+            return this.http.get(`${environment.API_URL}/master/getsubcatCodeData/${cat_code}`);
+        }
     handleError(error: HttpErrorResponse) {
         let msg = '';
         if (error.error instanceof ErrorEvent) {

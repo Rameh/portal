@@ -47,6 +47,8 @@ export class BookProComponent implements OnInit {
   radioSel: any = [];
   zipCode: any;
   county: any;
+  categories: any;
+  subCategories: any;
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -60,7 +62,7 @@ export class BookProComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.createWorkOrderForm();
+    this.createBookProForm();
     this.getProProfile(this.route.snapshot.params.id)
     this.currentDate = moment(new Date()).format("YYYY-MM-DD");
     this.emailId=localStorage.getItem('emailId')
@@ -71,14 +73,11 @@ export class BookProComponent implements OnInit {
         this.customerId=userProfileData.customerId
         this.getWorkOrderListBasedOnCustomer(this.customerId)
         this.getWOServiceAddress(this.customerId)
-        console.log("🚀 ~ file: customer-support-request-list.component.ts ~ line 41 ~ CustomerSupportRequestListComponent ~ userProfileData", userProfileData)
-        //this.customerName=userProfileData.CustomerBillingAddress.firstName+' '+userProfileData.CustomerBillingAddress.lastName
       }
     })
   }
 
-  createWorkOrderForm() {
-   
+  createBookProForm() {
     this.serviceAddressForm = this.fb.group({
       servicecustomerName: ['', Validators.required],
       serviceemailId: ['', Validators.required],
@@ -111,12 +110,23 @@ export class BookProComponent implements OnInit {
         this.serviceArea=this.proProfile.serviceArea
         this.dateTimeData=this.proProfile.businessHours
         this.businessName=this.proProfile.businessName
+        this.categories = this.proProfile.serviceArea[0].category
+        console.log("🚀 ~ file: book-pro.component.ts ~ line 112 ~ BookProComponent ~  this.proProfile",  this.proProfile)
         //this.imgPath = this.proProfile.attachments
         console.log("🚀 ~ file: mypro-view.component.ts ~ line 39 ~ MyproViewComponent ~ this.serviceArea", this.serviceArea)
       }
     })
   }
 
+    /* get stateName */
+    getSubCategoriesData(code) {
+      this.leadService.getSubCategoriesData(code)
+        .subscribe((data) => {
+          if (data.status == SUCCESS_CODE) {
+            this.subCategories = data['data']
+          }
+        })
+    }
   getWOServiceAddress(customerId) {
 
     this.leadService.workorderServiceAddressData(customerId)
@@ -219,8 +229,6 @@ export class BookProComponent implements OnInit {
     createdOn:gg[0].WorkDescription.createdOn
     
   })
-   //this.customerSupportRequestform.customerSupportRequestform=
-   console.log("🚀 ~ file: customer-support-request-form.component.ts ~ line 92 ~ CustomerSupportRequestFormComponent ~ gg", gg)
   }
 
   getatlservice(flagStatus) {
@@ -253,11 +261,6 @@ export class BookProComponent implements OnInit {
     if (flagStatus == 'NO') {
       // this.serviceAddressForm.reset()
       this.serviceAddressForm.enable();
-     //this.serviceAddressForm.controls['servicezipcode'].disable();
-      //this.serviceAddressForm.controls['servicestreetAddress'].disable();
-     // this.serviceAddressForm.controls['serviceadminNotes'].disable();
-      //this.serviceAddressForm.controls['servicezipcode'].disable();
-      //this.serviceAddressForm.controls['servicestreetAddress'].disable();
     }
     else {
       this.serviceAddressForm.reset()
@@ -268,39 +271,6 @@ export class BookProComponent implements OnInit {
   selectServiceAddress(radioSelected) {
     this.getSelecteditem()
   }
-
-  // getSelecteditem() {
-  //   // this.radioSel = this.woServiceAddress.find(data => data._id.phoneNumber === this.radioSelected);
-  //   this.radioSel = this.woServiceAddress[this.radioSelected]
-  //   console.log("🚀 ~ file: book-pro.component.ts ~ line 220 ~ BookProComponent ~ this.radioSel", this.radioSel)
-  //   console.log(this.radioSel)
-  //   if (this.radioSel) {
-  //     this.bookProform.patchValue(
-  //       {
-  //         serviceadminNotes: this.bookProform.value.adminNotes,
-  //         flagStatus: "NO",
-  //         serviceemailId: this.radioSel._id.emailId,
-  //         servicecustomerName: this.radioSel._id.customerName,
-  //         servicefirstName: this.radioSel._id.firstName,
-  //         servicelastName: this.radioSel._id.lastName,
-  //         servicephoneNumber: this.radioSel._id.phoneNumber,
-  //         servicephoneType: this.bookProform.value.phoneType,
-  //         streetAddress: "Ramesh",
-  //         servicestate: this.radioSel._id.state,
-  //         servicecity: this.radioSel._id.city,
-  //         servicezipcode: this.radioSel._id.zipcode,
-  //         servicecounty: this.radioSel._id.county,
-  //       }
-  //     );
-  //     console.log("adresss=====>",this.serviceAddressForm.value)
-  //     //this.createlatlong();
-  //     console.log("adresss=====>",this.serviceAddressForm.value)
-  //   }
-  //   else {
-  //     this.serviceAddressForm.reset()
-  //   }
-  // }
-
 
   getSelecteditem() {
     // this.radioSel = this.woServiceAddress.find(data => data._id.phoneNumber === this.radioSelected);

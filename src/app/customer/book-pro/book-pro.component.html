@@ -78,8 +78,8 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
                                                                     <label for="emailAddress" class="form-label">
-                                                                        Street Address</label>
-                                                                        <span class="mandatory">*</span>
+                                                                    <b> Street Address </b> </label>
+                                                                    <span class="mandatory">*</span>
                                                                     <input type="text" name="name" id="mobileNumber"
                                                                         class="form-control"
                                                                         placeholder="Enter Street Address" tabindex="2"
@@ -90,7 +90,7 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
                                                                     <label for="firstName" class="form-label">
-                                                                        Zip Code
+                                                                        <b>Zip Code</b> 
                                                                     </label>
                                                                     <span class="mandatory">*</span>
                                                                     <div class="input-icons">
@@ -116,7 +116,7 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
                                                                     <label for="firstName" class="form-label">
-                                                                        City
+                                                                        <b>City</b> 
                                                                     </label>
                                                                     <span class="mandatory">*</span>
                                                                     <div class="input-icons">
@@ -130,7 +130,7 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
                                                                     <label for="firstName" class="form-label">
-                                                                        State
+                                                                       <b>State</b>
                                                                     </label>
                                                                     <span class="mandatory">*</span>
                                                                     <div class="input-icons">
@@ -144,7 +144,7 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
                                                                     <label for="firstName" class="form-label">
-                                                                        County
+                                                                        <b>County</b>
                                                                     </label>
                                                                     <span class="mandatory">*</span>
                                                                     <div class="input-icons">
@@ -159,21 +159,67 @@
                                                             <div class="col-md-12">
                                                                 <div class="form-group">
                                                                     <label for="emailAddress" class="form-label">
-                                                                        Project Name</label>
+                                                                        <b>Project Name</b></label>
+                                                                        <span class="mandatory">*</span>
                                                                     <input type="text" name="name" id="mobileNumber"
                                                                         formControlName="projectName"
-                                                                        class="form-control" placeholder="Enter Project Name"
-                                                                        tabindex="2">
+                                                                        class="form-control"
+                                                                        placeholder="Enter Project Name" tabindex="2">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12">
                                                                 <div class="form-group">
                                                                     <label for="emailAddress" class="form-label">
-                                                                        Project Description</label>
+                                                                        <b>Project Description</b></label>
+                                                                        <span class="mandatory">*</span>
                                                                     <textarea id="w3review" name="w3review" rows="4"
-                                                                        cols="50" placeholder="Enter Project Description"
+                                                                        cols="50"
+                                                                        placeholder="Enter Project Description"
                                                                         formControlName="projectDescription">
                                                                     </textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="projectId" class="form-label">
+                                                                        <b>Select Category</b>
+                                                                        <span class="mandatory">*</span>
+                                                                    </label>
+                                                                    <div class="form-group">
+                                                                        <span class="input-icon icon-right">
+                                                                            <select class="form-control"
+                                                                                formControlName="selectCategory"
+                                                                                #mySelect
+                                                                                (change)="getSubCategoriesData(mySelect.value)"
+                                                                                data-bv-field="row-title">
+                                                                                <option *ngFor="let data of categories"
+                                                                                    value={{data.categoryCode}}>
+                                                                                    {{data.categoryName}}
+                                                                                </option>
+                                                                            </select>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="projectId" class="form-label">
+                                                                        <b>Select Sub-Category</b>
+                                                                            <span class="mandatory">*</span>
+                                                                    </label>
+                                                                    <div class="form-group">
+                                                                        <span class="input-icon icon-right">
+                                                                            <select class="form-control"
+                                                                                formControlName="selectsubCategory"
+                                                                                data-bv-field="row-title">
+                                                                                <option *ngFor="let data of subCategories"
+                                                                                    value={{data.subcategoryName}}>
+                                                                                    {{data.subcategoryName}}
+                                                                                </option>
+                                                                            </select>
+                                                                        </span>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12">
