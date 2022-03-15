@@ -60,13 +60,68 @@
                                       style="background-color:#f0f0f0;">
                                   </div>
                                 </div>
-                                <div class="col-md-12">
+                                <!-- <div class="col-md-12">
                                     <div class="form-group">
                                       <label for="emailAddress" class="form-label">
                                         Attach any images/videos about the problem</label>
                                     </div>
                                     <img src="https://topproz2.s3.amazonaws.com/uploads/1640758526320.image_picker_49B614F2-275C-4414-A6CC-5049F5C908F7-15547-00000C109927D728.jpg" style="width: 15%;height:70%">
                                     <br/>
+                                  </div> -->
+                                  <div class="tab-pane fade" id="profilepicture" role="tabpanel" aria-labelledby="profilepicture-tab">
+                                    <div class="card shadow mb-4">
+                                      <div class="card-body">
+                                        <br>
+                                        <div class="form-group">
+                                          <div class="controls">
+                                            <div data-provides="fileupload" class="fileupload fileupload-new">
+                                              <div class="row" style="display: inline-block; margin-left: 30px;"
+                                                *ngFor="let x of proProfileImage1;let i=index">
+                                                <br>
+                                                <figure class="imageNamecss" class="icon1">
+                                                  <i style="float:right;margin-left:-30px; border:3px solid;border-right-style: 10px;color: red"
+                                                    class="fa fa-times" (click)="removeSelectedFile1(i)"
+                                                    *ngIf="componentMode=='Edit' || componentMode=='Create' "></i>
+                                                  <img src="{{x}}" height="150px" width="150px"
+                                                    style="border:1px solid;border-radius: 5px;color: rgb(31, 7, 7)">
+                                                </figure>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                              </div>
+                                              <div class="row" style="display: inline-block; margin-left: 30px;"
+                                                *ngFor="let y of arr;let i=index">
+                                                <br>
+                                                <figure class="imageNamecss" class="icon1" *ngIf="!btnFlag">
+                                                  <i style="float:right;margin-left:-30px; border:3px solid;border-right-style: 10px;color: red"
+                                                    class="fa fa-times" (click)="removeSelectedFile(i)"
+                                                    *ngIf="componentMode=='Edit' || componentMode=='Create' "></i>
+                                                  <img src="{{y}}" height="150px" width="150px"
+                                                    style="border:1px solid;border-radius: 5px;color: rgb(31, 7, 7)">
+                                                </figure>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <ng-container>
+                                          <div  class="progress">
+                                            <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+                                              attr.aria-valuenow="{{ progressCompanyLogo2 }}" aria-valuemin="0" aria-valuemax="100"
+                                              [ngStyle]="{ width: progressCompanyLogo2 + '%' }">
+                                              {{ progressCompanyLogo2 }}%
+                                            </div>
+                                          </div><br />
+                                          <div>
+                                            <p class="uploadMessage">{{uploadMessageCompanyLogo1}}</p>
+                                            <p class="inputFieldValidator" *ngIf="logoFlag1">Please upload the images</p>
+                                            <p class="inputFieldValidator" *ngIf="logoFlag2">Please select the images</p>
+                                          </div>
+                                          <label class="">
+                                            <i class="fa fa-file-image-o"></i>
+                                            <input type="file" multiple  (change)="selectFiles($event)"
+                                              class="hidden" />Choose Files</label>
+                                          <button class="btn btn-success" [disabled]="!selectFileUpload"
+                                            (click)="upload()">Upload</button>
+                                        </ng-container>
+                                      </div>
+                                    </div>
                                   </div>
                                   <div class="col-md-12">
                                   <br/> <br/>
