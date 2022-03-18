@@ -14,7 +14,7 @@ export class UploadService {
   upload(file: File): Observable<HttpEvent<any>> {
     const formData: FormData = new FormData();
     formData.append('image', file);
-    const req = new HttpRequest('POST', `${environment.API_URL}/fileUpload/imageUploader`, formData, {
+    const req = new HttpRequest('POST', `${environment.API_URL}/fileUpload/customer-imageUploader`, formData, {
       reportProgress: true,
       responseType: 'json'
     });
@@ -26,7 +26,7 @@ export class UploadService {
     for(let k=0;k<file.length;k++){
       formData.append('images', file[k]);
     }   
-    const req = new HttpRequest('POST', `http://localhost:8000/fileupload/customer-multipleImageUploader`, formData, {
+    const req = new HttpRequest('POST', `${environment.API_URL}/fileupload/customer-multipleImageUploader`, formData, {
       reportProgress: true,
       responseType: 'json'
     });
