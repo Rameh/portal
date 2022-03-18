@@ -200,7 +200,7 @@ export class ReportProComponent implements OnInit {
     }
     var filesAmount = fileInput.target.files.length;
     for (let i = 0; i < filesAmount; i++) {
-      const fileType= fileInput.target.files[0].type
+      const fileType= fileInput.target.files[i].type
       var reader = new FileReader();
       reader.onload = (fileInput: any) => {
         this.imgFlag = false;
