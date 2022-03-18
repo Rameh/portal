@@ -475,7 +475,8 @@ export class BookProComponent implements OnInit {
                 //console.log("res",resArr1)
                 this.resArr = (resArr1['uploadedImagePath'])
                 for (let y = 0; y < this.filesToUpload.length; y++) {
-                  this.proProfileImage1.push(this.resArr[y].location);
+                  const imageType=this.resArr[y].mimetype;
+                  this.proProfileImage1.push({Imageurl:this.resArr[y].location,type:imageType});
                 }
                 console.log("p1", this.proProfileImage1)
                 //console.log("arr", this.arr)

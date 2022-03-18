@@ -201,7 +201,6 @@ export class ReportProComponent implements OnInit {
     var filesAmount = fileInput.target.files.length;
     for (let i = 0; i < filesAmount; i++) {
       const fileType= fileInput.target.files[0].type
-      console.log("🚀 ~ file: report-pro.component.ts ~ line 203 ~ ReportProComponent ~ fileType", fileType)
       var reader = new FileReader();
       reader.onload = (fileInput: any) => {
         this.imgFlag = false;
@@ -255,12 +254,14 @@ export class ReportProComponent implements OnInit {
               this.logoFlag1 = false;
               this.uploadMessageCompanyLogo1 = 'Pictures Uploaded Successfully';
               let resArr1 = this.resArr['data'];
-              //console.log("res",resArr1)
+              console.log("res",this.resArr)
               this.resArr = (resArr1['uploadedImagePath'])
+              console.log('this.filesToUpload',this.filesToUpload)
               for (let y = 0; y < this.filesToUpload.length; y++) {
-                this.proProfileImage1.push(this.resArr[y].location);
+                const imageType=this.resArr[y].mimetype;
+                this.proProfileImage1.push({Imageurl:this.resArr[y].location,type:imageType});
               }
-              console.log("p1", this.proProfileImage1)
+              console.log("p1???????????", this.proProfileImage1)
               //console.log("arr", this.arr)
               //console.log("p3", this.proProfileImage3)
             }
