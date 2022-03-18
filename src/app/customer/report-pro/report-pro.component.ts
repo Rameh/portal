@@ -71,13 +71,14 @@ export class ReportProComponent implements OnInit {
     this.getProProfile(this.route.snapshot.params.id)
     this.currentDate = moment(new Date()).format("YYYY-MM-DD");
     this.emailId=localStorage.getItem('emailId')
-    this.leadService.getUserProfile('hatim.naim@gmail.com')
+    //'hatim.naim@gmail.com'
+    this.leadService.getUserProfile(this.emailId)
     .subscribe((data) => {
       if (data.status == 200) {
         let userProfileData = { ...data['data'][0] }
         this.customerId=userProfileData.customerId
         this.getWorkOrderListBasedOnCustomer(this.customerId)
-        console.log("🚀 ~ file: customer-support-request-list.component.ts ~ line 41 ~ CustomerSupportRequestListComponent ~ userProfileData", userProfileData)
+        //console.log("🚀 ~ file: customer-support-request-list.component.ts ~ line 41 ~ CustomerSupportRequestListComponent ~ userProfileData", userProfileData)
         //this.customerName=userProfileData.CustomerBillingAddress.firstName+' '+userProfileData.CustomerBillingAddress.lastName
       }
     })
@@ -174,7 +175,7 @@ export class ReportProComponent implements OnInit {
 
   // on file select
   selectFiles(fileInput) {
-    console.log("🚀 ~ file: report-pro.component.ts ~ line 175 ~ ReportProComponent ~ fileInput", fileInput)
+    console.log("testtttttttt", fileInput)
     this.btnFlag = false;
     this.selectFileUpload = true;
     this.checkFlag1 = true;
@@ -186,7 +187,6 @@ export class ReportProComponent implements OnInit {
     //console.log("🚀this.totalLength",  this.totalLength)
     this.imageArray = []
     this.progressHide1 = false
-    console.log("🚀 ~ file: report-pro.component.ts ~ line 189 ~ ReportProComponent ~ fileInput.target.files[0]", fileInput.target.files[0])
     if (fileInput.target.files.length == 1) {
       this.filesToUpload.push(fileInput.target.files[0])
       this.logoFlag1 = true;
@@ -200,11 +200,14 @@ export class ReportProComponent implements OnInit {
     }
     var filesAmount = fileInput.target.files.length;
     for (let i = 0; i < filesAmount; i++) {
+      const fileType= fileInput.target.files[0].type
+      console.log("🚀 ~ file: report-pro.component.ts ~ line 203 ~ ReportProComponent ~ fileType", fileType)
       var reader = new FileReader();
       reader.onload = (fileInput: any) => {
         this.imgFlag = false;
         this.urls.push(fileInput.target.result);
-        this.arr.push(fileInput.target.result);
+        this.arr.push({imageBase64:fileInput.target.result,type:fileType});
+        
         //this.proProfileImage3 = this.proProfileImage1.concat(this.arr);
         //console.log("p1", this.proProfileImage1)
         console.log("arr", this.arr)
@@ -257,7 +260,7 @@ export class ReportProComponent implements OnInit {
               for (let y = 0; y < this.filesToUpload.length; y++) {
                 this.proProfileImage1.push(this.resArr[y].location);
               }
-              //console.log("p1", this.proProfileImage1)
+              console.log("p1", this.proProfileImage1)
               //console.log("arr", this.arr)
               //console.log("p3", this.proProfileImage3)
             }
