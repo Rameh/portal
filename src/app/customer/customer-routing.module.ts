@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BookProComponent } from './book-pro/book-pro.component';
 import { CustomerLayoutComponent } from './customer-layout/customer-layout.component';
-import { CustomerLeadListComponent } from './customer-lead-list/customer-lead-list.component';
+import { CustomerProjectListComponent } from './customer-project-list/customer-project-list.component';
 import { CustomerNotificationsComponent } from './customer-notifications/customer-notifications.component';
 import { CustomerProfileComponent } from './customer-profile/customer-profile.component';
 import { CustomerSupportRequestFormComponent } from './customer-support-request-form/customer-support-request-form.component';
@@ -25,7 +25,7 @@ const routes: Routes = [
   {
     path: '', component: CustomerLayoutComponent,
     children: [
-      { path: 'lead-list/:emailId/:id', component: CustomerLeadListComponent },
+      { path: 'lead-list/:emailId/:id', component: CustomerProjectListComponent },
       { path: 'project-view/:id', component: ProjectViewComponent },
       { path: 'customer-profile', component: CustomerProfileComponent },
       { path: 'my-pros', component: MyProsComponent },

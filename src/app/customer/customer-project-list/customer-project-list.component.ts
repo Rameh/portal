@@ -12,11 +12,11 @@ import { ToastrManager } from 'ng6-toastr-notifications';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-customer-lead-list',
-  templateUrl: './customer-lead-list.component.html',
-  styleUrls: ['./customer-lead-list.component.scss']
+  selector: 'app-customer-project-list',
+  templateUrl: './customer-project-list.component.html',
+  styleUrls: ['./customer-project-list.component.scss']
 })
-export class CustomerLeadListComponent implements OnInit {
+export class CustomerProjectListComponent implements OnInit {
 
   public leadsList:any;
   public loginId:any;

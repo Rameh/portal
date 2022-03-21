@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CustomerRoutingModule } from './customer-routing.module';
-import { CustomerLeadListComponent } from './customer-lead-list/customer-lead-list.component';
+import { CustomerProjectListComponent } from './customer-project-list/customer-project-list.component';
 import { ProjectViewComponent } from './project-view/project-view.component';
 import { CustomerProfileComponent } from './customer-profile/customer-profile.component';
 import { MyProsComponent } from './my-pros/my-pros.component';
@@ -22,7 +22,7 @@ import { TextMaskModule } from 'angular2-text-mask';
 
 
 @NgModule({
-  declarations: [CustomerLeadListComponent, ProjectViewComponent, CustomerProfileComponent, MyProsComponent, MyproViewComponent, CustomerNotificationsComponent, CustomerSupportRequestFormComponent, CustomerSupportRequestListComponent, CustomerSupportRequestViewComponent, PrivacyPageComponent, TermsAndConditionsPageComponent, HelpAndFaqsPageComponent, ReportProComponent, BookProComponent],
+  declarations: [CustomerProjectListComponent, ProjectViewComponent, CustomerProfileComponent, MyProsComponent, MyproViewComponent, CustomerNotificationsComponent, CustomerSupportRequestFormComponent, CustomerSupportRequestListComponent, CustomerSupportRequestViewComponent, PrivacyPageComponent, TermsAndConditionsPageComponent, HelpAndFaqsPageComponent, ReportProComponent, BookProComponent],
   imports: [
     CommonModule,
     CustomerRoutingModule,
