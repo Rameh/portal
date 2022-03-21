@@ -73,6 +73,12 @@ export class LeadService {
             catchError(this.handleError)
         )
     }
+
+    getWorkOrderListByProIdAndCustomerId(prodId:any,customerId: any): Observable<any> {
+        return this.http.get(`${environment.API_URL}/Workorder/get-customer-work-orders-proid-customerId/${prodId}/${customerId}`).pipe(
+            catchError(this.handleError)
+        )
+    }
     createCustomerSupportRequest(customerSupportRequestData): Observable<any> {
         return this.http.post(`${environment.API_URL}/csr/create-csr`, customerSupportRequestData).pipe(
             catchError(this.handleError)
@@ -105,6 +111,11 @@ export class LeadService {
         }
         getSubCategoriesData(cat_code: string): Observable<any> {
             return this.http.get(`${environment.API_URL}/master/getsubcatCodeData/${cat_code}`);
+        }
+        getLeadList(loginId: any): Observable<any> {
+            return this.http.get(`${environment.API_URL}/lead/leadslist/${loginId}`).pipe(
+                catchError(this.handleError)
+            )
         }
     handleError(error: HttpErrorResponse) {
         let msg = '';

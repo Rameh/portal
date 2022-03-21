@@ -19,10 +19,11 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ReportProComponent } from './report-pro/report-pro.component';
 import { BookProComponent } from './book-pro/book-pro.component';
 import { TextMaskModule } from 'angular2-text-mask';
+import { CustomerLeadListComponent } from './customer-lead-list/customer-lead-list.component';
 
 
 @NgModule({
-  declarations: [CustomerProjectListComponent, ProjectViewComponent, CustomerProfileComponent, MyProsComponent, MyproViewComponent, CustomerNotificationsComponent, CustomerSupportRequestFormComponent, CustomerSupportRequestListComponent, CustomerSupportRequestViewComponent, PrivacyPageComponent, TermsAndConditionsPageComponent, HelpAndFaqsPageComponent, ReportProComponent, BookProComponent],
+  declarations: [CustomerProjectListComponent, ProjectViewComponent, CustomerProfileComponent, MyProsComponent, MyproViewComponent, CustomerNotificationsComponent, CustomerSupportRequestFormComponent, CustomerSupportRequestListComponent, CustomerSupportRequestViewComponent, PrivacyPageComponent, TermsAndConditionsPageComponent, HelpAndFaqsPageComponent, ReportProComponent, BookProComponent, CustomerLeadListComponent],
   imports: [
     CommonModule,
     CustomerRoutingModule,

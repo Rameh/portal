@@ -15,6 +15,7 @@ import { PrivacyPageComponent } from './privacy-page/privacy-page.component';
 import {ProjectViewComponent} from './project-view/project-view.component';
 import { ReportProComponent } from './report-pro/report-pro.component';
 import {TermsAndConditionsPageComponent} from './terms-and-conditions-page/terms-and-conditions-page.component'
+import { CustomerLeadListComponent } from './customer-lead-list/customer-lead-list.component';
 
 const routes: Routes = [
   {
@@ -25,7 +26,7 @@ const routes: Routes = [
   {
     path: '', component: CustomerLayoutComponent,
     children: [
-      { path: 'lead-list/:emailId/:id', component: CustomerProjectListComponent },
+      { path: 'project-list/:emailId/:id', component: CustomerProjectListComponent },
       { path: 'project-view/:id', component: ProjectViewComponent },
       { path: 'customer-profile', component: CustomerProfileComponent },
       { path: 'my-pros', component: MyProsComponent },
@@ -38,7 +39,9 @@ const routes: Routes = [
       {path:'terms-and-conditions-page',component:TermsAndConditionsPageComponent},
       {path:'help-and-faqs-page',component:HelpAndFaqsPageComponent},
       {path:'report-pro/:id',component:ReportProComponent},
-      {path:'book-pro/:id',component:BookProComponent}
+      {path:'book-pro/:id',component:BookProComponent},
+    {path:'lead-list',component:CustomerLeadListComponent}
+
       
     ]
   }

@@ -72,7 +72,7 @@ export class ReportProComponent implements OnInit {
     this.currentDate = moment(new Date()).format("YYYY-MM-DD");
     this.emailId=localStorage.getItem('emailId')
     //'hatim.naim@gmail.com'
-    this.leadService.getUserProfile(this.emailId)
+    this.leadService.getUserProfile('hatim.naim@gmail.com')
     .subscribe((data) => {
       if (data.status == 200) {
         let userProfileData = { ...data['data'][0] }
@@ -148,7 +148,7 @@ export class ReportProComponent implements OnInit {
   }
 
   getWorkOrderListBasedOnCustomer(customerId){
-    this.leadService.getWorkOrderListByCustomer(customerId)
+    this.leadService.getWorkOrderListByProIdAndCustomerId(this.route.snapshot.params.id,customerId)
     .subscribe((data) => {
       if (data.status == SUCCESS_CODE) {
         this.workOrdeList = data.data
