@@ -61,7 +61,7 @@
                                                     <td>{{data.service.createdDate |date}}</td>
                                                     <td>
                                                         <span class="badge badge-pill badge-primary cu_badge2" *ngIf="data.leadStatus === 'CALL'">Call</span>
-                                                        <span class="badge badge-pill badge-primary cu_badge1_dispatch" *ngIf="data.leadStatus === 'NEW LEAD'">{{data.leadStatus}}</span>
+                                                        <span class="badge badge-pill badge-primary cu_badge1_dispatch" *ngIf="data.leadStatus === 'NEW LEAD'">New Project</span>
                                                         <span class="badge badge-pill badge-primary cu_badge1" *ngIf="data.leadStatus === 'ASSIGNED'">{{data.leadStatus}}</span>
                                                         <span class="badge badge-pill badge-primary cu_badge1_cancelled" *ngIf="data.leadStatus === 'CANCELED'">{{data.leadStatus}}</span>
                                                         <span class="badge badge-pill badge-primary cu_badge1_ongoing" *ngIf="data.leadStatus === 'ONGOING'">{{data.leadStatus}}</span>
