@@ -8,6 +8,8 @@ import { ToastrManager } from 'ng6-toastr-notifications';
 import { first } from 'rxjs/operators';
 import { LeadService } from 'src/app/services/lead.service';
 import { UploadService } from 'src/app/services/upload.service';
+import { NgbDateStruct, NgbCalendar, NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
+
 import {
   DEFAULT_PERSON_IMAGE,
   SUCCESS_CODE,
@@ -15,7 +17,7 @@ import {
   INTERNAL_SERVER_ERROR_MSG,
   ALREADY_EXIST_CODE
 } from '../../helpers/constants';
-
+declare var $: any;
 @Component({
   selector: 'app-book-pro',
   templateUrl: './book-pro.component.html',
@@ -23,6 +25,8 @@ import {
 })
 export class BookProComponent implements OnInit {
 
+    
+  model;
   public currentDate: any;
   bookProform: FormGroup;
   serviceAddressForm: FormGroup;
@@ -75,6 +79,8 @@ export class BookProComponent implements OnInit {
   imgFlag: boolean=false;
   proProfileImage1: any = [];
   urls: any=[];
+  categoryName: any;
+  categoryNameArray: any;
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -102,12 +108,21 @@ export class BookProComponent implements OnInit {
         this.getWOServiceAddress(this.customerId)
       }
     })
+   
   }
 
+  pickDate() {
+    $('#date-picker').datepicker('show');
+  }
   createBookProForm() {
     this.serviceAddressForm = this.fb.group({
       servicecustomerName: ['', Validators.required],
       serviceemailId: ['', Validators.required],
+      emailId:[''],
+      firstName:[''],
+      lastName:[''],
+      password:['123456'],
+      mobileNumber:[],
       servicefirstName: ['', Validators.required],
       servicelastName: ['', Validators.required],
       servicephoneNumber: ['', Validators.required],
@@ -118,6 +133,8 @@ export class BookProComponent implements OnInit {
       servicecity: ['',Validators.required],
       servicestate: ['',Validators.required],
       servicecounty: ['',Validators.required],
+      selectCategory:[''],
+      selectSubCategory:[''],
       projectName:[''],
       projectDescription: ['']
     })
@@ -132,21 +149,22 @@ export class BookProComponent implements OnInit {
     .subscribe((data) => {
       if (data.status == 200) {
         this.proProfile = { ...data['data'] }
-        console.log("proprofile",  this.proProfile)
+        console.log("🚀 ~ file: book-pro.component.ts ~ line 152 ~ BookProComponent ~  this.proProfile ",  this.proProfile )
         this.leadService.proData=this.proProfile
         this.serviceArea=this.proProfile.serviceArea
         this.dateTimeData=this.proProfile.businessHours
         this.businessName=this.proProfile.businessName
         this.categories = this.proProfile.serviceArea[0].category
-        console.log("🚀 ~ file: book-pro.component.ts ~ line 112 ~ BookProComponent ~  this.proProfile",  this.proProfile)
         //this.imgPath = this.proProfile.attachments
-        console.log("🚀 ~ file: mypro-view.component.ts ~ line 39 ~ MyproViewComponent ~ this.serviceArea", this.serviceArea)
       }
     })
   }
 
     /* get stateName */
     getSubCategoriesData(code) {
+      console.log(' this.categories', this.categories)
+      this.categoryNameArray=this.categories.filter(o=>o.categoryCode === code)
+      console.log("🚀 ~ file: book-pro.component.ts ~ line 164 ~ BookProComponent ~  this.categoryName",  this.categoryName)
       this.leadService.getSubCategoriesData(code)
         .subscribe((data) => {
           if (data.status == SUCCESS_CODE) {
@@ -209,6 +227,8 @@ export class BookProComponent implements OnInit {
       city: [formData.ServiceAddress?.city],
       state: [formData.ServiceAddress?.state],
       zipCode: [formData.ServiceAddress?.zipcode],
+      selectCategory:[''],
+      selectSubCategory:['']
     };
     return this.fb.group(bookProform)
   }
@@ -217,17 +237,52 @@ export class BookProComponent implements OnInit {
     if (!this.bookProform.valid) {
       alert('Please fill all the required fields to create a super hero!')
     } else {
-      console.log(this.bookProform.value)
+      console.log(this.serviceAddressForm.value)
       this.bookProform.patchValue({
         customerId: this.customerId
       })
-      this.leadService.createCustomerSupportRequest(this.bookProform.value)
+      const DirectBoookingleadDetailsObj = {}
+      // basic details
+      DirectBoookingleadDetailsObj['projectName'] = this.serviceAddressForm.value.projectName
+      DirectBoookingleadDetailsObj['projectDescription'] = this.serviceAddressForm.value.projectDescription
+      DirectBoookingleadDetailsObj['firstName'] = this.serviceAddressForm.value.firstName
+      DirectBoookingleadDetailsObj['lastName'] = this.serviceAddressForm.value.lastName
+      DirectBoookingleadDetailsObj['mobileNumber'] = this.serviceAddressForm.value.mobileNumber
+      DirectBoookingleadDetailsObj['DBLeadEmailId'] = this.serviceAddressForm.value.emailId
+      DirectBoookingleadDetailsObj['proLoginId']=this.route.snapshot.params.id
+      DirectBoookingleadDetailsObj['proEmailId']='mudurukolaramesh74@gmail.com'
+      //this.proProfile.mobileNumber
+      DirectBoookingleadDetailsObj['proMobileNumber']='+917893574123'
+      DirectBoookingleadDetailsObj['proName']=this.proProfile.firstName+" "+this.proProfile.lastName
+      DirectBoookingleadDetailsObj['bookingDate']="27-03-2022"
+      DirectBoookingleadDetailsObj['bookingTime']="05:00"
+      DirectBoookingleadDetailsObj['isBookapro'] = true
+      // service address
+      DirectBoookingleadDetailsObj['serviceAddress'] = {}
+      DirectBoookingleadDetailsObj['serviceAddress']['streetAddress'] = this.serviceAddressForm.value.servicestreetAddress
+      DirectBoookingleadDetailsObj['serviceAddress']['city'] = this.serviceAddressForm.value.servicecity
+      DirectBoookingleadDetailsObj['serviceAddress']['state'] = this.serviceAddressForm.value.servicestate
+      DirectBoookingleadDetailsObj['serviceAddress']['zipcode'] = this.serviceAddressForm.value.servicezipcode
+      // project description
+      DirectBoookingleadDetailsObj['description'] = this.serviceAddressForm.value.description
+      DirectBoookingleadDetailsObj['attachments'] = []
+
+      // verification code
+      var today = new Date().toISOString().split('T')[0];
+      // service details
+      DirectBoookingleadDetailsObj['service'] = {}
+      DirectBoookingleadDetailsObj['service']['catgoryCode'] = this.serviceAddressForm.value.selectCategory
+      DirectBoookingleadDetailsObj['service']['category'] =  this.categoryNameArray[0].categoryName
+      DirectBoookingleadDetailsObj['service']['subCategory'] = this.serviceAddressForm.value.selectSubCategory
+      DirectBoookingleadDetailsObj['service']['subCategoryCode'] = this.serviceAddressForm.value.subCatCode
+     
+      this.leadService.bookAPro(DirectBoookingleadDetailsObj)
         .pipe(first())
         .subscribe(
           data => {
             if (data.status == 200) {
-              this.toastr.successToastr(data.response, 'Customer Support Request')
-              this.router.navigateByUrl('/customer/support-list')
+              this.toastr.successToastr(`Your request is being sent to "${this.businessName}"`, 'Thank You')
+              //this.router.navigateByUrl('/customer/support-list')
             }
           }, error => {
             this.toastr.errorToastr(error, INTERNAL_SERVER_ERROR_MSG)
@@ -308,11 +363,16 @@ export class BookProComponent implements OnInit {
         {
           flagStatus: "NO",
           serviceemailId: this.radioSel._id.emailId,
+          emailId:this.radioSel._id.emailId,
           servicecustomerName: this.radioSel._id.customerName,
           servicefirstName: this.radioSel._id.firstName,
+          firstName:this.radioSel._id.firstName,
+          lastName:this.radioSel._id.lastName,
           servicelastName: this.radioSel._id.lastName,
           servicephoneNumber: this.radioSel._id.phoneNumber,
+          mobileNumber: this.radioSel._id.phoneNumber,
           servicestreetAddress: this.radioSel._id.streetAddress,
+          
           servicestate: this.radioSel._id.state,
           servicecity: this.radioSel._id.city,
           servicezipcode: this.radioSel._id.zipcode,

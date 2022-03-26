@@ -20,6 +20,7 @@ import { ReportProComponent } from './report-pro/report-pro.component';
 import { BookProComponent } from './book-pro/book-pro.component';
 import { TextMaskModule } from 'angular2-text-mask';
 import { CustomerLeadListComponent } from './customer-lead-list/customer-lead-list.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { CustomerLeadListComponent } from './customer-lead-list/customer-lead-li
     FormsModule,
     TextMaskModule,
     ReactiveFormsModule,
+    NgbModule,
     NgxPaginationModule,
   ]
 })

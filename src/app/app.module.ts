@@ -9,6 +9,7 @@ import { CommonSideMenuModule } from './common/common-side-menu/common.side-menu
 import { CustomerLayoutComponent } from './customer/customer-layout/customer-layout.component';
 import { CommonFooterComponent } from './common/common-footer/common-footer.component';
 import { CommonHeaderComponent } from './common/common-header/common-header.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { CommonHeaderComponent } from './common/common-header/common-header.comp
     HttpClientModule,
     CommonSideMenuModule,
     BrowserAnimationsModule,
+    NgbModule,
     ToastrModule.forRoot(),
   ],
   providers: [],

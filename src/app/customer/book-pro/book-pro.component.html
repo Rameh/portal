@@ -211,7 +211,7 @@
                                                                     <div class="form-group">
                                                                         <span class="input-icon icon-right">
                                                                             <select class="form-control"
-                                                                                formControlName="selectsubCategory"
+                                                                                formControlName="selectSubCategory"
                                                                                 data-bv-field="row-title">
                                                                                 <option *ngFor="let data of subCategories"
                                                                                     value={{data.subcategoryName}}>
@@ -222,14 +222,20 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <div class="input-group">
+                                                                <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                                                                
+                                                                <div class="input-group-append">
+                                                                  <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">📅</button>
+                                                                </div>
+                                                            
+                                                              </div>
                                                             <div class="col-md-12">
                                                                 <div class="form-group">
                                                                     <label for="emailAddress" class="form-label">
                                                                         Attach any images/videos about the
                                                                         problem</label>
                                                                 </div>
-                                                                <!-- <img src="https://topproz2.s3.amazonaws.com/uploads/1640758526320.image_picker_49B614F2-275C-4414-A6CC-5049F5C908F7-15547-00000C109927D728.jpg"
-                                                                    style="width: 15%;height:70%"> -->
                                                                 <br />
                                                             </div>
                                                             <div class="tab-pane fade" id="profilepicture" role="tabpanel"
@@ -243,7 +249,6 @@
                                                                       <div class="row" style="display: inline-block; margin-left: 30px;"
                                                                         *ngFor="let x of proProfileImage1;let i=index">
                                                                         <br>
-                                                               <!-- {{x.type}} -->
                                             <figure class="imageNamecss" class="icon1">
                                                 <i style="float:right;margin-left:-30px; border:3px solid;border-right-style: 10px;color: red"
                                                   class="fa fa-times" (click)="removeSelectedFile1(i)"></i>
@@ -328,8 +333,6 @@
                                                             </div><br />
                                                             <div>
                                                               <p class="uploadMessage">{{uploadMessageCompanyLogo1}}</p>
-                                                              <!-- <p class="inputFieldValidator" *ngIf="logoFlag1">Please upload the images</p>
-                                                              <p class="inputFieldValidator" *ngIf="logoFlag2">Please select the images</p> -->
                                                             </div>
                                                             <div class="row mt-5">
                                                               <div class="col-md-4">

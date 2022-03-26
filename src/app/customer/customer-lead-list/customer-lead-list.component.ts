@@ -17,8 +17,6 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./customer-lead-list.component.scss']
 })
 export class CustomerLeadListComponent implements OnInit {
-
- 
   public leadsList:any;
   public loginId:any;
   proProfile: any;
