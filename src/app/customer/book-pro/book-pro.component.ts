@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
@@ -81,6 +81,12 @@ export class BookProComponent implements OnInit {
   urls: any=[];
   categoryName: any;
   categoryNameArray: any;
+
+  formControlItem: FormControl = new FormControl("");
+  required: boolean = !1;
+  @ViewChild("timepicker") timepicker: any;
+  subCategoriePrice: any;
+
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -164,14 +170,27 @@ export class BookProComponent implements OnInit {
     getSubCategoriesData(code) {
       console.log(' this.categories', this.categories)
       this.categoryNameArray=this.categories.filter(o=>o.categoryCode === code)
-      console.log("🚀 ~ file: book-pro.component.ts ~ line 164 ~ BookProComponent ~  this.categoryName",  this.categoryName)
+      console.log("🚀 ~ file: book-pro.component.ts ~ line 164 ~ BookProComponent ~  this.categoryName",  this.categoryNameArray)
       this.leadService.getSubCategoriesData(code)
         .subscribe((data) => {
           if (data.status == SUCCESS_CODE) {
             this.subCategories = data['data']
+            console.log("🚀 ~ file: book-pro.component.ts ~ line 177 ~ BookProComponent ~  this.subCategories ",  this.subCategories )
           }
         })
     }
+
+    getSubCategoriesBapPrice(code) {
+      console.log("Ramesh", code)
+      this.subCategoriePrice=this.subCategories.filter(o=>o.subcategoryName === code)
+      console.log("🚀 ~ file: book-pro.component.ts ~ line 186 ~ BookProComponent ~  this.subCategoriePrice",  this.subCategoriePrice)
+    
+    }
+
+
+
+
+
   getWOServiceAddress(customerId) {
 
     this.leadService.workorderServiceAddressData(customerId)
@@ -257,6 +276,7 @@ export class BookProComponent implements OnInit {
       DirectBoookingleadDetailsObj['bookingDate']="27-03-2022"
       DirectBoookingleadDetailsObj['bookingTime']="05:00"
       DirectBoookingleadDetailsObj['isBookapro'] = true
+      DirectBoookingleadDetailsObj['DBLPrice']=  this.subCategoriePrice[0].bapPrice
       // service address
       DirectBoookingleadDetailsObj['serviceAddress'] = {}
       DirectBoookingleadDetailsObj['serviceAddress']['streetAddress'] = this.serviceAddressForm.value.servicestreetAddress
@@ -320,6 +340,23 @@ export class BookProComponent implements OnInit {
     }
   }
 
+    /**
+   * Lets the user click on the icon in the input.
+   */
+     openFromIcon(timepicker: { open: () => void }) {
+      if (!this.formControlItem.disabled) {
+        timepicker.open();
+      }
+    }
+  
+    /**
+     * Function to clear FormControl's value, called from the HTML template using the clear button
+     *
+     * @param $event - The Event's data object
+     */
+    onClear($event: Event) {
+      this.formControlItem.setValue(null);
+    }
 
   createlatlong() {
     console.log("service addresss=====>",this.serviceAddressForm.value)

@@ -21,8 +21,10 @@ import { BookProComponent } from './book-pro/book-pro.component';
 import { TextMaskModule } from 'angular2-text-mask';
 import { CustomerLeadListComponent } from './customer-lead-list/customer-lead-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxMatTimepickerModule } from "ngx-mat-timepicker";
+import { MatIconModule } from "@angular/material/icon";
 
-
+const lang = "en-US";
 @NgModule({
   declarations: [CustomerProjectListComponent, ProjectViewComponent, CustomerProfileComponent, MyProsComponent, MyproViewComponent, CustomerNotificationsComponent, CustomerSupportRequestFormComponent, CustomerSupportRequestListComponent, CustomerSupportRequestViewComponent, PrivacyPageComponent, TermsAndConditionsPageComponent, HelpAndFaqsPageComponent, ReportProComponent, BookProComponent, CustomerLeadListComponent],
   imports: [
@@ -34,6 +36,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     NgbModule,
     NgxPaginationModule,
+    MatIconModule,
+    NgxMatTimepickerModule.setLocale(lang)
   ]
 })
 export class CustomerModule { }
