@@ -29,9 +29,9 @@ declare var $: any;
 })
 export class BookProComponent implements OnInit {
 
-
+  @ViewChild("timepicker") timepicker: any;
   control = new FormControl(new Date());
-
+  startDate = new Date(2000, 0, 2);
   minDate = new Date(1985, 4, 12); 
   maxDate = new Date(1985, 4, 22);
   model;

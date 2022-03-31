@@ -23,7 +23,7 @@ import { NgxMatTimepickerModule } from "ngx-mat-timepicker";
 import { LOCALE_ID } from "@angular/core";
 import { MatTimepickerModule } from 'mat-timepicker';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 const lang = "en-US";
@@ -54,6 +54,7 @@ const lang = "en-US";
     MatTooltipModule,
     MatTimepickerModule,
     MatDatepickerModule,
+    MatNativeDateModule,
     NgxMatTimepickerModule.setLocale(lang)
   ],
   providers: [{ provide: LOCALE_ID, useValue: lang }],
