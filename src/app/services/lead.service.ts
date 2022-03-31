@@ -90,7 +90,7 @@ export class LeadService {
 
     bookAPro(customerSupportRequestData): Observable<any> {
         console.log("customerSupportRequestData", customerSupportRequestData)
-        return this.http.post(`http://localhost:8000/lead/direct-booking-customer`, customerSupportRequestData).pipe(
+        return this.http.post(`${environment.API_URL}/lead/direct-booking-customer`, customerSupportRequestData).pipe(
             catchError(this.handleError)
         )
     }

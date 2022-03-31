@@ -23,7 +23,18 @@ import { CustomerLeadListComponent } from './customer-lead-list/customer-lead-li
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxMatTimepickerModule } from "ngx-mat-timepicker";
 import { MatIconModule } from "@angular/material/icon";
-
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatTimepickerModule } from 'mat-timepicker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 const lang = "en-US";
 @NgModule({
   declarations: [CustomerProjectListComponent, ProjectViewComponent, CustomerProfileComponent, MyProsComponent, MyproViewComponent, CustomerNotificationsComponent, CustomerSupportRequestFormComponent, CustomerSupportRequestListComponent, CustomerSupportRequestViewComponent, PrivacyPageComponent, TermsAndConditionsPageComponent, HelpAndFaqsPageComponent, ReportProComponent, BookProComponent, CustomerLeadListComponent],
@@ -36,7 +47,29 @@ const lang = "en-US";
     ReactiveFormsModule,
     NgbModule,
     NgxPaginationModule,
+    MatButtonModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
     MatIconModule,
+    MatMenuModule,
+    MatSelectModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    MatTimepickerModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatButtonModule,
+    FormsModule,
+    //BrowserAnimationsModule,
+    MatTimepickerModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
     NgxMatTimepickerModule.setLocale(lang)
   ]
 })

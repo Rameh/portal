@@ -21,6 +21,11 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { NgxMatTimepickerModule } from "ngx-mat-timepicker";
 import { LOCALE_ID } from "@angular/core";
+import { MatTimepickerModule } from 'mat-timepicker';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+
+
+
 const lang = "en-US";
 @NgModule({
   declarations: [
@@ -47,6 +52,8 @@ const lang = "en-US";
     MatSelectModule,
     MatToolbarModule,
     MatTooltipModule,
+    MatTimepickerModule,
+    MatDatepickerModule,
     NgxMatTimepickerModule.setLocale(lang)
   ],
   providers: [{ provide: LOCALE_ID, useValue: lang }],

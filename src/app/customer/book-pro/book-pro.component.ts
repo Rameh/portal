@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -17,6 +17,10 @@ import {
   INTERNAL_SERVER_ERROR_MSG,
   ALREADY_EXIST_CODE
 } from '../../helpers/constants';
+
+import { subHours, addHours}
+ from 'date-fns'
+ 
 declare var $: any;
 @Component({
   selector: 'app-book-pro',
@@ -25,7 +29,11 @@ declare var $: any;
 })
 export class BookProComponent implements OnInit {
 
-    
+
+  control = new FormControl(new Date());
+
+  minDate = new Date(1985, 4, 12); 
+  maxDate = new Date(1985, 4, 22);
   model;
   public currentDate: any;
   bookProform: FormGroup;
@@ -84,7 +92,6 @@ export class BookProComponent implements OnInit {
 
   formControlItem: FormControl = new FormControl("");
   required: boolean = !1;
-  @ViewChild("timepicker") timepicker: any;
   subCategoriePrice: any;
 
   constructor(
@@ -98,6 +105,26 @@ export class BookProComponent implements OnInit {
   ) {
     this.bookProform = this.buildFormGroup({})
     this.serviceAddressForm=this.buildFormGroup1({})
+    
+  }
+
+  
+  /**
+   * Lets the user click on the icon in the input.
+   */
+   openFromIcon(timepicker: { open: () => void }) {
+    if (!this.formControlItem.disabled) {
+      timepicker.open();
+    }
+  }
+
+  /**
+   * Function to clear FormControl's value, called from the HTML template using the clear button
+   *
+   * @param $event - The Event's data object
+   */
+  onClear($event: Event) {
+    this.formControlItem.setValue(null);
   }
 
   ngOnInit(): void {
@@ -114,7 +141,7 @@ export class BookProComponent implements OnInit {
         this.getWOServiceAddress(this.customerId)
       }
     })
-   
+    
   }
 
   pickDate() {
@@ -230,6 +257,21 @@ export class BookProComponent implements OnInit {
     return this.fb.group(bookProform)
   }
 
+  onEndTime(endTime) {
+  console.log("🚀 ~ file: book-pro.component.ts ~ line 265 ~ BookProComponent ~ endTime", endTime)
+  }
+
+
+
+
+
+
+
+
+
+
+
+
   private buildFormGroup1(formData): any {
     const bookProform = {
       customerId: [this.customerId],
@@ -339,24 +381,6 @@ export class BookProComponent implements OnInit {
       this.serviceAddressForm.enable();
     }
   }
-
-    /**
-   * Lets the user click on the icon in the input.
-   */
-     openFromIcon(timepicker: { open: () => void }) {
-      if (!this.formControlItem.disabled) {
-        timepicker.open();
-      }
-    }
-  
-    /**
-     * Function to clear FormControl's value, called from the HTML template using the clear button
-     *
-     * @param $event - The Event's data object
-     */
-    onClear($event: Event) {
-      this.formControlItem.setValue(null);
-    }
 
   createlatlong() {
     console.log("service addresss=====>",this.serviceAddressForm.value)
@@ -587,6 +611,8 @@ export class BookProComponent implements OnInit {
             });
       }
     }
+
+
   
   
     removeSelectedFile(i) {
@@ -607,4 +633,6 @@ export class BookProComponent implements OnInit {
         this.logoFlag1 = false;
       }
     }
+
+    
 }
