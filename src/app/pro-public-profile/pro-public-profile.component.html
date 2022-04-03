@@ -1,0 +1,265 @@
+<div class="container">
+    <section class="projects_list personal_info pt-60 pb-30">
+      <div class="container">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 profile-stats">
+          <div class="row">
+            <div class="col-lg-12 col-12">
+              <div class="card pinfo_box shadow">
+                <div class="row card-header m-0 justify-content-center">
+                  <div class="col-lg-2 col-2">
+                    <span class="d-block text-center"><i class="fa fa-angle-left"></i></span>
+                  </div>
+                  <div class="col-lg-8 col-5">
+                    <h3>Pro Public Profile View</h3>
+                  </div>
+                  <div class="col-lg-2 col-2">
+                    <span class="d-block text-center"><i class="fa fa-ellipsis-v"></i></span>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="container card mb-3" style="max-width: 1200px; height:200px">
+                    <div class="row g-0" style="padding-top: 38px; padding-left: 48px;">
+                      <div class="col-md-2">
+                        <img [src]="proProfile.companyLogo" class="img-fluid rounded-start" alt="..."
+                          style="width: 70%;height: 13d0px;">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body container">
+                          <h5 class="card-title"><b>{{proProfile.businessName}}</b></h5>
+                          <div>
+                            <span class="card-text">HIRES ON TOPPROZ</span>
+                          </div>
+                          <br>
+                          <div>
+                            <span class="badge badge-primary cu_badgeratingCount">0</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <img src="../../../assets/images/7af0914c-6bb2-482a-8374-baa7738d6571.png"
+                          class="img-fluid rounded-start" alt="..." style="width: 100px;height: 100px;">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="container" style="max-width: 1200px; height:200px">
+                    <div class="row g-0" style="padding-top: 38px; padding-left: 48px;">
+                      <div class="col-9">
+                        <table>
+                          <tbody>
+                            <tr>
+                              <th>Google Rating:</th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              <th>
+                                <star-rating [(value)]="proProfile.socialMediaLinks.googleRating" totalstars="5"
+                                  checkedcolor="gold" uncheckedcolor="grey" size="24px" readonly="false">
+                                </star-rating>
+                              </th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              <th>
+                                <h5>({{proProfile.socialMediaLinks.googleRating}})</h5>
+                              </th>
+                            </tr>
+                            <tr>
+                              <th>Yelp Rating:</th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              <th>
+                                <star-rating [(value)]="proProfile.socialMediaLinks.yelpRating" totalstars="5"
+                                  checkedcolor="gold" uncheckedcolor="grey" size="24px" readonly="false">
+                                </star-rating>
+                              </th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              <th>
+                                <h5>({{proProfile.socialMediaLinks.yelpRating}})</h5>
+                              </th>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="col-2">
+                        <div class="pinfo_btns">
+                          <button class="btn btn-primary btn2 cubtn" (click)="bookNow()">Book Now</button>
+                        </div>
+                        <br>
+                        <div class="pinfo_btns">
+                          <button class="btn btn-primary btn2 cubtn" (click)="bookNow()">Get Quote</button>
+                        </div>
+                      </div>
+  
+                    </div>
+                    <div class="row g-0" style="padding-top: 38px; padding-left: 48px;">
+                      <div>
+                        <label class="main">
+                          <input type="checkbox" class="input-assumpte" id="input-confidencial" [checked]="proProfile.businessInformation.isInsured == 'Yes'" disabled/>
+                          &nbsp;&nbsp;&nbsp;
+                          <b>INSURED</b>
+                        </label>
+                      </div>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                      <div>
+                        <label>
+                          <input type="checkbox"   [checked]="proProfile.businessInformation.isBonded == 'Yes'" disabled/>
+                          &nbsp;&nbsp;&nbsp;
+                          <b>BONDED</b>
+                        </label>
+                      </div>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                      <div >
+                        <label>
+                          <input type="checkbox"  [checked]="proProfile.businessInformation.isWarrantyOffered == 'Yes'" disabled/>
+                          &nbsp;&nbsp;&nbsp;
+                          <b>WARRANTY OFFERED</b>
+                        </label>
+                      </div>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                      <div>
+                        <label>
+                          <input type="checkbox" [checked]="proProfile.businessInformation.isEstimatesFree == 'Yes'" disabled/>
+                          &nbsp;&nbsp;&nbsp;
+                          <b>FREE ESTIMATES</b>
+                        </label>
+                      </div>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <div>
+                        <label>
+                          <input type="checkbox" [checked]="proProfile.businessInformation.isCreditCardAccepted == 'Yes'" disabled/>
+                          &nbsp;&nbsp;&nbsp;
+                          <b>CREDIT CARD ACCEPTED</b>
+                        </label>
+                      </div>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <div class="card-body">
+                  <div class="container">
+                    <div class="row g-0" style="padding-top: 38px; padding-left: 20px;">
+                      <div class="col-9">
+                        <b style="color: #ff6700;">Business Summary</b>
+                      </div>
+                      <div class="col-2">
+                        <div class="pinfo_btns">
+                          <button class="btn btn-primary btn2" (click)="reportPro()">Report Pro</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-1"></div>
+                      &nbsp;&nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp;
+                      <div class="col-11">
+                        <div class="form-group">
+                            <p>{{proProfile.Summary[0]}}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+  <hr>
+                <div class="card-body">
+                  <div class="container">
+                    <div class="row g-0" style="padding-top: 38px; padding-left: 20px;">
+                      <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                        <b style="color: #ff6700;">Service Area</b>
+                        <ng-container *ngFor=" let data of serviceArea">
+                          <ul>
+                            <br />
+                            <span class="countysize"><i
+                                class="fa fa-play"></i>&nbsp;&nbsp;<b>{{data.county}}</b></span>
+                            <br />
+                          </ul>
+                          <br />
+                        </ng-container>
+                      </div>
+                      <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                        <b style="color: #ff6700;">Service offered</b>
+                        <ng-container *ngFor=" let data of serviceArea[0].category">
+                        {{data.data}}
+                          <ul>
+  
+                            <br />
+                              <li *ngIf="data.catflagStatus === true">
+                                <b>{{data.categoryName}}</b>
+                                <ul *ngFor="let categoryDataSub of data.serviceCategories">
+                                  <li class="listcountysize"
+                                    *ngIf="categoryDataSub.categoryCode == data.catCode">
+                                    {{categoryDataSub.subcategoryName}}
+                                  </li>
+                                </ul>
+                              </li>
+                          </ul>
+                          <br />
+                        </ng-container>
+                      </div>
+                      <div class="col-6">
+                        <b style="color: #ff6700;">Business Hours</b>
+                            <div style="display: flex;"><br>
+                              <div class="col-3">
+                                <div class="form-group">
+                                  <label for="day">Day</label>
+                                </div>
+                              </div>
+                              <div class="col-3">
+                                <div class="form-group">
+                                  <label for="status">Status</label>
+                                </div>
+                              </div>
+                              <div class="col-3">
+                                <div class="form-group">
+                                  <label for="FromTime">From Time</label>
+                                </div>
+                              </div>
+                              <div class="col-3">
+                                <div class="form-group">
+                                  <label for="ToTime">To Time</label>
+                                </div>
+                              </div>
+                            </div>
+                                <div class="form-group">
+                                  <div class="row" *ngFor="let item of dateTimeData;let index = index;">
+                                    <div class="col-3">
+                                      <span class="input-icon icon-right">
+                                        {{dateTimeData[index].day}}
+                                      </span>
+                                    </div>
+                                    <div class="col-3">
+                                      <span class="input-icon icon-right">
+                                        {{dateTimeData[index].status}}
+                                      </span>
+                                    </div>
+                                    <div class="col-3">
+                                      <span class="input-icon icon-right">
+                                        {{dateTimeData[index].fromTime}}
+                                      </span>
+                                    </div>
+                                    <div class="col-3">
+                                      <span class="input-icon icon-right">
+                                        {{dateTimeData[index].toTime}}
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+           
+                <div class="card-body">
+                  <div class="container">
+                    <div class="col-9">
+                      <b style="color: #ff6700;">Images</b>
+                    </div>
+                    <br/>
+                <div class="row">
+                  <div class="form-group col-md-2" *ngFor="let x of imgPath;let i=index">
+                    <img [src]="x" style="height: 150px;width: 150px;" class="img-fluid" alt="Responsive image">
+                  </div>
+                </div>
+                </div>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>

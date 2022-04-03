@@ -17,9 +17,6 @@ import {
   INTERNAL_SERVER_ERROR_MSG,
   ALREADY_EXIST_CODE
 } from '../../helpers/constants';
-
-import { subHours, addHours}
- from 'date-fns'
  
 declare var $: any;
 @Component({
@@ -31,9 +28,9 @@ export class BookProComponent implements OnInit {
 
   @ViewChild("timepicker") timepicker: any;
   control = new FormControl(new Date());
-  startDate = new Date(2000, 0, 2);
-  minDate = new Date(1985, 4, 12); 
-  maxDate = new Date(1985, 4, 22);
+ // startDate = new Date(2000, 0, 2);
+  //minDate = new Date(1985, 4, 12); 
+  //maxDate = new Date(1985, 4, 22);
   model;
   public currentDate: any;
   bookProform: FormGroup;
@@ -169,7 +166,9 @@ export class BookProComponent implements OnInit {
       selectCategory:[''],
       selectSubCategory:[''],
       projectName:[''],
-      projectDescription: ['']
+      projectDescription: [''],
+      bookingDate:[''],
+      bookingTime:['']
     })
     //this.makeRecuring()
 
@@ -182,51 +181,36 @@ export class BookProComponent implements OnInit {
     .subscribe((data) => {
       if (data.status == 200) {
         this.proProfile = { ...data['data'] }
-        console.log("🚀 ~ file: book-pro.component.ts ~ line 152 ~ BookProComponent ~  this.proProfile ",  this.proProfile )
         this.leadService.proData=this.proProfile
         this.serviceArea=this.proProfile.serviceArea
         this.dateTimeData=this.proProfile.businessHours
         this.businessName=this.proProfile.businessName
         this.categories = this.proProfile.serviceArea[0].category
-        //this.imgPath = this.proProfile.attachments
       }
     })
   }
 
     /* get stateName */
     getSubCategoriesData(code) {
-      console.log(' this.categories', this.categories)
       this.categoryNameArray=this.categories.filter(o=>o.categoryCode === code)
-      console.log("🚀 ~ file: book-pro.component.ts ~ line 164 ~ BookProComponent ~  this.categoryName",  this.categoryNameArray)
       this.leadService.getSubCategoriesData(code)
         .subscribe((data) => {
           if (data.status == SUCCESS_CODE) {
             this.subCategories = data['data']
-            console.log("🚀 ~ file: book-pro.component.ts ~ line 177 ~ BookProComponent ~  this.subCategories ",  this.subCategories )
           }
         })
     }
 
     getSubCategoriesBapPrice(code) {
-      console.log("Ramesh", code)
       this.subCategoriePrice=this.subCategories.filter(o=>o.subcategoryName === code)
-      console.log("🚀 ~ file: book-pro.component.ts ~ line 186 ~ BookProComponent ~  this.subCategoriePrice",  this.subCategoriePrice)
-    
     }
 
-
-
-
-
   getWOServiceAddress(customerId) {
-
     this.leadService.workorderServiceAddressData(customerId)
       .pipe(first())
       .subscribe((data) => {
-
         if (data.status == SUCCESS_CODE) {
           this.woServiceAddress = data.data;
-          console.log(this.woServiceAddress);          
         } else if (data.status == 404) {
           this.woServiceAddress = []
         }
@@ -258,19 +242,7 @@ export class BookProComponent implements OnInit {
   }
 
   onEndTime(endTime) {
-  console.log("🚀 ~ file: book-pro.component.ts ~ line 265 ~ BookProComponent ~ endTime", endTime)
   }
-
-
-
-
-
-
-
-
-
-
-
 
   private buildFormGroup1(formData): any {
     const bookProform = {
@@ -298,7 +270,6 @@ export class BookProComponent implements OnInit {
     if (!this.bookProform.valid) {
       alert('Please fill all the required fields to create a super hero!')
     } else {
-      console.log(this.serviceAddressForm.value)
       this.bookProform.patchValue({
         customerId: this.customerId
       })
@@ -315,8 +286,8 @@ export class BookProComponent implements OnInit {
       //this.proProfile.mobileNumber
       DirectBoookingleadDetailsObj['proMobileNumber']='+917893574123'
       DirectBoookingleadDetailsObj['proName']=this.proProfile.firstName+" "+this.proProfile.lastName
-      DirectBoookingleadDetailsObj['bookingDate']="27-03-2022"
-      DirectBoookingleadDetailsObj['bookingTime']="05:00"
+      DirectBoookingleadDetailsObj['bookingDate']= moment(this.serviceAddressForm.value.bookingDate).format('MMMM Do YYYY')
+      DirectBoookingleadDetailsObj['bookingTime']= this.serviceAddressForm.value.bookingTime
       DirectBoookingleadDetailsObj['isBookapro'] = true
       DirectBoookingleadDetailsObj['DBLPrice']=  this.subCategoriePrice[0].bapPrice
       // service address
@@ -326,9 +297,7 @@ export class BookProComponent implements OnInit {
       DirectBoookingleadDetailsObj['serviceAddress']['state'] = this.serviceAddressForm.value.servicestate
       DirectBoookingleadDetailsObj['serviceAddress']['zipcode'] = this.serviceAddressForm.value.servicezipcode
       // project description
-      DirectBoookingleadDetailsObj['description'] = this.serviceAddressForm.value.description
-      DirectBoookingleadDetailsObj['attachments'] = []
-
+      DirectBoookingleadDetailsObj['attachments'] = this.proProfileImage1;
       // verification code
       var today = new Date().toISOString().split('T')[0];
       // service details
@@ -357,7 +326,6 @@ export class BookProComponent implements OnInit {
     .subscribe((data) => {
       if (data.status == SUCCESS_CODE) {
         this.workOrdeList = data.data
-        console.log("this.wokrOrderList", this.workOrdeList)
       } else if (data.status == UNAUTHORIZED_CODE) {
       }
     }, (error) => {
@@ -367,7 +335,6 @@ export class BookProComponent implements OnInit {
 
   getWorkOrderData(value) {    
    const gg= this.workOrdeList.filter(o=>o.workOrderNumber === value)
-   console.log('fff',gg[0].WorkDescription.jobTitle)
    this.bookProform.patchValue({
     projectName: gg[0].WorkDescription.jobTitle,
     createdOn:gg[0].WorkDescription.createdOn
@@ -383,7 +350,6 @@ export class BookProComponent implements OnInit {
   }
 
   createlatlong() {
-    console.log("service addresss=====>",this.serviceAddressForm.value)
     //in create lat long addition service
     if (this.serviceAddressForm.value.servicezipcode.length === 5 && this.serviceAddressForm.value.servicestreetAddress !== "") {
       var address = this.serviceAddressForm.value.servicestreetAddress + "," + this.serviceAddressForm.value.servicecounty + "," + this.serviceAddressForm.value.servicecity + "," + this.serviceAddressForm.value.servicezipcode + "," + this.serviceAddressForm.value.servicestate
@@ -418,7 +384,6 @@ export class BookProComponent implements OnInit {
   getSelecteditem() {
     // this.radioSel = this.woServiceAddress.find(data => data._id.phoneNumber === this.radioSelected);
     this.radioSel = this.woServiceAddress[this.radioSelected]
-    console.log(this.radioSel)
     if (this.radioSel) {
       this.serviceAddressForm.patchValue(
         {
@@ -440,9 +405,6 @@ export class BookProComponent implements OnInit {
           servicecounty: this.radioSel._id.county,
         }
       );
-      console.log("adresss=====>",this.serviceAddressForm.value)
-      //this.createlatlong();
-      console.log("adresss=====>",this.serviceAddressForm.value)
     }
     else {
       this.serviceAddressForm.reset()
@@ -454,19 +416,6 @@ export class BookProComponent implements OnInit {
 
 
   getZipcodeData(zipcode) {
-    // if (zipcode == "") {
-    //   this.zipcodeExists = false
-    //   this.zipcodelength = false
-    //   this.stateName = ""
-    //   this.city = ""
-    // }
-    // else if (zipcode?.length < 5) {
-    //   console.log('called')
-    //   this.zipcodelength = true
-    //   this.zipcodeExists = false
-    //   this.stateName = ""
-    //   this.city = ""
-    // }
     if (zipcode?.length == 5) {
       this.zipcodelength = false
       this.leadService.getZipcodeData(zipcode).subscribe((data) => {
@@ -476,11 +425,6 @@ export class BookProComponent implements OnInit {
           this.zipcodeData = data['data'][0]
           this.city = this.zipcodeData?.city
           this.state = this.zipcodeData?.state
-          // this.editGoogleAddress.get('city').setValue(this.city)
-          // this.editYelpAddress.get('city').setValue(this.city)
-          //fixed on 31.08.2021 to avoid rating and business address changining
-          // this.getYelpRating();
-          // this.getGoogleRating();
           this.getZipcodeStateName();
         } if (this.zipcodeData1?.length == 0) {
           this.zipcodeExists = true
@@ -513,16 +457,12 @@ export class BookProComponent implements OnInit {
 
     // on file select
     selectFiles(fileInput) {
-      console.log("testtttttttt", fileInput)
       this.btnFlag = false;
       this.selectFileUpload = true;
       this.checkFlag1 = true;
       this.logoFlag2 = false;
       this.logoFlag1 = false;
       this.selectedFilesCompanyLogo1 = fileInput.target.files;
-      console.log(" this.selectedFilesCompanyLogo1 ", this.selectedFilesCompanyLogo1 )
-      //this.totalLength = this.filesToUpload.length
-      //console.log("🚀this.totalLength",  this.totalLength)
       this.imageArray = []
       this.progressHide1 = false
       if (fileInput.target.files.length == 1) {
@@ -539,17 +479,11 @@ export class BookProComponent implements OnInit {
       var filesAmount = fileInput.target.files.length;
       for (let i = 0; i < filesAmount; i++) {
         const fileType= fileInput.target.files[0].type
-        console.log("🚀 ~ file: report-pro.component.ts ~ line 203 ~ ReportProComponent ~ fileType", fileType)
         var reader = new FileReader();
         reader.onload = (fileInput: any) => {
           this.imgFlag = false;
           this.urls.push(fileInput.target.result);
           this.arr.push({imageBase64:fileInput.target.result,type:fileType});
-          
-          //this.proProfileImage3 = this.proProfileImage1.concat(this.arr);
-          //console.log("p1", this.proProfileImage1)
-          console.log("arr", this.arr)
-          //console.log("p3", this.proProfileImage3)
         }
         reader.readAsDataURL(fileInput.target.files[i]);
       }
@@ -557,11 +491,9 @@ export class BookProComponent implements OnInit {
   
     selectFile(event) {
       this.selectedFiles = event.target.files;
-      // //console.log("selectedFiles", this.selectedFiles)
       if (event.target.files && event.target.files[0]) {
         const file = event.target.files[0];
         this.h = event.target.files[0].name;
-        // //console.log("selectedFiles:::", this.h)     
       }
     }
   
@@ -578,8 +510,6 @@ export class BookProComponent implements OnInit {
         this.disableSaveOnFileUpload = true;
         this.selectFileUpload = false;
         const files: Array<File> = this.filesToUpload;
-        console.log("🚀 ~ file: report-pro.component.ts ~ line 229 ~ ReportProComponent ~ files", files)
-        // this.currentFileCompanyLogo = this.filesToUpload;
         this.uploadService.uploadMultiple(files)
           .subscribe(
             (event:any) => {
@@ -593,42 +523,27 @@ export class BookProComponent implements OnInit {
                 this.logoFlag1 = false;
                 this.uploadMessageCompanyLogo1 = 'Pictures Uploaded Successfully';
                 let resArr1 = this.resArr['data'];
-                //console.log("res",resArr1)
                 this.resArr = (resArr1['uploadedImagePath'])
                 for (let y = 0; y < this.filesToUpload.length; y++) {
                   const imageType=this.resArr[y].mimetype;
                   this.proProfileImage1.push({Imageurl:this.resArr[y].location,type:imageType});
+                  this.serviceAddressForm.value.attachments = this.resArr[y].location;
                 }
-                console.log("p1", this.proProfileImage1)
-                //console.log("arr", this.arr)
-                //console.log("p3", this.proProfileImage3)
               }
             },
             err => {
               this.progressCompanyLogo2 = 0;
               this.uploadMessageCompanyLogo1 = 'Could not upload the file!';
-              // this.currentFileCompanyLogo = undefined;
             });
       }
     }
-
-
-  
-  
     removeSelectedFile(i) {
       this.btnFlag = false;
       this.selectFileUpload = true;
-      //this.proProfileImage3 = this.proProfileImage1.concat(this.arr);
       this.arr.splice(i, 1);
       this.filesToUpload.splice(i, 1);
-      //this.proProfileImage1.splice(i, 1);
-      //this.proProfileImage3.splice(i, 1);
-  
       this.totalLength = this.filesToUpload.length;
       this.chosseTypecount = this.totalLength;
-      ////console.log("p1", this.proProfileImage1)
-      //console.log("arr", this.arr)
-      ////console.log("p3", this.proProfileImage3)
       if (this.totalLength == 0) {
         this.logoFlag1 = false;
       }

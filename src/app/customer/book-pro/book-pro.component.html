@@ -228,21 +228,23 @@
 
 
                                                             <div class="row">
-                                                            <div class="col-md-6">
+                                                                &nbsp; &nbsp; &nbsp;
+                                                            <div class="col-md-7">
                                                                 <mat-form-field>
                                                                     <input matInput [matDatepicker]="picker"
-                                                                        placeholder="Choose a date">
-                                                                    <mat-datepicker-toggle matSuffix [for]="picker">
+                                                                        placeholder="Choose a date" formControlName="bookingDate">
+                                                                    <mat-datepicker-toggle matSuffix [for]="picker" >
                                                                     </mat-datepicker-toggle>
                                                                     <mat-datepicker #picker></mat-datepicker>
                                                                 </mat-form-field>
                                                             </div>
-                                                            <div class="col-md-6">
-                                                            <mat-form-field appearance="outline">
+                                                            <div class="col-md-4">
+                                                            <!-- <mat-form-field appearance="outline">
                                                                 <mat-label>Time</mat-label>
                                                                 <input type="text" matInput
                                                                     [ngxMatTimepicker]="timepicker" format="24"
                                                                     [required]="required" readonly
+                                                                    formControlName="bookingTime"
                                                                     [formControl]="formControlItem" />
 
                                                                 <mat-icon matPrefix
@@ -254,8 +256,12 @@
                                                                 <mat-icon matSuffix *ngIf="!formControlItem.disabled"
                                                                     (click)="openFromIcon(timepicker)">schedule
                                                                 </mat-icon>
-                                                            </mat-form-field>
-
+                                                            </mat-form-field> -->
+                                                            <input type="text" matInput
+                                                            [ngxMatTimepicker]="timepicker" format="24"
+                                                            [required]="required" readonly
+                                                            formControlName="bookingTime"
+                                                            [formControl]="formControlItem" />
                                                             <ngx-mat-timepicker #timepicker></ngx-mat-timepicker>
                                                         </div>
                                                         </div>
@@ -342,7 +348,6 @@
                                                                                                 <i style="float:right; border:3px solid;border-right-style: 10px;color: red"
                                                                                                     class="fa fa-times"
                                                                                                     (click)="removeSelectedFile(i)"></i>
-                                                                                                {{y.type}}
                                                                                                 <div
                                                                                                     *ngIf="y.type==='application/pdf'">
                                                                                                     <img class="attachement-icon"

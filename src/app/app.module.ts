@@ -24,6 +24,8 @@ import { LOCALE_ID } from "@angular/core";
 import { MatTimepickerModule } from 'mat-timepicker';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ProPublicProfileComponent } from './pro-public-profile/pro-public-profile.component';
+import { RatingModule } from 'ng-starrating';
 
 
 const lang = "en-US";
@@ -32,7 +34,8 @@ const lang = "en-US";
     AppComponent,
     CustomerLayoutComponent,
     CommonFooterComponent,
-    CommonHeaderComponent
+    CommonHeaderComponent,
+    ProPublicProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +44,7 @@ const lang = "en-US";
     HttpClientModule,
     CommonSideMenuModule,
     BrowserAnimationsModule,
+    RatingModule,
     NgbModule,
     ToastrModule.forRoot(),
     MatButtonModule,

@@ -5,11 +5,13 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './customer-layout.component.html',
   styleUrls: ['./customer-layout.component.scss']
 })
-export class CustomerLayoutComponent implements OnInit {
+export class CustomerLayoutComponent {
 
-  constructor() { }
+  title = 'topproz2-customer-portal';
+  sidebarExpanded = true;
+  // constructor() { }
 
-  ngOnInit(): void {
-  }
+  // ngOnInit(): void {
+  // }
 
 }

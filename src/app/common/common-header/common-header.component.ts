@@ -20,11 +20,8 @@ export class CommonHeaderComponent implements OnInit {
     public leadService: LeadService
     ) { 
     const helper = new JwtHelperService();
-    console.log('cookies',document.cookie)
     this.cookieValue = this.cookieService.get('X-Auth-Token');
-    console.log("🚀this.cookieValue",   this.cookieValue)
     this.headerInformation = helper.decodeToken(this.authService.currentUserValue.token)
-    console.log("🚀 ~ file: common-header.component.ts ~ line 16 ~ CommonHeaderComponent ~ this.headerInformation", this.headerInformation)
   }
 
   ngOnInit(): void {
@@ -41,7 +38,6 @@ export class CommonHeaderComponent implements OnInit {
       }
     })
     this.imageUrl="../../../assets/images/account.png"
-    console.log("🚀 ~ file: common-header.component.ts ~ line 26 ~ CommonHeaderComponent ~  this.imageUrl",  this.imageUrl)
   }
 
   Logout(){

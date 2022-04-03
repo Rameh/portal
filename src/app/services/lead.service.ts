@@ -1,22 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { BehaviorSubject, Observable, throwError } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-
 @Injectable({
     providedIn: 'root'
 })
 export class LeadService {
-    proData:any;
+    proData: any;
     constructor(private http: HttpClient) { }
-
-
-      // get pro profile
-  getProProfile(id): Observable<any> {
-    return this.http.get(`${environment.API_URL}/pro/getproprofile/${id}`);
-  }
-
+    getProProfile(id): Observable<any> {
+        return this.http.get(`${environment.API_URL}/pro/getproprofile/${id}`);
+    }
     getProjectList(loginId: any): Observable<any> {
         return this.http.get(`${environment.API_URL}/mobile_workOrder/getStaffCustomerWorkOrderList/${loginId}`).pipe(
             catchError(this.handleError)
@@ -28,8 +23,6 @@ export class LeadService {
     getLeadDetails(customerId: string): Observable<any> {
         return this.http.get<any>(`${environment.API_URL}/workorder/getworkorderprofile/${customerId}`);
     }
-
-
     getProjectHistory(loginId: any): Observable<any> {
         return this.http.get(`${environment.API_URL}/woStatushistory/getworkorderStatusHistory/${loginId}`).pipe(
             catchError(this.handleError)
@@ -66,67 +59,53 @@ export class LeadService {
             catchError(this.handleError)
         )
     }
-
-    
     getWorkOrderListByCustomer(customerId: any): Observable<any> {
         return this.http.get(`${environment.API_URL}/Workorder/get-customer-work-orders/${customerId}`).pipe(
             catchError(this.handleError)
         )
     }
-
-    getWorkOrderListByProIdAndCustomerId(prodId:any,customerId: any): Observable<any> {
+    getWorkOrderListByProIdAndCustomerId(prodId: any, customerId: any): Observable<any> {
         return this.http.get(`${environment.API_URL}/Workorder/get-customer-work-orders-proid-customerId/${prodId}/${customerId}`).pipe(
             catchError(this.handleError)
         )
     }
     createCustomerSupportRequest(customerSupportRequestData): Observable<any> {
-        console.log("customerSupportRequestData", customerSupportRequestData)
         return this.http.post(`${environment.API_URL}/csr/create-csr`, customerSupportRequestData).pipe(
             catchError(this.handleError)
         )
     }
-
-
-
     bookAPro(customerSupportRequestData): Observable<any> {
-        console.log("customerSupportRequestData", customerSupportRequestData)
         return this.http.post(`${environment.API_URL}/lead/direct-booking-customer`, customerSupportRequestData).pipe(
             catchError(this.handleError)
         )
     }
-
-    getSupportRequestDetails(ticketNumber){
+    getSupportRequestDetails(ticketNumber) {
         return this.http.get<any>(`${environment.API_URL}/csr/get-ticketNumber-csr-list/${ticketNumber}`);
     }
-    
+
     getCustomerPros(customerEmailId): Observable<any> {
         return this.http.get<any>(`${environment.API_URL}/customer/get-customer-pros/${customerEmailId}`);
     }
+    getUsPhoneValidation(mobileNumber): Observable<any> {
+        return this.http.get(`${environment.API_URL}/socialmedia/validateUsPhoneNumber/${mobileNumber}`);
+    }
+    workorderServiceAddressData(customerId): Observable<any> {
+        return this.http.get(`${environment.API_URL}/workorder/getwoserviceaddress/${customerId}`);
+    }
 
-          // get zipcodes with county
-          getUsPhoneValidation(mobileNumber): Observable<any> {
-            console.log(mobileNumber)
-         return this.http.get(`${environment.API_URL}/socialmedia/validateUsPhoneNumber/${mobileNumber}`);
-          }
-
-          workorderServiceAddressData(customerId): Observable<any> {
-            return this.http.get(`${environment.API_URL}/workorder/getwoserviceaddress/${customerId}`);
-        }
-    
-        createReportPro(reportProData): Observable<any> {
-            console.log("🚀 ~ file: lead.service.ts ~ line 101 ~ LeadService ~ reportProData", reportProData)
-            return this.http.post(`${environment.API_URL}/report-pro/create-report-pro`, reportProData).pipe(
-                catchError(this.handleError)
-            )
-        }
-        getSubCategoriesData(cat_code: string): Observable<any> {
-            return this.http.get(`${environment.API_URL}/master/getsubcatCodeData/${cat_code}`);
-        }
-        getLeadList(loginId: any): Observable<any> {
-            return this.http.get(`${environment.API_URL}/lead/leadslist/${loginId}`).pipe(
-                catchError(this.handleError)
-            )
-        }
+    createReportPro(reportProData): Observable<any> {
+        return this.http.post(`${environment.API_URL}/report-pro/create-report-pro`, reportProData).pipe(
+            catchError(this.handleError)
+        )
+    }
+    getSubCategoriesData(cat_code: string): Observable<any> {
+        return this.http.get(`${environment.API_URL}/master/getsubcatCodeData/${cat_code}`);
+    }
+    getLeadList(loginId: any): Observable<any> {
+        return this.http.get(`${environment.API_URL}/lead/leadslist/${loginId}`).pipe(
+            catchError(this.handleError)
+        )
+    }
     handleError(error: HttpErrorResponse) {
         let msg = '';
         if (error.error instanceof ErrorEvent) {
