@@ -201,7 +201,6 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
                                                                     <label for="projectId" class="form-label">
@@ -225,50 +224,36 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-
-
                                                             <div class="row">
                                                                 &nbsp; &nbsp; &nbsp;
-                                                            <div class="col-md-7">
-                                                                <mat-form-field>
-                                                                    <input matInput [matDatepicker]="picker"
-                                                                        placeholder="Choose a date" formControlName="bookingDate">
-                                                                    <mat-datepicker-toggle matSuffix [for]="picker" >
-                                                                    </mat-datepicker-toggle>
-                                                                    <mat-datepicker #picker></mat-datepicker>
-                                                                </mat-form-field>
+                                                                <div class="col-md-8">
+                                                                    <label for="projectId" class="form-label">
+                                                                        <b>Choose a date</b>
+                                                                        <span class="mandatory">*</span>
+                                                                    </label>
+                                                                    <br />
+                                                                    <mat-form-field>
+                                                                        <input matInput [matDatepicker]="picker"
+                                                                            formControlName="bookingDate">
+                                                                        <mat-datepicker-toggle matSuffix [for]="picker">
+                                                                        </mat-datepicker-toggle>
+                                                                        <mat-datepicker #picker></mat-datepicker>
+                                                                    </mat-form-field>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <label for="projectId" class="form-label">
+                                                                        <b>Choose a time</b>
+                                                                        <span class="mandatory">*</span>
+                                                                    </label>
+                                                                    <input type="text" matInput
+                                                                        [ngxMatTimepicker]="timepicker" format="24"
+                                                                        [required]="required" readonly
+                                                                        formControlName="bookingTime"
+                                                                        [formControl]="formControlItem" />
+                                                                    <ngx-mat-timepicker #timepicker>
+                                                                    </ngx-mat-timepicker>
+                                                                </div>
                                                             </div>
-                                                            <div class="col-md-4">
-                                                            <!-- <mat-form-field appearance="outline">
-                                                                <mat-label>Time</mat-label>
-                                                                <input type="text" matInput
-                                                                    [ngxMatTimepicker]="timepicker" format="24"
-                                                                    [required]="required" readonly
-                                                                    formControlName="bookingTime"
-                                                                    [formControl]="formControlItem" />
-
-                                                                <mat-icon matPrefix
-                                                                    *ngIf="formControlItem.value && !formControlItem.disabled && !required"
-                                                                    (click)="onClear($event)">
-                                                                    close
-                                                                </mat-icon>
-
-                                                                <mat-icon matSuffix *ngIf="!formControlItem.disabled"
-                                                                    (click)="openFromIcon(timepicker)">schedule
-                                                                </mat-icon>
-                                                            </mat-form-field> -->
-                                                            <input type="text" matInput
-                                                            [ngxMatTimepicker]="timepicker" format="24"
-                                                            [required]="required" readonly
-                                                            formControlName="bookingTime"
-                                                            [formControl]="formControlItem" />
-                                                            <ngx-mat-timepicker #timepicker></ngx-mat-timepicker>
-                                                        </div>
-                                                        </div>
-
-
-
-
                                                             <div class="col-md-12">
                                                                 <div class="form-group">
                                                                     <label for="emailAddress" class="form-label">
@@ -414,7 +399,6 @@
                                                                 <div class="row mt-5">
                                                                     <div class="col-md-4">
                                                                         <div class="mb-3">
-                                                                            <!-- <label for="formFile" class="form-label">Upload file example</label> -->
                                                                             <input (change)="selectFiles($event)"
                                                                                 class="form-control" type="file"
                                                                                 multiple id="formFile">
@@ -520,9 +504,7 @@
                                         <td>{{data._id.city}}</td>
                                         <td>{{data._id.state}}</td>
                                         <td>{{data._id.zipcode}}</td>
-
                                     </tr>
-
                                 </tbody>
                             </table>
                             <div class="assignModel" *ngIf="woServiceAddress?.length == 0">
@@ -541,7 +523,6 @@
                                 data-dismiss="modal">
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

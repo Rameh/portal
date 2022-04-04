@@ -181,6 +181,7 @@ export class BookProComponent implements OnInit {
     .subscribe((data) => {
       if (data.status == 200) {
         this.proProfile = { ...data['data'] }
+        console.log("this.proProfile", this.proProfile)
         this.leadService.proData=this.proProfile
         this.serviceArea=this.proProfile.serviceArea
         this.dateTimeData=this.proProfile.businessHours
@@ -282,7 +283,7 @@ export class BookProComponent implements OnInit {
       DirectBoookingleadDetailsObj['mobileNumber'] = this.serviceAddressForm.value.mobileNumber
       DirectBoookingleadDetailsObj['DBLeadEmailId'] = this.serviceAddressForm.value.emailId
       DirectBoookingleadDetailsObj['proLoginId']=this.route.snapshot.params.id
-      DirectBoookingleadDetailsObj['proEmailId']='mudurukolaramesh74@gmail.com'
+      DirectBoookingleadDetailsObj['proEmailId']=this.proProfile.emailId
       //this.proProfile.mobileNumber
       DirectBoookingleadDetailsObj['proMobileNumber']='+917893574123'
       DirectBoookingleadDetailsObj['proName']=this.proProfile.firstName+" "+this.proProfile.lastName
