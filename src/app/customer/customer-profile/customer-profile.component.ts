@@ -7,12 +7,7 @@ import { numVerifyRequestService } from 'src/app/services/numVerifyRequest.servi
 import { VerificationCodeService } from 'src/app/services/verification.code.service';
 import { MustMatch } from 'src/app/shared';
 import {
-  COMPANY_LOGO,
-  DEFAULT_PERSON_IMAGE,
-  COMPONENT_PAGE_MODE_EDIT,
-  COMPONENT_PAGE_MODE_VIEW,
   SUCCESS_CODE,
-  UNAUTHORIZED_CODE,
   INTERNAL_SERVER_ERROR_MSG,
   NOT_FOUND_CODE
 } from '../../helpers/constants'
@@ -162,7 +157,6 @@ export class CustomerProfileComponent implements OnInit {
   async confirmPassword1() {
 
     let changePasswordData = {}
-    //changePasswordData['emailId'] = this.signInForm.value.emailId
     changePasswordData['id'] = localStorage.getItem('loginId')
     changePasswordData['oldPassword'] = this.changePasswordForm.value.oldPassword
     changePasswordData['newPassword'] = this.changePasswordForm.value.confirmPassword
@@ -195,12 +189,10 @@ export class CustomerProfileComponent implements OnInit {
 
   uploadFile(event) {
     this.uploadMenu = true;
-    let reader = new FileReader(); // HTML5 FileReader API
+    let reader = new FileReader(); 
     let customerImage = event.target.files[0];
     if (event.target.files && event.target.files[0]) {
       reader.readAsDataURL(customerImage);
-
-      // When file uploads set it to file formcontrol
       reader.onload = () => {
         this.imageUrl = reader.result;
         localStorage.setItem("profileImage", this.imageUrl)
@@ -210,12 +202,10 @@ export class CustomerProfileComponent implements OnInit {
         this.editFile = false;
         this.removeUpload = true;
       }
-      // ChangeDetectorRef since file is loading outside the zone
       this.cd.markForCheck();
     }
   }
 
-  // Function to remove uploaded file
   removeUploadedFile() {
     let newFileList = Array.from(this.el.nativeElement.files);
     this.imageUrl = 'https://i.pinimg.com/236x/d6/27/d9/d627d9cda385317de4812a4f7bd922e9--man--iron-man.jpg';
@@ -248,11 +238,9 @@ export class CustomerProfileComponent implements OnInit {
   uploadMenuCancel() {
     this.uploadMenu = false
     this.removeUploadedFile();
-    //this.imageUrl= "../../../assets/images/account.png"; 
   }
   deleteButton() {
     this.removeUploadedFile();
-    //this.imageUrl= "../../../assets/images/account.png"; 
   }
 
   getZipcodeData(zipcode) {
@@ -278,11 +266,6 @@ export class CustomerProfileComponent implements OnInit {
           this.zipcodeData = data['data'][0]
           this.city = this.zipcodeData?.city
           this.state = this.zipcodeData?.state
-          // this.editGoogleAddress.get('city').setValue(this.city)
-          // this.editYelpAddress.get('city').setValue(this.city)
-          //fixed on 31.08.2021 to avoid rating and business address changining
-          // this.getYelpRating();
-          // this.getGoogleRating();
           this.getZipcodeStateName();
         } if (this.zipcodeData1?.length == 0) {
           this.zipcodeExists = true
@@ -309,13 +292,9 @@ export class CustomerProfileComponent implements OnInit {
         }
       }, (error) => {
         this.zipcodeExists = true
-        //this.toastr.errorToastr(error, INTERNAL_SERVER_ERROR_MSG)
       })
   }
 
-
-
-  /*US Phone Number Validation */
   numberValidation() {
     return new Promise((resolve, reject) => {
       this.leadService.getUsPhoneValidation('+1'+''+this.phoneNumber)
@@ -334,7 +313,6 @@ export class CustomerProfileComponent implements OnInit {
       alert('Please fill all the required fields to create a super hero!')
     } else {
       console.log(this.customerProfileform.value)
-      //'firebase@sunkpo.com'
       this.leadService.updateCustomerProfile( this.emailId, this.customerProfileform.value)
         .pipe(first())
         .subscribe(
@@ -343,7 +321,6 @@ export class CustomerProfileComponent implements OnInit {
               this.toastr.successToastr(data.response, 'Customer Profile')
               this.showEditIcon = false;
               window.location.reload()
-              // disabling form
               this.customerProfileform.disable()
             }
           }, error => {
@@ -352,16 +329,11 @@ export class CustomerProfileComponent implements OnInit {
     }
   }
 
-
-
-
   numVerifyRequest(obj) {
     this.NumVerifyRequestService.numberVerifyCreation(obj)
       .pipe(first())
       .subscribe((data) => {
-
         if (data.status == 200) {
-
         } else if (data.status == 'UNAUTHORIZED_CODE') {
         }
       }, (error) => {
@@ -376,9 +348,7 @@ export class CustomerProfileComponent implements OnInit {
     })
   }
 
-  /*US Phone Number Validation */
   async getUSPhoneNumberValidation1(value) {
-    console.log('llll',value.length)
     if (value == "" || value?.length == 0) {
       this.mobileNumberValidation1 = false
       this.invalidMobileNumber = false
@@ -402,33 +372,24 @@ export class CustomerProfileComponent implements OnInit {
           usnumber: this.phoneNumber,
           description: 'Pro My Profile: Business Phone number',
           userId: this.customerProfileform.value.emailId,
-          // token: data.data.token
         }
         this.numVerifyRequest(numberVerifyObj)
-
         this.mobileNumberValidation1 = false;
         this.invalidMobileNumber = false
-        // return false;
       }
       else if (this.resObj['status'] == NOT_FOUND_CODE) {
         var numberVerifyObj1 = {
           usnumber: this.phoneNumber,
           description: 'Pro My Profile: Business Phone number',
           userId: this.customerProfileform.value.emailId,
-          // token: data.data.token
         }
         this.numVerifyRequest(numberVerifyObj1)
 
         this.mobileNumberValidation1 = true;
         this.invalidMobileNumber = false;
-        // return true;
       }
-      //this.condition1(value)
-      console.log('this.oldPhoneNumber',this.oldPhoneNumber,this.phoneNumber,this.oldPhoneNumber == this.phoneNumber)
       if (this.oldPhoneNumber == this.phoneNumber && value != "") {
         this.toastr.warningToastr('New Business phone number is same as old')
-
-        //return 
       } else if (this.oldPhoneNumber != this.phoneNumber && value != "" && this.mobileNumberValidation1 == false) {
         this.numberVerify();
       }
@@ -468,7 +429,6 @@ export class CustomerProfileComponent implements OnInit {
     }).subscribe(data => {
       if (data.status == '200') {
         this.mobileVerificationCode = data.data.token;
-        // return false;
       }
     }, (error) => {
       this.toastr.errorToastr(error, 'INTERNAL_SERVER_ERROR_MSG')
@@ -477,14 +437,9 @@ export class CustomerProfileComponent implements OnInit {
   }
 
   codeSubmit() {
-    //this.submittedForMobileCode = true
     $("#VerifyNumber").modal("hide");
     this.toastr.successToastr('Business phone number verified');
-
   }
-
-
-
   keyPress4(event: any) {
     if (this.VerificationForm.value.VerficationCode == '') {
       this.invalidMobileLead = true;

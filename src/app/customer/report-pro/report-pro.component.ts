@@ -1,4 +1,3 @@
-import { DatePipe } from '@angular/common';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -9,11 +8,9 @@ import { first } from 'rxjs/operators';
 import { LeadService } from 'src/app/services/lead.service';
 import { UploadService } from 'src/app/services/upload.service';
 import {
-  DEFAULT_PERSON_IMAGE,
   SUCCESS_CODE,
   UNAUTHORIZED_CODE,
   INTERNAL_SERVER_ERROR_MSG,
-  ALREADY_EXIST_CODE
 } from '../../helpers/constants';
 declare var $: any;
 @Component({
@@ -27,34 +24,34 @@ export class ReportProComponent implements OnInit {
   reportProform: FormGroup;
   workOrdeList: any;
   projectName
-  emailId:any;
+  emailId: any;
   customerId: any;
   proProfile: any;
   businessName: any;
   logoFlag1: boolean = false;
-  logoFlag2: boolean=false;
+  logoFlag2: boolean = false;
   checkFlag1: boolean = false;
   selectedFilesCompanyLogo1: FileList[] | undefined;
   selectedFiles: FileList | undefined;
   h: any;
-  filesToUpload: any= [];
+  filesToUpload: any = [];
   checkValueFlag: boolean = false;
   progressCompanyLogo2 = 0;
-  disableSaveOnFileUpload: boolean=false;
-  selectFileUpload: boolean=false;
-  btnFlag: boolean=false;
+  disableSaveOnFileUpload: boolean = false;
+  selectFileUpload: boolean = false;
+  btnFlag: boolean = false;
   proProfileImage: any;
   resArr: any;
   uploadMessageCompanyLogo1 = '';
-  arr: any=[];
+  arr: any = [];
   totalLength: any;
   imageArray: any;
-  progressHide1: boolean=false;
+  progressHide1: boolean = false;
   chosseTypecount: any;
-  fileName='';
-  imgFlag: boolean=false;
+  fileName = '';
+  imgFlag: boolean = false;
   proProfileImage1: any = [];
-  urls: any=[];
+  urls: any = [];
   constructor(
     private fb: FormBuilder,
     public leadService: LeadService,
@@ -70,32 +67,27 @@ export class ReportProComponent implements OnInit {
   ngOnInit(): void {
     this.getProProfile(this.route.snapshot.params.id)
     this.currentDate = moment(new Date()).format("YYYY-MM-DD");
-    this.emailId=localStorage.getItem('emailId')
+    this.emailId = localStorage.getItem('emailId')
     //'hatim.naim@gmail.com'
     this.leadService.getUserProfile('hatim.naim@gmail.com')
-    .subscribe((data) => {
-      if (data.status == 200) {
-        let userProfileData = { ...data['data'][0] }
-        this.customerId=userProfileData.customerId
-        this.getWorkOrderListBasedOnCustomer(this.customerId)
-        //console.log("🚀 ~ file: customer-support-request-list.component.ts ~ line 41 ~ CustomerSupportRequestListComponent ~ userProfileData", userProfileData)
-        //this.customerName=userProfileData.CustomerBillingAddress.firstName+' '+userProfileData.CustomerBillingAddress.lastName
-      }
-    })
+      .subscribe((data) => {
+        if (data.status == 200) {
+          let userProfileData = { ...data['data'][0] }
+          this.customerId = userProfileData.customerId
+          this.getWorkOrderListBasedOnCustomer(this.customerId)
+        }
+      })
   }
 
-  getProProfile(proId){
-    //this.customerEmailId=localStorage.getItem('emailId')
+  getProProfile(proId) {
     this.leadService.getProProfile(proId)
-    .subscribe((data) => {
-      if (data.status == 200) {
-        this.proProfile = { ...data['data'] }
-        console.log("proprofile",  this.proProfile)
-        this.leadService.proData=this.proProfile
-        this.businessName=this.proProfile.businessName
-        //this.imgPath = this.proProfile.attachments
-      }
-    })
+      .subscribe((data) => {
+        if (data.status == 200) {
+          this.proProfile = { ...data['data'] }
+          this.leadService.proData = this.proProfile
+          this.businessName = this.proProfile.businessName
+        }
+      })
   }
 
   private buildFormGroup(formData): any {
@@ -106,18 +98,18 @@ export class ReportProComponent implements OnInit {
       createdOn: [''],
       projectName: [''],
       projectDescription: [''],
-      reviewComments:[''],
+      reviewComments: [''],
       resolution: [''],
       resolutiondate: [''],
       resolutionby: [''],
-      isNeverShowedUp:[false],
-      isShowedUpTooLate:[false],
-      isAbusiveBehavior:[false],
-      isDoNotLookProfessional:[false],
-      isOtherReason:[false],
-      proName:[''],
-      proEmailId:[''],
-      status:['Open']
+      isNeverShowedUp: [false],
+      isShowedUpTooLate: [false],
+      isAbusiveBehavior: [false],
+      isDoNotLookProfessional: [false],
+      isOtherReason: [false],
+      proName: [''],
+      proEmailId: [''],
+      status: ['Open']
     };
     return this.fb.group(customerSupportRequestform)
   }
@@ -129,8 +121,8 @@ export class ReportProComponent implements OnInit {
       console.log(this.reportProform.value)
       this.reportProform.patchValue({
         customerId: this.customerId,
-        proName:this.businessName,
-        proEmailId:this.proProfile.emailId
+        proName: this.businessName,
+        proEmailId: this.proProfile.emailId
       })
       this.leadService.createReportPro(this.reportProform.value)
         .pipe(first())
@@ -147,44 +139,34 @@ export class ReportProComponent implements OnInit {
     }
   }
 
-  getWorkOrderListBasedOnCustomer(customerId){
-    this.leadService.getWorkOrderListByProIdAndCustomerId(this.route.snapshot.params.id,customerId)
-    .subscribe((data) => {
-      if (data.status == SUCCESS_CODE) {
-        this.workOrdeList = data.data
-        console.log("this.wokrOrderList", this.workOrdeList)
-      } else if (data.status == UNAUTHORIZED_CODE) {
-      }
-    }, (error) => {
-      this.toastr.errorToastr(error, INTERNAL_SERVER_ERROR_MSG)
+  getWorkOrderListBasedOnCustomer(customerId) {
+    this.leadService.getWorkOrderListByProIdAndCustomerId(this.route.snapshot.params.id, customerId)
+      .subscribe((data) => {
+        if (data.status == SUCCESS_CODE) {
+          this.workOrdeList = data.data
+        } else if (data.status == UNAUTHORIZED_CODE) {
+        }
+      }, (error) => {
+        this.toastr.errorToastr(error, INTERNAL_SERVER_ERROR_MSG)
+      })
+  }
+
+  getWorkOrderData(value) {
+    const gg = this.workOrdeList.filter(o => o.workOrderNumber === value)
+    this.reportProform.patchValue({
+      projectName: gg[0].WorkDescription.jobTitle,
+      createdOn: gg[0].WorkDescription.createdOn
+
     })
   }
-
-  getWorkOrderData(value) {    
-   const gg= this.workOrdeList.filter(o=>o.workOrderNumber === value)
-   console.log('fff',gg[0].WorkDescription.jobTitle)
-   this.reportProform.patchValue({
-    projectName: gg[0].WorkDescription.jobTitle,
-    createdOn:gg[0].WorkDescription.createdOn
-    
-  })
-   //this.customerSupportRequestform.customerSupportRequestform=
-   console.log("🚀 ~ file: customer-support-request-form.component.ts ~ line 92 ~ CustomerSupportRequestFormComponent ~ gg", gg)
-  }
-
-
   // on file select
   selectFiles(fileInput) {
-    console.log("testtttttttt", fileInput)
     this.btnFlag = false;
     this.selectFileUpload = true;
     this.checkFlag1 = true;
     this.logoFlag2 = false;
     this.logoFlag1 = false;
     this.selectedFilesCompanyLogo1 = fileInput.target.files;
-    console.log(" this.selectedFilesCompanyLogo1 ", this.selectedFilesCompanyLogo1 )
-    //this.totalLength = this.filesToUpload.length
-    //console.log("🚀this.totalLength",  this.totalLength)
     this.imageArray = []
     this.progressHide1 = false
     if (fileInput.target.files.length == 1) {
@@ -200,17 +182,13 @@ export class ReportProComponent implements OnInit {
     }
     var filesAmount = fileInput.target.files.length;
     for (let i = 0; i < filesAmount; i++) {
-      const fileType= fileInput.target.files[i].type
+      const fileType = fileInput.target.files[i].type
       var reader = new FileReader();
       reader.onload = (fileInput: any) => {
         this.imgFlag = false;
         this.urls.push(fileInput.target.result);
-        this.arr.push({imageBase64:fileInput.target.result,type:fileType});
-        
-        //this.proProfileImage3 = this.proProfileImage1.concat(this.arr);
-        //console.log("p1", this.proProfileImage1)
+        this.arr.push({ imageBase64: fileInput.target.result, type: fileType });
         console.log("arr", this.arr)
-        //console.log("p3", this.proProfileImage3)
       }
       reader.readAsDataURL(fileInput.target.files[i]);
     }
@@ -218,11 +196,9 @@ export class ReportProComponent implements OnInit {
 
   selectFile(event) {
     this.selectedFiles = event.target.files;
-    // //console.log("selectedFiles", this.selectedFiles)
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
       this.h = event.target.files[0].name;
-      // //console.log("selectedFiles:::", this.h)     
     }
   }
 
@@ -239,11 +215,9 @@ export class ReportProComponent implements OnInit {
       this.disableSaveOnFileUpload = true;
       this.selectFileUpload = false;
       const files: Array<File> = this.filesToUpload;
-      console.log("🚀 ~ file: report-pro.component.ts ~ line 229 ~ ReportProComponent ~ files", files)
-      // this.currentFileCompanyLogo = this.filesToUpload;
       this.uploadService.uploadMultiple(files)
         .subscribe(
-          (event:any) => {
+          (event: any) => {
             if (event.type === HttpEventType.UploadProgress) {
               this.progressCompanyLogo2 = Math.round(100 * event.loaded / event.total);
             } else if (event instanceof HttpResponse) {
@@ -254,22 +228,16 @@ export class ReportProComponent implements OnInit {
               this.logoFlag1 = false;
               this.uploadMessageCompanyLogo1 = 'Pictures Uploaded Successfully';
               let resArr1 = this.resArr['data'];
-              console.log("res",this.resArr)
               this.resArr = (resArr1['uploadedImagePath'])
-              console.log('this.filesToUpload',this.filesToUpload)
               for (let y = 0; y < this.filesToUpload.length; y++) {
-                const imageType=this.resArr[y].mimetype;
-                this.proProfileImage1.push({Imageurl:this.resArr[y].location,type:imageType});
+                const imageType = this.resArr[y].mimetype;
+                this.proProfileImage1.push({ Imageurl: this.resArr[y].location, type: imageType });
               }
-              console.log("p1???????????", this.proProfileImage1)
-              //console.log("arr", this.arr)
-              //console.log("p3", this.proProfileImage3)
             }
           },
           err => {
             this.progressCompanyLogo2 = 0;
             this.uploadMessageCompanyLogo1 = 'Could not upload the file!';
-            // this.currentFileCompanyLogo = undefined;
           });
     }
   }
@@ -278,24 +246,16 @@ export class ReportProComponent implements OnInit {
   removeSelectedFile(i) {
     this.btnFlag = false;
     this.selectFileUpload = true;
-    //this.proProfileImage3 = this.proProfileImage1.concat(this.arr);
     this.arr.splice(i, 1);
     this.filesToUpload.splice(i, 1);
-    //this.proProfileImage1.splice(i, 1);
-    //this.proProfileImage3.splice(i, 1);
-
     this.totalLength = this.filesToUpload.length;
     this.chosseTypecount = this.totalLength;
-    ////console.log("p1", this.proProfileImage1)
-    //console.log("arr", this.arr)
-    ////console.log("p3", this.proProfileImage3)
     if (this.totalLength == 0) {
       this.logoFlag1 = false;
     }
   }
-
   async newPassword1() {
-   
+
   }
 }
 

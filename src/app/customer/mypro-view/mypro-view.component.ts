@@ -20,7 +20,6 @@ export class MyproViewComponent implements OnInit {
   constructor(private route: ActivatedRoute,public leadService: LeadService,    public router: Router,) { }
 
   ngOnInit(): void {
-    //this.route.snapshot.params.id
     this.proId=this.route.snapshot.params.id
     this.getProProfile(this.route.snapshot.params.id)
   }
@@ -33,7 +32,6 @@ export class MyproViewComponent implements OnInit {
 
 
   getProProfile(proId){
-    //this.customerEmailId=localStorage.getItem('emailId')
     this.leadService.getProProfile(proId)
     .subscribe((data) => {
       if (data.status == 200) {
@@ -49,9 +47,7 @@ export class MyproViewComponent implements OnInit {
   }
 
   bookNow() {
-    // this.displayFileModal = 'block'
     this.router.navigate(['customer/book-pro',this.proId])
-    //alert('This function redirect to website')
   }
   reportPro(){
     this.router.navigate(['/customer/report-pro',this.proId])
@@ -60,7 +56,6 @@ export class MyproViewComponent implements OnInit {
     alert('This function redirect to website')
   }
   onCloseHandled() {
-    //this.displayFileModal = 'none';
   }
 
 }

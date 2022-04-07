@@ -12,9 +12,9 @@ import { HelpAndFaqsPageComponent } from './help-and-faqs-page/help-and-faqs-pag
 import { MyProsComponent } from './my-pros/my-pros.component';
 import { MyproViewComponent } from './mypro-view/mypro-view.component';
 import { PrivacyPageComponent } from './privacy-page/privacy-page.component';
-import {ProjectViewComponent} from './project-view/project-view.component';
+import { ProjectViewComponent } from './project-view/project-view.component';
 import { ReportProComponent } from './report-pro/report-pro.component';
-import {TermsAndConditionsPageComponent} from './terms-and-conditions-page/terms-and-conditions-page.component'
+import { TermsAndConditionsPageComponent } from './terms-and-conditions-page/terms-and-conditions-page.component'
 import { CustomerLeadListComponent } from './customer-lead-list/customer-lead-list.component';
 
 const routes: Routes = [
@@ -32,17 +32,17 @@ const routes: Routes = [
       { path: 'my-pros', component: MyProsComponent },
       { path: 'my-pros-view/:id', component: MyproViewComponent },
       { path: 'notifications', component: CustomerNotificationsComponent },
-      {path:'customer-support',component:CustomerSupportRequestFormComponent},
-      {path:'support-list',component:CustomerSupportRequestListComponent},
-      {path:'support-request-view/:id',component:CustomerSupportRequestViewComponent},
-      {path:'privacy-page',component:PrivacyPageComponent},
-      {path:'terms-and-conditions-page',component:TermsAndConditionsPageComponent},
-      {path:'help-and-faqs-page',component:HelpAndFaqsPageComponent},
-      {path:'report-pro/:id',component:ReportProComponent},
-      {path:'book-pro/:id',component:BookProComponent},
-    {path:'lead-list',component:CustomerLeadListComponent}
+      { path: 'customer-support', component: CustomerSupportRequestFormComponent },
+      { path: 'support-list', component: CustomerSupportRequestListComponent },
+      { path: 'support-request-view/:id', component: CustomerSupportRequestViewComponent },
+      { path: 'privacy-page', component: PrivacyPageComponent },
+      { path: 'terms-and-conditions-page', component: TermsAndConditionsPageComponent },
+      { path: 'help-and-faqs-page', component: HelpAndFaqsPageComponent },
+      { path: 'report-pro/:id', component: ReportProComponent },
+      { path: 'book-pro/:id', component: BookProComponent },
+      { path: 'lead-list', component: CustomerLeadListComponent }
 
-      
+
     ]
   }
 ];

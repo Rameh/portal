@@ -7,11 +7,9 @@ import { ToastrManager } from 'ng6-toastr-notifications';
 import { first } from 'rxjs/operators';
 import { LeadService } from 'src/app/services/lead.service';
 import {
-  DEFAULT_PERSON_IMAGE,
   SUCCESS_CODE,
   UNAUTHORIZED_CODE,
   INTERNAL_SERVER_ERROR_MSG,
-  ALREADY_EXIST_CODE
 } from '../../helpers/constants';
 @Component({
   selector: 'app-customer-support-request-form',
@@ -25,7 +23,7 @@ export class CustomerSupportRequestFormComponent implements OnInit {
   customerSupportRequestform: FormGroup;
   workOrdeList: any;
   projectName
-  emailId:any;
+  emailId: any;
   customerId: any;
   constructor(
     private fb: FormBuilder,
@@ -39,17 +37,15 @@ export class CustomerSupportRequestFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentDate = moment(new Date()).format("YYYY-MM-DD");
-    this.emailId=localStorage.getItem('emailId')
+    this.emailId = localStorage.getItem('emailId')
     this.leadService.getUserProfile(this.emailId)
-    .subscribe((data) => {
-      if (data.status == 200) {
-        let userProfileData = { ...data['data'][0] }
-        this.customerId=userProfileData.customerId
-        this.getWorkOrderListBasedOnCustomer(this.customerId)
-        console.log("🚀 ~ file: customer-support-request-list.component.ts ~ line 41 ~ CustomerSupportRequestListComponent ~ userProfileData", userProfileData)
-        //this.customerName=userProfileData.CustomerBillingAddress.firstName+' '+userProfileData.CustomerBillingAddress.lastName
-      }
-    })
+      .subscribe((data) => {
+        if (data.status == 200) {
+          let userProfileData = { ...data['data'][0] }
+          this.customerId = userProfileData.customerId
+          this.getWorkOrderListBasedOnCustomer(this.customerId)
+        }
+      })
   }
 
   private buildFormGroup(formData): any {
@@ -90,26 +86,22 @@ export class CustomerSupportRequestFormComponent implements OnInit {
     }
   }
 
-  getWorkOrderListBasedOnCustomer(customerId){
+  getWorkOrderListBasedOnCustomer(customerId) {
     this.leadService.getWorkOrderListByCustomer(customerId)
-    .subscribe((data) => {
-      if (data.status == SUCCESS_CODE) {
-        this.workOrdeList = data.data
-        console.log("this.wokrOrderList", this.workOrdeList)
-      } else if (data.status == UNAUTHORIZED_CODE) {
-      }
-    }, (error) => {
-      this.toastr.errorToastr(error, INTERNAL_SERVER_ERROR_MSG)
-    })
+      .subscribe((data) => {
+        if (data.status == SUCCESS_CODE) {
+          this.workOrdeList = data.data
+        } else if (data.status == UNAUTHORIZED_CODE) {
+        }
+      }, (error) => {
+        this.toastr.errorToastr(error, INTERNAL_SERVER_ERROR_MSG)
+      })
   }
 
-  getWorkOrderData(value) {    
-   const gg= this.workOrdeList.filter(o=>o.workOrderNumber === value)
-   console.log('fff',gg[0].WorkDescription.jobTitle)
-   this.customerSupportRequestform.patchValue({
-    projectName: gg[0].WorkDescription.jobTitle
-  })
-   //this.customerSupportRequestform.customerSupportRequestform=
-   console.log("🚀 ~ file: customer-support-request-form.component.ts ~ line 92 ~ CustomerSupportRequestFormComponent ~ gg", gg)
+  getWorkOrderData(value) {
+    const gg = this.workOrdeList.filter(o => o.workOrderNumber === value)
+    this.customerSupportRequestform.patchValue({
+      projectName: gg[0].WorkDescription.jobTitle
+    })
   }
 }

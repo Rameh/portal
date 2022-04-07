@@ -57,8 +57,6 @@
                                                         <span class="badge badge-pill badge-primary cu_badge1"
                                                             *ngIf="data.status === 'Open'">{{data.status}}</span>
                                                     </td>
-                                                    <!-- <td><a href="" class="btn cubtn"
-                                                        [routerLink]='["/customer/project-view",data.customerId]'>VIEW</a></td> -->
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -78,22 +76,6 @@
                     <div class="pro_pagination">
                         <nav aria-label="Demo of active current page number">
                             <pagination-controls (pageChange)="pagination = $event"></pagination-controls>
-                            <!-- <ul class="pagination">
-                               
-                                <li class="page-item"><a class="page-link" href="#">
-                                        <i class="fa fa-arrow-left"></i>
-                                    </a></li>
-                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                <li class="page-item"><a class="page-link" href="#">6</a></li>
-                                <li class="page-item"><a class="page-link" href="#">7</a></li>
-                                <li class="page-item"><a class="page-link" href="#">
-                                        <i class="fa fa-arrow-right"></i>
-                                    </a></li>
-                            </ul> -->
                         </nav>
                     </div>
                 </div>

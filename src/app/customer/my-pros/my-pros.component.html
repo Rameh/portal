@@ -1,172 +1,73 @@
-
 <div class="container">
-    <section class="projects_list personal_info pt-60 pb-30">
-       <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-12">
-                   <div class="card pinfo_box shadow">
-                       <div class="row card-header m-0 justify-content-center">
-                          <div class="col-lg-2 col-2">
-                               <span class="d-block text-center"><i class="fa fa-angle-left"></i></span>
-                           </div>
-                           <div class="col-lg-8 col-5">
-                               <h3>My Pros</h3>
-                           </div>
-                           <div class="col-lg-2 col-2">
-                               <span class="d-block text-center"><i class="fa fa-ellipsis-v"></i></span>
-                           </div>
-                       </div>
-                       <div class="card-body">
-                        <div class="pinfo_contact_form">
-                            <div class="col-md-6 form-group container">
-                            <select class="form-control">
-                                <option disabled>Select Website</option>
-                                <option>Plumbing</option>
-                            </select>
-                        </div>
+  <section class="projects_list personal_info pt-60 pb-30">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-12">
+          <div class="card pinfo_box shadow">
+            <div class="row card-header m-0 justify-content-center">
+              <div class="col-lg-2 col-2">
+                <span class="d-block text-center"><i class="fa fa-angle-left"></i></span>
+              </div>
+              <div class="col-lg-8 col-5">
+                <h3>My Pros</h3>
+              </div>
+              <div class="col-lg-2 col-2">
+                <span class="d-block text-center"><i class="fa fa-ellipsis-v"></i></span>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="pinfo_contact_form">
+                <div class="col-md-6 form-group container">
+                  <select class="form-control">
+                    <option disabled>Select Website</option>
+                    <option>Plumbing</option>
+                  </select>
+                </div>
 
-                        <div *ngFor="let data of customerProList">
-                            <div class="container card mb-3" style="max-width: 95%; height:100%">
-                                <div class="row g-0" style="padding-top: 38px; padding-left: 48px;">
-                                  <div class="col-md-4">
-                                    <img [src]="data.companyLogo" class="img-fluid rounded-start" alt="..." style="width: 100px;height: 100px;">
-                                  </div>
-                                  <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{data.businessName}}</h5>
-                                        <img src="../../../assets/images/locationIcon.svg">
-                                      <span class="card-text">&nbsp;{{data.google_Address.city}}&nbsp;,&nbsp;{{data.google_Address.state}}</span>
-                                      <!-- (Google) -->
-                                      <div class="row">
-                                      <div class="col-md-3">
-                                     <star-rating [(value)]="data.socialMediaLinks.googleRating" totalstars="5" checkedcolor="gold"
-                                    uncheckedcolor="grey" size="24px" readonly="false">  </star-rating> 
-                                      </div>
-                                      <div class="col-md-3" style="padding-top: 8px;">
-                                       ({{data.socialMediaLinks.googleRating}})
-                                       </div>
-                                      </div>
-                                      <div class="row">
-                                        <div class="col-md-3">
-                                       <star-rating [(value)]="data.socialMediaLinks.yelpRating" totalstars="5" checkedcolor="gold"
-                                      uncheckedcolor="grey" size="24px" readonly="false">  </star-rating> 
-                                        </div>
-                                        <div class="col-md-3" style="padding-top: 8px;">
-                                         ({{data.socialMediaLinks.yelpRating}})
-                                         </div>
-                                        </div>
-                                    <!-- <p class="card-text"><small class="text-muted">{{data.socialMediaLinks.googleRating}} out of 5</small></p> -->
-                                    <!-- <star-rating [(value)]="data.socialMediaLinks.yelpRating" totalstars="5" checkedcolor="gold"
-                                    uncheckedcolor="grey" size="24px" readonly="false">  </star-rating> (Google) -->
-                                    <!-- <p class="card-text"><small class="text-muted">{{data.socialMediaLinks.googleRating}} out of 5</small></p> -->
-                                    </div>
-                                    <div class="col-md-12 pinfo_btns">
-                                      <a href="" class="btn cubtn"
-                                                    [routerLink]='["/customer/my-pros-view",data.loginId]'>VIEW</a>
-                                      <!-- <button class="btn btn-primary btn2">View</button> -->
-                                  </div>
-                                  </div>
-                                </div>
-                              </div>
+                <div *ngFor="let data of customerProList">
+                  <div class="container card mb-3" style="max-width: 95%; height:100%">
+                    <div class="row g-0" style="padding-top: 38px; padding-left: 48px;">
+                      <div class="col-md-4">
+                        <img [src]="data.companyLogo" class="img-fluid rounded-start" alt="..."
+                          style="width: 100px;height: 100px;">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title">{{data.businessName}}</h5>
+                          <img src="../../../assets/images/locationIcon.svg">
+                          <span
+                            class="card-text">&nbsp;{{data.google_Address.city}}&nbsp;,&nbsp;{{data.google_Address.state}}</span>
+                          <div class="row">
+                            <div class="col-md-3">
+                              <star-rating [(value)]="data.socialMediaLinks.googleRating" totalstars="5"
+                                checkedcolor="gold" uncheckedcolor="grey" size="24px" readonly="false"> </star-rating>
                             </div>
-                              <!-- <div class="container card mb-3" style="max-width: 1040px; height:200px">
-                                <div class="row g-0" style="padding-top: 38px; padding-left: 48px;">
-                                  <div class="col-md-4">
-                                    <img src="https://picsum.photos/501/501" class="img-fluid rounded-start" alt="..." style="width: 100px;height: 100px;">
-                                  </div>
-                                  <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Red hot Plumbing</h5>
-                                        <img src="../../../assets/images/locationIcon.svg">
-                                        <span class="card-text">California</span>
-                                        <star-rating [(value)]="googleRating" totalstars="5" checkedcolor="gold"
-                                       uncheckedcolor="grey" size="24px" readonly="false">  </star-rating>
-                                       <p class="card-text"><small class="text-muted">4.0 out of 5</small></p>
-                                    </div>
-                              
-                                    <div class="col-md-12 pinfo_btns">
-                                      <a href="" class="btn cubtn"
-                                                    [routerLink]='["/customer/my-pros-view"]'>VIEW</a>
-                                  </div>
-                                  </div>
-                                </div>
-                              </div> -->
-                              <!-- <div class="container card mb-3" style="max-width: 1040px; height:200px">
-                                <div class="row g-0" style="padding-top: 23px; padding-left: 48px;">
-                                  <div class="col-md-4">
-                                    <img src="https://picsum.photos/501/501" class="img-fluid rounded-start" alt="..." style="width: 100px;height: 100px;">
-                                  </div>
-                                  <div class="col-md-8">
-                                    <div class="card-body">
-                                      <h5 class="card-title">Red hot Plumbing</h5>
-                                      <img src="../../../assets/images/locationIcon.svg">
-                                      <span class="card-text">California</span>
-                                      <star-rating [(value)]="googleRating" totalstars="5" checkedcolor="gold"
-                                     uncheckedcolor="grey" size="24px" readonly="false">  </star-rating>
-                                      <p class="card-text"><small class="text-muted">4.0 out of 5</small></p>
-                                      <div class="col-md-12 pinfo_btns">
-                                        <button class="btn btn-primary btn2">View</button>
-                                    </div>
-                                    <div class="col-md-12 pinfo_btns">
-                                      <a href="" class="btn cubtn"
-                                                    [routerLink]='["/customer/my-pros-view"]'>VIEW</a>
-                                   
-                                  </div>
-                                    </div>
-                                    
-                                  </div>
-                                </div>
-                              </div> -->
-                                <!-- <div class="container py-2">
-                                    <article class="postcard light yellow">
-                                        <a class="postcard__img_link" href="#">
-                                            <img class="postcard__img" src="https://picsum.photos/501/501" alt="Image Title" />
-                                        </a>
-                                        <div class="postcard__text t-dark">
-                                            <h1 class="postcard__title yellow"><a href="#">Red Hat Plumbing</a></h1>
-                                            <div class="postcard__subtitle small">
-                                                <time datetime="2020-05-25 12:00:00">
-                                                    <i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2020
-                                                </time>
-                                            </div>
-                                            <div class="postcard__bar"></div>
-                                            <div class="postcard__preview-txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores nobis enim quidem excepturi, illum quos!</div>
-                                            <ul class="postcard__tagbox">
-                                                <li class="tag__item"><i class="fas fa-tag mr-2"></i>Podcast</li>
-                                                <li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.</li>
-                                                <li class="tag__item play yellow">
-                                                    <a href="#"><i class="fas fa-play mr-2"></i>Play Episode</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </article>
-                                </div> -->
-                               <!-- <div class="col-lg-8 offset-lg-2">
-                                   <div class="pinfo_tabs">
-                                     <div class="profileImg"></div>
-                                       <div class="tab-content pinfo_tabs_cont" id="pills-tabContent">
-                                         <div class="tab-pane fade show active" id="pills-personal" role="tabpanel" aria-labelledby="pills-personal-tab">
-                                           <div class="pinfo_contact_form">
-                                               <form >
-                                                   <div class="row">
-                                                       <div class="col-md-12 pinfo_btns">
-                                                           <button class="btn btn-link btn1">Cancel</button>
-                                                           <button class="btn btn-primary btn2">Save</button>
-                                                       </div>
-                                                   </div> 
-                                               </form>
-                                           </div>
-                                         </div>
-                                       </div>
-                                   </div>
-                               </div> -->
-                               
-                           </div>
-                       </div>
-                   </div>
-               </div>
-             </div>
-       </div>
-   </section>
+                            <div class="col-md-3" style="padding-top: 8px;">
+                              ({{data.socialMediaLinks.googleRating}})
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-3">
+                              <star-rating [(value)]="data.socialMediaLinks.yelpRating" totalstars="5"
+                                checkedcolor="gold" uncheckedcolor="grey" size="24px" readonly="false"> </star-rating>
+                            </div>
+                            <div class="col-md-3" style="padding-top: 8px;">
+                              ({{data.socialMediaLinks.yelpRating}})
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-12 pinfo_btns">
+                          <a href="" class="btn cubtn" [routerLink]='["/customer/my-pros-view",data.loginId]'>VIEW</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
-  

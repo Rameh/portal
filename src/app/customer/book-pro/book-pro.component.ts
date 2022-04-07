@@ -1,5 +1,4 @@
-import { DatePipe } from '@angular/common';
-import { Component, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, Input, OnInit,ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -8,14 +7,10 @@ import { ToastrManager } from 'ng6-toastr-notifications';
 import { first } from 'rxjs/operators';
 import { LeadService } from 'src/app/services/lead.service';
 import { UploadService } from 'src/app/services/upload.service';
-import { NgbDateStruct, NgbCalendar, NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
-
 import {
-  DEFAULT_PERSON_IMAGE,
   SUCCESS_CODE,
   UNAUTHORIZED_CODE,
   INTERNAL_SERVER_ERROR_MSG,
-  ALREADY_EXIST_CODE
 } from '../../helpers/constants';
  
 declare var $: any;
@@ -25,12 +20,8 @@ declare var $: any;
   styleUrls: ['./book-pro.component.scss']
 })
 export class BookProComponent implements OnInit {
-
   @ViewChild("timepicker") timepicker: any;
   control = new FormControl(new Date());
- // startDate = new Date(2000, 0, 2);
-  //minDate = new Date(1985, 4, 12); 
-  //maxDate = new Date(1985, 4, 22);
   model;
   public currentDate: any;
   bookProform: FormGroup;
@@ -86,7 +77,6 @@ export class BookProComponent implements OnInit {
   urls: any=[];
   categoryName: any;
   categoryNameArray: any;
-
   formControlItem: FormControl = new FormControl("");
   required: boolean = !1;
   subCategoriePrice: any;
@@ -102,10 +92,7 @@ export class BookProComponent implements OnInit {
   ) {
     this.bookProform = this.buildFormGroup({})
     this.serviceAddressForm=this.buildFormGroup1({})
-    
   }
-
-  
   /**
    * Lets the user click on the icon in the input.
    */
@@ -114,7 +101,6 @@ export class BookProComponent implements OnInit {
       timepicker.open();
     }
   }
-
   /**
    * Function to clear FormControl's value, called from the HTML template using the clear button
    *
@@ -129,7 +115,6 @@ export class BookProComponent implements OnInit {
     this.getProProfile(this.route.snapshot.params.id)
     this.currentDate = moment(new Date()).format("YYYY-MM-DD");
     this.emailId=localStorage.getItem('emailId')
-
     this.leadService.getUserProfile('hatim.naim@gmail.com').subscribe((data) => {
       if (data.status == 200) {
         let userProfileData = { ...data['data'][0] }
@@ -170,13 +155,10 @@ export class BookProComponent implements OnInit {
       bookingDate:[''],
       bookingTime:['']
     })
-    //this.makeRecuring()
-
   }
   get s() { return this.serviceAddressForm.controls; }
 
   getProProfile(proId){
-    //this.customerEmailId=localStorage.getItem('emailId')
     this.leadService.getProProfile(proId)
     .subscribe((data) => {
       if (data.status == 200) {
@@ -275,7 +257,6 @@ export class BookProComponent implements OnInit {
         customerId: this.customerId
       })
       const DirectBoookingleadDetailsObj = {}
-      // basic details
       DirectBoookingleadDetailsObj['projectName'] = this.serviceAddressForm.value.projectName
       DirectBoookingleadDetailsObj['projectDescription'] = this.serviceAddressForm.value.projectDescription
       DirectBoookingleadDetailsObj['firstName'] = this.serviceAddressForm.value.firstName
@@ -284,24 +265,19 @@ export class BookProComponent implements OnInit {
       DirectBoookingleadDetailsObj['DBLeadEmailId'] = this.serviceAddressForm.value.emailId
       DirectBoookingleadDetailsObj['proLoginId']=this.route.snapshot.params.id
       DirectBoookingleadDetailsObj['proEmailId']=this.proProfile.emailId
-      //this.proProfile.mobileNumber
       DirectBoookingleadDetailsObj['proMobileNumber']='+917893574123'
       DirectBoookingleadDetailsObj['proName']=this.proProfile.firstName+" "+this.proProfile.lastName
       DirectBoookingleadDetailsObj['bookingDate']= moment(this.serviceAddressForm.value.bookingDate).format('MMMM Do YYYY')
       DirectBoookingleadDetailsObj['bookingTime']= this.serviceAddressForm.value.bookingTime
       DirectBoookingleadDetailsObj['isBookapro'] = true
       DirectBoookingleadDetailsObj['DBLPrice']=  this.subCategoriePrice[0].bapPrice
-      // service address
       DirectBoookingleadDetailsObj['serviceAddress'] = {}
       DirectBoookingleadDetailsObj['serviceAddress']['streetAddress'] = this.serviceAddressForm.value.servicestreetAddress
       DirectBoookingleadDetailsObj['serviceAddress']['city'] = this.serviceAddressForm.value.servicecity
       DirectBoookingleadDetailsObj['serviceAddress']['state'] = this.serviceAddressForm.value.servicestate
       DirectBoookingleadDetailsObj['serviceAddress']['zipcode'] = this.serviceAddressForm.value.servicezipcode
-      // project description
       DirectBoookingleadDetailsObj['attachments'] = this.proProfileImage1;
-      // verification code
       var today = new Date().toISOString().split('T')[0];
-      // service details
       DirectBoookingleadDetailsObj['service'] = {}
       DirectBoookingleadDetailsObj['service']['catgoryCode'] = this.serviceAddressForm.value.selectCategory
       DirectBoookingleadDetailsObj['service']['category'] =  this.categoryNameArray[0].categoryName
@@ -339,7 +315,6 @@ export class BookProComponent implements OnInit {
    this.bookProform.patchValue({
     projectName: gg[0].WorkDescription.jobTitle,
     createdOn:gg[0].WorkDescription.createdOn
-    
   })
   }
 
@@ -351,20 +326,9 @@ export class BookProComponent implements OnInit {
   }
 
   createlatlong() {
-    //in create lat long addition service
     if (this.serviceAddressForm.value.servicezipcode.length === 5 && this.serviceAddressForm.value.servicestreetAddress !== "") {
       var address = this.serviceAddressForm.value.servicestreetAddress + "," + this.serviceAddressForm.value.servicecounty + "," + this.serviceAddressForm.value.servicecity + "," + this.serviceAddressForm.value.servicezipcode + "," + this.serviceAddressForm.value.servicestate
       var add = { address: address }
-      // this.socialMediaService.getGoogleLatLongFromAddress(add)
-      //   .subscribe((data) => {
-      //     if (data.status == SUCCESS_CODE) {
-      //       this.latitude = data.data.lat;
-      //       this.longitude = data.data.lng;
-      //     }
-      //     else {
-      //       this.spinner.hide()
-      //     }
-      //   })
     }
   }
   getServiceCheck1(flagStatus) {
@@ -383,7 +347,6 @@ export class BookProComponent implements OnInit {
   }
 
   getSelecteditem() {
-    // this.radioSel = this.woServiceAddress.find(data => data._id.phoneNumber === this.radioSelected);
     this.radioSel = this.woServiceAddress[this.radioSelected]
     if (this.radioSel) {
       this.serviceAddressForm.patchValue(
@@ -411,11 +374,6 @@ export class BookProComponent implements OnInit {
       this.serviceAddressForm.reset()
     }
   }
-
-
-
-
-
   getZipcodeData(zipcode) {
     if (zipcode?.length == 5) {
       this.zipcodelength = false
@@ -452,11 +410,9 @@ export class BookProComponent implements OnInit {
         }
       }, (error) => {
         this.zipcodeExists = true
-        //this.toastr.errorToastr(error, INTERNAL_SERVER_ERROR_MSG)
       })
   }
 
-    // on file select
     selectFiles(fileInput) {
       this.btnFlag = false;
       this.selectFileUpload = true;
@@ -497,9 +453,6 @@ export class BookProComponent implements OnInit {
         this.h = event.target.files[0].name;
       }
     }
-  
-  
-  
     upload() {
       this.logoFlag1 = false;
       if (this.filesToUpload.length == 0) {

@@ -27,7 +27,6 @@ export class CommonHeaderComponent implements OnInit {
   ngOnInit(): void {
     this.emailId=localStorage.getItem('emailId')
     if(!this.emailId){
-      //window.location.reload()
     }
     this.leadService.getUserProfile(this.emailId)
     .subscribe((data) => {

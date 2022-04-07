@@ -39,7 +39,6 @@ export class ProjectViewComponent implements OnInit {
     return this.projectForm.controls;
   }
   ngOnInit(): void {
-    //this.getProjectHistory();
     this.getleadDetails(this.route.snapshot.params.id)
   }
   private submitBuildForm(formData): any {
@@ -93,8 +92,6 @@ export class ProjectViewComponent implements OnInit {
         this.submitBuildForm(formData)
       }
       else if (res.status == UNAUTHORIZED_CODE) {
-        //this.spinner.hide()
-        //this.authService.logout()
       }
     }, (error) => {
       this.toastr.errorToastr(error, INTERNAL_SERVER_ERROR_MSG)
@@ -102,12 +99,10 @@ export class ProjectViewComponent implements OnInit {
   }
 
   getProjectHistory(workOrderNumber) {
-    //console.log('>>>',this.leadDetails.workOrderNumber)
     this.leadService.getProjectHistory(workOrderNumber)
       .subscribe((data) => {
         if (data.status == SUCCESS_CODE) {
           this.projectHistory = data.data
-          console.log("projectHistory>>>>>", this.projectHistory)
         } else if (data.status == UNAUTHORIZED_CODE) {
         }
       }, (error) => {
@@ -115,7 +110,6 @@ export class ProjectViewComponent implements OnInit {
       })
   }
   getProDetails(proId) {
-    //console.log('>>>',this.leadDetails.workOrderNumber)
     this.leadService.getProProfile(proId)
       .subscribe((data) => {
         if (data.status == SUCCESS_CODE) {
@@ -125,14 +119,12 @@ export class ProjectViewComponent implements OnInit {
             proName: this.proName,
             proMobileNumber:this.proDetails.mobileNumber
           });
-          console.log("proName>>>>>", this.proName)
         } else if (data.status == UNAUTHORIZED_CODE) {
         }
       }, (error) => {
         this.toastr.errorToastr(error, INTERNAL_SERVER_ERROR_MSG)
       })
   }
-  //http://54.82.168.211:8000/pro/getproprofile/618ae544538367663cc10fcc
   onSubmit(): void {
     const request = this.formGroupToForm<Project>(this.projectForm)
     console.log("this form", request)

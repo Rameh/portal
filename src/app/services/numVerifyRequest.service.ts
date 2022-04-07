@@ -14,21 +14,17 @@ export class numVerifyRequestService {
     public router: Router,
   ) { }
 
-  // insert Inventory
   numberVerifyCreation(obj): Observable<any> {
-    return this.http.post(`${environment.API_URL}/numverify_request/numberVerifyRequest`,obj).pipe(
+    return this.http.post(`${environment.API_URL}/numverify_request/numberVerifyRequest`, obj).pipe(
       catchError(this.handleError)
     )
-  }  
+  }
 
-  // catch error
   handleError(error: HttpErrorResponse) {
     let msg = '';
     if (error.error instanceof ErrorEvent) {
-      // client-side error
       msg = error.error.message;
     } else {
-      // server-side error
       msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     return throwError(msg);

@@ -1,87 +1,90 @@
-
 <div class="container">
-<section class="projects_list pt-60 pb-30">
-    <div class="container">
-        <h3>Projects list</h3>
-        <div class="row">
-            <div class="col-lg-12 col-md-12">
-                <div class="pro_box shadow">
-                    <div class="row m-0">
-                        <div class="col-lg-12">
-                            <div class="row proj_top">
-                                <div class="col-lg-6">
-                                    <div class="input-group search_box">
-                                        <input type="text" class="form-control" placeholder="Search" aria-label="Search"
-                                            aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-outline-secondary border-left-color border"
-                                                type="button">
-                                                <i class="fa fa-search"></i>
-                                            </button>
+    <section class="projects_list pt-60 pb-30">
+        <div class="container">
+            <h3>Projects list</h3>
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="pro_box shadow">
+                        <div class="row m-0">
+                            <div class="col-lg-12">
+                                <div class="row proj_top">
+                                    <div class="col-lg-6">
+                                        <div class="input-group search_box">
+                                            <input type="text" class="form-control" placeholder="Search"
+                                                aria-label="Search" aria-describedby="basic-addon2">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary border-left-color border"
+                                                    type="button">
+                                                    <i class="fa fa-search"></i>
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-2">
-                                    <div class="input-group">
-                                        <select class="form-control m-0" id="">
-                                            <option>All Dates</option>
-                                        </select>
+                                    <div class="col-lg-2">
+                                        <div class="input-group">
+                                            <select class="form-control m-0" id="">
+                                                <option>All Dates</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-2">
-                                    <div class="input-group">
-                                        <select class="form-control m-0" id="exampleFormControlSelect1">
-                                            <option>Status</option>
-                                        </select>
+                                    <div class="col-lg-2">
+                                        <div class="input-group">
+                                            <select class="form-control m-0" id="exampleFormControlSelect1">
+                                                <option>Status</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="container-fluid p-0 m-0">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered text-center">
-                                        <thead class="thead-bg-light">
-                                            <tr>
-                                                <th scope="col">Project#</th>
-                                                <th scope="col">Project Name</th>
-                                                <th scope="col">Created On</th>
-                                                <th scope="col">Status</th>
-                                                <th scope="col"> </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr *ngFor="let data of leadsList | paginate: { itemsPerPage: 10, currentPage:pagination }">
-                                                <td>
-                                                    <a [routerLink]='["/customer/project-view",data._id]'>{{data.workOrderNumber}}</a>
-                                                   </td>
-                                                <td> {{data.WorkDescription.jobTitle}}</td>
-                                                <td>{{data.createdAt |date}}</td>
-                                                <td>
-                                                    <span class="badge badge-pill badge-primary cu_badge2" *ngIf="data.status === 'CALL'">Call</span>
-                                                    <span class="badge badge-pill badge-primary cu_badge1_dispatch" *ngIf="data.status === 'DISPATCHED'">{{data.status}}</span>
-                                                    <span class="badge badge-pill badge-primary cu_badge1" *ngIf="data.status === 'ASSIGNED'">{{data.status}}</span>
-                                                    <span class="badge badge-pill badge-primary cu_badge1_cancelled" *ngIf="data.status === 'CANCELED'">{{data.status}}</span>
-                                                    <span class="badge badge-pill badge-primary cu_badge1_ongoing" *ngIf="data.status === 'ONGOING'">{{data.status}}</span>
-                                                    <span class="badge badge-pill badge-primary cu_badge1_scheduled" *ngIf="data.status === 'SCHEDULED'">{{data.status}}</span>
-                                                    <span class="badge badge-pill badge-primary cu_badge1_completed" *ngIf="data.status === 'COMPLETED'">{{data.status}}</span>
-                                                </td>
-                                                <!-- <td><a href="" class="btn cubtn"
-                                                    [routerLink]='["/customer/project-view",data._id]'>VIEW</a></td> -->
-                                            </tr>
-                                        </tbody>
-                                        <div class="my-2" *ngIf="leadsList.length == 0">
-                                            <div class="noRecord" > No Records Found</div>
-                                        </div>
-                                        <!-- <div class="my-2" *ngIf="adminlead.length == 0" [hidden]="leadStatus || !leadStatus">
-                                          <div class="noRecord" > No Records Found</div>
-                                      </div> -->
+                        <div class="container-fluid p-0 m-0">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered text-center">
+                                            <thead class="thead-bg-light">
+                                                <tr>
+                                                    <th scope="col">Project#</th>
+                                                    <th scope="col">Project Name</th>
+                                                    <th scope="col">Created On</th>
+                                                    <th scope="col">Status</th>
+                                                    <th scope="col"> </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr
+                                                    *ngFor="let data of leadsList | paginate: { itemsPerPage: 10, currentPage:pagination }">
+                                                    <td>
+                                                        <a
+                                                            [routerLink]='["/customer/project-view",data._id]'>{{data.workOrderNumber}}</a>
+                                                    </td>
+                                                    <td> {{data.WorkDescription.jobTitle}}</td>
+                                                    <td>{{data.createdAt |date}}</td>
+                                                    <td>
+                                                        <span class="badge badge-pill badge-primary cu_badge2"
+                                                            *ngIf="data.status === 'CALL'">Call</span>
+                                                        <span class="badge badge-pill badge-primary cu_badge1_dispatch"
+                                                            *ngIf="data.status === 'DISPATCHED'">{{data.status}}</span>
+                                                        <span class="badge badge-pill badge-primary cu_badge1"
+                                                            *ngIf="data.status === 'ASSIGNED'">{{data.status}}</span>
+                                                        <span class="badge badge-pill badge-primary cu_badge1_cancelled"
+                                                            *ngIf="data.status === 'CANCELED'">{{data.status}}</span>
+                                                        <span class="badge badge-pill badge-primary cu_badge1_ongoing"
+                                                            *ngIf="data.status === 'ONGOING'">{{data.status}}</span>
+                                                        <span class="badge badge-pill badge-primary cu_badge1_scheduled"
+                                                            *ngIf="data.status === 'SCHEDULED'">{{data.status}}</span>
+                                                        <span class="badge badge-pill badge-primary cu_badge1_completed"
+                                                            *ngIf="data.status === 'COMPLETED'">{{data.status}}</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            <div class="my-2" *ngIf="leadsList.length == 0">
+                                                <div class="noRecord"> No Records Found</div>
+                                            </div>
                                         </table>
                                         <div>
-                                          <!-- <pagination-controls (pageChange)="pagination = $event"></pagination-controls> -->
                                         </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -89,192 +92,18 @@
                 </div>
             </div>
         </div>
-    </div>
-</section>
-<section class="cus_pagination pb-60">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="pro_pagination">
-                    <nav aria-label="Demo of active current page number">
-                        <pagination-controls (pageChange)="pagination = $event"></pagination-controls>
-                        <!-- <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="#">
-                                    <i class="fa fa-arrow-left"></i>
-                                </a></li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">4</a></li>
-                            <li class="page-item"><a class="page-link" href="#">5</a></li>
-                            <li class="page-item"><a class="page-link" href="#">6</a></li>
-                            <li class="page-item"><a class="page-link" href="#">7</a></li>
-                            <li class="page-item"><a class="page-link" href="#">
-                                    <i class="fa fa-arrow-right"></i>
-                                </a></li>
-                        </ul> -->
-                    </nav>
+    </section>
+    <section class="cus_pagination pb-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="pro_pagination">
+                        <nav aria-label="Demo of active current page number">
+                            <pagination-controls (pageChange)="pagination = $event"></pagination-controls>
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 </div>
-
-<!-- <section class="projects_list pt-60 pb-30">
-    <div class="container">
-
-        <h3>Projects list</h3>
-
-         <div class="row">
-
-            <div class="col-lg-12 col-md-12">
-                <div class="pro_box shadow">
-
-                    <div class="row m-0">
-                        <div class="col-lg-12">
-                            <div class="row proj_top">
-                        <div class="col-lg-6">
-                            <div class="input-group search_box">
-                              <input type="text" class="form-control" placeholder="Search" 
-                              aria-label="Search" aria-describedby="basic-addon2">
-                              <div class="input-group-append">
-                                <button class="btn btn-outline-secondary border-left-color border" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                              </div>
-                            </div>
-                        </div>
-                    <div class="col-lg-2">
-                        <div class="input-group">
-                             <select class="form-control m-0" id="">
-                              <option>All Dates</option>
-                             </select>
-                          </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="input-group">
-                             <select class="form-control m-0" id="exampleFormControlSelect1">
-                              <option>Status</option>
-                             </select>
-                        </div>
-                    </div>
-                            </div>
-                        </div>                            
-                    </div>
-
-                    <div class="container-fluid p-0 m-0">
-                        <div class="row">
-
-                        <div class="col-lg-12">
-                            <div class="table-responsive">
-                                <table class="table table-bordered text-center">
-                                  <thead class="thead-bg-light">
-                                    <tr>
-                                      <th scope="col">Project#</th>
-                                      <th scope="col">Project Name</th>
-                                      <th scope="col">Created On</th>
-                                      <th scope="col">Status</th>
-                                      <th scope="col"> </th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      <td>LD20211025890</td>
-                                      <td>Install sink in kitchen</td>
-                                      <td>17-11-2021</td>
-                                      <td><span class="badge badge-pill badge-primary cu_badge1">Pending</span></td>
-                                      <td><a href="" class="btn cubtn">VIEW</a></td>
-                                    </tr>
-                                    <tr>
-                                      <td>LD20211025890</td>
-                                      <td>Install sink in kitchen</td>
-                                      <td>17-11-2021</td>
-                                      <td><span class="badge badge-pill badge-primary cu_badge2">Active</span></td>
-                                      <td><a href="" class="btn cubtn">VIEW</a></td>
-                                    </tr>
-                                    <tr>
-                                      <td>LD20211025890</td>
-                                      <td>Install sink in kitchen</td>
-                                      <td>17-11-2021</td>
-                                      <td><span class="badge badge-pill badge-primary cu_badge2">Active</span></td>
-                                      <td><a href="" class="btn cubtn">VIEW</a></td>
-                                    </tr>
-                                    <tr>
-                                      <td>LD20211025890</td>
-                                      <td>Install sink in kitchen</td>
-                                      <td>17-11-2021</td>
-                                      <td><span class="badge badge-pill badge-primary cu_badge1">Pending</span></td>
-                                      <td><a href="" class="btn cubtn">VIEW</a></td>
-                                    </tr>
-                                    <tr>
-                                      <td>LD20211025890</td>
-                                      <td>Install sink in kitchen</td>
-                                      <td>17-11-2021</td>
-                                      <td><span class="badge badge-pill badge-primary cu_badge2">Active</span></td>
-                                      <td><a href="" class="btn cubtn">VIEW</a></td>
-                                    </tr>
-                                    <tr>
-                                      <td>LD20211025890</td>
-                                      <td>Install sink in kitchen</td>
-                                      <td>17-11-2021</td>
-                                      <td><span class="badge badge-pill badge-primary cu_badge3">Inactive</span></td>
-                                      <td><a href="" class="btn cubtn">VIEW</a></td>
-                                    </tr>
-                                    <tr>
-                                      <td>LD20211025890</td>
-                                      <td>Install sink in kitchen</td>
-                                      <td>17-11-2021</td>
-                                      <td><span class="badge badge-pill badge-primary cu_badge1">Pending</span></td>
-                                      <td><a href="" class="btn cubtn">VIEW</a></td>
-                                    </tr>
-                                    <tr>
-                                      <td>LD20211025890</td>
-                                      <td>Install sink in kitchen</td>
-                                      <td>17-11-2021</td>
-                                      <td><span class="badge badge-pill badge-primary cu_badge3">Inactive</span></td>
-                                      <td><a href="" class="btn cubtn"
-                                        [routerLink]='["/customer/project-view"]'>VIEW</a></td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-
-                            </div>
-                        </div>
-                    </div> 
-                    </div>
-
-                </div>
-            </div>
-
-          </div>
-    </div>
-</section>
-
-<section class="cus_pagination pb-60">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="pro_pagination">
-                <nav aria-label="Demo of active current page number">
-                   <ul class="pagination">
-                     <li class="page-item"><a class="page-link" href="#">
-                        <i class="fa fa-arrow-left"></i>
-                     </a></li>
-                     <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                     <li class="page-item"><a class="page-link" href="#">2</a></li>
-                     <li class="page-item"><a class="page-link" href="#">3</a></li>
-                     <li class="page-item"><a class="page-link" href="#">4</a></li>
-                     <li class="page-item"><a class="page-link" href="#">5</a></li>
-                     <li class="page-item"><a class="page-link" href="#">6</a></li>
-                     <li class="page-item"><a class="page-link" href="#">7</a></li>               
-                     <li class="page-item"><a class="page-link" href="#">
-                        <i class="fa fa-arrow-right"></i>
-                     </a></li>
-                   </ul>
-                 </nav>
-            </div>
-            </div>
-          </div> 
-    </div>
-</section> -->

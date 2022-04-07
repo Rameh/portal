@@ -9,9 +9,5 @@ export class CustomerLayoutComponent {
 
   title = 'topproz2-customer-portal';
   sidebarExpanded = true;
-  // constructor() { }
-
-  // ngOnInit(): void {
-  // }
 
 }

@@ -4,7 +4,6 @@ import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { Router } from "@angular/router";
 import { JwtHelperService } from "@auth0/angular-jwt";
-
 import { environment } from '../../environments/environment';
 import { User } from '../modals/user';
 
@@ -36,7 +35,6 @@ export class AuthService {
           if (this.isTokenExpired(user.data.token)) {
             return null;
           } else {
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
             localStorage.setItem('currentUser', JSON.stringify({
               token: user.data.token
             }));
@@ -52,62 +50,45 @@ export class AuthService {
       }));
   }
 
-  // register service
   register(user: User): Observable<any> {
     return this.http.post(`${environment.API_URL}/auth/signup`, user).pipe(
       catchError(this.handleError)
     )
   }
 
-  // get user profile
   getUserProfile(id): Observable<any> {
     return this.http.get<User>(`${environment.API_URL}/auth/getUserProfile/${id}`);
   }
 
-  // get user profile
   CheckProStatus(id): Observable<any> {
     return this.http.get<User>(`${environment.API_URL}/auth/CheckProStatus/${id}`);
   }
 
-  // get login roles and permissions
   getUserRolesAndPermissionsFromLogin(id, role): Observable<any> {
     return this.http.get<User>(`${environment.API_URL}/auth/getloginrolesandpermissions/${id}/${role}`);
   }
 
-  // get login roles and permissions
   getUserRolesFromLogin(id): Observable<any> {
     return this.http.get<User>(`${environment.API_URL}/auth/getloginroles/${id}`);
   }
-
-  // emailid verifier
   verifyEmailId(emailId): Observable<any> {
     return this.http.get<User>(`${environment.API_URL}/auth/emailIdVerifier/${emailId}`);
   }
-
-  // update role permissions
   updateRolePermissions(id, role, permissions): Observable<any> {
     return this.http.put<any>(`${environment.API_URL}/auth/updaterolepermissions/${id}/${role}`, permissions).pipe(
       catchError(this.handleError)
     )
   }
-
-  // update user profile
   updateUserProfile(user: User, id): Observable<any> {
     return this.http.put<User>(`${environment.API_URL}/auth/updateUserProfile/${id}`, user).pipe(
       catchError(this.handleError)
     )
   }
-
-  // logout service
   logout() {
-    // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
-    //if (this.currentUserSubject) this.currentUserSubject.next(user:any);
     if (this.isUserLoggedinSubject) this.isUserLoggedinSubject.next(false);
     this.router.navigate(['/welcome'])
   }
-
-  // is logged in verifier
   public get isLoggedIn(): boolean {
     if (this.currentUserSubject) {
       const userData = this.currentUserSubject.value;
@@ -120,8 +101,6 @@ export class AuthService {
         }
       }
     }
-    // if the token expired, remove the token
-    //this.logout();
     return false;
   }
 
@@ -135,21 +114,16 @@ export class AuthService {
       catchError(this.handleError)
     )
   }
-
-  // get access token
   public get accessToken(): String {
     if (this.currentUserSubject && this.currentUserSubject.value && this.currentUserSubject.value.token)
       return this.currentUserSubject.value.token;
-
     return 'null';
   }
 
-  // current user value
   public get currentUserValue(): any {
     if (this.currentUserSubject) return this.currentUserSubject.value;
     else return 'null';
   }
-  //update leadgen Flag
   updateLeadFlag(obj): Observable<any> {
     return this.http.put<any>(`${environment.API_URL}/auth/updateRegStatus`, obj).pipe(
       catchError(this.handleError)
@@ -164,8 +138,6 @@ export class AuthService {
   checkemailId(emailId): Observable<any>{
     return this.http.get<any>(`${environment.API_URL}/auth/checkemailId/${emailId}`)
   }
-
-  // is token expireds
   public isTokenExpired(rawToken: string): boolean {
     if (rawToken) {
       const helper = new JwtHelperService();
@@ -175,14 +147,11 @@ export class AuthService {
     return false;
   }
 
-  // catch error
   handleError(error: HttpErrorResponse) {
     let msg = '';
     if (error.error instanceof ErrorEvent) {
-      // client-side error
       msg = error.error.message;
     } else {
-      // server-side error
       msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     return throwError(msg);
