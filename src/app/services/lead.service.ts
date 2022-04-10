@@ -106,6 +106,19 @@ export class LeadService {
             catchError(this.handleError)
         )
     }
+    getEstimateList(customerId: any): Observable<any> {
+        return this.http.get(`${environment.API_URL}/mobile_estimate/getStaffCustomerEstimatesList/${customerId}`).pipe(
+            catchError(this.handleError)
+        )
+    }
+
+    getEstimateDetails(estimateId: any): Observable<any> {
+        return this.http.get(`${environment.API_URL}/Estimate/getestimatedetails/${estimateId}`).pipe(
+            catchError(this.handleError)
+        )
+    }
+
+   
     handleError(error: HttpErrorResponse) {
         let msg = '';
         if (error.error instanceof ErrorEvent) {
