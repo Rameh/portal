@@ -28,7 +28,7 @@ const routes: Routes = [
   {
     path: '', component: CustomerLayoutComponent,
     children: [
-      { path: 'project-list/:emailId/:id', component: CustomerProjectListComponent },
+      { path: 'lead-list/:emailId/:id', component: CustomerProjectListComponent },
       { path: 'project-view/:id', component: ProjectViewComponent },
       { path: 'customer-profile', component: CustomerProfileComponent },
       { path: 'my-pros', component: MyProsComponent },
