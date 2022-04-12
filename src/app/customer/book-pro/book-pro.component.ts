@@ -278,7 +278,6 @@ export class BookProComponent implements OnInit {
       DirectBookingleadDetailsObj['serviceAddress']['state'] = this.serviceAddressForm.value.servicestate
       DirectBookingleadDetailsObj['serviceAddress']['zipcode'] = this.serviceAddressForm.value.servicezipcode
       DirectBookingleadDetailsObj['attachments'] = this.proProfileImage1;
-      var today = new Date().toISOString().split('T')[0];
       DirectBookingleadDetailsObj['service'] = {}
       DirectBookingleadDetailsObj['service']['catgoryCode'] = this.serviceAddressForm.value.selectCategory
       DirectBookingleadDetailsObj['service']['category'] =  this.categoryNameArray[0].categoryName
@@ -291,7 +290,7 @@ export class BookProComponent implements OnInit {
           data => {
             if (data.status == 200) {
               this.toastr.successToastr(`Your request is being sent to "${this.businessName}"`, 'Thank You')
-              //this.router.navigateByUrl('/customer/support-list')
+              this.router.navigateByUrl('/customer/lead-list')
             }
           }, error => {
             this.toastr.errorToastr(error, INTERNAL_SERVER_ERROR_MSG)
