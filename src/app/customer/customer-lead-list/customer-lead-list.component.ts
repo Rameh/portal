@@ -49,10 +49,11 @@ export class CustomerLeadListComponent implements OnInit {
     })
   }
   getLeadListPro() {
-    this.leadService.getLeadList('623584e420bba62434038044')
+    this.leadService.getLeadList('hatim.naim@gmail.com')
       .subscribe((data) => {
         if (data.status == SUCCESS_CODE) {
           this.leadsList = data.data
+          console.log("🚀 ~ file: customer-lead-list.component.ts ~ line 56 ~ CustomerLeadListComponent ~ this.leadsList", this.leadsList)
         } else if (data.status == UNAUTHORIZED_CODE) {
         }
       }, (error) => {

@@ -14,12 +14,13 @@ import {
 } from '../../helpers/constants';
  
 declare var $: any;
+
 @Component({
-  selector: 'app-book-pro',
-  templateUrl: './book-pro.component.html',
-  styleUrls: ['./book-pro.component.scss']
+  selector: 'app-get-quotes',
+  templateUrl: './get-quotes.component.html',
+  styleUrls: ['./get-quotes.component.scss']
 })
-export class BookProComponent implements OnInit {
+export class GetQuotesComponent implements OnInit {
   @ViewChild("timepicker") timepicker: any;
   control = new FormControl(new Date());
   model;
@@ -262,15 +263,13 @@ export class BookProComponent implements OnInit {
       DirectBookingleadDetailsObj['firstName'] = this.serviceAddressForm.value.firstName
       DirectBookingleadDetailsObj['lastName'] = this.serviceAddressForm.value.lastName
       DirectBookingleadDetailsObj['mobileNumber'] = this.serviceAddressForm.value.mobileNumber
-      DirectBookingleadDetailsObj['DBLeadEmailId'] = this.serviceAddressForm.value.emailId
+      DirectBookingleadDetailsObj['DBLeadEmailId'] = 'hatim.naim@gmail.com'
       DirectBookingleadDetailsObj['loginId']='618b2590538367663cc11007',
       DirectBookingleadDetailsObj['proLoginId']=this.route.snapshot.params.id
       DirectBookingleadDetailsObj['proEmailId']=this.proProfile.emailId
       DirectBookingleadDetailsObj['proMobileNumber']=this.proProfile.mobileNumber
       DirectBookingleadDetailsObj['proName']=this.proProfile.businessName
-      DirectBookingleadDetailsObj['bookingDate']= moment(this.serviceAddressForm.value.bookingDate).format('MMMM Do YYYY')
-      DirectBookingleadDetailsObj['bookingTime']= this.serviceAddressForm.value.bookingTime
-      DirectBookingleadDetailsObj['isBookapro'] = true
+      DirectBookingleadDetailsObj['isGetquotes'] = true
       DirectBookingleadDetailsObj['DBLPrice']=  this.subCategoriePrice[0].bapPrice
       DirectBookingleadDetailsObj['serviceAddress'] = {}
       DirectBookingleadDetailsObj['serviceAddress']['streetAddress'] = this.serviceAddressForm.value.servicestreetAddress

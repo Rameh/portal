@@ -1,7 +1,7 @@
 <div class="container">
     <section class="projects_list pt-60 pb-30">
         <div class="container">
-            <h3>Projects list</h3>
+            <h3>Calls list</h3>
             <div class="row">
                 <div class="col-lg-12 col-md-12">
                     <div class="pro_box shadow">
@@ -53,19 +53,24 @@
                                             </thead>
                                             <tbody>
                                                 <tr *ngFor="let data of leadsList | paginate: { itemsPerPage: 10, currentPage:pagination }">
-                                                    <td>
+                                                    <td *ngIf="data.leadId">
                                                         <a [routerLink]='["/customer/project-view",data._id]'>{{data.leadId}}</a>
                                                        </td>
-                                                    <td> {{data.service.subCategory}}</td>
-                                                    <td>{{data.service.createdDate |date}}</td>
+                                                       <td *ngIf="data.directBookingLeadId">
+                                                        <a [routerLink]='["/customer/project-view",data.directBookingLeadId]'>{{data.directBookingLeadId}}</a>
+                                                       </td>
+                                                    <td *ngIf="data.leadId"> {{data.aboutProject.description}}</td>
+                                                    <td *ngIf="data.directBookingLeadId">{{data.projectName}}</td>
+                                                    <td>12-04-2022</td>
                                                     <td>
-                                                        <span class="badge badge-pill badge-primary cu_badge2" *ngIf="data.leadStatus === 'CALL'">Call</span>
-                                                        <span class="badge badge-pill badge-primary cu_badge1_dispatch" *ngIf="data.leadStatus === 'NEW LEAD'">New Project</span>
+                                                        <span class="badge badge-pill badge-primary cu_badge2" *ngIf="data.status === 'CALL'">Call</span>
+                                                        <span class="badge badge-pill badge-primary cu_badge1_dispatch" *ngIf="data.status === 'ACTIVE'">CALL</span>
                                                         <span class="badge badge-pill badge-primary cu_badge1" *ngIf="data.leadStatus === 'ASSIGNED'">{{data.leadStatus}}</span>
                                                         <span class="badge badge-pill badge-primary cu_badge1_cancelled" *ngIf="data.leadStatus === 'CANCELED'">{{data.leadStatus}}</span>
                                                         <span class="badge badge-pill badge-primary cu_badge1_ongoing" *ngIf="data.leadStatus === 'ONGOING'">{{data.leadStatus}}</span>
                                                         <span class="badge badge-pill badge-primary cu_badge1_scheduled" *ngIf="data.leadStatus === 'SCHEDULED'">{{data.leadStatus}}</span>
-                                                        <span class="badge badge-pill badge-primary cu_badge1_completed" *ngIf="data.leadStatus === 'COMPLETED'">{{data.leadStatus}}</span>
+                                                        <span class="badge badge-pill badge-primary cu_badge1_ongoing" *ngIf="data.isBookapro === 'true'">DIRECT BOOKING</span>
+                                                        <span class="badge badge-pill badge-primary cu_badge1_completed" *ngIf="data.isGetquotes === 'true'">GET A QUOTE</span>
                                                     </td>
                                                 </tr>
                                             </tbody>

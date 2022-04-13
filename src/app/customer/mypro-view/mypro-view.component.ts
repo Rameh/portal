@@ -53,7 +53,7 @@ export class MyproViewComponent implements OnInit {
     this.router.navigate(['/customer/report-pro',this.proId])
   }
   getAQuote() {
-    alert('This function redirect to website')
+    this.router.navigate(['/customer/get-quotes',this.proId])
   }
   onCloseHandled() {
   }

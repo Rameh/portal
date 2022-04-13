@@ -18,6 +18,7 @@ import { TermsAndConditionsPageComponent } from './terms-and-conditions-page/ter
 import { CustomerLeadListComponent } from './customer-lead-list/customer-lead-list.component';
 import { CustomerEstimateListComponent} from './customer-estimate-list/customer-estimate-list.component';
 import { EstimateViewComponent } from './estimate-view/estimate-view.component';
+import { GetQuotesComponent } from './get-quotes/get-quotes.component';
 
 const routes: Routes = [
   {
@@ -44,7 +45,8 @@ const routes: Routes = [
       { path: 'book-pro/:id', component: BookProComponent },
       { path: 'lead-list', component: CustomerLeadListComponent },
       { path: 'estimate-list', component: CustomerEstimateListComponent },
-      { path: 'estimate-view/:id', component: EstimateViewComponent }
+      { path: 'estimate-view/:id', component: EstimateViewComponent },
+      { path: 'get-quotes/:id', component: GetQuotesComponent }
 
     ]
   }
