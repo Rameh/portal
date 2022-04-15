@@ -56,12 +56,8 @@
                                                     <td *ngIf="data.leadId">
                                                         <a [routerLink]='["/customer/project-view",data._id]'>{{data.leadId}}</a>
                                                        </td>
-                                                       <td *ngIf="data.directBookingLeadId">
-                                                        <a [routerLink]='["/customer/project-view",data.directBookingLeadId]'>{{data.directBookingLeadId}}</a>
-                                                       </td>
-                                                    <td *ngIf="data.leadId"> {{data.aboutProject.description}}</td>
-                                                    <td *ngIf="data.directBookingLeadId">{{data.projectName}}</td>
-                                                    <td>12-04-2022</td>
+                                                    <td> {{data.projectName}}</td>
+                                                    <td>{{data.createdOn}}</td>
                                                     <td>
                                                         <span class="badge badge-pill badge-primary cu_badge2" *ngIf="data.status === 'CALL'">Call</span>
                                                         <span class="badge badge-pill badge-primary cu_badge1_dispatch" *ngIf="data.status === 'ACTIVE'">CALL</span>
