@@ -262,7 +262,7 @@ export class BookProComponent implements OnInit {
       DirectBookingleadDetailsObj['firstName'] = this.serviceAddressForm.value.firstName
       DirectBookingleadDetailsObj['lastName'] = this.serviceAddressForm.value.lastName
       DirectBookingleadDetailsObj['mobileNumber'] = this.serviceAddressForm.value.mobileNumber
-      DirectBookingleadDetailsObj['DBLeadEmailId'] = this.serviceAddressForm.value.emailId
+      DirectBookingleadDetailsObj['DBLeadEmailId'] = 'hatim.naim@gmail.com'
       DirectBookingleadDetailsObj['loginId']='618b2590538367663cc11007',
       DirectBookingleadDetailsObj['proLoginId']=this.route.snapshot.params.id
       DirectBookingleadDetailsObj['proEmailId']=this.proProfile.emailId

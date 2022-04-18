@@ -47,14 +47,15 @@
                                                     <th scope="col">Project#</th>
                                                     <th scope="col">Project Name</th>
                                                     <th scope="col">Created On</th>
-                                                    <th scope="col">Status</th>
+                                                    <th scope="col">Type</th>
                                                     <th scope="col"> </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr *ngFor="let data of leadsList | paginate: { itemsPerPage: 10, currentPage:pagination }">
                                                     <td *ngIf="data.leadId">
-                                                        <a [routerLink]='["/customer/project-view",data._id]'>{{data.leadId}}</a>
+                                                        <!-- <a [routerLink]='["/customer/project-view",data._id]'>{{data.leadId}}</a> -->
+                                                        <a [routerLink]='["/customer/lead-list"]'>{{data.leadId}}</a>
                                                        </td>
                                                     <td> {{data.projectName}}</td>
                                                     <td>{{data.createdOn}}</td>

@@ -131,7 +131,7 @@ export class ReportProComponent implements OnInit {
             if (data.status == 200) {
               this.toastr.successToastr(data.response, 'Report Pro')
               $("#forgotPassword3").modal("show");
-              this.router.navigateByUrl('/my-pros-view/618ae544538367663cc10fcc')
+              this.router.navigateByUrl('/customer/report-pro-list')
             }
           }, error => {
             this.toastr.errorToastr(error, INTERNAL_SERVER_ERROR_MSG)

@@ -39,9 +39,10 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { CustomerEstimateListComponent } from './customer-estimate-list/customer-estimate-list.component';
 import { EstimateViewComponent } from './estimate-view/estimate-view.component';
 import { GetQuotesComponent } from './get-quotes/get-quotes.component';
+import { ReportProListViewComponent } from './report-pro-list-view/report-pro-list-view.component';
 const lang = "en-US";
 @NgModule({
-  declarations: [CustomerProjectListComponent, ProjectViewComponent, CustomerProfileComponent, MyProsComponent, MyproViewComponent, CustomerNotificationsComponent, CustomerSupportRequestFormComponent, CustomerSupportRequestListComponent, CustomerSupportRequestViewComponent, PrivacyPageComponent, TermsAndConditionsPageComponent, HelpAndFaqsPageComponent, ReportProComponent, BookProComponent, CustomerLeadListComponent, CustomerEstimateListComponent, EstimateViewComponent, GetQuotesComponent],
+  declarations: [CustomerProjectListComponent, ProjectViewComponent, CustomerProfileComponent, MyProsComponent, MyproViewComponent, CustomerNotificationsComponent, CustomerSupportRequestFormComponent, CustomerSupportRequestListComponent, CustomerSupportRequestViewComponent, PrivacyPageComponent, TermsAndConditionsPageComponent, HelpAndFaqsPageComponent, ReportProComponent, BookProComponent, CustomerLeadListComponent, CustomerEstimateListComponent, EstimateViewComponent, GetQuotesComponent, ReportProListViewComponent],
   imports: [
     CommonModule,
     CustomerRoutingModule,

@@ -119,6 +119,13 @@ export class LeadService {
         )
     }
 
+
+
+    getReportaProList(customerId: any): Observable<any> {
+        return this.http.get(`${environment.API_URL}/report-pro/get-report-pro-list/h1@sunkpo.com `).pipe(
+            catchError(this.handleError)
+        )
+    }
    
     handleError(error: HttpErrorResponse) {
         let msg = '';
