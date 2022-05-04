@@ -40,9 +40,10 @@ import { CustomerEstimateListComponent } from './customer-estimate-list/customer
 import { EstimateViewComponent } from './estimate-view/estimate-view.component';
 import { GetQuotesComponent } from './get-quotes/get-quotes.component';
 import { ReportProListViewComponent } from './report-pro-list-view/report-pro-list-view.component';
+import { ReportProViewComponent } from './report-pro-view/report-pro-view.component';
 const lang = "en-US";
 @NgModule({
-  declarations: [CustomerProjectListComponent, ProjectViewComponent, CustomerProfileComponent, MyProsComponent, MyproViewComponent, CustomerNotificationsComponent, CustomerSupportRequestFormComponent, CustomerSupportRequestListComponent, CustomerSupportRequestViewComponent, PrivacyPageComponent, TermsAndConditionsPageComponent, HelpAndFaqsPageComponent, ReportProComponent, BookProComponent, CustomerLeadListComponent, CustomerEstimateListComponent, EstimateViewComponent, GetQuotesComponent, ReportProListViewComponent],
+  declarations: [CustomerProjectListComponent, ProjectViewComponent, CustomerProfileComponent, MyProsComponent, MyproViewComponent, CustomerNotificationsComponent, CustomerSupportRequestFormComponent, CustomerSupportRequestListComponent, CustomerSupportRequestViewComponent, PrivacyPageComponent, TermsAndConditionsPageComponent, HelpAndFaqsPageComponent, ReportProComponent, BookProComponent, CustomerLeadListComponent, CustomerEstimateListComponent, EstimateViewComponent, GetQuotesComponent, ReportProListViewComponent, ReportProViewComponent],
   imports: [
     CommonModule,
     CustomerRoutingModule,

@@ -95,6 +95,7 @@ export class LeadService {
     }
 
     createReportPro(reportProData): Observable<any> {
+        console.log("🚀 ~ file: lead.service.ts ~ line 98 ~ LeadService ~ reportProData", reportProData)
         return this.http.post(`${environment.API_URL}/report-pro/create-report-pro`, reportProData).pipe(
             catchError(this.handleError)
         )
@@ -107,8 +108,13 @@ export class LeadService {
             catchError(this.handleError)
         )
     }
+
+    getReportAProDetails(reportNumber): Observable<any> {
+        return this.http.get(`${environment.API_URL}/report-pro/get-report-pro-details/${reportNumber}`);
+      }
+      
     getEstimateList(customerId: any): Observable<any> {
-        return this.http.get(`${environment.API_URL}/mobile_estimate/getStaffCustomerEstimatesList/${customerId}`).pipe(
+        return this.http.get(`${environment.API_URL}/estimate/get-customer-estimate-list/${customerId}`).pipe(
             catchError(this.handleError)
         )
     }

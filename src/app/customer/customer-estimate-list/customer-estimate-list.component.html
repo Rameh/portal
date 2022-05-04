@@ -45,6 +45,7 @@
                                             <thead class="thead-bg-light">
                                                 <tr>
                                                     <th scope="col">Estimate#</th>
+                                                    <th scope="col">Project Name</th>
                                                     <th scope="col">From</th>
                                                     <th scope="col">Created Date</th>
                                                     <th scope="col">Status</th>
@@ -56,12 +57,13 @@
                                                     <td>
                                                         <a [routerLink]='["/customer/estimate-view",data.estimateId]'>{{data.estimateId}}</a>
                                                        </td>
-                                                    <td>zdsad</td>
-                                                    <td>{{data.createdAt |date}}</td>
+                                                       <td>{{data.service_location.jobTitle}}</td>
+                                                    <td>{{data.ProDetails[0].businessName}}</td>
+                                                    <td>{{data.createdAt| date: 'MM/dd/yyyy'}}</td>
                                                     <td>
                                                         <span class="badge badge-pill badge-primary cu_badge2" *ngIf="data.estimateStatus === 'CALL'">Call</span>
                                                         <span class="badge badge-pill badge-primary cu_badge1_dispatch" *ngIf="data.estimateStatus === 'DRAFT'">{{data.estimateStatus}}</span>
-                                                        <span class="badge badge-pill badge-primary cu_badge1" *ngIf="data.estimateStatus === 'SENT'">{{data.estimateStatus}}</span>
+                                                        <span class="badge badge-pill badge-primary cu_badge1" *ngIf="data.estimateStatus === 'Pending'">Pending</span>
                                                         <span class="badge badge-pill badge-primary cu_badge1_cancelled" *ngIf="data.estimateStatus === 'REJECTED'">{{data.estimateStatus}}</span>
                                                         <span class="badge badge-pill badge-primary cu_badge1_ongoing" *ngIf="data.estimateStatus === 'PENDING'">{{data.estimateStatus}}</span>
                                                         <span class="badge badge-pill badge-primary cu_badge1_scheduled" *ngIf="data.estimateStatus === 'APPROVED'">{{data.estimateStatus}}</span>

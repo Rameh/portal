@@ -31,7 +31,6 @@ export class CustomerEstimateListComponent implements OnInit {
   ngOnInit(): void {
     this.loginId=this.route.snapshot.params.id
     this.customerEmailId=this.route.snapshot.params.emailId
-    console.log('88888888888888888888888888888888888',this.emailId)
     if(!this.emailId){
     localStorage.setItem("loginId",this.loginId);
     localStorage.setItem("emailId",this.customerEmailId)
@@ -49,7 +48,7 @@ export class CustomerEstimateListComponent implements OnInit {
     })
   }
   getLeadListPro() {
-    this.leadService.getEstimateList('CU20211194821')
+    this.leadService.getEstimateList('CU2022448558')
       .subscribe((data) => {
         if (data.status == SUCCESS_CODE) {
           this.leadsList = data.data

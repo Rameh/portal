@@ -52,6 +52,7 @@ export class ReportProComponent implements OnInit {
   imgFlag: boolean = false;
   proProfileImage1: any = [];
   urls: any = [];
+  customerName: any;
   constructor(
     private fb: FormBuilder,
     public leadService: LeadService,
@@ -73,7 +74,9 @@ export class ReportProComponent implements OnInit {
       .subscribe((data) => {
         if (data.status == 200) {
           let userProfileData = { ...data['data'][0] }
+          console.log("🚀 ~ file: report-pro.component.ts ~ line 76 ~ ReportProComponent ~ userProfileData", userProfileData)
           this.customerId = userProfileData.customerId
+          this.customerName=userProfileData.customerName
           this.getWorkOrderListBasedOnCustomer(this.customerId)
         }
       })
@@ -94,7 +97,7 @@ export class ReportProComponent implements OnInit {
     const customerSupportRequestform = {
       customerId: [this.customerId],
       workOrderNumber: [''],
-      emailId: ['h1@sunkpo.com'],
+      emailId: ['hn_pro2@rev2g.com'],
       createdOn: [''],
       projectName: [''],
       projectDescription: [''],
@@ -107,8 +110,10 @@ export class ReportProComponent implements OnInit {
       isAbusiveBehavior: [false],
       isDoNotLookProfessional: [false],
       isOtherReason: [false],
+      customerName:[''],
       proName: [''],
       proEmailId: [''],
+      attachments:[''],
       status: ['Open']
     };
     return this.fb.group(customerSupportRequestform)
@@ -121,17 +126,22 @@ export class ReportProComponent implements OnInit {
       console.log(this.reportProform.value)
       this.reportProform.patchValue({
         customerId: this.customerId,
+        customerName:this.customerName,
         proName: this.businessName,
-        proEmailId: this.proProfile.emailId
+        proEmailId: this.proProfile.emailId,
+        attachments:this.proProfileImage1
+
       })
       this.leadService.createReportPro(this.reportProform.value)
         .pipe(first())
         .subscribe(
           data => {
             if (data.status == 200) {
-              this.toastr.successToastr(data.response, 'Report Pro')
-              $("#forgotPassword3").modal("show");
+              this.toastr.successToastr(data.response, 'Thank you')
+              //$("#forgotPassword3").modal("show");
+              //$("#forgotPassword3").modal("hide");
               this.router.navigateByUrl('/customer/report-pro-list')
+              
             }
           }, error => {
             this.toastr.errorToastr(error, INTERNAL_SERVER_ERROR_MSG)

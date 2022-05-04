@@ -54,13 +54,13 @@
                                           <tbody>
                                               <tr *ngFor="let data of leadsList | paginate: { itemsPerPage: 10, currentPage:pagination }">
                                                   <td>
-                                                      <a [routerLink]='["/customer/report-pro",data.reportNumber]'>{{data.reportNumber}}</a>
+                                                      <a [routerLink]='["/customer/report-a-pro-view",data.reportNumber]'>{{data.reportNumber}}</a>
                                                      </td>
                                                      <td>{{data.createdAt |date}}</td>
                                                   <td>{{data.workOrderNumber}}</td>
-                                                  <td>Hatim Naim</td>
-                                                  <td>Red Hat Plumbing and Rooter</td>
-                                                  <td>
+                                                  <td>{{data.customerName}}</td>
+                                                  <td>{{data.proName}}</td>
+                                                  <!-- <td>
                                                       <span class="badge badge-pill badge-primary cu_badge2" *ngIf="data.estimateStatus === 'CALL'">Call</span>
                                                       <span class="badge badge-pill badge-primary cu_badge1_dispatch" *ngIf="data.estimateStatus === 'DRAFT'">{{data.estimateStatus}}</span>
                                                       <span class="badge badge-pill badge-primary cu_badge1" *ngIf="data.estimateStatus === 'SENT'">{{data.estimateStatus}}</span>
@@ -68,7 +68,7 @@
                                                       <span class="badge badge-pill badge-primary cu_badge1_ongoing" *ngIf="data.estimateStatus === 'PENDING'">{{data.estimateStatus}}</span>
                                                       <span class="badge badge-pill badge-primary cu_badge1_scheduled" *ngIf="data.estimateStatus === 'APPROVED'">{{data.estimateStatus}}</span>
                                                       <span class="badge badge-pill badge-primary cu_badge1_completed" *ngIf="data.estimateStatus === 'FOLLOWUPS'">{{data.estimateStatus}}</span>
-                                                  </td>
+                                                  </td> -->
                                               </tr>
                                           </tbody>
                                           <div class="my-2" *ngIf="leadsList.length == 0">

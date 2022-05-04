@@ -1,0 +1,409 @@
+<div class="container">
+<div class="main-container container-fluid">
+    <div class="page-container">
+        <div class="page-content">
+            <div class="page-breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="fa fa-home"></i>
+                        <a>Home</a>
+                    </li>
+                    <li>
+                        <a>Pro</a>
+                    </li>
+                    <li>
+                        <a>Report A Pro</a>
+                    </li>
+                    <li class="active">View Report A Pro</li>
+                </ul>
+            </div>
+            <div class="page-header position-relative">
+                <div class="header-title">
+                    <h1>View Report A Pro</h1>
+                </div>
+            </div>
+            <div class="page-body">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <div class="row">
+                            <div class="col-lg-12 col-sm-12 col-xs-12">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-md-12 col-xs-12 ">
+                                        <div class="well with-header with-footer three-bordered">
+                                            <div class="header gray">
+                                                View Report A Pro
+                                            </div>
+                                            <div id="registration-form">
+                                                <div class="form-title">
+                                                    Report Information
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <label for="firstNameLbl">
+                                                                <b>Report Number <span class="mandatory">*</span></b>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <label for="firstNameVal">
+                                                                {{reportaproDetails.reportNumber}}
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <label for="lastNameLbl">
+                                                                <b>WorkOrder Number <span class="mandatory">*</span></b>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <label for="lastNameVal">
+                                                                {{reportaproDetails.workOrderNumber}}
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <label for="phoneLbl">
+                                                                <b>Project Name <span class="mandatory">*</span></b>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <label for="phoneVal">
+                                                                {{reportaproDetails.projectName}}
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <label for="emailIDLbl">
+                                                                <b>Created Date <span class="mandatory">*</span></b>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <label for="emailIDVal">
+                                                                {{reportaproDetails.createdAt |date}}
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <label for="streetAddressLbl">
+                                                                <b>Street Address <span class="mandatory">*</span></b>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <label for="streetAddressVal">
+                                                                {{reportaproDetails.businessAddress.streetAddress}}
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <label for="cityLbl">
+                                                                <b>City <span class="mandatory">*</span></b>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <label for="cityVal">
+                                                                {{reportaproDetails.businessAddress.city}}
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+                                                <!-- <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <label for="stateLbl">
+                                                                <b>State <span class="mandatory">*</span></b>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <label for="stateVal">
+                                                                {{reportaproDetails.businessAddress.state}}
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <label for="zipCodeLbl">
+                                                                <b>Zip Code <span class="mandatory">*</span></b>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <label for="zipCodeVal">
+                                                                {{reportaproDetails.businessAddress.zipcode}}
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+
+                                                <!-- <div class="form-title">
+                                                    Lead Service Address
+                                                </div> -->
+<!-- 
+                                                <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <label for="streetAddressLbl">
+                                                                <b>Street Address</b>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <label for="streetAddressVal">
+                                                                {{reportaproDetails.serviceAddress.streetAddress}}
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <label for="cityLbl">
+                                                                <b>City</b>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <label for="cityVal">
+                                                                {{reportaproDetails.serviceAddress.city}}
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+
+                                                <!-- <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <label for="stateLbl">
+                                                                <b>State</b>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <label for="stateVal">
+                                                                {{reportaproDetails.serviceAddress.state}}
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <label for="zipCodeLbl">
+                                                                <b>Zip Code</b>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <label for="zipCodeVal">
+                                                                {{reportaproDetails.serviceAddress.zipcode}}
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"
+                                                                        [(ngModel)]="reportaproDetails.isNeverShowedUp"
+                                                                        class="colored-blue" disabled="disabled">
+                                                                    <span class="text">Never Showed up</span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"
+                                                                        [(ngModel)]="reportaproDetails.isShowedUpTooLate"
+                                                                        class="colored-blue" disabled="disabled">
+                                                                    <span class="text">Showed up too late</span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"
+                                                                        [(ngModel)]="reportaproDetails.isAbusiveBehavior"
+                                                                        class="colored-blue" disabled="disabled">
+                                                                    <span class="text">Abusive Behavior</span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"
+                                                                        [(ngModel)]="reportaproDetails.isDoNotLookProfessional"
+                                                                        class="colored-blue" disabled="disabled">
+                                                                    <span class="text">Do not look professional</span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox"
+                                                                        [(ngModel)]="reportaproDetails.isDoNotLookProfessional"
+                                                                        class="colored-blue" disabled="disabled">
+                                                                    <span class="text">Other reason</span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- /Lead Personal Information -->
+                                                <!-- <div class="form-title">
+                                                    Lead Category
+                                                </div>
+
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <label for="zipCodeLbl">
+                                                            <b>Category</b>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <label for="zipCodeVal">
+                                                            {{this.reportaproDetails.service.category }} - ({{this.reportaproDetails.service.catgoryCode }})
+                                                            
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <label for="zipCodeLbl">
+                                                            <b>Sub-Category</b>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <label for="zipCodeVal">
+                                                            {{this.reportaproDetails.service.subCategory}} - ({{this.reportaproDetails.service.subCategoryCode }})
+                                                        </label>
+                                                    </div>
+                                                </div> -->
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="form-group">
+                                                            <hr class="hr-gray">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <!-- Lead Information -->
+                                                <!-- <div class="form-title">
+                                                    Lead Information
+                                                </div> -->
+                                                <!-- Lead Information -->
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                                                        <!-- <div class="row" *ngFor="let question of reportaproDetails.questions">
+                                                            <div class="form-group col-md-5">
+                                                                <label><b>{{question.questions}}</b></label>
+                                                            </div>
+                                                            <div class="form-group col-md-7">
+                                                                <label>{{question.answer}}</label>
+                                                            </div>
+                                                        </div> -->
+                                                        <div class="row">
+                                                            <div class="form-group col-md-5">
+                                                                <label><b>Review Comment:</b></label>
+                                                            </div>
+                                                            <div class="form-group col-md-7">
+                                                                <label>{{reportaproDetails.reviewComments}}</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group col-md-5">
+                                                                <label><b>Attach any images/videos/audio about the
+                                                                        problem</b>
+                                                                </label>
+                                                            </div>
+                                                            <div class="row"></div>
+                                                            <div class="form-group col-md-2"
+                                                                *ngFor="let x of imgPath;let i=index">
+                                                                <img src="{{x.Imageurl}}" style="height: 150px;width: 150px;"
+                                                                    class="img-fluid" alt="Responsive image">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-6">
+                                                              <div class="form-group">
+                                                                <label for="numberEmployees">Pro Review Comments</label>
+                                                                <textarea rows="10" maxlength="1000" class="form-control"
+                                                                  formControlName="proReviewComments"></textarea>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                        <div class="form-row">
+                                                            <hr class="hr-gray-thick">
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-4">
+                                                                <div class="form-group">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-4 button-center">
+                                                                <button (click)="location.back()" type="submit"
+                                                                    class="btn btn-blue"><i
+                                                                        class="fa fa-arrow-left"></i>
+                                                                    Back</button>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <div class="form-group">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

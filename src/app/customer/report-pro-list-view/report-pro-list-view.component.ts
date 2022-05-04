@@ -61,8 +61,8 @@ export class ReportProListViewComponent implements OnInit {
       })
   }
 
-  viewLead(data) {
-    this.router.navigate(['/customer/project-view'], { queryParams: { customerId: data.customerId } })
+  viewReportAPro(data) {
+    this.router.navigate(['/pro/report-a-pro-view/'], { queryParams: { reportNumber: data.reportNumber } })
   }
 
 }

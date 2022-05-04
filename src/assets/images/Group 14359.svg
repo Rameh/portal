@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="39.386" height="36.77" viewBox="0 0 39.386 36.77">
+  <defs>
+    <filter id="noun-complaint-89570" x="0" y="0" width="39.386" height="36.77" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_14359" data-name="Group 14359" transform="translate(2802 -14356)">
+    <rect id="Rectangle_20100" data-name="Rectangle 20100" width="24" height="24" transform="translate(-2794 14359)" fill="none"/>
+    <g transform="matrix(1, 0, 0, 1, -2802, 14356)" filter="url(#noun-complaint-89570)">
+      <path id="noun-complaint-89570-2" data-name="noun-complaint-89570" d="M61,126a.99.99,0,0,0-1,1v13.988a.956.956,0,0,0,1,.975h7.565l1.784,2.617a.354.354,0,0,0,.333.19.437.437,0,0,0,.333-.19l1.856-2.617h7.541a.95.95,0,0,0,.975-.975V127a.985.985,0,0,0-.975-1Zm9.706,11.228a.915.915,0,0,1,.88.9v.167a.88.88,0,1,1-1.76,0v-.167A.884.884,0,0,1,70.707,137.228Zm-.024-8.421a1.318,1.318,0,0,1,1.308,1.427l-.4,5.4a.939.939,0,0,1-.975.856.9.9,0,0,1-.809-.856l-.428-5.4A1.347,1.347,0,0,1,70.683,128.807Z" transform="translate(-51 -120)" fill="#ff6700"/>
+    </g>
+  </g>
+</svg>

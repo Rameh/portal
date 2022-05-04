@@ -1,136 +1,235 @@
 <div class="container">
-    <section class="projects_list personal_info pt-60 pb-30">
-      <div class="container">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 profile-stats">
+  <div id="invoice">
+    <div class="invoice overflow-auto">
+      <div style="min-width: 600px">
+        <header>
           <div class="row">
-            <div class="col-lg-12 col-12">
-              <div class="card pinfo_box shadow">
-                <div class="row card-header m-0 justify-content-center">
-                  <div class="col-lg-2 col-2">
-                    <span class="d-block text-center"><i class="fa fa-angle-left"></i></span>
-                  </div>
-                  <div class="col-lg-8 col-5">
-                    <h3>PRO Company Name</h3>
-                  </div>
-                  <div class="col-lg-2 col-2">
-                    <span class="d-block text-center"><i class="fa fa-ellipsis-v"></i></span>
-                  </div>
+            <div class="col-md-2">
+              <a target="_blank" href="https://lobianijs.com">
+                <img src="{{this.proDetails.companylogo}}" data-holder-rendered="true"
+                  style="width: 70%;height: 13d0px;" />
+              </a>
+            </div>
+            <div class="col-md-4">
+              <span>
+                <div class="invoice-id"><b>{{this.proDetails.businessName}}</b></div>
+                <div class="date">{{this.proDetails.street}}</div>
+                <div class="date">{{this.proDetails.city}},{{this.proDetails.zipcode}}</div>
+                <div class="date">Tel:&nbsp;&nbsp;{{this.proDetails.phoneNumber}}</div>
+                <div class="date">email:&nbsp;&nbsp;{{this.proDetails.emailId}}</div>
+              </span>
+            </div>
+            <div class="col-md-4">
+              <div class="row contacts">
+                <div class="col invoice-details">
+                  <div><b>Estimate No: &nbsp;&nbsp;{{this.estimateDetails[0].estimateId}}</b></div>
+                  <div><b>Estimate Date:&nbsp;&nbsp;{{this.estimateDetails[0].dateCreated}}</b></div>
+                  <div><b>Estimate Status:&nbsp;&nbsp;Pending</b></div>
                 </div>
-                <div class="card-body">
-                  <div class="container card mb-3" style="max-width: 1200px; height:200px">
-                    <div class="row g-0" style="padding-top: 38px; padding-left: 48px;">
-                      <div class="col-md-2">
-                        <img src="../../../assets/images/7af0914c-6bb2-482a-8374-baa7738d6571.png" class="img-fluid rounded-start" alt="..."
-                          style="width: 70%;height: 13d0px;">
-                      </div>
-                      <div class="col-md-6">
-                        <div class="card-body container">
-                          <h5 class="card-title"><b>PRO Company Name</b></h5>
-                          <h6>PRO Street Address</h6>
-                          <h6>City,State,Zip</h6>
-                          <h6>Tel:</h6>
-                          <h6>Web:</h6>
-                          <h6>Email:</h6>
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <h6>Estimate No:</h6>
-                        <h6>Estimate Date:</h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-body">
-                  <div class="container" style="max-width: 1200px; height:200px">
-                    <div class="row g-0" style="padding-top: 38px; padding-left: 48px;">
-                      <div class="col-6">
-                        <table>
-                          <tbody>
-                            <tr>
-                              <th>Customer Name:
-                                <h6>PRO Street Address</h6>
-                                <h6>City,State,Zip</h6>
-                                <h6>Tel:</h6>
-                                <h6>Web:</h6>
-                                <h6>Email:</h6>
-                              </th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div class="col-6">
-                        <div class="pinfo_btns">
-                            <h5 class="card-title"><b>PRO Company Name</b></h5>
-                            <h6>PRO Street Address</h6>
-                            <h6>City,State,Zip</h6>
-                            <h6>Tel:</h6>
-                            <h6>Web:</h6>
-                            <h6>Email:</h6>
-                        </div>
-                      </div>
-  
-                    </div>
-                    <div class="row g-0" style="padding-top: 38px; padding-left: 48px;">
-                    </div>
-                  </div>
-                </div>
-                <hr>
-                <div class="card-body">
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-1"></div>
-                      &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                      <div class="col-11">
-                        <div class="form-group">
-                            <table class="line-items-container">
-                                <thead>
-                                  <tr>
-                                    <th class="heading-quantity">Item</th>
-                                    <th class="heading-subtotal">Type</th>
-                                    <th class="heading-description">Description</th>
-                                    <th class="heading-subtotal">Qty</th>
-                                    <th class="heading-subtotal">Unit Price</th>
-                                    <th class="heading-subtotal">Subtotal</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td>1</td>
-                                    <td>PB</td>
-                                    <td>ServiceId,Package Type,Service Description</td>
-                                    <td >1</td>
-                                    <td class="bold">$600</td>
-                                    <td class="bold">$600</td>
-                                  </tr>
-                                  <tr>
-                                    <td>2</td>
-                                    <td>CUM</td>
-                                    <td>Digg and Install Soft of 6" ABS
-                                        Pipe,36" deep</td>
-                                    <td >1</td>
-                                    <td class="bold">$3500</td>
-                                    <td class="bold">$3500</td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-  
-                <hr>
-                <div class="card-body">
-                  <div class="container">
-                  </div>
-                  <hr>
-                  <div class="card-body">
-                  </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+            </div>
+          </div>
+        </header>
+        <main>
+          <div class="row contacts">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-6">
+              {{this.estimateDetails[0].billing_details.customerName}}
+              <div>{{this.estimateDetails[0].billing_details.streetAddress}}</div>
+              <div>
+                {{this.estimateDetails[0].billing_details.city}},&nbsp;&nbsp;{{this.estimateDetails[0].billing_details.state}}&nbsp;&nbsp;{{this.estimateDetails[0].billing_details.zipcode}}
+              </div>
+              <div class="email">{{this.estimateDetails[0].billing_details.phoneNumber}}</div>
+              <div class="email">{{this.estimateDetails[0].billing_details.emailId}}</div>
+            </div>
+            
+            <div class="col-md-4">
+              {{this.estimateDetails[0].service_location.jobStreetAddress}}
+              <div class="date">
+                {{this.estimateDetails[0].service_location.city}},&nbsp;&nbsp;{{this.estimateDetails[0].service_location.state}}&nbsp;&nbsp;{{this.estimateDetails[0].service_location.zipcode}}
+              </div>
+              <div class="email">{{this.estimateDetails[0].service_location.contactNumber}}</div>
+              <div class="email">{{this.estimateDetails[0].service_location.contactEmail}}</div>
+            </div>
+            <div class="col-md-2">
+            </div>
+          </div>
+
+          <table border="0" cellspacing="0" cellpadding="0">
+            <thead style="background-color: #aaaa;">
+              <tr>
+                <th class="text-left">Item#</th>
+                <th class="text-left">Type</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>QTY</th>
+                <th>Units</th>
+                <th>Unit Price</th>
+                <th>Sub TOTAL</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of tableList let i = index;">
+                <td class="text-left">{{i+1}}</td>
+                <td>
+                  {{data.type}}
+
+                </td>
+                <td>{{EstimationName}}</td>
+                <td *ngIf="data.type=='Pricebook'">{{data.priceBookDescription}}</td>
+                <td *ngIf="data.type=='Material'">{{data.customMaterialItems[0].itemName}},
+                  {{data.customMaterialItems[0].manufacturer}}</td>
+                <td *ngIf="data.type=='Labor'">{{data.customLaborItems[0].staffName}},
+                  {{data.customLaborItems[0].description}}</td>
+                <td *ngIf="data.type=='Pricebook'">{{data.pricebookItems[0]?.quantity}}</td>
+                <td *ngIf="data.type=='Pricebook'">{{data.pricebookItems[0]?.units}}</td>
+                <td *ngIf="data.type=='Pricebook'">${{data.pricebookItems[0]?.listPrice}}</td>
+                <td *ngIf="data.type=='Pricebook'">${{data.pricebookItems[0]?.subTotal}}</td>
+                <td *ngIf="data.type=='Material'">{{data.customMaterialItems[0]?.qty}}</td>
+                <td *ngIf="data.type=='Material'">{{data.customMaterialItems[0]?.unit}}</td>
+                <td *ngIf="data.type=='Material'">${{data.customMaterialItems[0]?.listPrice}}</td>
+                <td *ngIf="data.type=='Material'">${{data.customMaterialItems[0]?.subTotal}}</td>
+                <td *ngIf="data.type=='Labor'">{{data.customLaborItems[0]?.quantity}}</td>
+                <td *ngIf="data.type=='Labor'">{{data.customLaborItems[0]?.units}}</td>
+                <td *ngIf="data.type=='Labor'">${{data.customLaborItems[0]?.billRate}}</td>
+                <td *ngIf="data.type=='Labor'">${{data.customLaborItems[0]?.subTotal}}</td>
+              </tr>
+              <!--  -->
+            </tbody>
+            <!-- <tfoot>
+              <div class="price">
+                <tr></tr>
+                <tr>
+                  <td colspan="5"></td>
+                  <td colspan="2">Pricebook Services</td>
+                  <td>${{pricebookCost}}.00</td>
+                </tr>
+                <tr>
+                  <td colspan="5"></td>
+                  <td colspan="2">Total Material Cost</td>
+                  <td>${{customMaterialCost}}.00</td>
+                </tr>
+                <tr>
+                  <td colspan="5"></td>
+                  <td colspan="2">TAX {{taxPercentage}}%</td>
+                  <td>${{taxPercentageValue}}.00</td>
+                </tr>
+                <tr>
+                  <td colspan="5"></td>
+                  <td colspan="2">Total Labor Cost</td>
+                  <td>${{customLaborCost}}.00</td>
+                </tr>
+                <tr>
+                  <td colspan="5"></td>
+                  <td colspan="2">Total Estimate Price Before Discount</td>
+                  <td>${{totalEstimatePriceBeforeDiscount}}.00</td>
+                </tr>
+                <tr>
+                  <td colspan="5"></td>
+                  <td colspan="2" style="color: green;">{{discountPromoCode}} discount</td>
+                  <td style="color: green;">-${{discountValue}}.00</td>
+                </tr>
+                <tr>
+                  <td colspan="5"></td>
+                  <td colspan="2" style="color: green;">{{otherDescription}}</td>
+                  <td style="color: green;">-${{otherPromoValue}}.00</td>
+                </tr>
+                <tr>
+                  <td colspan="5"></td>
+                  <td colspan="2">Final Estimate Price After Discount</td>
+                  <td>${{totalEstimatedPriceAfterDiscount}}.00</td>
+                </tr>
+                <tr>
+                  <td colspan="5"></td>
+                  <td colspan="2">Required Deposit</td>
+                  <td>${{depositRequiredValue}}.00</td>
+                </tr>
+              </div>
+            </tfoot> -->
+          </table>
+          <br/>
+          <div class="row">
+             <div class="col-8">
+
+             </div>
+             <div class="col-4">
+              <div class="card" style="background-color: #ededed">
+                <div class="card__content">
+                  <div class="card__title">Pricebook Services:<span class="card-span">${{pricebookCost}}.00</span></div>
+                  <div class="card__title">Total Material Cost:<span class="card-span">${{customMaterialCost}}.00</span></div>
+                  <div class="card__title">TAX ({{taxPercentage}})%:<span class="card-span">${{taxPercentageValue}}.00</span></div>
+                  <div class="card__title">Total Labor Cost:<span class="card-span"> ${{customLaborCost}}.00</span></div>
+                  <div class="card__title">Total Estimate Price Before Discount:<span class="card-span">${{totalEstimatePriceBeforeDiscount}}.00</span></div>
+                  <div class="card__title" style="color: green;" *ngIf="discountPromoCode !=='NA'">{{discountPromoCode}} discount:<span class="card-span">${{discountValue}}.00</span></div>
+                  <div class="card__title" style="color: green;" *ngIf="otherPromoValue !== ''">{{otherDescription}}:<span class="card-span">${{otherPromoValue}}.00</span></div>
+                  <div class="card__title"><b>Final Estimate Price After Discount:</b><span class="card-span">${{totalEstimatedPriceAfterDiscount}}.00</span></div>
+                  <div class="card__title"><b>Required Deposit:</b> <span class="card-span">${{depositRequiredValue}}.00</span></div>
                 </div>
               </div>
             </div>
           </div>
+          
+          <br/>
+          <!-- <div class="thanks">Thank you!</div> -->
+          <!-- <div class="notices">
+            <div>Estimate Notes To Customer:</div>
+            <div class="notice">Estimate Notes to Customer for testing.</div>
+          </div> -->
+          <div class="card" style="background-color: #ffffbf;">
+            <div class="card__content">
+              <b style="color: #ffa551;">Estimate Notes To Customer:</b>
+              <br/>
+              <div class="card__title">Estimate Notes to Customer--->for testing.</div>
+            </div>
+          </div>
+          <br/>
+          <div class="card" style="background-color: #ffffbf;">
+            <div class="card__content">
+              <b style="color: #ffa551;">Job Site, Notes:</b>
+              <br/>
+              <div class="card__title">Estimate Notes to Customer--->for testing.</div>
+            </div>
+          </div>
+          <br/>
+          <!-- <div class="notices">
+            <div>Estimate Notes To Customer:</div>
+            <div class="notice">Estimate Notes to Customer for testing.</div>
+          </div> -->
+          <div>
+            <label>
+              <input type="checkbox"
+                disabled />
+              &nbsp;&nbsp;&nbsp;
+              <b>I READ AND I AGREE TO ALL TERMS & CONDITIONS</b>
+            </label>
+          </div>
+        </main>
+        <div class="row">
+          <div class="col-md-2">
+            </div>
+          <div class="col-md-3">
+            <button type="button" class="btn btn-warning"><i class="fa fa-file-pdf-o"></i> &nbsp; &nbsp;View Pdf</button>
+          </div>
+          <div class="col-md-3">
+            <button type="button" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i>&nbsp; &nbsp;Decline</button>
+          </div>
+          <div class="col-md-4">
+            <button type="button" class="btn btn-success"><i class="fa fa-check-circle-o" aria-hidden="true"></i>&nbsp; &nbsp;Approve</button>
+          </div>
         </div>
+        <div class="text-right">
+
+
+        </div>
+        <!-- <footer>
+                Invoice was created on a computer and is valid without the signature and seal.
+            </footer> -->
       </div>
-    </section>
+      <!--DO NOT DELETE THIS div. IT is responsible for showing footer always at the bottom-->
+      <div></div>
+    </div>
   </div>
+</div>
