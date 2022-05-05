@@ -84,6 +84,39 @@
 //     font-size: 16px
 // }
 
+.btn-warning {
+    color: #212529;
+    background-color: #FFAA00 !important;
+    border-color: #FFAA00 !important;
+}
+.btn-danger{
+    color: #fff;
+    background-color: #FF0000 !important;
+    border-color: #FF0000 !important;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #00B050 !important;
+    border-color: #00B050 !important;
+}
+
+p {
+    font-size: 14px;
+    color: #000;
+    line-height: 7px !important;
+}
+table {
+    counter-reset: rowNumber-1;
+}
+table tr {
+    counter-increment: rowNumber;
+}
+table tr td:first-child::before {
+    content: counter(rowNumber);
+    min-width: 1em;
+    margin-right: 0.5em;
+}
 table {
     font-family: "poppins-regular";
     border-collapse: collapse;

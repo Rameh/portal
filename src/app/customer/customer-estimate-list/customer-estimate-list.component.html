@@ -63,11 +63,11 @@
                                                     <td>
                                                         <span class="badge badge-pill badge-primary cu_badge2" *ngIf="data.estimateStatus === 'CALL'">Call</span>
                                                         <span class="badge badge-pill badge-primary cu_badge1_dispatch" *ngIf="data.estimateStatus === 'DRAFT'">{{data.estimateStatus}}</span>
-                                                        <span class="badge badge-pill badge-primary cu_badge1" *ngIf="data.estimateStatus === 'Pending'">Pending</span>
+                                                        <span class="badge badge-pill badge-primary cu_badge1" *ngIf="data.estimateStatus === 'SENT'">Pending</span>
                                                         <span class="badge badge-pill badge-primary cu_badge1_cancelled" *ngIf="data.estimateStatus === 'REJECTED'">{{data.estimateStatus}}</span>
                                                         <span class="badge badge-pill badge-primary cu_badge1_ongoing" *ngIf="data.estimateStatus === 'PENDING'">{{data.estimateStatus}}</span>
-                                                        <span class="badge badge-pill badge-primary cu_badge1_scheduled" *ngIf="data.estimateStatus === 'APPROVED'">{{data.estimateStatus}}</span>
-                                                        <span class="badge badge-pill badge-primary cu_badge1_completed" *ngIf="data.estimateStatus === 'FOLLOWUPS'">{{data.estimateStatus}}</span>
+                                                        <span class="badge badge-pill badge-primary cu_badge1_scheduled" *ngIf="data.estimateStatus === 'FOLLOWUPS'">{{data.estimateStatus}}</span>
+                                                        <span class="badge badge-pill badge-primary cu_badge1_ongoing" *ngIf="data.estimateStatus === 'APPROVED'">{{data.estimateStatus}}</span>
                                                     </td>
                                                 </tr>
                                             </tbody>

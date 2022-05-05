@@ -25,6 +25,9 @@ export class EstimateViewComponent implements OnInit {
   totalEstimatedPriceAfterDiscount: any;
   depositRequiredValue: any;
   EstimationName: any;
+  priceBookList: any;
+  materialList: any;
+  laborList: any;
   constructor(public leadService: LeadService,  public route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -39,9 +42,13 @@ export class EstimateViewComponent implements OnInit {
         this.estimateDetails =data['data']
         this.proDetails=this.estimateDetails[0].ProDetails[0]
         this.priceBookDetails=this.estimateDetails[0].pricebook_items
-        this.tableList.push(this.estimateDetails[0].pricebook_items)
-        this.tableList.push(this.estimateDetails[0].custom_material_items)
-        this.tableList.push(this.estimateDetails[0].custom_labor_items)
+
+
+        this.priceBookList=this.estimateDetails[0].pricebook_items
+        this.materialList=this.estimateDetails[0].custom_material_items
+        this.laborList=this.estimateDetails[0].custom_labor_items
+        console.log("🚀 ~ file: estimate-view.component.ts ~ line 52 ~ EstimateViewComponent ~ this.laborList", this.laborList)
+
         this.pricebookCost=this.estimateDetails[0].pricebook_items.pricebookCost
         this.customMaterialCost=this.estimateDetails[0].custom_material_items.customMaterialCost
         this.taxPercentage=this.estimateDetails[0].custom_material_items.taxPercentage

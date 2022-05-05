@@ -5,30 +5,25 @@
         <header>
           <div class="row">
             <div class="col-md-2">
-              <a target="_blank" href="https://lobianijs.com">
-                <img src="{{this.proDetails.companylogo}}" data-holder-rendered="true"
+              <a>
+                <img src="{{proDetails.companylogo}}" data-holder-rendered="true"
                   style="width: 70%;height: 13d0px;" />
               </a>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-7">
               <span>
-                <div class="invoice-id"><b>{{this.proDetails.businessName}}</b></div>
-                <div class="date">{{this.proDetails.street}}</div>
-                <div class="date">{{this.proDetails.city}},{{this.proDetails.zipcode}}</div>
-                <div class="date">Tel:&nbsp;&nbsp;{{this.proDetails.phoneNumber}}</div>
-                <div class="date">email:&nbsp;&nbsp;{{this.proDetails.emailId}}</div>
+                <div class="invoice-id"><b>{{proDetails.businessName}}</b></div>
+                <div class="date">{{proDetails.street}}</div>
+                <div class="date">{{proDetails.city}},{{proDetails.zipcode}}</div>
+                <div class="date">Tel:&nbsp;&nbsp;{{proDetails.phoneNumber}}</div>
+                <div class="date">email:&nbsp;&nbsp;{{proDetails.emailId}}</div>
               </span>
             </div>
-            <div class="col-md-4">
-              <div class="row contacts">
-                <div class="col invoice-details">
-                  <div><b>Estimate No: &nbsp;&nbsp;{{this.estimateDetails[0].estimateId}}</b></div>
-                  <div><b>Estimate Date:&nbsp;&nbsp;{{this.estimateDetails[0].dateCreated}}</b></div>
-                  <div><b>Estimate Status:&nbsp;&nbsp;Pending</b></div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
+            <div class="col-md-3" style="padding-left: 7%">
+              <p><b>Estimate No:&nbsp;{{estimateDetails[0].estimateId}}</b></p>
+              <p><b>Estimate Date:&nbsp;{{estimateDetails[0].dateCreated}}</b></p>
+              <p *ngIf="estimateDetails[0].estimateStatus =='SENT'"><b>Estimate Status: &nbsp;Pending</b></p>
+              <p *ngIf="estimateDetails[0].estimateStatus!=='SENT'"><b>Estimate Status:&nbsp;{{estimateDetails[0].estimateStatus}}</b></p>
             </div>
           </div>
         </header>
@@ -46,15 +41,13 @@
               <div class="email">{{this.estimateDetails[0].billing_details.emailId}}</div>
             </div>
             
-            <div class="col-md-4">
+            <div class="col-md-4" style="padding-left: 16%">
               {{this.estimateDetails[0].service_location.jobStreetAddress}}
               <div class="date">
-                {{this.estimateDetails[0].service_location.city}},&nbsp;&nbsp;{{this.estimateDetails[0].service_location.state}}&nbsp;&nbsp;{{this.estimateDetails[0].service_location.zipcode}}
+                {{this.estimateDetails[0].service_location.city}},&nbsp;{{this.estimateDetails[0].service_location.state}}&nbsp;{{this.estimateDetails[0].service_location.zipcode}}
               </div>
               <div class="email">{{this.estimateDetails[0].service_location.contactNumber}}</div>
               <div class="email">{{this.estimateDetails[0].service_location.contactEmail}}</div>
-            </div>
-            <div class="col-md-2">
             </div>
           </div>
 
@@ -72,88 +65,47 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let data of tableList let i = index;">
-                <td class="text-left">{{i+1}}</td>
+              <tr *ngFor="let data of priceBookList.pricebookItems let i = index;">
+                <td class="text-left"></td>
                 <td>
-                  {{data.type}}
-
+                  {{priceBookList.type}}
                 </td>
-                <td>{{EstimationName}}</td>
-                <td *ngIf="data.type=='Pricebook'">{{data.priceBookDescription}}</td>
-                <td *ngIf="data.type=='Material'">{{data.customMaterialItems[0].itemName}},
-                  {{data.customMaterialItems[0].manufacturer}}</td>
-                <td *ngIf="data.type=='Labor'">{{data.customLaborItems[0].staffName}},
-                  {{data.customLaborItems[0].description}}</td>
-                <td *ngIf="data.type=='Pricebook'">{{data.pricebookItems[0]?.quantity}}</td>
-                <td *ngIf="data.type=='Pricebook'">{{data.pricebookItems[0]?.units}}</td>
-                <td *ngIf="data.type=='Pricebook'">${{data.pricebookItems[0]?.listPrice}}</td>
-                <td *ngIf="data.type=='Pricebook'">${{data.pricebookItems[0]?.subTotal}}</td>
-                <td *ngIf="data.type=='Material'">{{data.customMaterialItems[0]?.qty}}</td>
-                <td *ngIf="data.type=='Material'">{{data.customMaterialItems[0]?.unit}}</td>
-                <td *ngIf="data.type=='Material'">${{data.customMaterialItems[0]?.listPrice}}</td>
-                <td *ngIf="data.type=='Material'">${{data.customMaterialItems[0]?.subTotal}}</td>
-                <td *ngIf="data.type=='Labor'">{{data.customLaborItems[0]?.quantity}}</td>
-                <td *ngIf="data.type=='Labor'">{{data.customLaborItems[0]?.units}}</td>
-                <td *ngIf="data.type=='Labor'">${{data.customLaborItems[0]?.billRate}}</td>
-                <td *ngIf="data.type=='Labor'">${{data.customLaborItems[0]?.subTotal}}</td>
+                <td>{{data.data.serviceTitle}}</td>
+                <td>{{priceBookList.priceBookDescription}}</td>
+                <td>{{data.quantity}}</td>
+                <td>{{data.units}}</td>
+                <td>${{data.listPrice}}</td>
+                <td>${{data.subTotal}}</td>
               </tr>
-              <!--  -->
+              <tr *ngFor="let data of materialList.customMaterialItems let i = index;">
+                <td class="text-left"></td>
+                <td>
+                  {{materialList.type}}
+                </td>
+                <td>{{data.itemName}},&nbsp;&nbsp;{{data.manufacturer}}</td>
+                <td>{{materialList.customLaborMaterialDescription}}</td>
+                <td>{{data.qty}}</td>
+                <td>{{data.unit}}</td>
+                <td>${{data.listPrice}}</td>
+                <td>${{data.subTotal}}</td>
+              </tr>
+              <tr *ngFor="let data of laborList.customLaborItems let i = index;">
+                <td class="text-left"></td>
+                <td>
+                  {{laborList.type}}
+                </td>
+                <td>{{data.staffName}},{{data.description}}</td>
+                <td>{{laborList.customLaborMaterialDescription}}</td>
+                <td>{{data.quantity}}</td>
+                <td>{{data.units}}</td>
+                <td>${{data.billRate}}</td>
+                <td>${{data.subTotal}}</td>
+              </tr>
             </tbody>
-            <!-- <tfoot>
-              <div class="price">
-                <tr></tr>
-                <tr>
-                  <td colspan="5"></td>
-                  <td colspan="2">Pricebook Services</td>
-                  <td>${{pricebookCost}}.00</td>
-                </tr>
-                <tr>
-                  <td colspan="5"></td>
-                  <td colspan="2">Total Material Cost</td>
-                  <td>${{customMaterialCost}}.00</td>
-                </tr>
-                <tr>
-                  <td colspan="5"></td>
-                  <td colspan="2">TAX {{taxPercentage}}%</td>
-                  <td>${{taxPercentageValue}}.00</td>
-                </tr>
-                <tr>
-                  <td colspan="5"></td>
-                  <td colspan="2">Total Labor Cost</td>
-                  <td>${{customLaborCost}}.00</td>
-                </tr>
-                <tr>
-                  <td colspan="5"></td>
-                  <td colspan="2">Total Estimate Price Before Discount</td>
-                  <td>${{totalEstimatePriceBeforeDiscount}}.00</td>
-                </tr>
-                <tr>
-                  <td colspan="5"></td>
-                  <td colspan="2" style="color: green;">{{discountPromoCode}} discount</td>
-                  <td style="color: green;">-${{discountValue}}.00</td>
-                </tr>
-                <tr>
-                  <td colspan="5"></td>
-                  <td colspan="2" style="color: green;">{{otherDescription}}</td>
-                  <td style="color: green;">-${{otherPromoValue}}.00</td>
-                </tr>
-                <tr>
-                  <td colspan="5"></td>
-                  <td colspan="2">Final Estimate Price After Discount</td>
-                  <td>${{totalEstimatedPriceAfterDiscount}}.00</td>
-                </tr>
-                <tr>
-                  <td colspan="5"></td>
-                  <td colspan="2">Required Deposit</td>
-                  <td>${{depositRequiredValue}}.00</td>
-                </tr>
-              </div>
-            </tfoot> -->
           </table>
           <br/>
           <div class="row">
              <div class="col-8">
-
              </div>
              <div class="col-4">
               <div class="card" style="background-color: #ededed">
@@ -163,21 +115,15 @@
                   <div class="card__title">TAX ({{taxPercentage}})%:<span class="card-span">${{taxPercentageValue}}.00</span></div>
                   <div class="card__title">Total Labor Cost:<span class="card-span"> ${{customLaborCost}}.00</span></div>
                   <div class="card__title">Total Estimate Price Before Discount:<span class="card-span">${{totalEstimatePriceBeforeDiscount}}.00</span></div>
-                  <div class="card__title" style="color: green;" *ngIf="discountPromoCode !=='NA'">{{discountPromoCode}} discount:<span class="card-span">${{discountValue}}.00</span></div>
-                  <div class="card__title" style="color: green;" *ngIf="otherPromoValue !== ''">{{otherDescription}}:<span class="card-span">${{otherPromoValue}}.00</span></div>
+                  <div class="card__title" style="color: green;" *ngIf="discountPromoCode !=='NA'">{{discountPromoCode}} discount:<span class="card-span">-${{discountValue}}.00</span></div>
+                  <div class="card__title" style="color: green;" *ngIf="otherPromoValue !== ''">{{otherDescription}}:<span class="card-span">-${{otherPromoValue}}.00</span></div>
                   <div class="card__title"><b>Final Estimate Price After Discount:</b><span class="card-span">${{totalEstimatedPriceAfterDiscount}}.00</span></div>
                   <div class="card__title"><b>Required Deposit:</b> <span class="card-span">${{depositRequiredValue}}.00</span></div>
                 </div>
               </div>
             </div>
           </div>
-          
           <br/>
-          <!-- <div class="thanks">Thank you!</div> -->
-          <!-- <div class="notices">
-            <div>Estimate Notes To Customer:</div>
-            <div class="notice">Estimate Notes to Customer for testing.</div>
-          </div> -->
           <div class="card" style="background-color: #ffffbf;">
             <div class="card__content">
               <b style="color: #ffa551;">Estimate Notes To Customer:</b>
@@ -194,14 +140,9 @@
             </div>
           </div>
           <br/>
-          <!-- <div class="notices">
-            <div>Estimate Notes To Customer:</div>
-            <div class="notice">Estimate Notes to Customer for testing.</div>
-          </div> -->
           <div>
             <label>
-              <input type="checkbox"
-                disabled />
+              <input type="checkbox"/>
               &nbsp;&nbsp;&nbsp;
               <b>I READ AND I AGREE TO ALL TERMS & CONDITIONS</b>
             </label>
@@ -214,21 +155,15 @@
             <button type="button" class="btn btn-warning"><i class="fa fa-file-pdf-o"></i> &nbsp; &nbsp;View Pdf</button>
           </div>
           <div class="col-md-3">
-            <button type="button" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i>&nbsp; &nbsp;Decline</button>
+            <button type="button" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i>&nbsp; &nbsp;Reject</button>
           </div>
           <div class="col-md-4">
             <button type="button" class="btn btn-success"><i class="fa fa-check-circle-o" aria-hidden="true"></i>&nbsp; &nbsp;Approve</button>
           </div>
         </div>
         <div class="text-right">
-
-
         </div>
-        <!-- <footer>
-                Invoice was created on a computer and is valid without the signature and seal.
-            </footer> -->
       </div>
-      <!--DO NOT DELETE THIS div. IT is responsible for showing footer always at the bottom-->
       <div></div>
     </div>
   </div>
