@@ -21,6 +21,7 @@ import { EstimateViewComponent } from './estimate-view/estimate-view.component';
 import { GetQuotesComponent } from './get-quotes/get-quotes.component';
 import { ReportProListViewComponent } from './report-pro-list-view/report-pro-list-view.component';
 import { ReportProViewComponent } from './report-pro-view/report-pro-view.component';
+import { EmailCheckComponent } from './email-check/email-check.component';
 
 const routes: Routes = [
   {
@@ -50,7 +51,9 @@ const routes: Routes = [
       { path: 'estimate-list', component: CustomerEstimateListComponent },
       { path: 'estimate-view/:id', component: EstimateViewComponent },
       { path: 'get-quotes/:id', component: GetQuotesComponent },
-      { path: 'report-a-pro-view/:id', component: ReportProViewComponent }
+      { path: 'report-a-pro-view/:id', component: ReportProViewComponent },
+      //{ path: 'email-check', component: EmailCheckComponent }
+
 
     ]
   }

@@ -47,7 +47,7 @@ export class MyproViewComponent implements OnInit {
   }
 
   bookNow() {
-    this.router.navigate(['customer/book-pro',this.proId])
+    this.router.navigate(['biz/email-check'])
   }
   reportPro(){
     this.router.navigate(['/customer/report-pro',this.proId])

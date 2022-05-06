@@ -18,7 +18,7 @@ export class LeadService {
         )
     }
     getUserProfile(id): Observable<any> {
-        return this.http.get<any>(`${environment.API_URL}/customer/getCustomerProfileDeatils/${id}`);
+        return this.http.get<any>(`${environment.API_URL}/customer/getCustomerProfileDeatils/pavan.s@sunkpo.com`);
     }
     getLeadDetails(customerId: string): Observable<any> {
         return this.http.get<any>(`${environment.API_URL}/workorder/getworkorderprofile/${customerId}`);

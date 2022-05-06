@@ -49,27 +49,10 @@
                               checkedcolor="gold" uncheckedcolor="grey" size="24px" readonly="false"> </star-rating></div>
                             <div class="Column">  ({{data.socialMediaLinks.yelpRating}})</div>
                         </div>
-                          <!-- <div class="row">
-                            <div class="col-md-3">
-                              <star-rating [(value)]="data.socialMediaLinks.googleRating" totalstars="5"
-                                checkedcolor="gold" uncheckedcolor="grey" size="24px" readonly="false"> </star-rating>
-                            </div>
-                            <div class="col-md-3" style="padding-top: 8px;">
-                              ({{data.socialMediaLinks.googleRating}})
-                            </div>
-                          </div> -->
-                          <!-- <div class="row">
-                            <div class="col-md-3">
-                              <star-rating [(value)]="data.socialMediaLinks.yelpRating" totalstars="5"
-                                checkedcolor="gold" uncheckedcolor="grey" size="24px" readonly="false"> </star-rating>
-                            </div>
-                            <div class="col-md-3" style="padding-top: 8px;">
-                              ({{data.socialMediaLinks.yelpRating}})
-                            </div>
-                          </div> -->
                         </div>
                         <div class="col-md-12 pinfo_btns">
-                          <a href="" class="btn cubtn" [routerLink]='["/customer/my-pros-view",data.loginId]'>VIEW</a>
+                          <!-- <a href="" class="btn cubtn" [routerLink]='["/customer/my-pros-view",data.loginId]'>VIEW</a> -->
+                          <a class="btn cubtn" target="_blank" href="http://localhost:5000/biz/pro-public-profile/{{data.loginId}}">VIEW</a>
                         </div>
                       </div>
                     </div>

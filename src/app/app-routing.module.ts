@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EmailCheckComponent } from './customer/email-check/email-check.component';
 import { ProPublicProfileComponent } from './pro-public-profile/pro-public-profile.component';
 
 const routes: Routes = [
@@ -8,6 +9,7 @@ const routes: Routes = [
     loadChildren: () => import('./customer/customer.module').then(module => module.CustomerModule),
   },
   { path: 'biz/pro-public-profile/:id', component: ProPublicProfileComponent },
+  { path: 'biz/email-check', component: EmailCheckComponent },
 ];
 
 @NgModule({
