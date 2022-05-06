@@ -26,6 +26,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ProPublicProfileComponent } from './pro-public-profile/pro-public-profile.component';
 import { RatingModule } from 'ng-starrating';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 
 const lang = "en-US";
@@ -45,6 +47,9 @@ const lang = "en-US";
     CommonSideMenuModule,
     BrowserAnimationsModule,
     RatingModule,
+    FormsModule, 
+    ReactiveFormsModule,
+    CommonModule,
     NgbModule,
     ToastrModule.forRoot(),
     MatButtonModule,

@@ -42,14 +42,14 @@ import { GetQuotesComponent } from './get-quotes/get-quotes.component';
 import { ReportProListViewComponent } from './report-pro-list-view/report-pro-list-view.component';
 import { ReportProViewComponent } from './report-pro-view/report-pro-view.component';
 import { EmailCheckComponent } from './email-check/email-check.component';
+import { NewCustomerBookAproComponent } from './new-customer-book-apro/new-customer-book-apro.component';
 const lang = "en-US";
 @NgModule({
-  declarations: [CustomerProjectListComponent, ProjectViewComponent, CustomerProfileComponent, MyProsComponent, MyproViewComponent, CustomerNotificationsComponent, CustomerSupportRequestFormComponent, CustomerSupportRequestListComponent, CustomerSupportRequestViewComponent, PrivacyPageComponent, TermsAndConditionsPageComponent, HelpAndFaqsPageComponent, ReportProComponent, BookProComponent, CustomerLeadListComponent, CustomerEstimateListComponent, EstimateViewComponent, GetQuotesComponent, ReportProListViewComponent, ReportProViewComponent, EmailCheckComponent],
+  declarations: [CustomerProjectListComponent, ProjectViewComponent, CustomerProfileComponent, MyProsComponent, MyproViewComponent, CustomerNotificationsComponent, CustomerSupportRequestFormComponent, CustomerSupportRequestListComponent, CustomerSupportRequestViewComponent, PrivacyPageComponent, TermsAndConditionsPageComponent, HelpAndFaqsPageComponent, ReportProComponent, BookProComponent, CustomerLeadListComponent, CustomerEstimateListComponent, EstimateViewComponent, GetQuotesComponent, ReportProListViewComponent, ReportProViewComponent, EmailCheckComponent, NewCustomerBookAproComponent],
   imports: [
     CommonModule,
     CustomerRoutingModule,
     RatingModule,
-    FormsModule,
     TextMaskModule,
     ReactiveFormsModule,
     NgbModule,
