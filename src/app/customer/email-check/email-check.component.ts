@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { first } from 'rxjs/operators';
 import { SUCCESS_CODE,INTERNAL_SERVER_ERROR_MSG, NOT_FOUND_CODE, } from '../../helpers/constants'
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-email-check',
@@ -16,12 +16,14 @@ export class EmailCheckComponent implements OnInit {
   roles: any;
   roleCode: any;
   roleOptions: boolean | undefined;
+  proId: any;
   
-  constructor(  public formBuilder: FormBuilder,public authService: AuthService,public router: Router) { 
+  constructor(private route: ActivatedRoute,  public formBuilder: FormBuilder,public authService: AuthService,public router: Router) { 
     this.signInForm = this.buildFormGroup({})
   }
 
   ngOnInit(): void {
+    this.proId=this.route.snapshot.params.id
     this.signInForm = this.formBuilder.group(
       {
         emailId: ["", Validators.required],
@@ -56,10 +58,11 @@ export class EmailCheckComponent implements OnInit {
                   this.roles = data.data
                 } else if (data.data.length == 1) {
                   this.roleOptions = false;
+                  this.router.navigate(['customer/book-pro',this.proId])
                   //this.signInForm.get('role').setValue(this.roleCode)
                 }
                 if(!data.data.length){
-                  this.router.navigate(['biz/new-customer-book-apro'])
+                  this.router.navigate(['biz/new-customer-book-apro',this.proId])
                 }
               }
             }

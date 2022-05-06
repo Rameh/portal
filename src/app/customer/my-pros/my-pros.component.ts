@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { StarRatingComponent } from 'ng-starrating';
 import { LeadService } from 'src/app/services/lead.service';
 
@@ -11,7 +12,7 @@ export class MyProsComponent implements OnInit {
   googleRating: any;
   customerEmailId: any;
   customerProList: any;
-  constructor( public leadService: LeadService) { }
+  constructor( public leadService: LeadService, public router: Router) { }
 
   ngOnInit(): void {
     this.getCustomerPros()
@@ -33,5 +34,11 @@ export class MyProsComponent implements OnInit {
       }
     })
 
+  }
+  ViewProPublicProfile(proId){
+    const url = this.router.serializeUrl(
+      this.router.createUrlTree([`/biz/pro-public-profile/${proId}`])
+    );
+    window.open(url, '_blank');
   }
 }

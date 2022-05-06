@@ -52,7 +52,7 @@
                         </div>
                         <div class="col-md-12 pinfo_btns">
                           <!-- <a href="" class="btn cubtn" [routerLink]='["/customer/my-pros-view",data.loginId]'>VIEW</a> -->
-                          <a class="btn cubtn" target="_blank" href="http://topproz2-customer-portal.s3-website-us-east-1.amazonaws.com/biz/pro-public-profile/{{data.loginId}}">VIEW</a>
+                          <a class="btn cubtn" target="_blank" (click)="ViewProPublicProfile(data.loginId)">VIEW</a>
                         </div>
                       </div>
                     </div>

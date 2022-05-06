@@ -10,8 +10,8 @@ const routes: Routes = [
     loadChildren: () => import('./customer/customer.module').then(module => module.CustomerModule),
   },
   { path: 'biz/pro-public-profile/:id', component: ProPublicProfileComponent },
-  { path: 'biz/email-check', component: EmailCheckComponent },
-  { path: 'biz/new-customer-book-apro', component: NewCustomerBookAproComponent },
+  { path: 'biz/email-check/:id', component: EmailCheckComponent },
+  { path: 'biz/new-customer-book-apro/:id', component: NewCustomerBookAproComponent },
 ];
 
 @NgModule({
