@@ -37,7 +37,7 @@ export class CustomerProjectListComponent implements OnInit {
     localStorage.setItem("emailId",this.customerEmailId)
     }
     this.emailId=localStorage.getItem('emailId')
-    this.leadService.getUserProfile('pavan.s@sunkpo.com')
+    this.leadService.getUserProfile('hatim.naim@gmail.com')
     .subscribe((data) => {
       if (data.status == 200) {
         let userProfileData = { ...data['data'][0] }

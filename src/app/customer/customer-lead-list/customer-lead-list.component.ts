@@ -49,7 +49,7 @@ export class CustomerLeadListComponent implements OnInit {
     })
   }
   getLeadListPro() {
-    this.leadService.getLeadList('pavan.s@sunkpo.com')
+    this.leadService.getLeadList('hatim.naim@gmail.com')
       .subscribe((data) => {
         if (data.status == SUCCESS_CODE) {
           this.leadsList = data.data

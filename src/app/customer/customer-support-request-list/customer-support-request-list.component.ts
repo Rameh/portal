@@ -30,7 +30,7 @@ export class CustomerSupportRequestListComponent implements OnInit {
   ngOnInit(): void {
     this.loginId = this.route.snapshot.params.loginId
     this.emailId = localStorage.getItem('emailId')
-    this.leadService.getUserProfile('pavan.s@sunkpo.com')
+    this.leadService.getUserProfile('hatim.naim@gmail.com')
       .subscribe((data) => {
         if (data.status == 200) {
           let userProfileData = { ...data['data'][0] }
