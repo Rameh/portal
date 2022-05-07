@@ -22,7 +22,7 @@ export class ProPublicProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.proId=this.route.snapshot.params.id
-    this.getProProfile('618ae544538367663cc10fcc')
+    this.getProProfile(this.proId)
   }
   onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}) {
     alert(`Old Value:${$event.oldValue}, 
