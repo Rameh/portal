@@ -117,8 +117,8 @@
                   <div class="card__title">Total Estimate Price Before Discount:<span class="card-span">${{totalEstimatePriceBeforeDiscount}}.00</span></div>
                   <div class="card__title" style="color: green;" *ngIf="discountPromoCode !=='NA'">{{discountPromoCode}} discount:<span class="card-span">-${{discountValue}}.00</span></div>
                   <div class="card__title" style="color: green;" *ngIf="otherPromoValue !== ''">{{otherDescription}}:<span class="card-span">-${{otherPromoValue}}.00</span></div>
-                  <div class="card__title"><b>Final Estimate Price After Discount:</b><span class="card-span">${{totalEstimatedPriceAfterDiscount}}.00</span></div>
-                  <div class="card__title"><b>Required Deposit:</b> <span class="card-span">${{depositRequiredValue}}.00</span></div>
+                  <div class="card__title" *ngIf="otherPromoValue !== ''"><b>Final Estimate Price After Discount:</b><span class="card-span">${{totalEstimatedPriceAfterDiscount}}.00</span></div>
+                  <div class="card__title" *ngIf="otherPromoValue !== ''"><b>Required Deposit:</b> <span class="card-span">${{depositRequiredValue}}.00</span></div>
                 </div>
               </div>
             </div>

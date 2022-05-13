@@ -4,7 +4,7 @@
         <img src="../../../assets/img/tp-new-logofull.png" width="150px">
     </a>
 </nav> -->
-<div class="container">
+<div class="container" *ngIf="!ShowPassword">
     <div class="body">
         <div class="row">
             <div class="col-lg-4 col-sm-4 col-xs-12">
@@ -23,8 +23,20 @@
                                             <input type="email" class="form-control " placeholder="Enter Email ID"
                                                 formControlName="emailId" (change)="roleCheckingMail()">
                                             <label for="stuff" class="fa fa-envelope input-icon"></label>
+                                            <label><i class="input-icon1"></i>
+                                            </label>
+                                            <label *ngIf="isUserExist"><i class="fa fa-check-circle input-icon1"
+                                                style="font-size: 18px;color:green;"></i>
+                                            </label>
                                         </div>
+                                        
+                                    <ng-container *ngIf="noUserExist"><i class="fa fa-times-circle"
+                                            style="font-size: 18px;color:red;margin-top:-4px"></i>
+                                    </ng-container>
                                     </div>
+                                    <span *ngIf="EmailIdErrorMessage">
+                                        <p class="inputFieldValidator" style="color:red;text-align: center;">Please enter emailId</p>
+                                    </span>
                                     <div class="row">
                                         <div class="col-md-4">
 
@@ -36,6 +48,75 @@
                                         </div>
                                     </div>
                                     <br />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-4 col-xs-12">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container" *ngIf="ShowPassword">
+    <div class="body">
+        <div class="row">
+            <div class="col-lg-4 col-sm-4 col-xs-12">
+            </div>
+            <div class="col-lg-4 col-sm-4 col-xs-12">
+                <div class="tabbable">
+                    <br><br><br>
+                    <div class="tab-pane in active">
+                        <form [formGroup]="signInForm"  (ngSubmit)="Login()">
+                            <div class="login-container animated fadeInDown">
+                                <div class="loginbox bg-white">
+                                    <div class="loginbox-title" style="text-align: center;"></div>
+                                    <br /><br /><br />
+                                    <div class="loginbox-textbox">
+                                        <div class="form-group input-wrapper">
+                                            <input type="password" class="form-control " placeholder="Password"
+                                                formControlName="password">
+                                            <label for="stuff" class="fa fa-lock input-passwordicon"></label>
+                                        </div>
+                                    </div>
+                                    <span *ngIf="incorrectPasswordErrorMessage">
+                                        <p class="inputFieldValidator" style="color:red;text-align: center;">Please enter valid password</p>
+                                    </span>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="loginbox-signup">
+                                                <input type="checkbox">
+                                                &nbsp;
+                                                <a>Remember me</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div></div>
+                                            <div class="loginbox-signup">
+                                                <a (click)="forgotPassword()" href="">Forgot Password?</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-md-4">
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="loginbox-submit">
+                                                <input type="submit" class="btn cubtn" value="Login">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <br />
+
                                 </div>
                             </div>
                         </form>

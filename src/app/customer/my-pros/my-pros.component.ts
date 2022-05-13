@@ -36,9 +36,9 @@ export class MyProsComponent implements OnInit {
 
   }
   ViewProPublicProfile(proId){
-    const url = this.router.serializeUrl(
-      this.router.createUrlTree([`/biz/pro-public-profile/${proId}`])
-    );
-    window.open(url, '_blank');
+    //const url = this.router.serializeUrl(
+      this.router.createUrlTree([`/my-pros-view/${proId}`])
+    //);
+    //window.open(url, '_blank');
   }
 }

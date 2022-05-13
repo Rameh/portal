@@ -43,9 +43,10 @@ import { ReportProListViewComponent } from './report-pro-list-view/report-pro-li
 import { ReportProViewComponent } from './report-pro-view/report-pro-view.component';
 import { EmailCheckComponent } from './email-check/email-check.component';
 import { NewCustomerBookAproComponent } from './new-customer-book-apro/new-customer-book-apro.component';
+import { PasswordCheckComponent } from './password-check/password-check.component';
 const lang = "en-US";
 @NgModule({
-  declarations: [CustomerProjectListComponent, ProjectViewComponent, CustomerProfileComponent, MyProsComponent, MyproViewComponent, CustomerNotificationsComponent, CustomerSupportRequestFormComponent, CustomerSupportRequestListComponent, CustomerSupportRequestViewComponent, PrivacyPageComponent, TermsAndConditionsPageComponent, HelpAndFaqsPageComponent, ReportProComponent, BookProComponent, CustomerLeadListComponent, CustomerEstimateListComponent, EstimateViewComponent, GetQuotesComponent, ReportProListViewComponent, ReportProViewComponent, EmailCheckComponent, NewCustomerBookAproComponent],
+  declarations: [CustomerProjectListComponent, ProjectViewComponent, CustomerProfileComponent, MyProsComponent, MyproViewComponent, CustomerNotificationsComponent, CustomerSupportRequestFormComponent, CustomerSupportRequestListComponent, CustomerSupportRequestViewComponent, PrivacyPageComponent, TermsAndConditionsPageComponent, HelpAndFaqsPageComponent, ReportProComponent, BookProComponent, CustomerLeadListComponent, CustomerEstimateListComponent, EstimateViewComponent, GetQuotesComponent, ReportProListViewComponent, ReportProViewComponent, EmailCheckComponent, NewCustomerBookAproComponent, PasswordCheckComponent],
   imports: [
     CommonModule,
     CustomerRoutingModule,
