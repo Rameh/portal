@@ -84,6 +84,28 @@ export class AuthService {
       catchError(this.handleError)
     )
   }
+
+   // verify verification code
+   verifyVerificationCode(code): Observable<any> {
+    console.log("🚀 ~ file: auth.service.ts ~ line 90 ~ AuthService ~ code", code)
+    return this.http.post(`${environment.API_URL}/communication/verifyverificationcode`, code).pipe(
+        catchError(this.handleError)
+    )
+}
+
+     // get verification code secret
+     getVerificationCodeSecret(): Observable<any> {
+      return this.http.get(`${environment.API_URL}/communication/verificationcodesecret`).pipe(
+          catchError(this.handleError)
+      )
+  }
+
+  // get verification code for forgot / reset password
+  sendVerificationCodeForPassword(data): Observable<any> {
+    return this.http.post(`${environment.API_URL}/communication/sendverificationcodepassword`, data).pipe(
+        catchError(this.handleError)
+    )
+}
   logout() {
     localStorage.removeItem('currentUser');
     if (this.isUserLoggedinSubject) this.isUserLoggedinSubject.next(false);
@@ -138,6 +160,14 @@ export class AuthService {
   checkemailId(emailId): Observable<any>{
     return this.http.get<any>(`${environment.API_URL}/auth/checkemailId/${emailId}`)
   }
+
+   // change password
+   changePassword(data): Observable<any> {
+    console.log("🚀 ~ file: auth.service.ts ~ line 166 ~ AuthService ~ data", data)
+    return this.http.put<any>(`${environment.API_URL}/auth/changepassword`, data).pipe(
+        catchError(this.handleError)
+    )
+}
   public isTokenExpired(rawToken: string): boolean {
     if (rawToken) {
       const helper = new JwtHelperService();

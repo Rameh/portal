@@ -80,6 +80,7 @@ export class BookProComponent implements OnInit {
   formControlItem: FormControl = new FormControl("");
   required: boolean = !1;
   subCategoriePrice: any;
+  minDate: Date;
 
   constructor(
     private fb: FormBuilder,
@@ -90,6 +91,7 @@ export class BookProComponent implements OnInit {
     private router: Router
 
   ) {
+    this.minDate = new Date();
     this.bookProform = this.buildFormGroup({})
     this.serviceAddressForm=this.buildFormGroup1({})
   }

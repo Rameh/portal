@@ -44,9 +44,11 @@ import { ReportProViewComponent } from './report-pro-view/report-pro-view.compon
 import { EmailCheckComponent } from './email-check/email-check.component';
 import { NewCustomerBookAproComponent } from './new-customer-book-apro/new-customer-book-apro.component';
 import { PasswordCheckComponent } from './password-check/password-check.component';
+import { GetQuotesEmailCheckComponent } from './get-quotes-email-check/get-quotes-email-check.component';
+import { NewCustomerGetQuotesComponent } from './new-customer-get-quotes/new-customer-get-quotes.component';
 const lang = "en-US";
 @NgModule({
-  declarations: [CustomerProjectListComponent, ProjectViewComponent, CustomerProfileComponent, MyProsComponent, MyproViewComponent, CustomerNotificationsComponent, CustomerSupportRequestFormComponent, CustomerSupportRequestListComponent, CustomerSupportRequestViewComponent, PrivacyPageComponent, TermsAndConditionsPageComponent, HelpAndFaqsPageComponent, ReportProComponent, BookProComponent, CustomerLeadListComponent, CustomerEstimateListComponent, EstimateViewComponent, GetQuotesComponent, ReportProListViewComponent, ReportProViewComponent, EmailCheckComponent, NewCustomerBookAproComponent, PasswordCheckComponent],
+  declarations: [CustomerProjectListComponent, ProjectViewComponent, CustomerProfileComponent, MyProsComponent, MyproViewComponent, CustomerNotificationsComponent, CustomerSupportRequestFormComponent, CustomerSupportRequestListComponent, CustomerSupportRequestViewComponent, PrivacyPageComponent, TermsAndConditionsPageComponent, HelpAndFaqsPageComponent, ReportProComponent, BookProComponent, CustomerLeadListComponent, CustomerEstimateListComponent, EstimateViewComponent, GetQuotesComponent, ReportProListViewComponent, ReportProViewComponent, EmailCheckComponent, NewCustomerBookAproComponent, PasswordCheckComponent, GetQuotesEmailCheckComponent, NewCustomerGetQuotesComponent],
   imports: [
     CommonModule,
     CustomerRoutingModule,

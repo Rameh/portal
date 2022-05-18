@@ -53,8 +53,11 @@ export class ProPublicProfileComponent implements OnInit {
     this.router.navigate(['/customer/report-pro',this.proId])
   }
   getAQuote() {
-    alert('This function redirect to website')
+    this.router.navigate(['/biz/get-quotes-email-check',this.proId])
   }
+  // getAQuote() {
+  //   alert('This function redirect to website')
+  // }
   onCloseHandled() {
   }
 }
