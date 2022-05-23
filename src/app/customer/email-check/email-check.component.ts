@@ -245,9 +245,11 @@ modeOfVerificationCode(type) {
       this.EmailIdErrorMessage=false;
     }
     this.authService.verifyEmailId(this.signInForm.value.emailId.toLowerCase()).subscribe(data => {
+      localStorage.setItem("emailId",this.signInForm.value.emailId)
       for (var i = 0; i < data.data?.length; i++) {
         this.roles = data.data[i].rbac[0].roleCode
         this.tempPass = data.data[i].tempPassword
+      
         console.log("🚀 ~ file: email-check.component.ts ~ line 90 ~ EmailCheckComponent ~ this.tempPass", this.tempPass)
       }
     })

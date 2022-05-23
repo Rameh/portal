@@ -69,8 +69,7 @@ export class ReportProComponent implements OnInit {
     this.getProProfile(this.route.snapshot.params.id)
     this.currentDate = moment(new Date()).format("YYYY-MM-DD");
     this.emailId = localStorage.getItem('emailId')
-    //'hatim.naim@gmail.com'
-    this.leadService.getUserProfile('hatim.naim@gmail.com')
+    this.leadService.getUserProfile( this.emailId)
       .subscribe((data) => {
         if (data.status == 200) {
           let userProfileData = { ...data['data'][0] }

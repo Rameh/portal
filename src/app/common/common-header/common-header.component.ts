@@ -28,7 +28,7 @@ export class CommonHeaderComponent implements OnInit {
     this.emailId=localStorage.getItem('emailId')
     if(!this.emailId){
     }
-    this.leadService.getUserProfile('hatim.naim@gmail.com')
+    this.leadService.getUserProfile(this.emailId)
     .subscribe((data) => {
       if (data.status == 200) {
         let userProfileData = { ...data['data'][0] }

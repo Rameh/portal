@@ -34,7 +34,7 @@ export class ReportProListViewComponent implements OnInit {
     console.log('88888888888888888888888888888888888',this.emailId)
     if(!this.emailId){
     localStorage.setItem("loginId",this.loginId);
-    localStorage.setItem("emailId",this.customerEmailId)
+    //localStorage.setItem("emailId",this.customerEmailId)
     }
     this.getLeadListPro();
     this.emailId=localStorage.getItem('emailId')

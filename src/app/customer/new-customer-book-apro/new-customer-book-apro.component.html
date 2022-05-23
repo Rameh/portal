@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="bookaproScreen">
     <section class="projects_list personal_info pt-60 pb-30">
         <div class="container">
             <div class="row">
@@ -24,10 +24,32 @@
                                                 aria-labelledby="pills-personal-tab">
                                                 <div class="pinfo_contact_form">
                                                     <label for="firstName" class="form-label">
-                                                        <b><h4>Service Location</h4></b>
+                                                        <b>
+                                                            <h4>Service Location</h4>
+                                                        </b>
                                                     </label>
                                                     <form [formGroup]="serviceAddressForm">
                                                         <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="emailAddress" class="form-label">
+                                                                        <b>First Name</b></label>
+                                                                    <span class="mandatory">*</span>
+                                                                    <input type="text" name="name"
+                                                                        formControlName="firstName" class="form-control"
+                                                                        placeholder="Enter First Name" tabindex="2">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="emailAddress" class="form-label">
+                                                                        <b>Last Name</b></label>
+                                                                    <span class="mandatory">*</span>
+                                                                    <input type="text" name="name"
+                                                                        formControlName="lastName" class="form-control"
+                                                                        placeholder="Enter Project Name" tabindex="2">
+                                                                </div>
+                                                            </div>
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
                                                                     <label for="emailAddress" class="form-label">
@@ -102,8 +124,7 @@
                                                                     <span class="mandatory">*</span>
                                                                     <div class="input-icons">
                                                                         <input type="text" class="form-control"
-                                                                            id="servicecounty" 
-                                                                            value="{{county}}"
+                                                                            id="servicecounty" value="{{county}}"
                                                                             formControlName="servicecounty"
                                                                             style="background-color:white; ">
                                                                     </div>
@@ -187,7 +208,8 @@
                                                                     <br />
                                                                     <mat-form-field>
                                                                         <input matInput [matDatepicker]="picker"
-                                                                            formControlName="bookingDate">
+                                                                            formControlName="bookingDate"
+                                                                            [min]="minDate">
                                                                         <mat-datepicker-toggle matSuffix [for]="picker">
                                                                         </mat-datepicker-toggle>
                                                                         <mat-datepicker #picker></mat-datepicker>
@@ -371,7 +393,7 @@
                                                                 <button class="btn btn-link btn1"
                                                                     [routerLink]="['/customer/support-list']">Cancel</button>
                                                                 <button class="btn btn-primary btn2"
-                                                                    (click)="onSubmit()">Submit</button>
+                                                                    (click)="bookaProSubmit()">Submit</button>
                                                             </div>
                                                         </div>
                                                     </form>
@@ -481,3 +503,198 @@
         </div>
     </div>
 </div>
+
+
+
+<div class="container" *ngIf="mobileNumberScreen">
+    <div class="body">
+        <div class="row">
+            <div class="col-lg-4 col-sm-4 col-xs-12">
+            </div>
+            <div class="col-lg-4 col-sm-4 col-xs-12">
+                <div class="tabbable">
+                    <br><br><br>
+                    <div class="tab-pane in active">
+                        <form (ngSubmit)="sendVerificationCode()" [formGroup]="serviceAddressForm">
+                            <div class="login-container animated fadeInDown">
+                                <div class="loginbox bg-white">
+                                    <br /><br /><br />
+                                    <div class="text-center">
+                                        <div class="row">
+                                            <div class="form-group col-md-1">
+                                            </div>
+                                            <div class="form-group col-md-10">
+                                                <div class="loginbox-textbox">
+                                                    <div class="form-group input-wrapper">
+                                                        <input type="text" class="form-control "
+                                                            placeholder="Please enter MobileNumber"
+                                                            formControlName="mobileNumber">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-1">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="loginbox-submit">
+                                                <input type="submit" class="btn cubtn" value="Submit">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <br />
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-4 col-xs-12">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- verification code form -->
+<div class="row" *ngIf="verificationCodeScreen">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8">
+        <div class="tabbable">
+            <br><br><br>
+            <div class="tab-pane in active">
+                <form class="user" [formGroup]="forgotPasswordSendVerification">
+                    <div class="login-container animated fadeInDown">
+                        <div class="loginbox bg-white">
+                            <div class="loginbox-title" style="text-align: center;"></div>
+                            <br /><br /><br />
+                            <div class="text-center">
+                                <h5><b>Verification Code&nbsp;&nbsp;- {{verificationCode}}</b></h5>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-4"></div>
+                                <div class="form-group col-md-4">
+                                    <!-- <label>Enter Your Verification Code<span class="mandatoryFieldIndicator">*</span></label> -->
+                                    <input type="text" class="form-control form-control-solid"
+                                        placeholder="Enter Verification Code" formControlName="code"
+                                        [ngClass]="{ 'is-invalid': submittedForCode && h.code.errors }">
+                                    <!-- <div *ngIf="submittedForCode && h.code.errors">
+                                <div *ngIf="h.code.errors.required">
+                                    <p class="inputFieldValidator">Enter Verification Code</p>
+                                </div>
+                            </div> -->
+                                </div>
+                            </div>
+                            <br />
+                            <br />
+                            <div class="row">
+                                <div class="col-md-4">
+                                </div>
+                                <h6>I didn`t receive the code</h6>
+                                <div class="col-md-4">
+                                    <a (click)="sendVerificationCode()" >
+                                        <b>Resend</b></a>
+                                </div>
+                            </div>
+                            <br />    <br />
+                            <div class="row">
+                                <div class="col-sm-4">
+                                </div>
+                                <div class="col-sm-3">
+                                    <button type="button" (click)="sendVerificationCode()" class="btn cubtn">
+                                        Resend Code</button>
+                                </div>
+                                <div class="col-sm-3">
+                                    <button type="button" (click)="newPassword()" class="btn cubtn">
+                                        Verify Code
+                                    </button>
+                                </div>
+                            </div>
+                            <br /><br />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- verification code form -->
+
+
+
+<div class="container" *ngIf="forgotPasswordNewPasswordMode">
+    <div class="body">
+        <div class="row">
+            <div class="col-lg-4 col-sm-4 col-xs-12">
+            </div>
+            <div class="col-lg-4 col-sm-4 col-xs-12">
+                <div class="tabbable">
+                    <br><br><br>
+                    <div class="tab-pane in active">
+                        <form class="user"  [formGroup]="serviceAddressForm">
+                            <div class="login-container animated fadeInDown">
+                                <div class="loginbox bg-white">
+                                    <div class="loginbox-title" style="text-align: center;"></div>
+                                    <br /><br /><br />
+                                    <div class="text-center">
+                                        <div class="row">
+                                            <div class="form-group col-md-1">
+                                            </div>
+                                            <div class="form-group col-md-10">
+                                                <div class="loginbox-textbox">
+                                                    <div class="form-group input-wrapper">
+                                                        <input type="password" class="form-control "
+                                                            placeholder="New Password" formControlName="password">
+                                                        <label for="stuff"
+                                                            class="fa fa-lock input-passwordicon"></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-1">
+                                            </div>
+                                            <div class="form-group col-md-1">
+                                            </div>
+                                            <div class="form-group col-md-10">
+                                                <div class="loginbox-textbox">
+                                                    <div class="form-group input-wrapper">
+                                                        <input type="password" class="form-control "
+                                                            placeholder="Confirm Password"
+                                                            formControlName="confirmPassword">
+                                                        <label for="stuff"
+                                                            class="fa fa-lock input-passwordicon"></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-1">
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <button type="button" (click)="onSubmit()"
+                                                    class="btn cubtn">Login</button>
+                                            </div>
+                                            <div class="col-sm-2">
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <br />
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>

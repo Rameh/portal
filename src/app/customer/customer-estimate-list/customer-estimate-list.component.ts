@@ -31,9 +31,11 @@ export class CustomerEstimateListComponent implements OnInit {
   ngOnInit(): void {
     this.loginId=this.route.snapshot.params.id
     this.customerEmailId=this.route.snapshot.params.emailId
+    this.emailId=localStorage.getItem("emailId")
+    this.emailId=this.customerEmailId?this.customerEmailId:this.emailId;
     if(!this.emailId){
     localStorage.setItem("loginId",this.loginId);
-    localStorage.setItem("emailId",this.customerEmailId)
+    //localStorage.setItem("emailId",this.emailId)
     }
     this.getLeadListPro();
     this.emailId=localStorage.getItem('emailId')
@@ -49,7 +51,7 @@ export class CustomerEstimateListComponent implements OnInit {
   }
   getLeadListPro() {
     //CU2022569245-pavan.s@sunkpo.com
-    this.leadService.getEstimateList('CU2022569245')
+    this.leadService.getEstimateList('dssd')
       .subscribe((data) => {
         if (data.status == SUCCESS_CODE) {
           this.leadsList = data.data

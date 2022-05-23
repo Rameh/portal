@@ -18,7 +18,7 @@ export class LeadService {
         )
     }
     getUserProfile(id): Observable<any> {
-        return this.http.get<any>(`${environment.API_URL}/customer/getCustomerProfileDeatils/hatim.naim@gmail.com`);
+        return this.http.get<any>(`${environment.API_URL}/customer/getCustomerProfileDeatils/${id}`);
     }
     getLeadDetails(customerId: string): Observable<any> {
         return this.http.get<any>(`${environment.API_URL}/workorder/getworkorderprofile/${customerId}`);
@@ -75,7 +75,6 @@ export class LeadService {
         )
     }
     bookAPro(customerSupportRequestData): Observable<any> {
-        console.log("🚀 ~ file: lead.service.ts ~ line 78 ~ LeadService ~ customerSupportRequestData", customerSupportRequestData)
         return this.http.post(`${environment.API_URL}/lead/direct-booking-customer`, customerSupportRequestData).pipe(
             catchError(this.handleError)
         )

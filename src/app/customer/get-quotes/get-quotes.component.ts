@@ -116,7 +116,7 @@ export class GetQuotesComponent implements OnInit {
     this.getProProfile(this.route.snapshot.params.id)
     this.currentDate = moment(new Date()).format("YYYY-MM-DD");
     this.emailId=localStorage.getItem('emailId')
-    this.leadService.getUserProfile('hatim.naim@gmail.com').subscribe((data) => {
+    this.leadService.getUserProfile( this.emailId).subscribe((data) => {
       if (data.status == 200) {
         let userProfileData = { ...data['data'][0] }
         this.customerId=userProfileData.customerId
@@ -257,13 +257,14 @@ export class GetQuotesComponent implements OnInit {
       this.bookProform.patchValue({
         customerId: this.customerId
       })
+      this.emailId=localStorage.getItem("emailId")
       const DirectBookingleadDetailsObj = {}
       DirectBookingleadDetailsObj['projectName'] = this.serviceAddressForm.value.projectName
       DirectBookingleadDetailsObj['projectDescription'] = this.serviceAddressForm.value.projectDescription
       DirectBookingleadDetailsObj['firstName'] = this.serviceAddressForm.value.firstName
       DirectBookingleadDetailsObj['lastName'] = this.serviceAddressForm.value.lastName
       DirectBookingleadDetailsObj['mobileNumber'] = this.serviceAddressForm.value.mobileNumber
-      DirectBookingleadDetailsObj['DBLeadEmailId'] = 'hatim.naim@gmail.com'
+      DirectBookingleadDetailsObj['DBLeadEmailId'] = this.emailId
       DirectBookingleadDetailsObj['loginId']='618b2590538367663cc11007',
       DirectBookingleadDetailsObj['proLoginId']=this.route.snapshot.params.id
       DirectBookingleadDetailsObj['proEmailId']=this.proProfile.emailId
@@ -383,6 +384,7 @@ export class GetQuotesComponent implements OnInit {
           this.zipcodeData = data['data'][0]
           this.city = this.zipcodeData?.city
           this.state = this.zipcodeData?.state
+          this.county=this.zipcodeData?.county
           this.getZipcodeStateName();
         } if (this.zipcodeData1?.length == 0) {
           this.zipcodeExists = true

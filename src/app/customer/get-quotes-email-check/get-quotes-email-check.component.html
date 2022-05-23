@@ -128,3 +128,201 @@
         </div>
     </div>
 </div>
+
+
+
+
+<div class="container" *ngIf="ShowVerificationScreen">
+    <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-8">
+            <div class="tabbable">
+                <br><br><br>
+                <div class="tab-pane in active">
+                    <form class="user" [formGroup]="forgotPasswordModeOfSelection">
+                        <div class="login-container animated fadeInDown">
+                            <div class="loginbox bg-white">
+                                <div class="loginbox-title" style="text-align: center;"></div>
+                                <br /><br /><br />
+                                <div class="text-center">
+                                    <div class="textSize">We will need to verify your account prior
+                                        to resetting your password.
+                                        Where would like to receive your verification code?</div>
+                                </div>
+                                <br><br />
+                                <div class="row">
+                                    <div class="form-group col-md-1">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label>Email Id</label>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" class="inverted" class="colored-success"
+                                                    formControlName="mode" value="userData.emailId" for="emailId"
+                                                    (change)="modeOfVerificationCode('EMAIL')">
+                                                <span class="text">{{maskedEmailID}}</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-2" style="color: black;">OR</div>
+                                    <div class="form-group col-md-4">
+                                        <label>Mobile Number</label>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" class="inverted" class="colored-success"
+                                                    formControlName="mode" value="userData.mobileNumber"
+                                                    for="mobileNumber" (change)="modeOfVerificationCode('SMS')">
+                                                <span class="text"> {{userData.maskedMobileNumber}}</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="submittedForModes && g.mode.errors">
+                                        <div *ngIf="g.mode.errors.required">
+                                            <p class="inputFieldValidator">Select any one Mode</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-4">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <button type="button" (click)="sendVerificationCode()" class="btn cubtn">
+                                            Send Verification Code
+                                        </button>
+                                    </div>
+                                </div>
+                                <br /><br />
+                            </div>
+                        </div>
+                    </form>
+                    <br />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+        </div>
+    </div>
+</div>
+
+<!-- verification code form -->
+<div class="row" *ngIf="forgotPasswordPageModes">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8">
+        <div class="tabbable">
+            <br><br><br>
+            <div class="tab-pane in active">
+                <form class="user" [formGroup]="forgotPasswordSendVerification">
+                    <div class="login-container animated fadeInDown">
+                        <div class="loginbox bg-white">
+                            <div class="loginbox-title" style="text-align: center;"></div>
+                            <br /><br /><br />
+                            <div class="text-center">
+                                <h5><b>Verification Code&nbsp;&nbsp;- {{verificationCode}}</b></h5>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-4"></div>
+                                <div class="form-group col-md-4">
+                                    <!-- <label>Enter Your Verification Code<span class="mandatoryFieldIndicator">*</span></label> -->
+                                    <input type="text" class="form-control form-control-solid"
+                                        placeholder="Enter Verification Code" formControlName="code"
+                                        [ngClass]="{ 'is-invalid': submittedForCode && h.code.errors }">
+                                    <!-- <div *ngIf="submittedForCode && h.code.errors">
+                                <div *ngIf="h.code.errors.required">
+                                    <p class="inputFieldValidator">Enter Verification Code</p>
+                                </div>
+                            </div> -->
+                                </div>
+                            </div>
+                            <br />
+                            <br />
+                            <div class="row">
+                                <div class="col-sm-3">
+                                </div>
+                                <div class="col-sm-3">
+                                    <button type="button" (click)="sendVerificationCode()"
+                                        class="btn btn-lg btn-darkorange shiny btn-block">Resend Code</button>
+                                </div>
+                                <div class="col-sm-3">
+                                    <button type="button" (click)="newPassword()" class="btn cubtn">
+                                        Verify Code
+                                    </button>
+                                </div>
+                            </div>
+                            <br /><br />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- verification code form -->
+
+<div class="container" *ngIf="forgotPasswordNewPasswordMode">
+    <div class="body">
+        <div class="row">
+            <div class="col-lg-4 col-sm-4 col-xs-12">
+            </div>
+            <div class="col-lg-4 col-sm-4 col-xs-12">
+                <div class="tabbable">
+                    <br><br><br>
+                    <div class="tab-pane in active">
+                        <form class="user" [formGroup]="forgotPasswordNewPassword">
+                            <div class="login-container animated fadeInDown">
+                                <div class="loginbox bg-white">
+                                    <div class="loginbox-title" style="text-align: center;"></div>
+                                    <br /><br /><br />
+                                    <div class="text-center">
+                                        <div class="row">
+                                            <div class="form-group col-md-1">
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <div class="loginbox-textbox">
+                                                    <div class="form-group input-wrapper">
+                                                        <input type="password" class="form-control "
+                                                            placeholder="New Password" formControlName="password">
+                                                        <label for="stuff"
+                                                            class="fa fa-lock input-passwordicon"></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <div class="loginbox-textbox">
+                                                    <div class="form-group input-wrapper">
+                                                        <input type="password" class="form-control "
+                                                            placeholder="Confirm Password"
+                                                            formControlName="confirmPassword">
+                                                        <label for="stuff"
+                                                            class="fa fa-lock input-passwordicon"></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-1">
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <button type="button" (click)="confirmPassword()"
+                                                    class="btn cubtn">Login</button>
+                                            </div>
+                                            <div class="col-sm-2">
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <br />
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+</div>

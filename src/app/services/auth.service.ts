@@ -106,6 +106,11 @@ export class AuthService {
         catchError(this.handleError)
     )
 }
+sendVerificationCodeForLead(data): Observable<any> {
+  return this.http.post(`${environment.API_URL}/communication/sendleadverificationcode`, data).pipe(
+      catchError(this.handleError)
+  )
+}
   logout() {
     localStorage.removeItem('currentUser');
     if (this.isUserLoggedinSubject) this.isUserLoggedinSubject.next(false);

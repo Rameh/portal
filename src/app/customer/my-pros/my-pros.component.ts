@@ -12,6 +12,7 @@ export class MyProsComponent implements OnInit {
   googleRating: any;
   customerEmailId: any;
   customerProList: any;
+  emailId: any;
   constructor( public leadService: LeadService, public router: Router) { }
 
   ngOnInit(): void {
@@ -24,9 +25,8 @@ export class MyProsComponent implements OnInit {
       Unchecked Color: ${$event.starRating.uncheckedcolor}`);
   }
   getCustomerPros(){
-    this.customerEmailId=localStorage.getItem('emailId')
-    //'hatim.naim@gmail.com'
-    this.leadService.getCustomerPros('hatim.naim@gmail.com')
+    this.emailId=localStorage.getItem('emailId')
+    this.leadService.getCustomerPros( this.emailId)
     .subscribe((data) => {
       if (data.status == 200) {
         this.customerProList = data.data

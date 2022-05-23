@@ -30,15 +30,15 @@ export class CustomerLeadListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginId=this.route.snapshot.params.id
-    this.customerEmailId=this.route.snapshot.params.emailId
+    //this.emailId=this.route.snapshot.params.emailId
     console.log('88888888888888888888888888888888888',this.emailId)
     if(!this.emailId){
     localStorage.setItem("loginId",this.loginId);
-    localStorage.setItem("emailId",this.customerEmailId)
+    //localStorage.setItem("emailId",this.emailId)
     }
     this.getLeadListPro();
     this.emailId=localStorage.getItem('emailId')
-    this.leadService.getUserProfile(this.customerEmailId)
+    this.leadService.getUserProfile(this.emailId)
     .subscribe((data) => {
       if (data.status == 200) {
         let userProfileData = { ...data['data'][0] }
@@ -49,7 +49,7 @@ export class CustomerLeadListComponent implements OnInit {
     })
   }
   getLeadListPro() {
-    this.leadService.getLeadList('hatim.naim@gmail.com')
+    this.leadService.getLeadList(localStorage.getItem('emailId'))
       .subscribe((data) => {
         if (data.status == SUCCESS_CODE) {
           this.leadsList = data.data

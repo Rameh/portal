@@ -34,10 +34,10 @@ export class CustomerProjectListComponent implements OnInit {
     this.customerEmailId=this.route.snapshot.params.emailId
     if(!this.emailId){
     localStorage.setItem("loginId",this.loginId);
-    localStorage.setItem("emailId",this.customerEmailId)
+    //localStorage.setItem("emailId",this.customerEmailId)
     }
     this.emailId=localStorage.getItem('emailId')
-    this.leadService.getUserProfile('hatim.naim@gmail.com')
+    this.leadService.getUserProfile(this.emailId)
     .subscribe((data) => {
       if (data.status == 200) {
         let userProfileData = { ...data['data'][0] }
