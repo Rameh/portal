@@ -66,6 +66,7 @@
                                                         <span class="badge badge-pill badge-primary cu_badge1_cancelled" *ngIf="data.leadStatus === 'CANCELED'">{{data.leadStatus}}</span>
                                                         <span class="badge badge-pill badge-primary cu_badge1_ongoing" *ngIf="data.leadStatus === 'ONGOING'">{{data.leadStatus}}</span>
                                                         <span class="badge badge-pill badge-primary cu_badge1_scheduled" *ngIf="data.leadStatus === 'SCHEDULED'">{{data.leadStatus}}</span> -->
+                                                        <span class="badge badge-pill badge-primary cu_badge1_ongoing" *ngIf="data.sourceType === 'Lead'">NEW LEAD</span>
                                                         <span class="badge badge-pill badge-primary cu_badge1_ongoing" *ngIf="data.sourceType === 'DirectBooking'">DIRECT BOOKING</span>
                                                         <span class="badge badge-pill badge-primary cu_badge1_completed" *ngIf="data.sourceType === 'Getaquotes'">GET A QUOTE</span>
                                                     </td>
