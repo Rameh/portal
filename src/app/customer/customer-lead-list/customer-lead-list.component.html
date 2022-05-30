@@ -55,19 +55,19 @@
                                                 <tr *ngFor="let data of leadsList | paginate: { itemsPerPage: 10, currentPage:pagination }">
                                                     <td *ngIf="data.leadId">
                                                         <!-- <a [routerLink]='["/customer/project-view",data._id]'>{{data.leadId}}</a> -->
-                                                        <a [routerLink]='["/customer/lead-list"]'>{{data.leadId}}</a>
+                                                        <a [routerLink]='["/customer/project-view",data.customerId]'>{{data.leadId}}</a>
                                                        </td>
                                                     <td> {{data.projectName}}</td>
-                                                    <td>{{data.createdOn}}</td>
+                                                    <td>{{data.createdOn | date :'MM-dd-yy, h:mm a'}}</td>
                                                     <td>
-                                                        <span class="badge badge-pill badge-primary cu_badge2" *ngIf="data.status === 'CALL'">Call</span>
+                                                        <!-- <span class="badge badge-pill badge-primary cu_badge2" *ngIf="data.status === 'CALL'">Call</span>
                                                         <span class="badge badge-pill badge-primary cu_badge1_dispatch" *ngIf="data.status === 'ACTIVE'">CALL</span>
                                                         <span class="badge badge-pill badge-primary cu_badge1" *ngIf="data.leadStatus === 'ASSIGNED'">{{data.leadStatus}}</span>
                                                         <span class="badge badge-pill badge-primary cu_badge1_cancelled" *ngIf="data.leadStatus === 'CANCELED'">{{data.leadStatus}}</span>
                                                         <span class="badge badge-pill badge-primary cu_badge1_ongoing" *ngIf="data.leadStatus === 'ONGOING'">{{data.leadStatus}}</span>
-                                                        <span class="badge badge-pill badge-primary cu_badge1_scheduled" *ngIf="data.leadStatus === 'SCHEDULED'">{{data.leadStatus}}</span>
-                                                        <span class="badge badge-pill badge-primary cu_badge1_ongoing" *ngIf="data.isBookapro === 'true'">DIRECT BOOKING</span>
-                                                        <span class="badge badge-pill badge-primary cu_badge1_completed" *ngIf="data.isGetquotes === 'true'">GET A QUOTE</span>
+                                                        <span class="badge badge-pill badge-primary cu_badge1_scheduled" *ngIf="data.leadStatus === 'SCHEDULED'">{{data.leadStatus}}</span> -->
+                                                        <span class="badge badge-pill badge-primary cu_badge1_ongoing" *ngIf="data.sourceType === 'DirectBooking'">DIRECT BOOKING</span>
+                                                        <span class="badge badge-pill badge-primary cu_badge1_completed" *ngIf="data.sourceType === 'Getaquotes'">GET A QUOTE</span>
                                                     </td>
                                                 </tr>
                                             </tbody>

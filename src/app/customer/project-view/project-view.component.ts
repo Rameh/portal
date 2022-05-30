@@ -81,7 +81,7 @@ export class ProjectViewComponent implements OnInit {
 
   getleadDetails(customerId: string): any {
     if (!customerId) return;
-    this.leadService.getLeadDetails(customerId).subscribe(res => {
+    this.leadService.getLeadDetails1(customerId).subscribe(res => {
       if (res.status == SUCCESS_CODE) {
         this.leadDetails = res.data;
         console.log("🚀 ~ file: project-view.component.ts ~ line 82 ~ ProjectViewComponent ~ this.leadDetails", this.leadDetails)

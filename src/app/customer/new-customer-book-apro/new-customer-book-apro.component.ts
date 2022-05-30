@@ -402,7 +402,7 @@ export class NewCustomerBookAproComponent implements OnInit {
       DirectBookingleadDetailsObj['confirmPassword'] = this.serviceAddressForm.value.confirmPassword
       DirectBookingleadDetailsObj['mobileNumber'] =this.serviceAddressForm.value.mobileNumber
       DirectBookingleadDetailsObj['DBLeadEmailId'] =localStorage.getItem('emailId')
-      DirectBookingleadDetailsObj['loginId']='618b2590538367663cc11007',
+      DirectBookingleadDetailsObj['loginId']='618ae544538367663cc10fcc',
       DirectBookingleadDetailsObj['proLoginId']=this.route.snapshot.params.id
       DirectBookingleadDetailsObj['proEmailId']=this.proProfile.emailId
       DirectBookingleadDetailsObj['proMobileNumber']=this.proProfile.mobileNumber
@@ -413,8 +413,8 @@ export class NewCustomerBookAproComponent implements OnInit {
       DirectBookingleadDetailsObj['DBLPrice']=  this.subCategoriePrice[0].bapPrice ?this.subCategoriePrice[0].bapPrice :5
       DirectBookingleadDetailsObj['serviceAddress'] = {}
       DirectBookingleadDetailsObj['serviceAddress']['streetAddress'] = this.serviceAddressForm.value.servicestreetAddress
-      DirectBookingleadDetailsObj['serviceAddress']['city'] = this.serviceAddressForm.value.servicecity? this.serviceAddressForm.value.servicecity: this.serviceAddressForm.value.city
-      DirectBookingleadDetailsObj['serviceAddress']['state'] = this.serviceAddressForm.value.servicestate?this.serviceAddressForm.value.servicestate:this.serviceAddressForm.value.state
+      DirectBookingleadDetailsObj['serviceAddress']['city'] = this.serviceAddressForm.value.servicecity? this.serviceAddressForm.value.servicecity: this.city
+      DirectBookingleadDetailsObj['serviceAddress']['state'] = this.serviceAddressForm.value.servicestate?this.serviceAddressForm.value.servicestate:this.state
       DirectBookingleadDetailsObj['serviceAddress']['zipcode'] = this.serviceAddressForm.value.servicezipcode
       DirectBookingleadDetailsObj['attachments'] = this.proProfileImage1;
       DirectBookingleadDetailsObj['service'] = {}
@@ -422,6 +422,7 @@ export class NewCustomerBookAproComponent implements OnInit {
       DirectBookingleadDetailsObj['service']['category'] =  this.categoryNameArray[0].categoryName
       DirectBookingleadDetailsObj['service']['subCategory'] = this.serviceAddressForm.value.selectSubCategory
       DirectBookingleadDetailsObj['service']['subCategoryCode'] = this.serviceAddressForm.value.subCatCode
+      DirectBookingleadDetailsObj['sourceType']="DirectBooking"
      
       this.leadService.bookAPro(DirectBookingleadDetailsObj)
         .pipe(first())

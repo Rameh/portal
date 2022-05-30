@@ -12,6 +12,8 @@ import {
   UNAUTHORIZED_CODE,
   INTERNAL_SERVER_ERROR_MSG,
 } from '../../helpers/constants';
+import { AuthService } from 'src/app/services/auth.service';
+import { MustMatch } from "../../shared/index";
  
 declare var $: any;
 
@@ -28,6 +30,8 @@ export class NewCustomerGetQuotesComponent implements OnInit {
   public currentDate: any;
   bookProform: FormGroup;
   serviceAddressForm: FormGroup;
+  public forgotPasswordSendVerification: FormGroup;
+  public forgotPasswordNewPassword: FormGroup;
   workOrdeList: any;
   projectName
   emailId:any;
@@ -82,6 +86,15 @@ export class NewCustomerGetQuotesComponent implements OnInit {
   formControlItem: FormControl = new FormControl("");
   required: boolean = !1;
   subCategoriePrice: any;
+  bookaproScreen: boolean=true;
+  mobileNumberScreen: boolean=false;
+  verificationCodeScreen: boolean=false;
+  newPasswordScreen: boolean=false;
+  forgotPasswordNewPasswordMode:  boolean=false;
+  userData: any;
+  verificationCodeMode: any;
+  verificationCode: any;
+  verificationCodeSecretKey: any;
 
   constructor(
     private fb: FormBuilder,
@@ -89,11 +102,14 @@ export class NewCustomerGetQuotesComponent implements OnInit {
     public leadService: LeadService,
     private toastr: ToastrManager,
     public uploadService: UploadService,
+    public authService: AuthService,
     private router: Router
 
   ) {
     this.bookProform = this.buildFormGroup({})
     this.serviceAddressForm=this.buildFormGroup1({})
+    this.forgotPasswordSendVerification=this.buildFormGroup({})
+    this.forgotPasswordNewPassword=this.buildFormGroup({})
   }
   /**
    * Lets the user click on the icon in the input.
@@ -114,6 +130,15 @@ export class NewCustomerGetQuotesComponent implements OnInit {
 
   ngOnInit(): void {
     this.createBookProForm();
+    this.forgotPasswordSendVerification = this.fb.group({
+      code: ["", Validators.required],
+    })
+    this.forgotPasswordNewPassword = this.fb.group({
+      password: ["", [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ["", Validators.required]
+    }, {
+      validator: MustMatch("password", "confirmPassword")
+    })
     this.getProProfile(this.route.snapshot.params.id)
     this.currentDate = moment(new Date()).format("YYYY-MM-DD");
     this.emailId=localStorage.getItem('emailId')
@@ -131,6 +156,102 @@ export class NewCustomerGetQuotesComponent implements OnInit {
   pickDate() {
     $('#date-picker').datepicker('show');
   }
+
+  async sendVerificationCode() {
+    //this.getLeadEmailData()
+    // if (this.forgotPasswordModeOfSelection.invalid) {
+    //   return;
+    // }
+    let verificationResponse: any = await this.sendVerificationCodeService()
+    if (verificationResponse.status == SUCCESS_CODE) {
+      this.verificationCode = verificationResponse.data.token
+      this.verificationCodeScreen=true;
+      this.mobileNumberScreen=false;
+
+      //this.router.navigate(['/auth/forgotpassword'], { queryParams: { mode: FORGOT_PASSWORD_VERIFICATION_CODE_MODE } });
+    }
+  }
+
+
+    //send verification code service
+    async sendVerificationCodeService() {
+
+      let secretKey: any = await this.verificationCodeSecret()
+      this.verificationCodeSecretKey = secretKey.data.secret
+  
+      let verificationCodeObj = {}
+      verificationCodeObj['communicationType'] = "SMS"
+      //  verificationCodeObj['to'] = this.forgotPasswordModeOfSelection.get('mode').value
+      // console.log("verificationCodeObj", this.userData[0].mobileNumber)
+      verificationCodeObj['to'] = this.serviceAddressForm.value.mobileNumber
+      verificationCodeObj['secret'] = secretKey.data.secret
+  
+      return new Promise((resolve, reject) => {
+        this.authService.sendVerificationCodeForLead(verificationCodeObj)
+          .subscribe((res) => {
+            resolve(res)
+          }, (error) => {
+            reject(error)
+          })
+      })
+    }
+
+          // verification code secret
+  verificationCodeSecret() {
+    return new Promise((resolve, reject) => {
+      this.authService.getVerificationCodeSecret()
+        .subscribe((res) => {
+          resolve(res)
+        }, (error) => {
+          reject(error)
+          //this.toastr.errorToastr(error, INTERNAL_SERVER_ERROR_MSG)
+        })
+    })
+  }
+
+
+     // new password
+     async newPassword() {
+      //this.submittedForCode = true
+      if (this.forgotPasswordSendVerification.invalid) {
+       // this.spinner.hide()
+        return;
+      }
+  
+      let verifyingVerificationCode: any = await this.verifyVerificationCode()
+      console.log("🚀 ~ file: email-check.component.ts ~ line 277 ~ EmailCheckComponent ~ verifyingVerificationCode", verifyingVerificationCode)
+      if (verifyingVerificationCode.status == SUCCESS_CODE && verifyingVerificationCode.data.valid) {
+        this.forgotPasswordNewPasswordMode=true
+        this.verificationCodeScreen=false
+        //this.spinner.hide()
+        //this.router.navigate(['/auth/forgotpassword'], { queryParams: { mode: FORGOT_PASSWORD_PASSWORD_MODE } });
+      } else {
+        //this.spinner.hide()
+        this.toastr.infoToastr('Invalid Verification Code', 'Verification Code')
+      }
+    }
+
+      //verify verification code
+  verifyVerificationCode() {
+    let verifyCode = {}
+    verifyCode['secret'] = this.verificationCodeSecretKey;
+    verifyCode['code'] = this.forgotPasswordSendVerification.value.code
+    return new Promise((resolve, reject) => {
+      this.authService.verifyVerificationCode(verifyCode)
+        .pipe(first())
+        .subscribe(res => {
+          resolve(res)
+        }, (error) => {
+          reject(error)
+          this.toastr.errorToastr(error, INTERNAL_SERVER_ERROR_MSG)
+        })
+    })
+  }
+
+
+
+
+
   createBookProForm() {
     this.serviceAddressForm = this.fb.group({
       servicecustomerName: ['', Validators.required],
@@ -138,7 +259,8 @@ export class NewCustomerGetQuotesComponent implements OnInit {
       emailId:[''],
       firstName:[''],
       lastName:[''],
-      password:['123456'],
+      password:[''],
+      confirmPassword:[''],
       mobileNumber:[],
       servicefirstName: ['', Validators.required],
       servicelastName: ['', Validators.required],
@@ -251,6 +373,11 @@ export class NewCustomerGetQuotesComponent implements OnInit {
     return this.fb.group(bookProform)
   }
 
+  bookaProSubmit(){
+    this.mobileNumberScreen=true;
+    this.bookaproScreen=false
+  }
+
   onSubmit() {
     if (!this.bookProform.valid) {
       alert('Please fill all the required fields to create a super hero!')
@@ -260,6 +387,7 @@ export class NewCustomerGetQuotesComponent implements OnInit {
       })
       this.emailId=localStorage.getItem("emailId")
       const DirectBookingleadDetailsObj = {}
+      DirectBookingleadDetailsObj['isUserNotExist'] = true
       DirectBookingleadDetailsObj['projectName'] = this.serviceAddressForm.value.projectName
       DirectBookingleadDetailsObj['projectDescription'] = this.serviceAddressForm.value.projectDescription
       DirectBookingleadDetailsObj['firstName'] = this.serviceAddressForm.value.firstName
@@ -275,8 +403,8 @@ export class NewCustomerGetQuotesComponent implements OnInit {
       DirectBookingleadDetailsObj['DBLPrice']=  this.subCategoriePrice[0].bapPrice
       DirectBookingleadDetailsObj['serviceAddress'] = {}
       DirectBookingleadDetailsObj['serviceAddress']['streetAddress'] = this.serviceAddressForm.value.servicestreetAddress
-      DirectBookingleadDetailsObj['serviceAddress']['city'] = this.serviceAddressForm.value.servicecity
-      DirectBookingleadDetailsObj['serviceAddress']['state'] = this.serviceAddressForm.value.servicestate
+      DirectBookingleadDetailsObj['serviceAddress']['city'] = this.serviceAddressForm.value.servicecity? this.serviceAddressForm.value.servicecity: this.city
+      DirectBookingleadDetailsObj['serviceAddress']['state'] = this.serviceAddressForm.value.servicestate?this.serviceAddressForm.value.servicestate:this.state
       DirectBookingleadDetailsObj['serviceAddress']['zipcode'] = this.serviceAddressForm.value.servicezipcode
       DirectBookingleadDetailsObj['attachments'] = this.proProfileImage1;
       DirectBookingleadDetailsObj['service'] = {}
@@ -284,6 +412,7 @@ export class NewCustomerGetQuotesComponent implements OnInit {
       DirectBookingleadDetailsObj['service']['category'] =  this.categoryNameArray[0].categoryName
       DirectBookingleadDetailsObj['service']['subCategory'] = this.serviceAddressForm.value.selectSubCategory
       DirectBookingleadDetailsObj['service']['subCategoryCode'] = this.serviceAddressForm.value.subCatCode
+      DirectBookingleadDetailsObj['sourceType']="Getaquotes"
      
       this.leadService.bookAPro(DirectBookingleadDetailsObj)
         .pipe(first())
@@ -385,6 +514,7 @@ export class NewCustomerGetQuotesComponent implements OnInit {
           this.zipcodeData = data['data'][0]
           this.city = this.zipcodeData?.city
           this.state = this.zipcodeData?.state
+          this.county=this.zipcodeData.county
           this.getZipcodeStateName();
         } if (this.zipcodeData1?.length == 0) {
           this.zipcodeExists = true

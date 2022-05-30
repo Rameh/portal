@@ -23,6 +23,9 @@ export class LeadService {
     getLeadDetails(customerId: string): Observable<any> {
         return this.http.get<any>(`${environment.API_URL}/workorder/getworkorderprofile/${customerId}`);
     }
+    getLeadDetails1(customerId: string): Observable<any> {
+        return this.http.get<any>(`${environment.API_URL}/lead/get-dbl-details/${customerId}`);
+    }
     getProjectHistory(loginId: any): Observable<any> {
         return this.http.get(`${environment.API_URL}/woStatushistory/getworkorderStatusHistory/${loginId}`).pipe(
             catchError(this.handleError)
@@ -75,6 +78,7 @@ export class LeadService {
         )
     }
     bookAPro(customerSupportRequestData): Observable<any> {
+        console.log("🚀 ~ file: lead.service.ts ~ line 81 ~ LeadService ~ customerSupportRequestData", customerSupportRequestData)
         return this.http.post(`${environment.API_URL}/lead/direct-booking-customer`, customerSupportRequestData).pipe(
             catchError(this.handleError)
         )
@@ -103,7 +107,7 @@ export class LeadService {
         return this.http.get(`${environment.API_URL}/master/getsubcatCodeData/${cat_code}`);
     }
     getLeadList(loginId: any): Observable<any> {
-        return this.http.get(`${environment.API_URL}/lead/get-all-leads-and-dbleads-list/${loginId}`).pipe(
+        return this.http.get(`http://localhost:8000/lead/get-all-leads-and-dbleads-list/${loginId}`).pipe(
             catchError(this.handleError)
         )
     }

@@ -1,0 +1,21 @@
+.input-icon1{
+	position: absolute;
+	right: 6px;
+	top: calc(30% - 0.5em); /* Keep icon in center of input, regardless of the input height */
+  }
+  input{
+	padding-left: 26px;
+  }
+  .input-wrapper{
+	position: relative;
+  }
+  .input-passwordicon{
+	position: absolute;
+	left: 6px;
+	top: calc(50% - 0.5em); /* Keep icon in center of input, regardless of the input height */
+  }
+  a {
+    color: #ff5700 !important;
+    text-decoration: none;
+    background-color: transparent;
+}
