@@ -107,7 +107,7 @@ export class LeadService {
         return this.http.get(`${environment.API_URL}/master/getsubcatCodeData/${cat_code}`);
     }
     getLeadList(loginId: any): Observable<any> {
-        return this.http.get(`http://localhost:8000/lead/get-all-leads-and-dbleads-list/${loginId}`).pipe(
+        return this.http.get(`${environment.API_URL}/lead/get-all-leads-and-dbleads-list/${loginId}`).pipe(
             catchError(this.handleError)
         )
     }
